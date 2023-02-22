@@ -4,12 +4,16 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
+  System.Classes, Vcl.Graphics, Vcl.DBGrids,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, midaslib, AdvGlowButton,
   System.ImageList, Vcl.ImgList, cxImageList, cxGraphics, Vcl.Menus,
   Vcl.ComCtrls, Vcl.ExtCtrls, AdvPanel, dxGDIPlusClasses;
 
 type
+  THackDBGrid = class(TDBGrid)
+    property DefaultRowHeight;
+  end;
+
   TfrmMain = class(TForm)
     cxImageList1: TcxImageList;
     sbPrincipal: TStatusBar;
