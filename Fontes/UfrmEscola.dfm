@@ -615,6 +615,7 @@ object frmEscola: TfrmEscola
         Height = 441
         Align = alClient
         DataSource = dtmEscola.dtsEscola
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -866,6 +867,7 @@ object frmEscola: TfrmEscola
         Height = 360
         Align = alClient
         DataSource = dtmEscola.dtsBuscaEscola
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
