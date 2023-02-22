@@ -617,6 +617,7 @@ object frmUsuarios: TfrmUsuarios
         Height = 441
         Align = alClient
         DataSource = dtmUsuarios.dtsUsuarios
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -1277,6 +1278,7 @@ object frmUsuarios: TfrmUsuarios
         Height = 360
         Align = alClient
         DataSource = dtmUsuarios.dtsBuscaUsuarios
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
