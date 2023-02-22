@@ -16,8 +16,11 @@ object frmUsuarios: TfrmUsuarios
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
@@ -605,10 +608,6 @@ object frmUsuarios: TfrmUsuarios
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitLeft = 5
-    ExplicitTop = 2
-    ExplicitWidth = 934
-    ExplicitHeight = 477
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object dbGrid: TDBGrid
@@ -624,18 +623,29 @@ object frmUsuarios: TfrmUsuarios
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = dbGridDrawColumnCell
         OnDblClick = dbGridDblClick
         Columns = <
           item
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'NOME'
             Title.Caption = 'Nome'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -643,6 +653,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'EMAIL'
             Title.Caption = 'E-mail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -650,6 +665,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'LOGIN'
             Title.Caption = 'Login'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -657,6 +677,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'DATA_NASCIMENTO'
             Title.Caption = 'Data Nascimento'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 100
             Visible = True
           end
@@ -664,6 +689,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'ATIVO'
             Title.Caption = 'Ativo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -671,6 +701,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'GESTOR'
             Title.Caption = 'Gestor'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -678,6 +713,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'PROFESSOR'
             Title.Caption = 'Professor'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -685,6 +725,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'ALUNO'
             Title.Caption = 'Aluno'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -692,6 +737,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'DATA_INGRESSO'
             Title.Caption = 'Data ingresso'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 100
             Visible = True
           end
@@ -699,6 +749,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'ULTIMO_ACESSO'
             Title.Caption = #218'ltimo acesso'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 100
             Visible = True
           end>
@@ -713,8 +768,6 @@ object frmUsuarios: TfrmUsuarios
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 926
-        ExplicitHeight = 437
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -1147,7 +1200,7 @@ object frmUsuarios: TfrmUsuarios
       object pnlLocalizar: TPanel
         Left = 0
         Top = 0
-        Width = 926
+        Width = 936
         Height = 81
         Align = alTop
         BevelOuter = bvNone
@@ -1220,8 +1273,8 @@ object frmUsuarios: TfrmUsuarios
       object dbGridLocalizar: TDBGrid
         Left = 0
         Top = 81
-        Width = 926
-        Height = 356
+        Width = 936
+        Height = 360
         Align = alClient
         DataSource = dtmUsuarios.dtsBuscaUsuarios
         TabOrder = 1
@@ -1230,18 +1283,29 @@ object frmUsuarios: TfrmUsuarios
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = dbGridLocalizarDrawColumnCell
         OnDblClick = dbGridLocalizarDblClick
         Columns = <
           item
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'NOME'
             Title.Caption = 'Nome'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -1249,6 +1313,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'ESCOLA'
             Title.Caption = 'Escola'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -1256,6 +1325,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'TURMA'
             Title.Caption = 'Turma'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -1263,30 +1337,58 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'EMAIL'
             Title.Caption = 'E-mail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LOGIN'
             Title.Caption = 'Login'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'SENHA'
             Title.Caption = 'Senha'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DATA_NASCIMENTO'
             Title.Caption = 'Data Nascimento'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ATIVO'
             Title.Caption = 'Ativo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -1294,6 +1396,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'GESTOR'
             Title.Caption = 'Gestor'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -1301,6 +1408,11 @@ object frmUsuarios: TfrmUsuarios
             Expanded = False
             FieldName = 'PROFESSOR'
             Title.Caption = 'Professor'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
