@@ -62,6 +62,13 @@ type
     procedure tbsLocalizarShow(Sender: TObject);
     procedure dbGridLocalizarDblClick(Sender: TObject);
     procedure dbGridDblClick(Sender: TObject);
+    procedure dbGridLocalizarDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -165,6 +172,9 @@ begin
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
     dtmEscola.qryEscola.First;
+
+    THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+    THackDBGrid(dbGrid).DefaultRowHeight := 30;
   end
   else
   begin
@@ -195,6 +205,9 @@ begin
 
   dtmEscola.qryBuscaEscola.SQL.Add('ORDER BY ESCOLA.CODIGO');
   dtmEscola.qryBuscaEscola.Open;
+
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 
   if dtmEscola.qryBuscaEscola.IsEmpty then
   begin
@@ -255,7 +268,42 @@ end;
 
 procedure TfrmEscola.dbGridDblClick(Sender: TObject);
 begin
-  btnListarClick(self);
+  btnListarClick(Self);
+end;
+
+procedure TfrmEscola.dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if gdSelected in State then
+  begin
+    with dbGrid.Canvas do
+    begin
+      Brush.Color := $00FFF9F2;
+      FillRect(Rect);
+      Font.Style := [fsBold]
+    end;
+  end;
+  dbGrid.DefaultDrawDataCell(Rect, dbGrid.columns[DataCol].Field, State);
+
+  // Altura da fonte no centro da célula
+  if Column.Field.Alignment = taRightJustify then
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_RIGHT);
+    dbGrid.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else if Column.Field.Alignment = taCenter then
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_CENTER);
+    dbGrid.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_LEFT);
+    dbGrid.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+      Column.Field.Text);
+  end;
 end;
 
 procedure TfrmEscola.dbGridLocalizarDblClick(Sender: TObject);
@@ -274,6 +322,48 @@ begin
     (not(dtmEscola.qryEscola.IsEmpty));
 end;
 
+procedure TfrmEscola.dbGridLocalizarDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if gdSelected in State then
+  begin
+    with dbGridLocalizar.Canvas do
+    begin
+      Brush.Color := $00FFF9F2;
+      FillRect(Rect);
+      Font.Style := [fsBold]
+    end;
+  end;
+  dbGridLocalizar.DefaultDrawDataCell(Rect, dbGridLocalizar.columns[DataCol]
+    .Field, State);
+
+  // Altura da fonte no centro da célula
+  if Column.Field.Alignment = taRightJustify then
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_RIGHT);
+    dbGridLocalizar.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else if Column.Field.Alignment = taCenter then
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_CENTER);
+    dbGridLocalizar.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+      Rect.Top + 10, Column.Field.Text);
+  end
+  else
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_LEFT);
+    dbGridLocalizar.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+      Column.Field.Text);
+  end;
+end;
+
+procedure TfrmEscola.FormActivate(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
 procedure TfrmEscola.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if dtmEscola.Transaction.Active then
@@ -283,6 +373,12 @@ begin
 
   Action := cafree;
   frmEscola := nil;
+end;
+
+procedure TfrmEscola.FormCreate(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 end;
 
 procedure TfrmEscola.FormKeyPress(Sender: TObject; var Key: Char);
@@ -299,6 +395,12 @@ begin
     Close;
 end;
 
+procedure TfrmEscola.FormShow(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
 procedure TfrmEscola.tbsLocalizarShow(Sender: TObject);
 begin
   if dtmEscola.qryBuscaEscola.Active then
@@ -306,6 +408,9 @@ begin
 
   edtLocEscola.Clear;
   edtLocEscola.SetFocus;
+
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 end;
 
 end.
