@@ -87,6 +87,13 @@ type
     procedure dbcbGestorClick(Sender: TObject);
     procedure dbcbProfessorClick(Sender: TObject);
     procedure dbcbAlunoClick(Sender: TObject);
+    procedure dbGridLocalizarDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -225,6 +232,9 @@ begin
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
     dtmUsuarios.qryUsuarios.First;
+
+    THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+    THackDBGrid(dbGrid).DefaultRowHeight := 30;
   end
   else
   begin
@@ -266,6 +276,9 @@ begin
 
   dtmUsuarios.qryBuscaUsuarios.SQL.Add('ORDER BY USUARIOS.CODIGO');
   dtmUsuarios.qryBuscaUsuarios.Open;
+
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 
   if dtmUsuarios.qryBuscaUsuarios.IsEmpty then
   begin
@@ -417,6 +430,41 @@ begin
   btnListarClick(Self);
 end;
 
+procedure TfrmUsuarios.dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if gdSelected in State then
+  begin
+    with dbGrid.Canvas do
+    begin
+      Brush.Color := $00FFF9F2;
+      FillRect(Rect);
+      Font.Style := [fsBold]
+    end;
+  end;
+  dbGrid.DefaultDrawDataCell(Rect, dbGrid.columns[DataCol].Field, State);
+
+  // Altura da fonte no centro da célula
+  if Column.Field.Alignment = taRightJustify then
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_RIGHT);
+    dbGrid.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else if Column.Field.Alignment = taCenter then
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_CENTER);
+    dbGrid.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else
+  begin
+    SetTextAlign((dbGrid).Canvas.Handle, TA_LEFT);
+    dbGrid.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+      Column.Field.Text);
+  end;
+end;
+
 procedure TfrmUsuarios.dbGridLocalizarDblClick(Sender: TObject);
 begin
   dtmUsuarios.qryUsuarios.Locate('CODIGO',
@@ -433,6 +481,42 @@ begin
     (not(dtmUsuarios.qryUsuarios.IsEmpty));
 end;
 
+procedure TfrmUsuarios.dbGridLocalizarDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if gdSelected in State then
+  begin
+    with dbGridLocalizar.Canvas do
+    begin
+      Brush.Color := $00FFF9F2;
+      FillRect(Rect);
+      Font.Style := [fsBold]
+    end;
+  end;
+  dbGridLocalizar.DefaultDrawDataCell(Rect, dbGridLocalizar.columns[DataCol]
+    .Field, State);
+
+  // Altura da fonte no centro da célula
+  if Column.Field.Alignment = taRightJustify then
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_RIGHT);
+    dbGridLocalizar.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+      Column.Field.Text);
+  end
+  else if Column.Field.Alignment = taCenter then
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_CENTER);
+    dbGridLocalizar.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+      Rect.Top + 10, Column.Field.Text);
+  end
+  else
+  begin
+    SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_LEFT);
+    dbGridLocalizar.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+      Column.Field.Text);
+  end;
+end;
+
 procedure TfrmUsuarios.dblkcbEscolaEnter(Sender: TObject);
 begin
   if not dtmUsuarios.qryEscola.Active then
@@ -445,6 +529,12 @@ begin
     dtmUsuarios.qryTurmas.Open;
 end;
 
+procedure TfrmUsuarios.FormActivate(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
 procedure TfrmUsuarios.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if dtmUsuarios.Transaction.Active then
@@ -454,6 +544,12 @@ begin
 
   Action := cafree;
   frmUsuarios := nil;
+end;
+
+procedure TfrmUsuarios.FormCreate(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 end;
 
 procedure TfrmUsuarios.FormKeyPress(Sender: TObject; var Key: Char);
@@ -470,6 +566,12 @@ begin
     Close;
 end;
 
+procedure TfrmUsuarios.FormShow(Sender: TObject);
+begin
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
 procedure TfrmUsuarios.tbsLocalizarShow(Sender: TObject);
 begin
   if dtmUsuarios.qryBuscaUsuarios.Active then
@@ -477,6 +579,9 @@ begin
 
   edtLocUsuarios.Clear;
   edtLocUsuarios.SetFocus;
+
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 end;
 
 end.
