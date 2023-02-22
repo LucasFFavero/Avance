@@ -130,10 +130,6 @@ object frmAulasConteudos: TfrmAulasConteudos
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitLeft = 8
-    ExplicitTop = 1
-    ExplicitWidth = 954
-    ExplicitHeight = 547
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlAudio: TPanel
@@ -145,8 +141,6 @@ object frmAulasConteudos: TfrmAulasConteudos
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitWidth = 946
-        ExplicitHeight = 367
         object Panel11: TPanel
           Left = 25
           Top = 0
@@ -155,8 +149,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitWidth = 531
-          ExplicitHeight = 367
           object gpbAudio: TGroupBox
             Left = 0
             Top = 0
@@ -165,7 +157,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alTop
             Caption = #193'udio'
             TabOrder = 0
-            ExplicitWidth = 531
             object Panel3: TPanel
               Left = 2
               Top = 15
@@ -265,7 +256,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
-              ExplicitWidth = 489
               object WindowsMediaPlayerAudio: TWindowsMediaPlayer
                 Left = 0
                 Top = 0
@@ -293,8 +283,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitWidth = 531
-            ExplicitHeight = 247
           end
         end
         object Panel9: TPanel
@@ -305,7 +293,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 367
         end
         object Panel10: TPanel
           Left = 566
@@ -315,8 +302,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitLeft = 556
-          ExplicitHeight = 367
         end
       end
       object pnlVideo: TPanel
@@ -328,8 +313,6 @@ object frmAulasConteudos: TfrmAulasConteudos
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitWidth = 946
-        ExplicitHeight = 367
         object gpbVideo: TGroupBox
           Left = 25
           Top = 0
@@ -338,8 +321,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alClient
           Caption = 'V'#237'deo'
           TabOrder = 0
-          ExplicitWidth = 531
-          ExplicitHeight = 367
           object pnlBotoesVideo: TPanel
             Left = 2
             Top = 15
@@ -348,7 +329,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitHeight = 350
             object btnIncluirVideo: TAdvGlowButton
               Left = 2
               Top = 13
@@ -440,8 +420,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitWidth = 489
-            ExplicitHeight = 350
             object WindowsMediaPlayer: TWindowsMediaPlayer
               Left = 0
               Top = 0
@@ -470,7 +448,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitHeight = 367
         end
         object Panel8: TPanel
           Left = 566
@@ -480,8 +457,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 556
-          ExplicitHeight = 367
         end
       end
       object pnlImagem: TPanel
@@ -492,8 +467,6 @@ object frmAulasConteudos: TfrmAulasConteudos
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 946
-        ExplicitHeight = 367
         object Panel6: TPanel
           Left = 566
           Top = 0
@@ -502,8 +475,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 556
-          ExplicitHeight = 367
         end
         object gpbImagem: TGroupBox
           Left = 25
@@ -513,8 +484,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alClient
           Caption = 'Imagem'
           TabOrder = 0
-          ExplicitWidth = 531
-          ExplicitHeight = 367
           object Image: TImage
             Left = 40
             Top = 15
@@ -534,7 +503,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitHeight = 350
             object btnIncluirImagem: TAdvGlowButton
               Left = 2
               Top = 13
@@ -546,8 +514,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -587,8 +555,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -627,7 +595,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitHeight = 367
         end
       end
       object pnlCadastro: TPanel
@@ -640,7 +607,6 @@ object frmAulasConteudos: TfrmAulasConteudos
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 946
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -788,8 +754,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -829,8 +795,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
