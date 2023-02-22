@@ -130,7 +130,6 @@ object frmAulasQuestoes: TfrmAulasQuestoes
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitTop = 61
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlVideo: TPanel
@@ -332,8 +331,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -373,8 +372,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
