@@ -614,6 +614,7 @@ object frmTurmas: TfrmTurmas
         Height = 441
         Align = alClient
         DataSource = dtmTurmas.dtsTurmas
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -793,6 +794,7 @@ object frmTurmas: TfrmTurmas
         Height = 360
         Align = alClient
         DataSource = dtmTurmas.dtsBuscaTurmas
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
