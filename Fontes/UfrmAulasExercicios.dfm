@@ -15,7 +15,9 @@ object frmAulasExercicios: TfrmAulasExercicios
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
@@ -119,7 +121,6 @@ object frmAulasExercicios: TfrmAulasExercicios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitTop = 4
     end
   end
   object pgcDadosCadastrais: TPageControl
@@ -132,10 +133,6 @@ object frmAulasExercicios: TfrmAulasExercicios
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitLeft = 8
-    ExplicitTop = 1
-    ExplicitWidth = 954
-    ExplicitHeight = 547
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlVideo: TPanel
@@ -147,8 +144,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitWidth = 946
-        ExplicitHeight = 367
         object gpbVideo: TGroupBox
           Left = 25
           Top = 0
@@ -157,8 +152,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alClient
           Caption = 'V'#237'deo'
           TabOrder = 0
-          ExplicitWidth = 531
-          ExplicitHeight = 367
           object pnlBotoesVideo: TPanel
             Left = 2
             Top = 15
@@ -167,7 +160,6 @@ object frmAulasExercicios: TfrmAulasExercicios
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitHeight = 350
             object btnIncluirVideo: TAdvGlowButton
               Left = 2
               Top = 13
@@ -259,8 +251,6 @@ object frmAulasExercicios: TfrmAulasExercicios
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitWidth = 489
-            ExplicitHeight = 350
             object WindowsMediaPlayer: TWindowsMediaPlayer
               Left = 0
               Top = 0
@@ -289,7 +279,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitHeight = 367
         end
         object Panel8: TPanel
           Left = 566
@@ -299,8 +288,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 556
-          ExplicitHeight = 367
         end
       end
       object pnlImagem: TPanel
@@ -311,8 +298,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 946
-        ExplicitHeight = 367
         object GroupBox1: TGroupBox
           Left = 25
           Top = 0
@@ -321,8 +306,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alClient
           Caption = 'Imagem'
           TabOrder = 0
-          ExplicitWidth = 531
-          ExplicitHeight = 367
           object Image: TImage
             Left = 40
             Top = 15
@@ -340,7 +323,6 @@ object frmAulasExercicios: TfrmAulasExercicios
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitHeight = 350
             object btnIncluirImagem: TAdvGlowButton
               Left = 2
               Top = 13
@@ -352,8 +334,8 @@ object frmAulasExercicios: TfrmAulasExercicios
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -393,8 +375,8 @@ object frmAulasExercicios: TfrmAulasExercicios
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -433,7 +415,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitHeight = 367
         end
         object Panel3: TPanel
           Left = 566
@@ -443,8 +424,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 556
-          ExplicitHeight = 367
         end
       end
       object pnlCadastro: TPanel
@@ -457,7 +436,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 9
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -577,13 +555,23 @@ object frmAulasExercicios: TfrmAulasExercicios
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DESCRICAO'
             Title.Caption = 'Descri'#231#227'o'
-            Width = 300
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 525
             Visible = True
           end
           item
@@ -591,6 +579,11 @@ object frmAulasExercicios: TfrmAulasExercicios
             FieldName = 'IMAGEM'
             Title.Alignment = taCenter
             Title.Caption = 'Imagem'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -599,6 +592,11 @@ object frmAulasExercicios: TfrmAulasExercicios
             FieldName = 'CORRETA'
             Title.Alignment = taCenter
             Title.Caption = 'Correta'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end>
@@ -622,8 +620,8 @@ object frmAulasExercicios: TfrmAulasExercicios
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 14
-          Images = frmMain.cxImageList1
+          ImageIndex = 0
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -663,8 +661,8 @@ object frmAulasExercicios: TfrmAulasExercicios
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 13
-          Images = frmMain.cxImageList1
+          ImageIndex = 1
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -704,8 +702,8 @@ object frmAulasExercicios: TfrmAulasExercicios
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 4
-          Images = frmMain.cxImageList1
+          ImageIndex = 2
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
