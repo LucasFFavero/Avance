@@ -130,6 +130,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
+    ExplicitTop = 61
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlVideo: TPanel
@@ -421,8 +422,6 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           Align = alRight
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 570
-          ExplicitTop = 6
         end
       end
       object pnlCadastro: TPanel

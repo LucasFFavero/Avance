@@ -2446,10 +2446,8 @@ object frmMain: TfrmMain
       0000000000000010200000000000000008100000000000000080000100000000
       0000408000000000000000000408000000000000000204000000000000D0ECFC
       BF00030006F9CF4906D6CA960000000049454E44AE426082}
-    ExplicitLeft = 107
-    ExplicitTop = -93
-    ExplicitWidth = 927
-    ExplicitHeight = 704
+    ExplicitLeft = 516
+    ExplicitTop = -6
   end
   object sbPrincipal: TStatusBar
     Left = 0
@@ -2480,8 +2478,6 @@ object frmMain: TfrmMain
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object btnCadEscolas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
@@ -2670,21 +2666,21 @@ object frmMain: TfrmMain
     ParentBackground = False
     TabOrder = 2
     Visible = False
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object ScrollBox1: TScrollBox
       Left = 0
       Top = 0
       Width = 360
       Height = 726
+      VertScrollBar.Position = 28
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
       TabOrder = 0
-      object AdvGlowButton4: TAdvGlowButton
+      StyleElements = []
+      object btnAno1: TAdvGlowButton
         Left = 0
-        Top = 0
+        Top = -28
         Width = 343
         Height = 150
         Cursor = crHandPoint
@@ -2709,7 +2705,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         Transparent = True
         TabOrder = 0
-        OnClick = btnCadEscolasClick
+        OnClick = btnAno1Click
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -2728,9 +2724,9 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
       end
-      object AdvGlowButton6: TAdvGlowButton
+      object btnAno2: TAdvGlowButton
         Left = 0
-        Top = 160
+        Top = 132
         Width = 343
         Height = 140
         Cursor = crHandPoint
@@ -2755,7 +2751,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         Transparent = True
         TabOrder = 1
-        OnClick = btnCadUsuariosClick
+        OnClick = btnAno2Click
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -2774,9 +2770,9 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
       end
-      object AdvGlowButton7: TAdvGlowButton
+      object btnAno3: TAdvGlowButton
         Left = 0
-        Top = 310
+        Top = 282
         Width = 343
         Height = 140
         Cursor = crHandPoint
@@ -2801,7 +2797,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         Transparent = True
         TabOrder = 2
-        OnClick = btnCadTurmasClick
+        OnClick = btnAno3Click
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -2820,9 +2816,9 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
       end
-      object AdvGlowButton1: TAdvGlowButton
+      object btnAno4: TAdvGlowButton
         Left = 0
-        Top = 460
+        Top = 432
         Width = 343
         Height = 140
         Cursor = crHandPoint
@@ -2847,6 +2843,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         Transparent = True
         TabOrder = 3
+        OnClick = btnAno4Click
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -2865,9 +2862,9 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
       end
-      object AdvGlowButton5: TAdvGlowButton
+      object btnAno5: TAdvGlowButton
         Left = 0
-        Top = 610
+        Top = 582
         Width = 343
         Height = 140
         Cursor = crHandPoint
@@ -2892,6 +2889,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         Transparent = True
         TabOrder = 4
+        OnClick = btnAno5Click
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -2912,63 +2910,128 @@ object frmMain: TfrmMain
       end
       object Panel8: TPanel
         Left = 0
-        Top = 450
+        Top = 422
         Width = 343
         Height = 10
         Align = alTop
         BevelOuter = bvNone
-        Color = 13166041
+        Color = clWhite
+        Padding.Right = 5
         ParentBackground = False
         TabOrder = 5
         StyleElements = []
+        object Panel5: TPanel
+          Left = 0
+          Top = 0
+          Width = 338
+          Height = 10
+          Align = alTop
+          BevelOuter = bvNone
+          Color = 13166041
+          ParentBackground = False
+          TabOrder = 0
+          StyleElements = []
+        end
       end
       object Panel9: TPanel
         Left = 0
-        Top = 750
+        Top = 722
         Width = 343
         Height = 10
         Align = alTop
         BevelOuter = bvNone
-        Color = 15523043
+        Color = clWhite
+        Padding.Right = 5
         ParentBackground = False
         TabOrder = 6
         StyleElements = []
+        object Panel10: TPanel
+          Left = 0
+          Top = 0
+          Width = 338
+          Height = 10
+          Align = alTop
+          BevelOuter = bvNone
+          Color = 13947601
+          ParentBackground = False
+          TabOrder = 0
+          StyleElements = []
+        end
       end
       object Panel7: TPanel
         Left = 0
-        Top = 150
+        Top = 122
         Width = 343
         Height = 10
         Align = alTop
         BevelOuter = bvNone
-        Color = 16773599
+        Color = clWhite
+        Padding.Right = 5
         ParentBackground = False
         TabOrder = 7
         StyleElements = []
+        object Panel2: TPanel
+          Left = 0
+          Top = 0
+          Width = 338
+          Height = 10
+          Align = alTop
+          BevelOuter = bvNone
+          Color = 16773599
+          ParentBackground = False
+          TabOrder = 0
+          StyleElements = []
+        end
       end
       object Panel3: TPanel
         Left = 0
-        Top = 300
+        Top = 272
         Width = 343
         Height = 10
         Align = alTop
         BevelOuter = bvNone
-        Color = 12702207
+        Color = clWhite
+        Padding.Right = 5
         ParentBackground = False
         TabOrder = 8
         StyleElements = []
+        object Panel4: TPanel
+          Left = 0
+          Top = 0
+          Width = 338
+          Height = 10
+          Align = alTop
+          BevelOuter = bvNone
+          Color = 12702207
+          ParentBackground = False
+          TabOrder = 0
+          StyleElements = []
+        end
       end
       object Panel1: TPanel
         Left = 0
-        Top = 600
+        Top = 572
         Width = 343
         Height = 10
         Align = alTop
         BevelOuter = bvNone
-        Color = 15523043
+        Color = clWhite
+        Padding.Right = 5
         ParentBackground = False
         TabOrder = 9
         StyleElements = []
+        object Panel6: TPanel
+          Left = 0
+          Top = 0
+          Width = 338
+          Height = 10
+          Align = alTop
+          BevelOuter = bvNone
+          Color = 15523043
+          ParentBackground = False
+          TabOrder = 0
+          StyleElements = []
+        end
       end
     end
   end
@@ -5253,7 +5316,7 @@ object frmMain: TfrmMain
     Height = 150
     Width = 350
     FormatVersion = 1
-    DesignInfo = 852872
+    DesignInfo = 852864
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -13044,7 +13107,7 @@ object frmMain: TfrmMain
     Height = 150
     Width = 350
     FormatVersion = 1
-    DesignInfo = 1377168
+    DesignInfo = 852928
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -20828,6 +20891,85 @@ object frmMain: TfrmMain
           4B92D0471CA19444B3FC547E731F5E51FA51BFE755265385A76CA58199112AFA
           7CE837179DD97904CD5149029D904CAF527207121B9EA4CA8465C8F04C3FFE16
           6000A3C2438CC55F0AFD0000000049454E44AE426082}
+      end>
+  end
+  object cxImageList5: TcxImageList
+    SourceDPI = 96
+    FormatVersion = 1
+    DesignInfo = 853000
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000000467414D410000AFC837058AE90000001974455874536F6674776172
+          650041646F626520496D616765526561647971C9653C0000026F4944415438CB
+          A593EB4B93611887FD5BB62F0583A4865928A8292558286FD96C8A8A4EDB9673
+          6B8ACEF66E2E9DBACD032D9D130F15B5A1DB68A43B380FC30366E2D4D245EAEB
+          50A28D22086AC3AFBFDE154D47CB881EF87D79E0BA9EE7BEB9EF240049FF93DF
+          2E74D375CC0E8F846C7589A8E6094158FEA23ADCF0BC82925ACB48D16831F344
+          816E5A4AB44F4A42CFD67BB11A5A84FFF306D63FAD60326087D25303BE8913E2
+          3DB94E2414FC84C591E93D3B0EBEED61F6830B266A108F770CB0EF9BB0F4710E
+          DA05194A47F223DCC13C224EA09D92326838E8DEB560EFEB3686B7F578B8D681
+          6E5F2B0C7E1DFAFC5A746FB6C07D6007E911A2D0782558D09BCD88096858D1BF
+          ACC6BB2F9BF48B7DE8DDD242F34A895F47BD26837C5108C5722D9CFB36DC1CC9
+          41DE830C454CD0E2ACA15C011BFD55333A5755685B9143362B8A0904362E1A66
+          CA209D2AC6C01B1DF44BCDB8DC9D46C5048A71FEA1F7BD0BFD6F7534DC843F1D
+          F1641114F37C58FCC3C8D2A51EC6044D76DEE144600CDA0D122A5FFD8902D25B
+          0DAB7F08E91DEC2341BDAD9C32FAB4306C69D0F45208F17C0578D61B71603477
+          3D5CF4FBD4E8F2DEC30575F25109E2B112C56D2B0147C002D97C2524DED21F35
+          1F17889C1CD4B98BE1D835E3524F2AD8F759474D149A8B18554F0B83A4478071
+          6A34D6B02858EB8C260A7331B163C21DCBAD281C4C569E66C40D52F9A302A264
+          E86AA4D15109272D31FADA41CE54413E5509E36A1B1C342CB470C056B122344C
+          241C65CE402E41187242F90399E85920617E6D8079C3008DB711595D29513874
+          1C4EB84CD7F499CCDC9E7432BBF32295A14909A7B59F0D9F6F3D439D53B1C864
+          E529E65FB7F15FF31D4146CB1F0028D3C10000000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000000467414D410000AFC837058AE90000001974455874536F6674776172
+          650041646F626520496D616765526561647971C9653C0000025D4944415438CB
+          A593FB4B536118C7FD5BB61FA204896E8484515098F33277D6DADCA6CEB34C8F
+          5B2C62698E9D619A418DC55CF843A8A576D5CA5F324D6C945A466AD7A1E5B1F2
+          D24E4D6A6D9EB36BCAB7B960262E237AE1FBCBCBFBF9BC3C0FCF930220E57FB2
+          E66256AF17CE5015E6F7541933A525B949AD867B47AA997152697695C885EB0A
+          E6747AE22345B1DF1C3684079D88BC1945646408FCDD0ECC1A4AF1AA90609FAB
+          C54452C1323C5D4EF10BB73BB034F516D1BE3B88B6DB116D3E871F379BB038DC
+          078FC980516536FF4C9E49AC12CCE8748218ECE6AEB7638971217AF10C7C760B
+          FCB66A842F581069A011B69E40F8DE0DCC1D25317C689FFBB16C8F202188C1F4
+          7CAD198BAEB1F88F21070DEF59238275BA55E14E9208775DC1CBBC0C0C4833E8
+          84E003758409745D45B4B3193E6B25BE16499366A192046FAB81C7528587443A
+          931030E5DA60E47E17A20E0B7CA70DF8D3F12872E0A50AE16F6E84336F473021
+          98248B82A1CE5684EB0D089E2A5B57305FAA82BFA911FDE22D2B82891215E3B5
+          D62064A7C11D57C71F268D320FBE5A13664D46F489D2564A7015CB69462642B0
+          B30D3EAD0CDE52C91A989567832D9020D07E0943E26DE8CDDAB4D2C4D74552C1
+          0B0DE19EABD02070AB35DEB07995F817A8C8052B8BC13231F8B6168C174B9761
+          77B768A360D5208D15E410238A03FCF4611502D75AF1BD9E868754E2B35A016F
+          9D19FCE5164CA8F3D19395CAC76022E9283F95EF279E1CDCCB8E4A76E14BB511
+          DE86F3F17CAA3A8647395B9761F67738E9320D4A770B07C4E96627B1937990BF
+          9DEB176DE67A73D3989EEC547377E606E15FB7F15FF3131DD2CEB949721BFE00
+          00000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000000467414D410000AFC837058AE90000001974455874536F6674776172
+          650041646F626520496D616765526561647971C9653C000001544944415438CB
+          AD933F48027118865D5B0B839670A99640049B5CE4688886145A72308C062B92
+          86A0ADA5A610CA90C0E0DCB2D448826C48A8488BEEBCE02A243AD4E2322CC21A
+          ECC45392B7BCE1202AFB410DEFF63DCF07DF1F0D00CD5F425C781FD337A5C396
+          A7A4D75A633C03B8F4EB6F6FD67ADA880542D08AEBC004CA220B39C721B94221
+          3E678890768794DA802C9EA0923B53524EEF83F5586A44B0FC9C807C17443632
+          09890F28A90B38EF6099087E93765012C6F0CA4FE1DC6F4376731AECB2050D87
+          F809CE38205DF5A2FAB2887CD40E61C984865B2085BF151C7ABA88E12F82BD85
+          4E14F307C4B02AF08DEA747558E4B6C1849CC4B02AF0BADA511419541F2EB03B
+          6B4462D580CCB10B3CDD8FD379237E3DE5BAA0F2715D85F0081E7D66C49D5A84
+          1DAD88CE7483E8176C543352B41D257E1D053E8423771F11AC0A86CC2D18A6B4
+          A0C73B1430E6366DFDFB37FE9477555CF7261C1F9D020000000049454E44AE42
+          6082}
       end>
   end
 end

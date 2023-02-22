@@ -25,27 +25,39 @@ type
     btnCadTurmas: TAdvGlowButton;
     pnlAlunos: TPanel;
     ScrollBox1: TScrollBox;
-    AdvGlowButton4: TAdvGlowButton;
-    AdvGlowButton6: TAdvGlowButton;
-    AdvGlowButton7: TAdvGlowButton;
-    AdvGlowButton1: TAdvGlowButton;
-    AdvGlowButton5: TAdvGlowButton;
+    btnAno1: TAdvGlowButton;
+    btnAno2: TAdvGlowButton;
+    btnAno3: TAdvGlowButton;
+    btnAno4: TAdvGlowButton;
+    btnAno5: TAdvGlowButton;
     Panel8: TPanel;
     cxImageList4: TcxImageList;
     Panel9: TPanel;
     Panel7: TPanel;
     Panel3: TPanel;
     Panel1: TPanel;
+    Panel2: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel10: TPanel;
+    cxImageList5: TcxImageList;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
     procedure btnCadEscolasClick(Sender: TObject);
     procedure btnCadTurmasClick(Sender: TObject);
     procedure btnCadAulasClick(Sender: TObject);
+    procedure btnAno1Click(Sender: TObject);
+    procedure btnAno2Click(Sender: TObject);
+    procedure btnAno3Click(Sender: TObject);
+    procedure btnAno4Click(Sender: TObject);
+    procedure btnAno5Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    IntAnoClicado: Integer;
   end;
 
 var
@@ -55,7 +67,43 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmLogon, UfrmUsuarios, UfrmEscola, UfrmTurmas, UfrmAulas;
+uses UfrmLogon, UfrmUsuarios, UfrmEscola, UfrmTurmas, UfrmAulas,
+  UfrmFrames_Aulas;
+
+procedure TfrmMain.btnAno1Click(Sender: TObject);
+begin
+  IntAnoClicado := 1;
+  if (frmEscola = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
+
+procedure TfrmMain.btnAno2Click(Sender: TObject);
+begin
+  IntAnoClicado := 2;
+  if (frmEscola = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
+
+procedure TfrmMain.btnAno3Click(Sender: TObject);
+begin
+  IntAnoClicado := 3;
+  if (frmEscola = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
+
+procedure TfrmMain.btnAno4Click(Sender: TObject);
+begin
+  IntAnoClicado := 4;
+  if (frmEscola = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
+
+procedure TfrmMain.btnAno5Click(Sender: TObject);
+begin
+  IntAnoClicado := 5;
+  if (frmEscola = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
 
 procedure TfrmMain.btnCadAulasClick(Sender: TObject);
 begin

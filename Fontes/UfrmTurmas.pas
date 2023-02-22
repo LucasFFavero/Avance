@@ -28,7 +28,6 @@ type
     btnIncluir: TAdvGlowButton;
     btnImprimir: TAdvGlowButton;
     Panel2: TPanel;
-    pnlGeral: TPanel;
     pgcDadosCadastrais: TPageControl;
     tbsDadosCadastrais: TTabSheet;
     dbGrid: TDBGrid;

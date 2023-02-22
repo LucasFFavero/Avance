@@ -593,229 +593,220 @@ object frmTurmas: TfrmTurmas
       TabOrder = 15
     end
   end
-  object pnlGeral: TPanel
+  object pgcDadosCadastrais: TPageControl
     Left = 0
     Top = 60
     Width = 944
     Height = 481
+    ActivePage = tbsDadosCadastrais
     Align = alClient
-    BevelOuter = bvNone
-    Color = clWhite
-    Padding.Left = 5
-    Padding.Top = 2
-    Padding.Right = 5
-    Padding.Bottom = 2
-    ParentBackground = False
+    TabHeight = 30
     TabOrder = 1
-    object pgcDadosCadastrais: TPageControl
-      Left = 5
-      Top = 2
-      Width = 934
-      Height = 477
-      ActivePage = tbsDadosCadastrais
-      Align = alClient
-      TabHeight = 30
-      TabOrder = 0
-      TabWidth = 140
-      object tbsDadosCadastrais: TTabSheet
-        Caption = 'Dados Cadastrais'
-        object dbGrid: TDBGrid
-          Left = 0
-          Top = 0
-          Width = 926
-          Height = 437
-          Align = alClient
-          DataSource = dtmTurmas.dtsTurmas
-          TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = []
-          OnDblClick = dbGridDblClick
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'CODIGO'
-              Title.Caption = 'C'#243'digo'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DESCRICAO'
-              Title.Caption = 'Descri'#231#227'o'
-              Width = 400
-              Visible = True
-            end>
+    TabWidth = 140
+    ExplicitLeft = 5
+    ExplicitTop = 2
+    ExplicitWidth = 934
+    ExplicitHeight = 477
+    object tbsDadosCadastrais: TTabSheet
+      Caption = 'Dados Cadastrais'
+      object dbGrid: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 936
+        Height = 441
+        Align = alClient
+        DataSource = dtmTurmas.dtsTurmas
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = dbGridDblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Title.Caption = 'C'#243'digo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 400
+            Visible = True
+          end>
+      end
+      object pnlCadastro: TPanel
+        Left = 0
+        Top = 0
+        Width = 936
+        Height = 441
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitWidth = 926
+        ExplicitHeight = 437
+        object Label1: TLabel
+          Left = 25
+          Top = 16
+          Width = 38
+          Height = 13
+          Caption = 'C'#243'digo'
+          FocusControl = edtCodigo
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
-        object pnlCadastro: TPanel
-          Left = 0
-          Top = 0
-          Width = 926
-          Height = 437
-          Align = alClient
-          BevelOuter = bvNone
-          Color = clWhite
-          ParentBackground = False
+        object Label2: TLabel
+          Left = 25
+          Top = 72
+          Width = 55
+          Height = 13
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object edtCodigo: TDBEdit
+          Left = 25
+          Top = 33
+          Width = 80
+          Height = 21
+          Hint = 'C'#243'digo Autom'#225'tico'
+          Color = 16771797
+          DataField = 'CODIGO'
+          DataSource = dtmTurmas.dtsTurmas
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object edtNome: TDBEdit
+          Left = 25
+          Top = 91
+          Width = 340
+          Height = 21
+          Hint = 'Informe a descri'#231#227'o'
+          CharCase = ecUpperCase
+          DataField = 'DESCRICAO'
+          DataSource = dtmTurmas.dtsTurmas
           TabOrder = 0
-          object Label1: TLabel
-            Left = 25
-            Top = 16
-            Width = 38
-            Height = 13
-            Caption = 'C'#243'digo'
-            FocusControl = edtCodigo
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label2: TLabel
-            Left = 25
-            Top = 72
-            Width = 55
-            Height = 13
-            Caption = 'Descri'#231#227'o'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object edtCodigo: TDBEdit
-            Left = 25
-            Top = 33
-            Width = 80
-            Height = 21
-            Hint = 'C'#243'digo Autom'#225'tico'
-            Color = 16771797
-            DataField = 'CODIGO'
-            DataSource = dtmTurmas.dtsTurmas
-            ReadOnly = True
-            TabOrder = 1
-          end
-          object edtNome: TDBEdit
-            Left = 25
-            Top = 91
-            Width = 340
-            Height = 21
-            Hint = 'Informe a descri'#231#227'o'
-            CharCase = ecUpperCase
-            DataField = 'DESCRICAO'
-            DataSource = dtmTurmas.dtsTurmas
-            TabOrder = 0
-          end
         end
       end
-      object tbsLocalizar: TTabSheet
-        Caption = 'Localizar'
-        ImageIndex = 1
-        OnShow = tbsLocalizarShow
-        object pnlLocalizar: TPanel
-          Left = 0
-          Top = 0
-          Width = 926
-          Height = 81
-          Align = alTop
-          BevelOuter = bvNone
-          Color = clWhite
-          ParentBackground = False
+    end
+    object tbsLocalizar: TTabSheet
+      Caption = 'Localizar'
+      ImageIndex = 1
+      OnShow = tbsLocalizarShow
+      object pnlLocalizar: TPanel
+        Left = 0
+        Top = 0
+        Width = 926
+        Height = 81
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object Label10: TLabel
+          Left = 27
+          Top = 13
+          Width = 55
+          Height = 13
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object edtLocTurmas: TEdit
+          Left = 27
+          Top = 30
+          Width = 494
+          Height = 21
+          CharCase = ecUpperCase
           TabOrder = 0
-          object Label10: TLabel
-            Left = 27
-            Top = 13
-            Width = 55
-            Height = 13
-            Caption = 'Descri'#231#227'o'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object edtLocTurmas: TEdit
-            Left = 27
-            Top = 30
-            Width = 494
-            Height = 21
-            CharCase = ecUpperCase
-            TabOrder = 0
-          end
-          object btnLocalizarUsuarios: TAdvGlowButton
-            Left = 531
-            Top = 21
-            Width = 32
-            Height = 32
-            BorderStyle = bsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -9
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ImageIndex = 0
-            Images = frmMain.cxImageList2
-            NotesFont.Charset = DEFAULT_CHARSET
-            NotesFont.Color = clWindowText
-            NotesFont.Height = -11
-            NotesFont.Name = 'Tahoma'
-            NotesFont.Style = []
-            ParentFont = False
-            ShowCaption = False
-            Transparent = True
-            TabOrder = 1
-            OnClick = btnLocalizarUsuariosClick
-            Appearance.ColorChecked = 16111818
-            Appearance.ColorCheckedTo = 16367008
-            Appearance.ColorDisabled = 15921906
-            Appearance.ColorDisabledTo = 15921906
-            Appearance.ColorDown = 16111818
-            Appearance.ColorDownTo = 16367008
-            Appearance.ColorHot = 16117985
-            Appearance.ColorHotTo = 16372402
-            Appearance.ColorMirrorHot = 16107693
-            Appearance.ColorMirrorHotTo = 16775412
-            Appearance.ColorMirrorDown = 16102556
-            Appearance.ColorMirrorDownTo = 16768988
-            Appearance.ColorMirrorChecked = 16102556
-            Appearance.ColorMirrorCheckedTo = 16768988
-            Appearance.ColorMirrorDisabled = 11974326
-            Appearance.ColorMirrorDisabledTo = 15921906
-            Layout = blGlyphTop
-          end
         end
-        object dbGridLocalizar: TDBGrid
-          Left = 0
-          Top = 81
-          Width = 926
-          Height = 356
-          Align = alClient
-          DataSource = dtmTurmas.dtsBuscaTurmas
+        object btnLocalizarUsuarios: TAdvGlowButton
+          Left = 531
+          Top = 21
+          Width = 32
+          Height = 32
+          BorderStyle = bsNone
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -9
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ImageIndex = 0
+          Images = frmMain.cxImageList2
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          ParentFont = False
+          ShowCaption = False
+          Transparent = True
           TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = []
-          OnDblClick = dbGridLocalizarDblClick
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'CODIGO'
-              Title.Caption = 'C'#243'digo'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DESCRICAO'
-              Title.Caption = 'Descri'#231#227'o'
-              Width = 400
-              Visible = True
-            end>
+          OnClick = btnLocalizarUsuariosClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+          Layout = blGlyphTop
         end
+      end
+      object dbGridLocalizar: TDBGrid
+        Left = 0
+        Top = 81
+        Width = 926
+        Height = 356
+        Align = alClient
+        DataSource = dtmTurmas.dtsBuscaTurmas
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = dbGridLocalizarDblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Title.Caption = 'C'#243'digo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 400
+            Visible = True
+          end>
       end
     end
   end

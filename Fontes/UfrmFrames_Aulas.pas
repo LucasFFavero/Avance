@@ -27,8 +27,8 @@ uses
   cxGridLevel, dxLayoutContainer, cxGridViewLayoutContainer, cxGridLayoutView,
   cxGridCustomTableView, cxGridDBLayoutView, cxClasses, cxGridCustomView,
   cxGridCustomLayoutView, cxGrid, Datasnap.DBClient, Vcl.StdCtrls, cxTextEdit,
-  cxDBLookupComboBox, cxImageComboBox, Vcl.ExtCtrls, dxDateRanges,
-  dxGDIPlusClasses;
+  cxDBLookupComboBox, cxImageComboBox, Vcl.ExtCtrls, dxGDIPlusClasses,
+  Vcl.ComCtrls, dxDateRanges;
 
 type
   TfrmFrames_Aulas = class(TForm)
@@ -59,28 +59,6 @@ type
     clEmployeesPicture: TBlobField;
     clEmployeesFull_Address: TStringField;
     dsEmployees: TDataSource;
-    cxGridEmployees: TcxGrid;
-    gvEmployees: TcxGridDBLayoutView;
-    gvEmployeesItemPicture: TcxGridDBLayoutViewItem;
-    gvEmployeesItemFullName: TcxGridDBLayoutViewItem;
-    gvEmployeesItemPosition: TcxGridDBLayoutViewItem;
-    gvEmployeesItemPhone: TcxGridDBLayoutViewItem;
-    gvEmployeesItemCity: TcxGridDBLayoutViewItem;
-    gvEmployeesGroup_Root: TdxLayoutGroup;
-    cxGridLayoutItem1: TcxGridLayoutItem;
-    gvEmployeesLayoutItem2: TcxGridLayoutItem;
-    gvEmployeesLayoutItem3: TcxGridLayoutItem;
-    gvEmployeesLayoutItem4: TcxGridLayoutItem;
-    gvEmployeesLayoutItem5: TcxGridLayoutItem;
-    gvStores: TcxGridDBLayoutView;
-    gvStoresAddress_City: TcxGridDBLayoutViewItem;
-    gvStoresAddress_Full: TcxGridDBLayoutViewItem;
-    gvStoresCrestId: TcxGridDBLayoutViewItem;
-    gvStoresGroup_Root: TdxLayoutGroup;
-    gvStoresLayoutItem4: TcxGridLayoutItem;
-    gvStoresLayoutItem16: TcxGridLayoutItem;
-    cxGridLayoutItem2: TcxGridLayoutItem;
-    cxGridEmployeesLevel1: TcxGridLevel;
     cxStyleRepository: TcxStyleRepository;
     cxStyle1: TcxStyle;
     cxStyle2: TcxStyle;
@@ -114,18 +92,35 @@ type
     CorFiltro: TcxStyle;
     FilterRowText: TcxStyle;
     FilterBox: TcxStyle;
-    Panel1: TPanel;
     Image1: TImage;
     dtsAulas: TDataSource;
     cldsAulas: TClientDataSet;
     cldsAulasDESCRICAO: TStringField;
-    cldsAulasDESC_QUESTOES: TStringField;
-    cldsAulasDESC_CONTEUDO: TStringField;
-    procedure gvEmployeesLayoutCustomDrawRecordCaption
-      (Sender: TcxGridLayoutView; ACanvas: TcxCanvas;
-      AViewInfo: TcxGridLayoutViewRecordCaptionViewInfo; var ADone: Boolean);
+    cldsAulasIMAGEM: TBlobField;
+    PageControl1: TPageControl;
+    tbsAulas: TTabSheet;
+    tbsExercicios: TTabSheet;
+    tbsConteudo: TTabSheet;
+    cxGridEmployees: TcxGrid;
+    gvEmployees: TcxGridDBLayoutView;
+    gvEmployeesItemPicture: TcxGridDBLayoutViewItem;
+    gvEmployeesItemFullName: TcxGridDBLayoutViewItem;
+    gvEmployeesGroup_Root: TdxLayoutGroup;
+    cxGridLayoutItem1: TcxGridLayoutItem;
+    gvEmployeesLayoutItem2: TcxGridLayoutItem;
+    gvStores: TcxGridDBLayoutView;
+    gvStoresAddress_City: TcxGridDBLayoutViewItem;
+    gvStoresAddress_Full: TcxGridDBLayoutViewItem;
+    gvStoresCrestId: TcxGridDBLayoutViewItem;
+    gvStoresGroup_Root: TdxLayoutGroup;
+    gvStoresLayoutItem4: TcxGridLayoutItem;
+    gvStoresLayoutItem16: TcxGridLayoutItem;
+    cxGridLayoutItem2: TcxGridLayoutItem;
+    cxGridEmployeesLevel1: TcxGridLevel;
+    pnlTopo: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -139,7 +134,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdtmFrames_Aulas, UfrmMain;
+uses UfrmMain, UdtmFrames_Aulas;
 
 procedure TfrmFrames_Aulas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -147,20 +142,51 @@ begin
   frmFrames_Aulas := nil;
 end;
 
-procedure TfrmFrames_Aulas.FormShow(Sender: TObject);
+procedure TfrmFrames_Aulas.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  frmFrames_Aulas.Height := frmMain.Image1.Height - 5;
-  frmFrames_Aulas.Width := frmMain.Image1.Width - 5;
+  // Usar "ENTER" como "TAB", pular de campo com enter
+  if (Key = #13) then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
+
+  // Fechar form usando "ESC"
+  if (Key = #27) then
+    Close;
 end;
 
-procedure TfrmFrames_Aulas.gvEmployeesLayoutCustomDrawRecordCaption
-  (Sender: TcxGridLayoutView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridLayoutViewRecordCaptionViewInfo; var ADone: Boolean);
+procedure TfrmFrames_Aulas.FormShow(Sender: TObject);
+var
+  Count: Integer;
 begin
-  // Aqui joga o título
-  AViewInfo.Text := AViewInfo.GridRecord.Values
-    [TcxGridDBLayoutView(AViewInfo.GridView).GetItemByFieldName
-    ('FullName').Index];
+  frmFrames_Aulas.Height := frmMain.Image1.Height - 10;
+  frmFrames_Aulas.Width := frmMain.Image1.Width - 10;
+  frmFrames_Aulas.Left := 5;
+  frmFrames_Aulas.Top := 5;
+
+
+  dtmFrames_Aulas.qryBuscaAulas.Close;
+  dtmFrames_Aulas.qryBuscaAulas.ParamByName('COD_TURMA').AsInteger :=
+    frmMain.IntAnoClicado;
+  dtmFrames_Aulas.qryBuscaAulas.Open;
+
+  cldsAulas.EmptyDataSet;
+
+  dtmFrames_Aulas.qryBuscaAulas.first;
+  while not dtmFrames_Aulas.qryBuscaAulas.eof do
+  begin
+    cldsAulas.Append;
+    cldsAulasDESCRICAO.AsString := dtmFrames_Aulas.qryBuscaAulasTITULO.AsString;
+    cldsAulasIMAGEM.value := dtmFrames_Aulas.qryBuscaAulasIMAGEM.value;
+    cldsAulas.Post;
+
+    dtmFrames_Aulas.qryBuscaAulas.next;
+  end;
+
+  Count := Round(cldsAulas.RecordCount / 2);
+
+  gvEmployees.OptionsView.MaxColumnCount := Count;
 end;
 
 end.

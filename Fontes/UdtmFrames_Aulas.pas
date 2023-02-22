@@ -10,11 +10,9 @@ uses
 
 type
   TdtmFrames_Aulas = class(TDataModule)
-    qryBuscaTurmas: TFDQuery;
-    qryBuscaTurmasCODIGO: TIntegerField;
-    qryBuscaTurmasCOD_TURMA: TIntegerField;
-    qryBuscaTurmasTITULO: TStringField;
-    qryBuscaTurmasIMAGEM: TBlobField;
+    qryBuscaAulas: TFDQuery;
+    qryBuscaAulasTITULO: TStringField;
+    qryBuscaAulasIMAGEM: TBlobField;
   private
     { Private declarations }
   public

@@ -2,30 +2,31 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
   OldCreateOrder = False
   Height = 420
   Width = 673
-  object qryBuscaTurmas: TFDQuery
+  object qryBuscaAulas: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
-      'SELECT AULAS.CODIGO, AULAS.COD_TURMA, AULAS.TITULO, AULAS.IMAGEM'
-      'FROM AULAS')
+      'SELECT AULAS.TITULO, AULAS.IMAGEM'
+      'FROM AULAS'
+      'WHERE AULAS.COD_TURMA =:COD_TURMA'
+      ''
+      ''
+      ''
+      ''
+      '')
     Left = 32
     Top = 32
-    object qryBuscaTurmasCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      DisplayFormat = '0000#'
-    end
-    object qryBuscaTurmasCOD_TURMA: TIntegerField
-      FieldName = 'COD_TURMA'
-      Origin = 'COD_TURMA'
-    end
-    object qryBuscaTurmasTITULO: TStringField
+    ParamData = <
+      item
+        Name = 'COD_TURMA'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryBuscaAulasTITULO: TStringField
       FieldName = 'TITULO'
       Origin = 'TITULO'
       Size = 200
     end
-    object qryBuscaTurmasIMAGEM: TBlobField
+    object qryBuscaAulasIMAGEM: TBlobField
       FieldName = 'IMAGEM'
       Origin = 'IMAGEM'
     end

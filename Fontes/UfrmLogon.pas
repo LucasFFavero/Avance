@@ -67,11 +67,11 @@ begin
     ('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO');
   dtmMain.qryUsuarios.SQL.Add('FROM USUARIOS');
 
-  dtmMain.qryUsuarios.SQL.Add('WHERE USUARIOS.LOGIN = :NOME');
+  dtmMain.qryUsuarios.SQL.Add('WHERE USUARIOS.LOGIN =:NOME');
   dtmMain.qryUsuarios.Params[0].DataType := ftString;
-  dtmMain.qryUsuarios.Params[0].AsString := UpperCase(edtUsuario.Text);
+  dtmMain.qryUsuarios.Params[0].AsString := AnsiUpperCase(edtUsuario.Text);
 
-  dtmMain.qryUsuarios.SQL.Add('AND USUARIOS.SENHA = :SENHA');
+  dtmMain.qryUsuarios.SQL.Add('AND USUARIOS.SENHA =:SENHA');
   dtmMain.qryUsuarios.Params[1].DataType := ftString;
   dtmMain.qryUsuarios.Params[1].AsString := edtSenha.Text;
   dtmMain.qryUsuarios.Open;
@@ -81,12 +81,11 @@ begin
     frmMain.sbPrincipal.Panels[2].Text := 'Usuário: ' +
       dtmMain.qryUsuariosLOGIN.AsString;
 
-    frmMain.pnlAlunos.Visible := False;
     frmMain.pnlProfessores.Visible := True;
+    frmMain.pnlAlunos.Visible := False;
 
     // Verifica se é usuário ou aluno
-    // NÃO É ALUNO
-    if (dtmMain.qryUsuariosALUNO.AsInteger = 0) then
+    if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
     begin
       frmMain.pnlAlunos.Visible := True;
       frmMain.pnlProfessores.Visible := False;
@@ -152,7 +151,7 @@ end;
 
 procedure TfrmLogon.edtUsuarioEnter(Sender: TObject);
 begin
-  if edtUsuario.Text = 'Usuário' then
+  if edtUsuario.Text = 'USUÁRIO' then
   begin
     edtUsuario.Clear;
     edtUsuario.font.color := $00525252;
@@ -162,10 +161,10 @@ end;
 
 procedure TfrmLogon.edtUsuarioExit(Sender: TObject);
 begin
-  if (edtUsuario.Text = 'Usuário') or (edtUsuario.Text = '') then
+  if (edtUsuario.Text = 'USUÁRIO') or (edtUsuario.Text = '') then
   begin
     edtUsuario.font.color := $00C4800F;
-    edtUsuario.Text := 'Usuário'
+    edtUsuario.Text := 'USUÁRIO'
   end;
   Application.ProcessMessages;
 end;

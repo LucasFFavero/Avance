@@ -4145,7 +4145,9 @@ object frmLogon: TfrmLogon
     Top = 323
     Width = 196
     Height = 16
+    AutoSize = False
     BorderStyle = bsNone
+    CharCase = ecUpperCase
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 12877839
     Font.Height = -12
@@ -4153,7 +4155,7 @@ object frmLogon: TfrmLogon
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    Text = 'Usu'#225'rio'
+    Text = 'USU'#193'RIO'
     StyleElements = []
     OnEnter = edtUsuarioEnter
     OnExit = edtUsuarioExit
@@ -4163,6 +4165,7 @@ object frmLogon: TfrmLogon
     Top = 373
     Width = 198
     Height = 16
+    AutoSize = False
     BorderStyle = bsNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 12877839
