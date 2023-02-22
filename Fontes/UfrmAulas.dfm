@@ -15,8 +15,11 @@ object frmAulas: TfrmAulas
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
@@ -609,10 +612,6 @@ object frmAulas: TfrmAulas
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitLeft = 8
-    ExplicitTop = 1
-    ExplicitWidth = 954
-    ExplicitHeight = 547
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       OnShow = tbsDadosCadastraisShow
@@ -623,8 +622,6 @@ object frmAulas: TfrmAulas
         Height = 511
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 946
-        ExplicitHeight = 507
         object dbGrid: TDBGrid
           Left = 1
           Top = 1
@@ -647,12 +644,22 @@ object frmAulas: TfrmAulas
               Expanded = False
               FieldName = 'CODIGO'
               Title.Caption = 'C'#243'digo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TITULO'
               Title.Caption = 'T'#237'tulo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 600
               Visible = True
             end
@@ -661,6 +668,11 @@ object frmAulas: TfrmAulas
               FieldName = 'IMAGEM'
               Title.Alignment = taCenter
               Title.Caption = 'Imagem'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
             end>
@@ -676,8 +688,6 @@ object frmAulas: TfrmAulas
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 946
-        ExplicitHeight = 507
         object Panel9: TPanel
           Left = 0
           Top = 0
@@ -686,8 +696,6 @@ object frmAulas: TfrmAulas
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitLeft = 1
-          ExplicitTop = -6
           object Label1: TLabel
             Left = 25
             Top = 16
@@ -773,8 +781,6 @@ object frmAulas: TfrmAulas
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitWidth = 946
-          ExplicitHeight = 367
           object gpbImagem: TGroupBox
             Left = 25
             Top = 0
@@ -783,8 +789,6 @@ object frmAulas: TfrmAulas
             Align = alClient
             Caption = 'Imagem'
             TabOrder = 0
-            ExplicitWidth = 531
-            ExplicitHeight = 367
             object Image: TImage
               Left = 40
               Top = 15
@@ -803,7 +807,6 @@ object frmAulas: TfrmAulas
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitHeight = 350
               object btnIncluirImagem: TAdvGlowButton
                 Left = 2
                 Top = 13
@@ -815,8 +818,8 @@ object frmAulas: TfrmAulas
                 Font.Height = -9
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
-                ImageIndex = 14
-                Images = frmMain.cxImageList1
+                ImageIndex = 0
+                Images = frmMain.cxImageList5
                 NotesFont.Charset = DEFAULT_CHARSET
                 NotesFont.Color = clWindowText
                 NotesFont.Height = -11
@@ -856,8 +859,8 @@ object frmAulas: TfrmAulas
                 Font.Height = -9
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
-                ImageIndex = 13
-                Images = frmMain.cxImageList1
+                ImageIndex = 1
+                Images = frmMain.cxImageList5
                 NotesFont.Charset = DEFAULT_CHARSET
                 NotesFont.Color = clWindowText
                 NotesFont.Height = -11
@@ -896,7 +899,6 @@ object frmAulas: TfrmAulas
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitHeight = 367
           end
           object Panel12: TPanel
             Left = 566
@@ -906,7 +908,6 @@ object frmAulas: TfrmAulas
             Align = alRight
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitLeft = 570
           end
         end
       end
@@ -936,12 +937,22 @@ object frmAulas: TfrmAulas
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DESCRICAO'
             Title.Caption = 'Descri'#231#227'o'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -950,6 +961,11 @@ object frmAulas: TfrmAulas
             FieldName = 'IMAGEM'
             Title.Alignment = taCenter
             Title.Caption = 'Imagem'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -958,6 +974,11 @@ object frmAulas: TfrmAulas
             FieldName = 'VIDEO'
             Title.Alignment = taCenter
             Title.Caption = 'V'#237'deo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -966,6 +987,11 @@ object frmAulas: TfrmAulas
             FieldName = 'AUDIO'
             Title.Alignment = taCenter
             Title.Caption = 'Audio'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end
@@ -973,6 +999,11 @@ object frmAulas: TfrmAulas
             Expanded = False
             FieldName = 'RESUMO'
             Title.Caption = 'Resumo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 300
             Visible = True
           end
@@ -981,6 +1012,11 @@ object frmAulas: TfrmAulas
             FieldName = 'RESUMO_IMAGEM'
             Title.Alignment = taCenter
             Title.Caption = 'Imagem Resumo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 90
             Visible = True
           end>
@@ -1004,8 +1040,8 @@ object frmAulas: TfrmAulas
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 14
-          Images = frmMain.cxImageList1
+          ImageIndex = 0
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -1045,8 +1081,8 @@ object frmAulas: TfrmAulas
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 13
-          Images = frmMain.cxImageList1
+          ImageIndex = 1
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -1086,8 +1122,8 @@ object frmAulas: TfrmAulas
           Font.Height = -9
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
-          ImageIndex = 4
-          Images = frmMain.cxImageList1
+          ImageIndex = 2
+          Images = frmMain.cxImageList5
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -1137,6 +1173,12 @@ object frmAulas: TfrmAulas
           Height = 193
           Align = alClient
           DataSource = dtmAulas.dtsExercicios
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           ReadOnly = True
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
@@ -1150,12 +1192,22 @@ object frmAulas: TfrmAulas
               Expanded = False
               FieldName = 'CODIGO'
               Title.Caption = 'C'#243'digo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CONTEUDO'
               Title.Caption = 'Conte'#250'do'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 250
               Visible = True
             end
@@ -1163,6 +1215,11 @@ object frmAulas: TfrmAulas
               Expanded = False
               FieldName = 'DESCRICAO'
               Title.Caption = 'Descri'#231#227'o'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 350
               Visible = True
             end
@@ -1171,6 +1228,11 @@ object frmAulas: TfrmAulas
               FieldName = 'IMAGEM'
               Title.Alignment = taCenter
               Title.Caption = 'Imagem'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
             end
@@ -1179,6 +1241,11 @@ object frmAulas: TfrmAulas
               FieldName = 'VIDEO'
               Title.Alignment = taCenter
               Title.Caption = 'V'#237'deo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
             end>
@@ -1202,8 +1269,8 @@ object frmAulas: TfrmAulas
             Font.Height = -9
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
-            ImageIndex = 14
-            Images = frmMain.cxImageList1
+            ImageIndex = 0
+            Images = frmMain.cxImageList5
             NotesFont.Charset = DEFAULT_CHARSET
             NotesFont.Color = clWindowText
             NotesFont.Height = -11
@@ -1243,8 +1310,8 @@ object frmAulas: TfrmAulas
             Font.Height = -9
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
-            ImageIndex = 13
-            Images = frmMain.cxImageList1
+            ImageIndex = 1
+            Images = frmMain.cxImageList5
             NotesFont.Charset = DEFAULT_CHARSET
             NotesFont.Color = clWindowText
             NotesFont.Height = -11
@@ -1284,8 +1351,8 @@ object frmAulas: TfrmAulas
             Font.Height = -9
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
-            ImageIndex = 4
-            Images = frmMain.cxImageList1
+            ImageIndex = 2
+            Images = frmMain.cxImageList5
             NotesFont.Charset = DEFAULT_CHARSET
             NotesFont.Color = clWindowText
             NotesFont.Height = -11
@@ -1355,8 +1422,8 @@ object frmAulas: TfrmAulas
             AlignWithMargins = True
             Left = 3
             Top = 11
-            Width = 912
-            Height = 27
+            Width = 61
+            Height = 16
             Align = alClient
             Caption = 'Quest'#245'es'
             Font.Charset = DEFAULT_CHARSET
@@ -1365,8 +1432,6 @@ object frmAulas: TfrmAulas
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 61
-            ExplicitHeight = 16
           end
         end
       end
@@ -1399,12 +1464,22 @@ object frmAulas: TfrmAulas
               Expanded = False
               FieldName = 'CODIGO'
               Title.Caption = 'C'#243'digo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRICAO'
               Title.Caption = 'Descri'#231#227'o'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 400
               Visible = True
             end
@@ -1413,6 +1488,11 @@ object frmAulas: TfrmAulas
               FieldName = 'IMAGEM'
               Title.Alignment = taCenter
               Title.Caption = 'Imagem'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
             end
@@ -1421,6 +1501,11 @@ object frmAulas: TfrmAulas
               FieldName = 'CORRETA'
               Title.Alignment = taCenter
               Title.Caption = 'Correta'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
             end>
@@ -1439,6 +1524,7 @@ object frmAulas: TfrmAulas
     object tbsLocalizar: TTabSheet
       Caption = 'Localizar'
       ImageIndex = 1
+      OnShow = tbsLocalizarShow
       object pnlLocalizar: TPanel
         Left = 0
         Top = 0
@@ -1534,12 +1620,22 @@ object frmAulas: TfrmAulas
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TITULO'
             Title.Caption = 'T'#237'tulo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 400
             Visible = True
           end
@@ -1547,6 +1643,11 @@ object frmAulas: TfrmAulas
             Expanded = False
             FieldName = 'DESCRICAO'
             Title.Caption = 'Turma'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -1555,6 +1656,11 @@ object frmAulas: TfrmAulas
             FieldName = 'IMAGEM'
             Title.Alignment = taCenter
             Title.Caption = 'Imagem'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end>
