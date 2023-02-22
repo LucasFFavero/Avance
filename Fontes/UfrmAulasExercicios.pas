@@ -67,6 +67,8 @@ type
     procedure dbGridQuestoesDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure tbsResumoShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -138,6 +140,8 @@ begin
 
   dtmAulasQuestoes.qryQuestoes.Edit;
   frmAulasQuestoes.edtDescricao.SetFocus;
+
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.btnExcluirConteudoClick(Sender: TObject);
@@ -160,11 +164,14 @@ begin
       dtmAulas.qryExerciciosCODIGO.AsInteger;
     dtmAulas.qryQuestoes.Open;
   except
+    THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
       20)), 0 + 16 + 0);
     Abort;
   end;
+
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.btnIncluirConteudoClick(Sender: TObject);
@@ -186,6 +193,8 @@ begin
   dtmAulasQuestoes.qryQuestoesCORRETA.Value := 0;
 
   frmAulasQuestoes.edtDescricao.SetFocus;
+
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.btnIncluirVideoClick(Sender: TObject);
@@ -271,18 +280,51 @@ procedure TfrmAulasExercicios.dbGridQuestoesDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulasExercicios.qryConteudos.IsEmpty then
   begin
+
+    if gdSelected in State then
+    begin
+      with dbGridQuestoes.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbGridQuestoes.DefaultDrawDataCell(Rect, dbGridQuestoes.columns[DataCol]
+      .Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbGridQuestoes).Canvas.Handle, TA_RIGHT);
+      dbGridQuestoes.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbGridQuestoes).Canvas.Handle, TA_CENTER);
+      dbGridQuestoes.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbGridQuestoes).Canvas.Handle, TA_LEFT);
+      dbGridQuestoes.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
     if (Column.Field = dtmAulasExercicios.qryQuestoesIMAGEM) then
     begin
       dbGridQuestoes.Canvas.FillRect(Rect);
       if (dtmAulasExercicios.qryQuestoesIMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbGridQuestoes.Canvas, Rect.Left + 20, Rect.Top + 1, 0);
+        imgDetail.Draw(dbGridQuestoes.Canvas, Rect.Left + 20, Rect.Top + 10, 0);
     end;
 
     if (Column.Field = dtmAulasExercicios.qryQuestoesCORRETA) then
     begin
       dbGridQuestoes.Canvas.FillRect(Rect);
       if (dtmAulasExercicios.qryQuestoesCORRETA.Value = 1) then
-        imgDetail.Draw(dbGridQuestoes.Canvas, Rect.Left + 35, Rect.Top + 1, 3);
+        imgDetail.Draw(dbGridQuestoes.Canvas, Rect.Left + 35, Rect.Top + 10, 3);
     end;
   end;
 end;
@@ -291,6 +333,11 @@ procedure TfrmAulasExercicios.dblkcbConteudoEnter(Sender: TObject);
 begin
   if not dtmAulasExercicios.qryConteudos.Active then
     dtmAulasExercicios.qryConteudos.Open;
+end;
+
+procedure TfrmAulasExercicios.FormActivate(Sender: TObject);
+begin
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.FormClose(Sender: TObject;
@@ -303,6 +350,11 @@ begin
 
   Action := cafree;
   frmAulasExercicios := nil;
+end;
+
+procedure TfrmAulasExercicios.FormCreate(Sender: TObject);
+begin
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.FormKeyPress(Sender: TObject; var Key: Char);
@@ -323,6 +375,8 @@ procedure TfrmAulasExercicios.FormShow(Sender: TObject);
 begin
   if not dtmAulasExercicios.qryConteudos.Active then
     dtmAulasExercicios.qryConteudos.Open;
+
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.tbsResumoShow(Sender: TObject);
@@ -331,6 +385,8 @@ begin
   dtmAulasExercicios.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
     dtmAulas.qryExerciciosCODIGO.AsInteger;
   dtmAulasExercicios.qryQuestoes.Open;
+
+  THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 end.
