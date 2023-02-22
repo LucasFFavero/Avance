@@ -115,6 +115,10 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgQuestoesDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure tbsLocalizarShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -405,6 +409,13 @@ begin
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
     dtmAulas.qryTurmas.First;
+
+    THackDBGrid(dbGrid).DefaultRowHeight := 30;
+    THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+    THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+    THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+    THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+
   end
   else
   begin
@@ -440,6 +451,9 @@ begin
 
   dtmAulas.qryBuscaAulas.SQL.Add('ORDER BY AULAS.CODIGO');
   dtmAulas.qryBuscaAulas.Open;
+
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
 
   if dtmAulas.qryBuscaAulas.IsEmpty then
   begin
@@ -503,32 +517,72 @@ procedure TfrmAulas.dbgConteudoDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulas.qryConteudos.IsEmpty then
   begin
+
+    if gdSelected in State then
+    begin
+      with dbgConteudo.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbgConteudo.DefaultDrawDataCell(Rect, dbgConteudo.columns[DataCol]
+      .Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbgConteudo).Canvas.Handle, TA_RIGHT);
+      dbgConteudo.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbgConteudo).Canvas.Handle, TA_CENTER);
+      dbgConteudo.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbgConteudo).Canvas.Handle, TA_LEFT);
+      dbgConteudo.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
+    if (Column.Field = dtmAulas.qryBuscaAulasIMAGEM) then
+    begin
+      dbgConteudo.Canvas.FillRect(Rect);
+      if (dtmAulas.qryBuscaAulasIMAGEM.AsVariant <> null) then
+        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 10, 0);
+    end;
+
     if (Column.Field = dtmAulas.qryConteudosIMAGEM) then
     begin
       dbgConteudo.Canvas.FillRect(Rect);
       if (dtmAulas.qryConteudosIMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 1, 0);
+        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 10, 0);
     end;
 
     if (Column.Field = dtmAulas.qryConteudosVIDEO) then
     begin
       dbgConteudo.Canvas.FillRect(Rect);
       if (dtmAulas.qryConteudosVIDEO.AsVariant <> null) then
-        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 1, 1);
+        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 10, 1);
     end;
 
     if (Column.Field = dtmAulas.qryConteudosAUDIO) then
     begin
       dbgConteudo.Canvas.FillRect(Rect);
       if (dtmAulas.qryConteudosAUDIO.AsVariant <> null) then
-        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 1, 2);
+        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 20, Rect.Top + 10, 2);
     end;
 
     if (Column.Field = dtmAulas.qryConteudosRESUMO_IMAGEM) then
     begin
       dbgConteudo.Canvas.FillRect(Rect);
       if (dtmAulas.qryConteudosRESUMO_IMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 35, Rect.Top + 1, 0);
+        imgDetail.Draw(dbgConteudo.Canvas, Rect.Left + 35, Rect.Top + 10, 0);
     end;
   end;
 end;
@@ -538,18 +592,50 @@ procedure TfrmAulas.dbgExerciciosDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulas.qryExercicios.IsEmpty then
   begin
+    if gdSelected in State then
+    begin
+      with dbgExercicios.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbgExercicios.DefaultDrawDataCell(Rect, dbgExercicios.columns[DataCol]
+      .Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbgExercicios).Canvas.Handle, TA_RIGHT);
+      dbgExercicios.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbgExercicios).Canvas.Handle, TA_CENTER);
+      dbgExercicios.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbgExercicios).Canvas.Handle, TA_LEFT);
+      dbgExercicios.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
     if (Column.Field = dtmAulas.qryExerciciosIMAGEM) then
     begin
       dbgExercicios.Canvas.FillRect(Rect);
       if (dtmAulas.qryExerciciosIMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbgExercicios.Canvas, Rect.Left + 20, Rect.Top + 1, 0);
+        imgDetail.Draw(dbgExercicios.Canvas, Rect.Left + 20, Rect.Top + 10, 0);
     end;
 
     if (Column.Field = dtmAulas.qryExerciciosVIDEO) then
     begin
       dbgExercicios.Canvas.FillRect(Rect);
       if (dtmAulas.qryExerciciosVIDEO.AsVariant <> null) then
-        imgDetail.Draw(dbgExercicios.Canvas, Rect.Left + 20, Rect.Top + 1, 1);
+        imgDetail.Draw(dbgExercicios.Canvas, Rect.Left + 20, Rect.Top + 10, 1);
     end;
   end;
 end;
@@ -559,18 +645,51 @@ procedure TfrmAulas.dbgQuestoesDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulas.qryQuestoes.IsEmpty then
   begin
+
+    if gdSelected in State then
+    begin
+      with dbgQuestoes.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbgQuestoes.DefaultDrawDataCell(Rect, dbgQuestoes.columns[DataCol]
+      .Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbgQuestoes).Canvas.Handle, TA_RIGHT);
+      dbgQuestoes.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbgQuestoes).Canvas.Handle, TA_CENTER);
+      dbgQuestoes.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbgQuestoes).Canvas.Handle, TA_LEFT);
+      dbgQuestoes.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
     if (Column.Field = dtmAulas.qryQuestoesIMAGEM) then
     begin
       dbgQuestoes.Canvas.FillRect(Rect);
       if (dtmAulas.qryQuestoesIMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbgQuestoes.Canvas, Rect.Left + 20, Rect.Top + 1, 0);
+        imgDetail.Draw(dbgQuestoes.Canvas, Rect.Left + 20, Rect.Top + 10, 0);
     end;
 
     if (Column.Field = dtmAulas.qryQuestoesCORRETA) then
     begin
       dbgQuestoes.Canvas.FillRect(Rect);
       if (dtmAulas.qryQuestoesCORRETA.Value = 1) then
-        imgDetail.Draw(dbgQuestoes.Canvas, Rect.Left + 20, Rect.Top + 1, 3);
+        imgDetail.Draw(dbgQuestoes.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
     end;
   end;
 end;
@@ -585,6 +704,38 @@ procedure TfrmAulas.dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
 begin
   if not dtmAulas.qryAulas.IsEmpty then
   begin
+
+    if gdSelected in State then
+    begin
+      with dbGrid.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbGrid.DefaultDrawDataCell(Rect, dbGrid.columns[DataCol].Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbGrid).Canvas.Handle, TA_RIGHT);
+      dbGrid.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbGrid).Canvas.Handle, TA_CENTER);
+      dbGrid.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbGrid).Canvas.Handle, TA_LEFT);
+      dbGrid.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
     if (Column.Field = dtmAulas.qryAulasIMAGEM) then
     begin
       dbGrid.Canvas.FillRect(Rect);
@@ -616,11 +767,45 @@ procedure TfrmAulas.dbGridLocalizarDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulas.qryBuscaAulas.IsEmpty then
   begin
+
+    if gdSelected in State then
+    begin
+      with dbGridLocalizar.Canvas do
+      begin
+        Brush.Color := $00FFF9F2;
+        FillRect(Rect);
+        Font.Style := [fsBold]
+      end;
+    end;
+    dbGridLocalizar.DefaultDrawDataCell(Rect, dbGridLocalizar.columns[DataCol]
+      .Field, State);
+
+    // Altura da fonte no centro da célula
+    if Column.Field.Alignment = taRightJustify then
+    begin
+      SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_RIGHT);
+      dbGridLocalizar.Canvas.TextRect(Rect, Rect.Right - 2, Rect.Top + 10,
+        Column.Field.Text);
+    end
+    else if Column.Field.Alignment = taCenter then
+    begin
+      SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_CENTER);
+      dbGridLocalizar.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+        Rect.Top + 10, Column.Field.Text);
+    end
+    else
+    begin
+      SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_LEFT);
+      dbGridLocalizar.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
+        Column.Field.Text);
+    end;
+
     if (Column.Field = dtmAulas.qryBuscaAulasIMAGEM) then
     begin
       dbGridLocalizar.Canvas.FillRect(Rect);
       if (dtmAulas.qryBuscaAulasIMAGEM.AsVariant <> null) then
-        imgDetail.Draw(dbGridLocalizar.Canvas, Rect.Left + 20, Rect.Top + 1, 0);
+        imgDetail.Draw(dbGridLocalizar.Canvas, Rect.Left + 20,
+          Rect.Top + 10, 0);
     end;
   end;
 end;
@@ -629,6 +814,15 @@ procedure TfrmAulas.dblkcbTurmaEnter(Sender: TObject);
 begin
   if not dtmAulas.qryTurmas.Active then
     dtmAulas.qryTurmas.Open;
+end;
+
+procedure TfrmAulas.FormActivate(Sender: TObject);
+begin
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulas.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -641,6 +835,15 @@ begin
 
   Action := cafree;
   frmAulas := nil;
+end;
+
+procedure TfrmAulas.FormCreate(Sender: TObject);
+begin
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulas.FormKeyPress(Sender: TObject; var Key: Char);
@@ -657,6 +860,15 @@ begin
     Close;
 end;
 
+procedure TfrmAulas.FormShow(Sender: TObject);
+begin
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+end;
+
 procedure TfrmAulas.tbsConteudosShow(Sender: TObject);
 begin
   dtmAulas.qryConteudos.Close;
@@ -665,6 +877,12 @@ begin
   dtmAulas.qryConteudos.Open;
 
   pnlTop.Enabled := false;
+
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulas.tbsDadosCadastraisShow(Sender: TObject);
@@ -680,6 +898,21 @@ begin
   dtmAulas.qryExercicios.Open;
 
   pnlTop.Enabled := false;
+
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+end;
+
+procedure TfrmAulas.tbsLocalizarShow(Sender: TObject);
+begin
+  THackDBGrid(dbGrid).DefaultRowHeight := 30;
+  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
+  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
 end;
 
 end.
