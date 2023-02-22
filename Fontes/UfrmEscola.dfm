@@ -15,8 +15,11 @@ object frmEscola: TfrmEscola
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
@@ -603,10 +606,6 @@ object frmEscola: TfrmEscola
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitLeft = 8
-    ExplicitTop = 1
-    ExplicitWidth = 934
-    ExplicitHeight = 477
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object dbGrid: TDBGrid
@@ -622,18 +621,29 @@ object frmEscola: TfrmEscola
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = dbGridDrawColumnCell
         OnDblClick = dbGridDblClick
         Columns = <
           item
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'NOME'
             Title.Caption = 'Descri'#231#227'o'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 400
             Visible = True
           end
@@ -641,6 +651,11 @@ object frmEscola: TfrmEscola
             Expanded = False
             FieldName = 'CIDADE'
             Title.Caption = 'Cidade'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -648,6 +663,11 @@ object frmEscola: TfrmEscola
             Expanded = False
             FieldName = 'ESTADO'
             Title.Caption = 'Estado'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end>
@@ -662,8 +682,6 @@ object frmEscola: TfrmEscola
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 926
-        ExplicitHeight = 437
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -771,7 +789,7 @@ object frmEscola: TfrmEscola
       object pnlLocalizar: TPanel
         Left = 0
         Top = 0
-        Width = 926
+        Width = 936
         Height = 81
         Align = alTop
         BevelOuter = bvNone
@@ -844,8 +862,8 @@ object frmEscola: TfrmEscola
       object dbGridLocalizar: TDBGrid
         Left = 0
         Top = 81
-        Width = 926
-        Height = 356
+        Width = 936
+        Height = 360
         Align = alClient
         DataSource = dtmEscola.dtsBuscaEscola
         TabOrder = 1
@@ -854,18 +872,29 @@ object frmEscola: TfrmEscola
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = dbGridLocalizarDrawColumnCell
         OnDblClick = dbGridLocalizarDblClick
         Columns = <
           item
             Expanded = False
             FieldName = 'CODIGO'
             Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'NOME'
             Title.Caption = 'Descri'#231#227'o'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 400
             Visible = True
           end
@@ -873,6 +902,11 @@ object frmEscola: TfrmEscola
             Expanded = False
             FieldName = 'CIDADE'
             Title.Caption = 'Cidade'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 200
             Visible = True
           end
@@ -880,6 +914,11 @@ object frmEscola: TfrmEscola
             Expanded = False
             FieldName = 'ESTADO'
             Title.Caption = 'Estado'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 60
             Visible = True
           end>
