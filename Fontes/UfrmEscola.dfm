@@ -615,6 +615,7 @@ object frmEscola: TfrmEscola
         Height = 441
         Align = alClient
         DataSource = dtmEscola.dtsEscola
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
@@ -868,6 +869,7 @@ object frmEscola: TfrmEscola
         Height = 360
         Align = alClient
         DataSource = dtmEscola.dtsBuscaEscola
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET

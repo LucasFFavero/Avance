@@ -614,6 +614,7 @@ object frmTurmas: TfrmTurmas
         Height = 441
         Align = alClient
         DataSource = dtmTurmas.dtsTurmas
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
@@ -795,6 +796,7 @@ object frmTurmas: TfrmTurmas
         Height = 360
         Align = alClient
         DataSource = dtmTurmas.dtsBuscaTurmas
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET

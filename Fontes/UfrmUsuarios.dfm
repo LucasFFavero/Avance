@@ -617,6 +617,7 @@ object frmUsuarios: TfrmUsuarios
         Height = 441
         Align = alClient
         DataSource = dtmUsuarios.dtsUsuarios
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
@@ -1287,6 +1288,7 @@ object frmUsuarios: TfrmUsuarios
         Height = 360
         Align = alClient
         DataSource = dtmUsuarios.dtsBuscaUsuarios
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
         ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
