@@ -167,7 +167,9 @@ begin
 
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
-    dtmTurmas.qryTurmas.First;
+
+    if dtmTurmas.qryTurmas.Active then
+      dtmTurmas.qryTurmas.First;
 
     THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
     THackDBGrid(dbGrid).DefaultRowHeight := 30;
@@ -332,7 +334,8 @@ begin
       Font.Style := [fsBold]
     end;
   end;
-  dbGridLocalizar.DefaultDrawDataCell(Rect, dbGridLocalizar.columns[DataCol].Field, State);
+  dbGridLocalizar.DefaultDrawDataCell(Rect, dbGridLocalizar.columns[DataCol]
+    .Field, State);
 
   // Altura da fonte no centro da célula
   if Column.Field.Alignment = taRightJustify then
@@ -344,8 +347,8 @@ begin
   else if Column.Field.Alignment = taCenter then
   begin
     SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_CENTER);
-    dbGridLocalizar.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2, Rect.Top + 10,
-      Column.Field.Text);
+    dbGridLocalizar.Canvas.TextRect(Rect, (Rect.Left + Rect.Right) div 2,
+      Rect.Top + 10, Column.Field.Text);
   end
   else
   begin

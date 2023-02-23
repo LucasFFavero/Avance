@@ -25,13 +25,13 @@ type
     Panel7: TPanel;
     Panel8: TPanel;
     pnlImagem: TPanel;
-    GroupBox1: TGroupBox;
+    gpbImagem: TGroupBox;
     Image: TImage;
     Panel5: TPanel;
     btnIncluirImagem: TAdvGlowButton;
     btnExcluirImagem: TAdvGlowButton;
-    Panel1: TPanel;
-    Panel3: TPanel;
+    pnlImagemLeft: TPanel;
+    pnlImagemRight: TPanel;
     pnlCadastro: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -112,9 +112,7 @@ begin
   try
     // Salvar novo registro
     if dtmAulasQuestoes.qryQuestoes.Active then
-    begin
       dtmAulasQuestoes.qryQuestoes.Post;
-    end;
 
     dtmAulasQuestoes.Transaction.CommitRetaining;
   except

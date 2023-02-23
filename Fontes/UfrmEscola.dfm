@@ -622,6 +622,7 @@ object frmEscola: TfrmEscola
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Visible = False
         OnDrawColumnCell = dbGridDrawColumnCell
         OnDblClick = dbGridDblClick
         Columns = <
@@ -645,7 +646,7 @@ object frmEscola: TfrmEscola
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 400
+            Width = 440
             Visible = True
           end
           item
@@ -657,7 +658,7 @@ object frmEscola: TfrmEscola
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 200
+            Width = 240
             Visible = True
           end
           item
@@ -711,7 +712,7 @@ object frmEscola: TfrmEscola
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 387
+          Left = 488
           Top = 72
           Width = 38
           Height = 13
@@ -724,7 +725,7 @@ object frmEscola: TfrmEscola
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 610
+          Left = 711
           Top = 72
           Width = 38
           Height = 13
@@ -751,7 +752,7 @@ object frmEscola: TfrmEscola
         object edtNome: TDBEdit
           Left = 25
           Top = 91
-          Width = 340
+          Width = 440
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
           CharCase = ecUpperCase
@@ -760,7 +761,7 @@ object frmEscola: TfrmEscola
           TabOrder = 0
         end
         object edtCidade: TDBEdit
-          Left = 387
+          Left = 488
           Top = 91
           Width = 200
           Height = 21
@@ -771,7 +772,7 @@ object frmEscola: TfrmEscola
           TabOrder = 1
         end
         object edtEstado: TDBEdit
-          Left = 610
+          Left = 711
           Top = 91
           Width = 55
           Height = 21
@@ -897,7 +898,7 @@ object frmEscola: TfrmEscola
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 400
+            Width = 440
             Visible = True
           end
           item
@@ -909,7 +910,7 @@ object frmEscola: TfrmEscola
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 200
+            Width = 240
             Visible = True
           end
           item

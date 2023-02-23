@@ -29,13 +29,13 @@ type
     Panel7: TPanel;
     Panel8: TPanel;
     pnlImagem: TPanel;
-    GroupBox1: TGroupBox;
+    gpbImagem: TGroupBox;
     Image: TImage;
     Panel5: TPanel;
     btnIncluirImagem: TAdvGlowButton;
     btnExcluirImagem: TAdvGlowButton;
-    Panel1: TPanel;
-    Panel3: TPanel;
+    pnlImagemLeft: TPanel;
+    pnlImagemRight: TPanel;
     pnlCadastro: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -69,6 +69,8 @@ type
     procedure tbsResumoShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure cbImagemClick(Sender: TObject);
+    procedure cbVideoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -273,6 +275,28 @@ begin
   dtmAulas.qryQuestoes.Open;
 
   Close;
+end;
+
+procedure TfrmAulasExercicios.cbImagemClick(Sender: TObject);
+begin
+  if (cbImagem.Checked = true) then
+  begin
+    cbVideo.Checked := false;
+
+    pnlVideo.Visible := false;
+    pnlImagem.Visible := true;
+  end;
+end;
+
+procedure TfrmAulasExercicios.cbVideoClick(Sender: TObject);
+begin
+  if (cbVideo.Checked = true) then
+  begin
+    cbImagem.Checked := false;
+
+    pnlImagem.Visible := false;
+    pnlVideo.Visible := true;
+  end;
 end;
 
 procedure TfrmAulasExercicios.dbGridQuestoesDrawColumnCell(Sender: TObject;

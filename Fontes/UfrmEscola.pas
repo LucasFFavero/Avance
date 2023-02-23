@@ -171,7 +171,9 @@ begin
 
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
-    dtmEscola.qryEscola.First;
+
+    if dtmEscola.qryEscola.Active then
+      dtmEscola.qryEscola.First;
 
     THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
     THackDBGrid(dbGrid).DefaultRowHeight := 30;

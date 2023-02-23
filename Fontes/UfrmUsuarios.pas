@@ -64,6 +64,7 @@ type
     edtLocUsuarios: TEdit;
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
+    ImageList: TImageList;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnIncluirClick(Sender: TObject);
@@ -216,6 +217,10 @@ begin
 
   dtmUsuarios.qryUsuarios.Insert;
   dtmUsuarios.qryUsuariosATIVO.Value := 1;
+  dtmUsuarios.qryUsuariosGESTOR.Value := 0;
+  dtmUsuarios.qryUsuariosPROFESSOR.Value := 0;
+  dtmUsuarios.qryUsuariosALUNO.Value := 1;
+
   edtConfirmaSenha.Clear;
   edtNome.SetFocus;
 end;
@@ -231,7 +236,9 @@ begin
 
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
-    dtmUsuarios.qryUsuarios.First;
+
+    if dtmUsuarios.qryUsuarios.Active then
+      dtmUsuarios.qryUsuarios.First;
 
     THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
     THackDBGrid(dbGrid).DefaultRowHeight := 30;
@@ -463,6 +470,37 @@ begin
     dbGrid.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
       Column.Field.Text);
   end;
+
+  if not dtmUsuarios.qryUsuarios.IsEmpty then
+  begin
+    if (Column.Field = dtmUsuarios.qryUsuariosATIVO) then
+    begin
+      dbGrid.Canvas.FillRect(Rect);
+      if (dtmUsuarios.qryUsuariosATIVO.Value = 1) then
+        ImageList.Draw(dbGrid.Canvas, Rect.Left + 20, Rect.Top + 10, 1);
+    end;
+
+    if (Column.Field = dtmUsuarios.qryUsuariosGESTOR) then
+    begin
+      dbGrid.Canvas.FillRect(Rect);
+      if (dtmUsuarios.qryUsuariosGESTOR.Value = 1) then
+        ImageList.Draw(dbGrid.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
+    end;
+
+    if (Column.Field = dtmUsuarios.qryUsuariosPROFESSOR) then
+    begin
+      dbGrid.Canvas.FillRect(Rect);
+      if (dtmUsuarios.qryUsuariosPROFESSOR.Value = 1) then
+        ImageList.Draw(dbGrid.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
+    end;
+
+    if (Column.Field = dtmUsuarios.qryUsuariosALUNO) then
+    begin
+      dbGrid.Canvas.FillRect(Rect);
+      if (dtmUsuarios.qryUsuariosALUNO.Value = 1) then
+        ImageList.Draw(dbGrid.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
+    end;
+  end;
 end;
 
 procedure TfrmUsuarios.dbGridLocalizarDblClick(Sender: TObject);
@@ -514,6 +552,34 @@ begin
     SetTextAlign((dbGridLocalizar).Canvas.Handle, TA_LEFT);
     dbGridLocalizar.Canvas.TextRect(Rect, Rect.Left + 2, Rect.Top + 10,
       Column.Field.Text);
+  end;
+
+  if (Column.Field = dtmUsuarios.qryBuscaUsuariosATIVO) then
+  begin
+    dbGridLocalizar.Canvas.FillRect(Rect);
+    if (dtmUsuarios.qryBuscaUsuariosATIVO.Value = 1) then
+      ImageList.Draw(dbGridLocalizar.Canvas, Rect.Left + 20, Rect.Top + 10, 1);
+  end;
+
+  if (Column.Field = dtmUsuarios.qryBuscaUsuariosGESTOR) then
+  begin
+    dbGridLocalizar.Canvas.FillRect(Rect);
+    if (dtmUsuarios.qryBuscaUsuariosGESTOR.Value = 1) then
+      ImageList.Draw(dbGridLocalizar.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
+  end;
+
+  if (Column.Field = dtmUsuarios.qryBuscaUsuariosPROFESSOR) then
+  begin
+    dbGridLocalizar.Canvas.FillRect(Rect);
+    if (dtmUsuarios.qryBuscaUsuariosPROFESSOR.Value = 1) then
+      ImageList.Draw(dbGridLocalizar.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
+  end;
+
+  if (Column.Field = dtmUsuarios.qryBuscaUsuariosALUNO) then
+  begin
+    dbGridLocalizar.Canvas.FillRect(Rect);
+    if (dtmUsuarios.qryBuscaUsuariosALUNO.Value = 1) then
+      ImageList.Draw(dbGridLocalizar.Canvas, Rect.Left + 20, Rect.Top + 10, 3);
   end;
 end;
 

@@ -176,7 +176,6 @@ begin
   dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
     dtmAulas.qryExerciciosCODIGO.AsInteger;
   dtmAulas.qryQuestoes.Open;
-
 end;
 
 end.

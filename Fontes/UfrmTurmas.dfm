@@ -621,6 +621,7 @@ object frmTurmas: TfrmTurmas
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Visible = False
         OnDrawColumnCell = dbGridDrawColumnCell
         OnDblClick = dbGridDblClick
         Columns = <
@@ -644,7 +645,7 @@ object frmTurmas: TfrmTurmas
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 400
+            Width = 440
             Visible = True
           end>
       end
@@ -700,7 +701,7 @@ object frmTurmas: TfrmTurmas
         object edtNome: TDBEdit
           Left = 25
           Top = 91
-          Width = 340
+          Width = 440
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
           CharCase = ecUpperCase
@@ -824,7 +825,7 @@ object frmTurmas: TfrmTurmas
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 400
+            Width = 440
             Visible = True
           end>
       end

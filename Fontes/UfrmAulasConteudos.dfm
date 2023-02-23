@@ -257,12 +257,15 @@ object frmAulasConteudos: TfrmAulasConteudos
               BevelOuter = bvNone
               TabOrder = 1
               object WindowsMediaPlayerAudio: TWindowsMediaPlayer
-                Left = 0
-                Top = 0
-                Width = 499
-                Height = 103
+                AlignWithMargins = True
+                Left = 3
+                Top = 3
+                Width = 493
+                Height = 97
                 Align = alClient
                 TabOrder = 0
+                ExplicitLeft = 0
+                ExplicitTop = 0
                 ExplicitWidth = 245
                 ExplicitHeight = 240
                 ControlData = {
@@ -270,12 +273,12 @@ object frmAulasConteudos: TfrmAulasConteudos
                   0000000008000200000000000300010000000B00FFFF0300000000000B00FFFF
                   08000200000000000300320000000B00000008000A000000660075006C006C00
                   00000B0000000B0000000B00FFFF0B00FFFF0B00000008000200000000000800
-                  020000000000080002000000000008000200000000000B00000093330000A50A
+                  020000000000080002000000000008000200000000000B000000F4320000060A
                   0000}
               end
             end
           end
-          object Panel12: TPanel
+          object pnlAudioBottom: TPanel
             Left = 0
             Top = 120
             Width = 541
@@ -285,7 +288,7 @@ object frmAulasConteudos: TfrmAulasConteudos
             TabOrder = 1
           end
         end
-        object Panel9: TPanel
+        object pnlAudioLeft: TPanel
           Left = 0
           Top = 0
           Width = 25
@@ -294,7 +297,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           BevelOuter = bvNone
           TabOrder = 0
         end
-        object Panel10: TPanel
+        object pnlAudioRight: TPanel
           Left = 566
           Top = 0
           Width = 390
@@ -421,13 +424,16 @@ object frmAulasConteudos: TfrmAulasConteudos
             BevelOuter = bvNone
             TabOrder = 1
             object WindowsMediaPlayer: TWindowsMediaPlayer
-              Left = 0
-              Top = 0
-              Width = 499
-              Height = 354
+              AlignWithMargins = True
+              Left = 3
+              Top = 3
+              Width = 493
+              Height = 348
               Align = alClient
               TabOrder = 0
               Visible = False
+              ExplicitLeft = 0
+              ExplicitTop = 0
               ExplicitWidth = 245
               ExplicitHeight = 240
               ControlData = {
@@ -435,12 +441,12 @@ object frmAulasConteudos: TfrmAulasConteudos
                 0000000008000200000000000300010000000B00FFFF0300000000000B00FFFF
                 08000200000000000300320000000B00000008000A000000660075006C006C00
                 00000B0000000B0000000B00FFFF0B00FFFF0B00000008000200000000000800
-                020000000000080002000000000008000200000000000B000000933300009624
+                020000000000080002000000000008000200000000000B000000F4320000F823
                 0000}
             end
           end
         end
-        object Panel7: TPanel
+        object pnlVideoLeft: TPanel
           Left = 0
           Top = 0
           Width = 25
@@ -449,7 +455,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           BevelOuter = bvNone
           TabOrder = 1
         end
-        object Panel8: TPanel
+        object pnlVideoRight: TPanel
           Left = 566
           Top = 0
           Width = 390
@@ -467,7 +473,7 @@ object frmAulasConteudos: TfrmAulasConteudos
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        object Panel6: TPanel
+        object pnlImagemRight: TPanel
           Left = 566
           Top = 0
           Width = 390
@@ -485,13 +491,15 @@ object frmAulasConteudos: TfrmAulasConteudos
           Caption = 'Imagem'
           TabOrder = 0
           object Image: TImage
-            Left = 40
-            Top = 15
-            Width = 499
-            Height = 354
+            AlignWithMargins = True
+            Left = 43
+            Top = 18
+            Width = 493
+            Height = 348
             Align = alClient
             Stretch = True
             ExplicitLeft = 35
+            ExplicitTop = 15
             ExplicitWidth = 233
             ExplicitHeight = 96
           end
@@ -587,7 +595,7 @@ object frmAulasConteudos: TfrmAulasConteudos
             end
           end
         end
-        object Panel2: TPanel
+        object pnlImagemLeft: TPanel
           Left = 0
           Top = 0
           Width = 25
@@ -649,7 +657,7 @@ object frmAulasConteudos: TfrmAulasConteudos
         object edtDescricao: TDBEdit
           Left = 25
           Top = 91
-          Width = 530
+          Width = 540
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
           DataField = 'DESCRICAO'
@@ -722,7 +730,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Width = 541
           Height = 371
           Align = alClient
-          Caption = 'Imagem'
+          Caption = 'Imagem do Resumo'
           TabOrder = 2
           object ImageResumo: TImage
             Left = 40

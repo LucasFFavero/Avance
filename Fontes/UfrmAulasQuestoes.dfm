@@ -75,6 +75,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
+      ExplicitTop = 4
     end
     object btnCancelar: TAdvGlowButton
       AlignWithMargins = True
@@ -293,7 +294,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        object GroupBox1: TGroupBox
+        object gpbImagem: TGroupBox
           Left = 25
           Top = 0
           Width = 541
@@ -302,13 +303,15 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           Caption = 'Imagem'
           TabOrder = 0
           object Image: TImage
-            Left = 40
-            Top = 15
-            Width = 499
-            Height = 354
+            AlignWithMargins = True
+            Left = 43
+            Top = 18
+            Width = 493
+            Height = 348
             Align = alClient
             Stretch = True
             ExplicitLeft = 39
+            ExplicitTop = 15
             ExplicitWidth = 489
             ExplicitHeight = 350
           end
@@ -404,7 +407,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
             end
           end
         end
-        object Panel1: TPanel
+        object pnlImagemLeft: TPanel
           Left = 0
           Top = 0
           Width = 25
@@ -413,7 +416,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           BevelOuter = bvNone
           TabOrder = 1
         end
-        object Panel3: TPanel
+        object pnlImagemRight: TPanel
           Left = 566
           Top = 0
           Width = 390
@@ -475,7 +478,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
         object edtDescricao: TDBEdit
           Left = 25
           Top = 91
-          Width = 420
+          Width = 540
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
           CharCase = ecUpperCase
@@ -484,7 +487,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           TabOrder = 1
         end
         object dbcbCorreta: TDBCheckBox
-          Left = 474
+          Left = 594
           Top = 93
           Width = 90
           Height = 17
@@ -500,7 +503,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
   end
   object OpenPicture: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg'
-    Left = 600
+    Left = 608
     Top = 242
   end
 end

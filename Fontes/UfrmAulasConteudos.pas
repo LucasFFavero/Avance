@@ -27,9 +27,9 @@ type
     btnRemoverAudio: TAdvGlowButton;
     pnlAudioReproduzir: TPanel;
     WindowsMediaPlayerAudio: TWindowsMediaPlayer;
-    Panel12: TPanel;
-    Panel9: TPanel;
-    Panel10: TPanel;
+    pnlAudioBottom: TPanel;
+    pnlAudioLeft: TPanel;
+    pnlAudioRight: TPanel;
     pnlVideo: TPanel;
     gpbVideo: TGroupBox;
     pnlBotoesVideo: TPanel;
@@ -37,16 +37,16 @@ type
     btnRemoverVideo: TAdvGlowButton;
     pnlVideoReproduzir: TPanel;
     WindowsMediaPlayer: TWindowsMediaPlayer;
-    Panel7: TPanel;
-    Panel8: TPanel;
+    pnlVideoLeft: TPanel;
+    pnlVideoRight: TPanel;
     pnlImagem: TPanel;
-    Panel6: TPanel;
+    pnlImagemRight: TPanel;
     gpbImagem: TGroupBox;
     Image: TImage;
     Panel5: TPanel;
     btnIncluirImagem: TAdvGlowButton;
     btnRemoverImagem: TAdvGlowButton;
-    Panel2: TPanel;
+    pnlImagemLeft: TPanel;
     pnlCadastro: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -224,7 +224,7 @@ begin
   try
     // Salvar novo registro
     if dtmAulasConteudos.qryConteudos.Active then
-    BEGIN
+    begin
       if (cbImagem.Checked = true) then
         dtmAulasConteudos.qryConteudosTIPO.AsString := 'I'
       else if (cbVideo.Checked = true) then
@@ -233,7 +233,7 @@ begin
         dtmAulasConteudos.qryConteudosTIPO.AsString := 'A';
 
       dtmAulasConteudos.qryConteudos.Post;
-    END;
+    end;
 
     dtmAulasConteudos.Transaction.CommitRetaining;
   except
@@ -248,6 +248,7 @@ begin
   dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
     dtmAulas.qryAulasCODIGO.AsInteger;
   dtmAulas.qryConteudos.Open;
+
   Close;
 end;
 

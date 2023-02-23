@@ -33,24 +33,22 @@ type
     imgDetail: TImageList;
     pgcDadosCadastrais: TPageControl;
     tbsDadosCadastrais: TTabSheet;
-    pnlGrid: TPanel;
-    dbGrid: TDBGrid;
     pnlCadastro: TPanel;
-    Panel9: TPanel;
+    pnlCadastroTop: TPanel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     edtCodigo: TDBEdit;
     edtTitulo: TDBEdit;
     dblkcbTurma: TDBLookupComboBox;
-    Panel10: TPanel;
+    pnlCadastroClient: TPanel;
     gpbImagem: TGroupBox;
     Image: TImage;
     Panel5: TPanel;
     btnIncluirImagem: TAdvGlowButton;
     btnRemoverImagem: TAdvGlowButton;
-    Panel11: TPanel;
-    Panel12: TPanel;
+    pnlCadastroLeft: TPanel;
+    pnlCadastroRight: TPanel;
     tbsConteudos: TTabSheet;
     dbgConteudo: TDBGrid;
     pnlConteudo: TPanel;
@@ -77,6 +75,7 @@ type
     edtLocAulas: TEdit;
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
+    dbGrid: TDBGrid;
     procedure btnIncluirImagemClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
     procedure dblkcbTurmaEnter(Sender: TObject);
@@ -199,14 +198,6 @@ begin
     dtmAulas.qryAulas.Open;
   if not dtmAulas.qryTurmas.Active then
     dtmAulas.qryTurmas.Open;
-
-  // Aulas Conteúdos
-  dtmAulas.qryConteudos.Close;
-  dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
-    dtmAulas.qryAulasCODIGO.AsInteger;
-  dtmAulas.qryConteudos.Open;
-
-  // Aulas Exercícios
 end;
 
 procedure TfrmAulas.btnCancelarClick(Sender: TObject);
@@ -220,9 +211,7 @@ end;
 procedure TfrmAulas.btnEditarClick(Sender: TObject);
 begin
   pnlCadastro.Visible := true;
-  pnlGrid.Enabled := false;
   dbGrid.Visible := false;
-  dbGrid.Enabled := false;
 
   if dtmAulas.qryAulas.Active then
     dtmAulas.qryAulas.Edit;
@@ -256,9 +245,7 @@ begin
     Abort;
 
   pnlCadastro.Visible := true;
-  pnlGrid.Enabled := false;
   dbGrid.Visible := false;
-  dbGrid.Enabled := false;
 
   try
     // Excluir registro
@@ -349,9 +336,7 @@ begin
   btnBuscarClick(Self);
 
   pnlCadastro.Visible := true;
-  pnlGrid.Enabled := false;
   dbGrid.Visible := false;
-  dbGrid.Enabled := false;
 
   dtmAulas.qryAulas.Insert;
   edtTitulo.SetFocus;
@@ -402,20 +387,19 @@ begin
   if (pnlCadastro.Visible = true) then
   begin
     pnlCadastro.Visible := false;
-    pnlGrid.Enabled := true;
     dbGrid.Visible := true;
-    dbGrid.Enabled := true;
 
     btnEditar.Enabled := false;
     btnIncluir.Enabled := false;
-    dtmAulas.qryTurmas.First;
+
+    if dtmAulas.qryAulas.Active then
+      dtmAulas.qryTurmas.First;
 
     THackDBGrid(dbGrid).DefaultRowHeight := 30;
     THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
     THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
     THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
     THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
-
   end
   else
   begin
@@ -424,9 +408,7 @@ begin
       (not(dtmAulas.qryTurmas.IsEmpty));
 
     pnlCadastro.Visible := true;
-    pnlGrid.Enabled := false;
     dbGrid.Visible := false;
-    dbGrid.Enabled := false;
   end;
 end;
 
@@ -645,7 +627,6 @@ procedure TfrmAulas.dbgQuestoesDrawColumnCell(Sender: TObject;
 begin
   if not dtmAulas.qryQuestoes.IsEmpty then
   begin
-
     if gdSelected in State then
     begin
       with dbgQuestoes.Canvas do
@@ -751,9 +732,7 @@ begin
 
   pgcDadosCadastrais.TabIndex := 0;
   pnlCadastro.Visible := true;
-  pnlGrid.Enabled := false;
   dbGrid.Visible := false;
-  dbGrid.Enabled := false;
 
   btnIncluir.Enabled := dtmAulas.qryAulas.State = dsbrowse;
   btnEditar.Enabled := (dtmAulas.qryAulas.State = dsbrowse) and
