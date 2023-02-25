@@ -75,7 +75,6 @@ object frmAulasQuestoes: TfrmAulasQuestoes
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitTop = 4
     end
     object btnCancelar: TAdvGlowButton
       AlignWithMargins = True
@@ -469,6 +468,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmAulasQuestoes.dtsQuestoes
@@ -476,7 +476,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           TabOrder = 0
         end
         object edtDescricao: TDBEdit
-          Left = 25
+          Left = 24
           Top = 91
           Width = 540
           Height = 21

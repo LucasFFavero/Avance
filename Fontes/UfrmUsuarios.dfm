@@ -908,6 +908,7 @@ object frmUsuarios: TfrmUsuarios
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmUsuarios.dtsUsuarios
@@ -984,6 +985,7 @@ object frmUsuarios: TfrmUsuarios
           Lookup.Font.Name = 'Arial'
           Lookup.Font.Style = []
           Lookup.Separator = ';'
+          CharCase = ecUpperCase
           Color = clWindow
           ShortCut = 0
           TabOrder = 1
@@ -1365,6 +1367,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
@@ -1376,6 +1379,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item

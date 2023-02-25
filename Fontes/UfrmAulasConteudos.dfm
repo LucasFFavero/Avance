@@ -644,6 +644,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmAulasConteudos.dtsConteudos
@@ -656,6 +657,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Width = 540
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
+          CharCase = ecUpperCase
           DataField = 'DESCRICAO'
           DataSource = dtmAulasConteudos.dtsConteudos
           TabOrder = 1

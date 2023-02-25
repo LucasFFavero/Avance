@@ -271,7 +271,7 @@ begin
     // Salvar novo registro
     if dtmAulasExercicios.qryExercicios.Active then
     begin
-      if (dtmAulasExercicios.qryExercicios.State = dsInsert) then
+      if (dtmAulasExercicios.qryExercicios.State = dsInsert) or (dtmAulasExercicios.qryExercicios.State = dsEdit) then
       begin
         if (cbImagem.Checked = true) then
           dtmAulasExercicios.qryExerciciosTIPO.AsString := 'I'

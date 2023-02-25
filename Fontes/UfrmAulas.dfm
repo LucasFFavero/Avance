@@ -876,6 +876,7 @@ object frmAulas: TfrmAulas
             Width = 80
             Height = 21
             Hint = 'C'#243'digo Autom'#225'tico'
+            CharCase = ecUpperCase
             Color = 16771797
             DataField = 'CODIGO'
             DataSource = dtmAulas.dtsAulas
