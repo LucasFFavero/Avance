@@ -565,6 +565,7 @@ object frmTurmas: TfrmTurmas
       ParentFont = False
       Transparent = True
       TabOrder = 14
+      OnClick = btnImprimirClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906

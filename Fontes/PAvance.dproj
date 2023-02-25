@@ -148,12 +148,12 @@
             <Form>frmTurmas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UfrmEscola.pas">
-            <Form>frmEscola</Form>
+        <DCCReference Include="UfrmEscolas.pas">
+            <Form>frmEscolas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UdtmEscola.pas">
-            <Form>dtmEscola</Form>
+        <DCCReference Include="UdtmEscolas.pas">
+            <Form>dtmEscolas</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -189,6 +189,22 @@
             <Form>dtmAulasQuestoes</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UrelEscolas.pas">
+            <Form>relEscolas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="URelUsuarios.pas">
+            <Form>relUsuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UrelTurmas.pas">
+            <Form>relTurmas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UrelAulas.pas">
+            <Form>relAulas</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

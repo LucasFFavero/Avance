@@ -1,7 +1,6 @@
 object frmUsuarios: TfrmUsuarios
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
   Caption = 'Usu'#225'rios'
   ClientHeight = 541
   ClientWidth = 944
@@ -1185,7 +1184,7 @@ object frmUsuarios: TfrmUsuarios
           DataSource = dtmUsuarios.dtsUsuarios
           KeyField = 'CODIGO'
           ListField = 'NOME'
-          ListSource = dtmUsuarios.dtsEscola
+          ListSource = dtmUsuarios.dtsEscolas
           TabOrder = 6
           OnEnter = dblkcbEscolaEnter
         end
@@ -1366,7 +1365,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item
@@ -1378,7 +1376,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item

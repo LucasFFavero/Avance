@@ -24,7 +24,6 @@ type
     qryConteudosRESUMO: TStringField;
     qryConteudosRESUMO_IMAGEM: TBlobField;
     qryConteudosTIPO: TStringField;
-    procedure dtsConteudosStateChange(Sender: TObject);
     procedure qryConteudosAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
@@ -42,17 +41,6 @@ implementation
 uses UfrmAulasConteudos, UdtmMain, UfrmMain;
 
 {$R *.dfm}
-
-procedure TdtmAulasConteudos.dtsConteudosStateChange(Sender: TObject);
-begin
-  // Animações dos botões
-  if (frmAulasConteudos <> nil) then
-  begin
-    frmAulasConteudos.btnSalvar.Enabled := qryConteudos.State <> dsBrowse;
-    frmAulasConteudos.btnCancelar.Enabled := qryConteudos.State <> dsBrowse;
-    frmAulasConteudos.pnlCadastro.Enabled := qryConteudos.State <> dsBrowse;
-  end;
-end;
 
 procedure TdtmAulasConteudos.qryConteudosAfterScroll(DataSet: TDataSet);
 var

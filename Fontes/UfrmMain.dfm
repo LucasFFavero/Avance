@@ -2653,6 +2653,7 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
+      ExplicitLeft = 0
     end
   end
   object pnlAlunos: TPanel

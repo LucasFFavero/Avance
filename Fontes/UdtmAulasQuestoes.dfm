@@ -1,6 +1,6 @@
 object dtmAulasQuestoes: TdtmAulasQuestoes
   OldCreateOrder = False
-  Height = 539
+  Height = 455
   Width = 812
   object qryQuestoes: TFDQuery
     AfterScroll = qryQuestoesAfterScroll

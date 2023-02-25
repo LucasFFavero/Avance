@@ -171,8 +171,8 @@ object frmAulasExercicios: TfrmAulasExercicios
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -212,8 +212,8 @@ object frmAulasExercicios: TfrmAulasExercicios
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -455,24 +455,11 @@ object frmAulasExercicios: TfrmAulasExercicios
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 305
+          Left = 25
           Top = 72
           Width = 55
           Height = 13
           Caption = 'Descri'#231#227'o'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label3: TLabel
-          Left = 25
-          Top = 72
-          Width = 54
-          Height = 13
-          Caption = 'Conte'#250'do'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 3618615
           Font.Height = -11
@@ -493,9 +480,9 @@ object frmAulasExercicios: TfrmAulasExercicios
           TabOrder = 0
         end
         object edtDescricao: TDBEdit
-          Left = 305
+          Left = 25
           Top = 91
-          Width = 408
+          Width = 540
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
           CharCase = ecUpperCase
@@ -503,37 +490,24 @@ object frmAulasExercicios: TfrmAulasExercicios
           DataSource = dtmAulasExercicios.dtsExercicios
           TabOrder = 1
         end
-        object dblkcbConteudo: TDBLookupComboBox
-          Left = 25
-          Top = 91
-          Width = 256
-          Height = 21
-          DataField = 'COD_CONTEUDO'
-          DataSource = dtmAulasExercicios.dtsExercicios
-          KeyField = 'CODIGO'
-          ListField = 'DESCRICAO'
-          ListSource = dtmAulasExercicios.dtsConteudos
-          TabOrder = 2
-          OnEnter = dblkcbConteudoEnter
-        end
         object cbImagem: TCheckBox
-          Left = 733
+          Left = 590
           Top = 93
           Width = 90
           Height = 17
           Caption = 'Imagem'
           Checked = True
           State = cbChecked
-          TabOrder = 3
+          TabOrder = 2
           OnClick = cbImagemClick
         end
         object cbVideo: TCheckBox
-          Left = 829
+          Left = 690
           Top = 93
           Width = 90
           Height = 17
           Caption = 'V'#237'deo'
-          TabOrder = 4
+          TabOrder = 3
           OnClick = cbVideoClick
         end
       end

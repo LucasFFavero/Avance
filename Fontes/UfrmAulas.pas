@@ -118,6 +118,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure tbsLocalizarShow(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -132,7 +133,7 @@ implementation
 {$R *.dfm}
 
 uses UdtmAulas, UfrmMain, UfrmAulasConteudos, UdtmAulasConteudos,
-  UfrmAulasExercicios, UdtmAulasExercicios;
+  UfrmAulasExercicios, UdtmAulasExercicios, UrelAulas;
 
 procedure TfrmAulas.btnIncluirImagemClick(Sender: TObject);
 var
@@ -178,7 +179,7 @@ begin
   dtmAulasExercicios.qryExercicios.Open;
 
   dtmAulasExercicios.qryExercicios.Edit;
-  frmAulasExercicios.dblkcbConteudo.SetFocus;
+  frmAulasExercicios.edtDescricao.SetFocus;
 end;
 
 procedure TfrmAulas.btnAnteriorClick(Sender: TObject);
@@ -307,6 +308,13 @@ begin
     dtmAulas.TransactionExcluir.StartTransaction;
 
   try
+    // Exclui Questões
+    dtmAulas.qryExcluirQuestoes.Close;
+    dtmAulas.qryExcluirQuestoes.ParamByName('COD_AULAS_EXERCICIOS').AsInteger :=
+      dtmAulas.qryExerciciosCODIGO.AsInteger;
+    dtmAulas.qryExcluirQuestoes.ExecSql;
+
+    // Excluir Exercício
     dtmAulas.qryExcluirExercicio.Close;
     dtmAulas.qryExcluirExercicio.ParamByName('CODIGO').AsInteger :=
       dtmAulas.qryExerciciosCODIGO.AsInteger;
@@ -314,21 +322,43 @@ begin
 
     dtmAulas.TransactionExcluir.CommitRetaining;
 
+    // Atualiza Questões
+    dtmAulas.qryQuestoes.Close;
+
+    // Atualiza Exercícios
     dtmAulas.qryExercicios.Close;
     dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
       dtmAulas.qryAulasCODIGO.AsInteger;
+    dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger :=
+      dtmAulas.qryConteudosCODIGO.AsInteger;
     dtmAulas.qryExercicios.Open;
   except
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
       20)), 0 + 16 + 0);
-    edtTitulo.SetFocus;
     Abort;
   end;
 
   Application.MessageBox('Exclusão realizada com sucesso.',
     pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
     ), 0 + 64 + 0);
+end;
+
+procedure TfrmAulas.btnImprimirClick(Sender: TObject);
+begin
+  if dtmAulas.qryAulas.IsEmpty then
+  begin
+    Application.MessageBox('Não há registro(s) para imprimir.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
+    Exit;
+  end;
+
+  relAulas := nil;
+  Application.CreateForm(TrelAulas, relAulas);
+  relAulas.qrAulas.Preview;
+
+  dtmAulas.qryAulas.First;
 end;
 
 procedure TfrmAulas.btnIncluirClick(Sender: TObject);
@@ -377,7 +407,10 @@ begin
   dtmAulasExercicios.qryExercicios.Insert;
   dtmAulasExercicios.qryExerciciosCOD_AULA.AsInteger :=
     dtmAulas.qryAulasCODIGO.AsInteger;
-  frmAulasExercicios.dblkcbConteudo.SetFocus;
+  dtmAulasExercicios.qryExerciciosCOD_CONTEUDO.AsInteger :=
+    dtmAulas.qryConteudosCODIGO.AsInteger;
+
+  frmAulasExercicios.edtDescricao.SetFocus;
 end;
 
 procedure TfrmAulas.btnListarClick(Sender: TObject);
@@ -850,11 +883,6 @@ end;
 
 procedure TfrmAulas.tbsConteudosShow(Sender: TObject);
 begin
-  dtmAulas.qryConteudos.Close;
-  dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
-    dtmAulas.qryAulasCODIGO.AsInteger;
-  dtmAulas.qryConteudos.Open;
-
   pnlTop.Enabled := false;
 
   THackDBGrid(dbGrid).DefaultRowHeight := 30;
@@ -871,11 +899,6 @@ end;
 
 procedure TfrmAulas.tbsExerciciosShow(Sender: TObject);
 begin
-  dtmAulas.qryExercicios.Close;
-  dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
-    dtmAulas.qryAulasCODIGO.AsInteger;
-  dtmAulas.qryExercicios.Open;
-
   pnlTop.Enabled := false;
 
   THackDBGrid(dbGrid).DefaultRowHeight := 30;

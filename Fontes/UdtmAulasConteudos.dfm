@@ -119,7 +119,6 @@ object dtmAulasConteudos: TdtmAulasConteudos
   end
   object dtsConteudos: TDataSource
     DataSet = qryConteudos
-    OnStateChange = dtsConteudosStateChange
     Left = 104
     Top = 16
   end

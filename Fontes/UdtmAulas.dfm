@@ -149,6 +149,7 @@ object dtmAulas: TdtmAulas
     Top = 65
   end
   object qryConteudos: TFDQuery
+    AfterScroll = qryConteudosAfterScroll
     Connection = dtmMain.FDConnectionMain
     FetchOptions.AssignedValues = [evMode, evCursorKind]
     FetchOptions.Mode = fmAll
@@ -244,14 +245,19 @@ object dtmAulas: TdtmAulas
       'FROM AULAS_EXERCICIOS'
       
         'INNER JOIN AULAS_CONTEUDOS ON (AULAS_EXERCICIOS.COD_CONTEUDO = A' +
-        'ULAS_CONTEUDOS.CODIGO)   '
+        'ULAS_CONTEUDOS.CODIGO)'
       'WHERE AULAS_EXERCICIOS.COD_AULA = :COD_AULA'
+      'AND AULAS_EXERCICIOS.COD_CONTEUDO = :COD_CONTEUDO'
       'ORDER BY AULAS_EXERCICIOS.CODIGO')
     Left = 32
     Top = 256
     ParamData = <
       item
         Name = 'COD_AULA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'COD_CONTEUDO'
         ParamType = ptInput
       end>
     object qryExerciciosCODIGO: TFDAutoIncField
@@ -382,7 +388,7 @@ object dtmAulas: TdtmAulas
   object TransactionExcluir: TFDTransaction
     Connection = dtmMain.FDConnectionMain
     Left = 224
-    Top = 313
+    Top = 369
   end
   object qryExcluirExercicio: TFDQuery
     Connection = dtmMain.FDConnectionMain
@@ -402,6 +408,30 @@ object dtmAulas: TdtmAulas
     ParamData = <
       item
         Name = 'CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object qryExcluirQuestoes: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    Transaction = TransactionExcluir
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'DELETE FROM AULAS_EXERCICIOS_QUESTOES'
+      
+        'WHERE AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS =:COD_AULAS' +
+        '_EXERCICIOS')
+    Left = 224
+    Top = 312
+    ParamData = <
+      item
+        Name = 'COD_AULAS_EXERCICIOS'
         DataType = ftInteger
         ParamType = ptInput
       end>

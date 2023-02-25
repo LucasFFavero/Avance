@@ -108,7 +108,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain, UdtmUsuarios;
+uses UfrmMain, UdtmUsuarios, URelUsuarios;
 
 procedure TfrmUsuarios.btnAnteriorClick(Sender: TObject);
 begin
@@ -126,8 +126,8 @@ begin
   if not dtmUsuarios.qryUsuarios.Active then
     dtmUsuarios.qryUsuarios.Open;
 
-  if not dtmUsuarios.qryEscola.Active then
-    dtmUsuarios.qryEscola.Open;
+  if not dtmUsuarios.qryEscolas.Active then
+    dtmUsuarios.qryEscolas.Open;
   if not dtmUsuarios.qryTurmas.Active then
     dtmUsuarios.qryTurmas.Open;
 end;
@@ -201,9 +201,9 @@ begin
     Exit;
   end;
 
-  { relUsuarios := nil;
-    Application.CreateForm(TrelUsuarios, relUsuarios);
-    relUsuarios.qrUsuarios.Preview; }
+  relUsuarios := nil;
+  Application.CreateForm(TrelUsuarios, relUsuarios);
+  relUsuarios.qrUsuarios.Preview;
 
   dtmUsuarios.qryUsuarios.First;
 end;
@@ -585,8 +585,8 @@ end;
 
 procedure TfrmUsuarios.dblkcbEscolaEnter(Sender: TObject);
 begin
-  if not dtmUsuarios.qryEscola.Active then
-    dtmUsuarios.qryEscola.Open;
+  if not dtmUsuarios.qryEscolas.Active then
+    dtmUsuarios.qryEscolas.Open;
 end;
 
 procedure TfrmUsuarios.dblkcbTurmaEnter(Sender: TObject);

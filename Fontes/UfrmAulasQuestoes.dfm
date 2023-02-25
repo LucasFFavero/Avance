@@ -169,8 +169,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -209,8 +209,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -487,7 +487,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           TabOrder = 1
         end
         object dbcbCorreta: TDBCheckBox
-          Left = 594
+          Left = 590
           Top = 93
           Width = 90
           Height = 17

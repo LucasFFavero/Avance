@@ -566,6 +566,7 @@ object frmAulas: TfrmAulas
       ParentFont = False
       Transparent = True
       TabOrder = 14
+      OnClick = btnImprimirClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -1422,14 +1423,14 @@ object frmAulas: TfrmAulas
             Width = 912
             Height = 27
             Align = alClient
-            Caption = 'Respostas'
+            Caption = 'Quest'#245'es'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clRed
             Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 68
+            ExplicitWidth = 61
             ExplicitHeight = 16
           end
         end

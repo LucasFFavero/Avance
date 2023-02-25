@@ -3,11 +3,10 @@ unit UfrmMain;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.DBGrids,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, midaslib, AdvGlowButton,
-  System.ImageList, Vcl.ImgList, cxImageList, cxGraphics, Vcl.Menus,
-  Vcl.ComCtrls, Vcl.ExtCtrls, AdvPanel, dxGDIPlusClasses;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Menus,
+  System.Classes, Vcl.Graphics, Vcl.DBGrids, Vcl.Controls, Vcl.Forms, AdvPanel,
+  Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
+  Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls;
 
 type
   THackDBGrid = class(TDBGrid)
@@ -71,41 +70,41 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmLogon, UfrmUsuarios, UfrmEscola, UfrmTurmas, UfrmAulas,
+uses UfrmLogon, UfrmUsuarios, UfrmEscolas, UfrmTurmas, UfrmAulas,
   UfrmFrames_Aulas;
 
 procedure TfrmMain.btnAno1Click(Sender: TObject);
 begin
   IntAnoClicado := 1;
-  if (frmEscola = nil) then
+  if (frmEscolas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno2Click(Sender: TObject);
 begin
   IntAnoClicado := 2;
-  if (frmEscola = nil) then
+  if (frmEscolas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno3Click(Sender: TObject);
 begin
   IntAnoClicado := 3;
-  if (frmEscola = nil) then
+  if (frmEscolas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno4Click(Sender: TObject);
 begin
   IntAnoClicado := 4;
-  if (frmEscola = nil) then
+  if (frmEscolas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno5Click(Sender: TObject);
 begin
   IntAnoClicado := 5;
-  if (frmEscola = nil) then
+  if (frmEscolas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
@@ -129,8 +128,8 @@ end;
 
 procedure TfrmMain.btnCadEscolasClick(Sender: TObject);
 begin
-  if (frmEscola = nil) then
-    Application.CreateForm(TfrmEscola, frmEscola);
+  if (frmEscolas = nil) then
+    Application.CreateForm(TfrmEscolas, frmEscolas);
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);

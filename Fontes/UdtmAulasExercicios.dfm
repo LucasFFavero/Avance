@@ -2,38 +2,6 @@ object dtmAulasExercicios: TdtmAulasExercicios
   OldCreateOrder = False
   Height = 452
   Width = 811
-  object qryConteudos: TFDQuery
-    Connection = dtmMain.FDConnectionMain
-    SQL.Strings = (
-      
-        'SELECT AULAS_CONTEUDOS.CODIGO, AULAS_CONTEUDOS.COD_AULA, AULAS_C' +
-        'ONTEUDOS.DESCRICAO'
-      'FROM AULAS_CONTEUDOS'
-      'ORDER BY AULAS_CONTEUDOS.CODIGO')
-    Left = 224
-    Top = 16
-    object qryConteudosCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      DisplayFormat = '0000#'
-    end
-    object qryConteudosCOD_AULA: TIntegerField
-      FieldName = 'COD_AULA'
-      Origin = 'COD_AULA'
-    end
-    object qryConteudosDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Size = 200
-    end
-  end
-  object dtsConteudos: TDataSource
-    DataSet = qryConteudos
-    Left = 320
-    Top = 16
-  end
   object qryExercicios: TFDQuery
     AfterScroll = qryExerciciosAfterScroll
     Connection = dtmMain.FDConnectionMain
@@ -140,7 +108,6 @@ object dtmAulasExercicios: TdtmAulasExercicios
   end
   object dtsExercicios: TDataSource
     DataSet = qryExercicios
-    OnStateChange = dtsExerciciosStateChange
     Left = 104
     Top = 16
   end
@@ -167,7 +134,7 @@ object dtmAulasExercicios: TdtmAulasExercicios
         'S_EXERCICIO'
       'ORDER BY AULAS_EXERCICIOS_QUESTOES.CODIGO')
     Left = 224
-    Top = 65
+    Top = 16
     ParamData = <
       item
         Name = 'COD_AULAS_EXERCICIO'
@@ -203,7 +170,7 @@ object dtmAulasExercicios: TdtmAulasExercicios
   object dtsQuestoes: TDataSource
     DataSet = qryQuestoes
     Left = 320
-    Top = 65
+    Top = 16
   end
   object TransactionExcluir: TFDTransaction
     Connection = dtmMain.FDConnectionMain

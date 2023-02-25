@@ -10,15 +10,10 @@ uses
 
 type
   TdtmAulasExercicios = class(TDataModule)
-    qryConteudos: TFDQuery;
-    dtsConteudos: TDataSource;
     qryExercicios: TFDQuery;
     Transaction: TFDTransaction;
     UpdateSQL: TFDUpdateSQL;
     dtsExercicios: TDataSource;
-    qryConteudosCODIGO: TIntegerField;
-    qryConteudosCOD_AULA: TIntegerField;
-    qryConteudosDESCRICAO: TStringField;
     qryExerciciosCODIGO: TFDAutoIncField;
     qryExerciciosCOD_AULA: TIntegerField;
     qryExerciciosCOD_CONTEUDO: TIntegerField;
@@ -35,7 +30,6 @@ type
     dtsQuestoes: TDataSource;
     TransactionExcluir: TFDTransaction;
     qryExcluirQuestoes: TFDQuery;
-    procedure dtsExerciciosStateChange(Sender: TObject);
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
@@ -52,17 +46,6 @@ implementation
 
 uses UfrmAulasExercicios, UfrmMain;
 {$R *.dfm}
-
-procedure TdtmAulasExercicios.dtsExerciciosStateChange(Sender: TObject);
-begin
-  // Animações dos botões
-  if (frmAulasExercicios <> nil) then
-  begin
-    frmAulasExercicios.btnSalvar.Enabled := qryExercicios.State <> dsBrowse;
-    frmAulasExercicios.btnCancelar.Enabled := qryExercicios.State <> dsBrowse;
-    frmAulasExercicios.pnlCadastro.Enabled := qryExercicios.State <> dsBrowse;
-  end;
-end;
 
 procedure TdtmAulasExercicios.qryExerciciosAfterScroll(DataSet: TDataSet);
 var

@@ -13,8 +13,8 @@ uses
   UfrmLogonTransp in 'UfrmLogonTransp.pas' {frmLogonTransp},
   UdtmTurmas in 'UdtmTurmas.pas' {dtmTurmas: TDataModule},
   UfrmTurmas in 'UfrmTurmas.pas' {frmTurmas},
-  UfrmEscola in 'UfrmEscola.pas' {frmEscola},
-  UdtmEscola in 'UdtmEscola.pas' {dtmEscola: TDataModule},
+  UfrmEscolas in 'UfrmEscolas.pas' {frmEscolas},
+  UdtmEscolas in 'UdtmEscolas.pas' {dtmEscolas: TDataModule},
   UdtmAulas in 'UdtmAulas.pas' {dtmAulas: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
@@ -23,7 +23,11 @@ uses
   UfrmFrames_Aulas in 'UfrmFrames_Aulas.pas' {frmFrames_Aulas},
   UdtmFrames_Aulas in 'UdtmFrames_Aulas.pas' {dtmFrames_Aulas: TDataModule},
   UfrmAulasQuestoes in 'UfrmAulasQuestoes.pas' {frmAulasQuestoes},
-  UdtmAulasQuestoes in 'UdtmAulasQuestoes.pas' {dtmAulasQuestoes: TDataModule};
+  UdtmAulasQuestoes in 'UdtmAulasQuestoes.pas' {dtmAulasQuestoes: TDataModule},
+  UrelEscolas in 'UrelEscolas.pas' {relEscolas},
+  URelUsuarios in 'URelUsuarios.pas' {relUsuarios},
+  UrelTurmas in 'UrelTurmas.pas' {relTurmas},
+  UrelAulas in 'UrelAulas.pas' {relAulas};
 
 {$R *.res}
 
@@ -35,7 +39,7 @@ begin
   Application.CreateForm(TdtmMain, dtmMain);
   Application.CreateForm(TfrmLogon, frmLogon);
   Application.CreateForm(TdtmTurmas, dtmTurmas);
-  Application.CreateForm(TdtmEscola, dtmEscola);
+  Application.CreateForm(TdtmEscolas, dtmEscolas);
   Application.CreateForm(TdtmUsuarios, dtmUsuarios);
   Application.CreateForm(TdtmAulas, dtmAulas);
   Application.CreateForm(TdtmAulasConteudos, dtmAulasConteudos);

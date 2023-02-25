@@ -108,37 +108,37 @@ object dtmUsuarios: TdtmUsuarios
     Left = 320
     Top = 16
   end
-  object qryEscola: TFDQuery
+  object qryEscolas: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
       'SELECT ESCOLA.CODIGO, ESCOLA.NOME, ESCOLA.CIDADE, ESCOLA.ESTADO'
       'FROM ESCOLA  ')
     Left = 224
     Top = 65
-    object qryEscolaCODIGO: TIntegerField
+    object qryEscolasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object qryEscolaNOME: TStringField
+    object qryEscolasNOME: TStringField
       FieldName = 'NOME'
       Origin = 'NOME'
       Size = 200
     end
-    object qryEscolaCIDADE: TStringField
+    object qryEscolasCIDADE: TStringField
       FieldName = 'CIDADE'
       Origin = 'CIDADE'
       Size = 200
     end
-    object qryEscolaESTADO: TStringField
+    object qryEscolasESTADO: TStringField
       FieldName = 'ESTADO'
       Origin = 'ESTADO'
       Size = 2
     end
   end
-  object dtsEscola: TDataSource
-    DataSet = qryEscola
+  object dtsEscolas: TDataSource
+    DataSet = qryEscolas
     Left = 320
     Top = 65
   end
