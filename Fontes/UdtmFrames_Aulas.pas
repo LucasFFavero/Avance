@@ -13,6 +13,14 @@ type
     qryBuscaAulas: TFDQuery;
     qryBuscaAulasTITULO: TStringField;
     qryBuscaAulasIMAGEM: TBlobField;
+    qryBuscaAulasCODIGO: TIntegerField;
+    qryBuscaConteudo: TFDQuery;
+    qryBuscaConteudoDESCRICAO: TStringField;
+    qryBuscaExercicio: TFDQuery;
+    qryBuscaExercicioDESCRICAO: TStringField;
+    qryBuscaExercicioCOD_CONTEUDO: TIntegerField;
+    qryBuscaConteudoCODIGO: TIntegerField;
+    qryBuscaExercicioCODIGO: TIntegerField;
   private
     { Private declarations }
   public
