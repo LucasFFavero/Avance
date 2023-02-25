@@ -3,7 +3,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Aulas | Exerc'#237'cios'
-  ClientHeight = 822
+  ClientHeight = 643
   ClientWidth = 1487
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -216,7 +216,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     Left = 0
     Top = 48
     Width = 1487
-    Height = 774
+    Height = 595
     ActivePage = tbsAulas
     Align = alClient
     TabOrder = 1
@@ -226,7 +226,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         Left = 0
         Top = 0
         Width = 1479
-        Height = 746
+        Height = 567
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -236,6 +236,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         LookAndFeel.SkinName = ''
         object gvEmployees: TcxGridDBLayoutView
           Navigator.Buttons.CustomButtons = <>
+          OnCellClick = gvEmployeesCellClick
           DataController.DataSource = dtsAulas
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -278,6 +279,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Options.Focusing = False
             Styles.Content = cxStyle5
           end
+          object gvEmployeesItem1: TcxGridDBLayoutViewItem
+            DataBinding.FieldName = 'COD_AULA'
+            Visible = False
+            LayoutItem = gvEmployeesLayoutItem1
+          end
           object gvEmployeesGroup_Root: TdxLayoutGroup
             AlignHorz = ahLeft
             AlignVert = avTop
@@ -307,6 +313,9 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Padding.Top = 5
             Padding.AssignedValues = [lpavBottom, lpavLeft, lpavRight, lpavTop]
             Index = 1
+          end
+          object gvEmployeesLayoutItem1: TcxGridLayoutItem
+            Index = -1
           end
         end
         object gvStores: TcxGridDBLayoutView
@@ -463,6 +472,193 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     object tbsConteudo: TTabSheet
       Caption = 'tbsConteudo'
       ImageIndex = 2
+      OnShow = tbsConteudoShow
+      object cxgrid: TcxGrid
+        Left = 0
+        Top = 41
+        Width = 1479
+        Height = 526
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        BorderStyle = cxcbsNone
+        TabOrder = 0
+        LookAndFeel.Kind = lfFlat
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmHybrid
+        object cxgridDBTableView: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          FilterBox.CustomizeDialog = False
+          DataController.DataModeController.GridMode = True
+          DataController.DataModeController.GridModeBufferCount = 250
+          DataController.DataSource = dtsConteudo
+          DataController.Filter.MaxValueListCount = 1000
+          DataController.Filter.Options = [fcoCaseInsensitive]
+          DataController.Filter.AutoDataSetFilter = True
+          DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoSortByDisplayText]
+          DataController.Summary.DefaultGroupSummaryItems.Separator = ', '
+          DataController.Summary.DefaultGroupSummaryItems = <
+            item
+              Format = '00#'
+              Kind = skCount
+            end>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <
+            item
+              Links = <>
+              SummaryItems.Separator = ', '
+              SummaryItems = <
+                item
+                  Format = '00#'
+                  Kind = skCount
+                end>
+            end>
+          Filtering.ColumnPopup.MaxDropDownItemCount = 12
+          FilterRow.InfoText = 'Clique aqui para definir um filtro'
+          FilterRow.SeparatorColor = clBlack
+          FilterRow.SeparatorWidth = 3
+          FilterRow.ApplyChanges = fracImmediately
+          OptionsBehavior.CopyCaptionsToClipboard = False
+          OptionsBehavior.CopyRecordsToClipboard = False
+          OptionsCustomize.ColumnFiltering = False
+          OptionsCustomize.ColumnHorzSizing = False
+          OptionsCustomize.ColumnMoving = False
+          OptionsCustomize.ColumnSorting = False
+          OptionsCustomize.ColumnsQuickCustomizationShowCommands = False
+          OptionsData.Deleting = False
+          OptionsSelection.HideFocusRectOnExit = False
+          OptionsSelection.InvertSelect = False
+          OptionsView.FocusRect = False
+          OptionsView.DataRowHeight = 40
+          OptionsView.EditAutoHeightBorderColor = clWhite
+          OptionsView.GridLineColor = 10091981
+          OptionsView.GridLines = glHorizontal
+          OptionsView.GroupRowHeight = 50
+          OptionsView.HeaderHeight = 50
+          OptionsView.RowSeparatorColor = 10091981
+          Preview.AutoHeight = False
+          Preview.MaxLineCount = 2
+          Styles.Content = cxStyle1
+          Styles.Group = cxStyle2
+          Styles.GroupByBox = cxStyle3
+          Styles.Header = cxStyle4
+          Styles.Selection = cxStyle6
+          object cxgridDBTableViewGAUGE: TcxGridDBColumn
+            DataBinding.FieldName = 'GAUGE'
+            PropertiesClassName = 'TcxProgressBarProperties'
+            Properties.AssignedValues.Min = True
+            Properties.BarStyle = cxbsAnimation
+            Properties.BeginColor = 54056
+            Properties.BorderWidth = 10
+            Properties.EndColor = 240988
+            Properties.OverloadBeginColor = clBlue
+            Properties.PeakSize = 1
+            Properties.PeakValue = 80.000000000000000000
+            FooterAlignmentHorz = taCenter
+            GroupSummaryAlignment = taCenter
+            HeaderAlignmentHorz = taCenter
+            HeaderGlyphAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Focusing = False
+            Options.ShowCaption = False
+            Options.Sorting = False
+            Styles.Content = cxStyle58
+            Styles.Footer = cxStyle58
+            Styles.GroupSummary = cxStyle58
+            Width = 120
+          end
+          object cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn
+            DataBinding.FieldName = 'DESCRICAO_AGRUPADA'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Options.Editing = False
+            Width = 150
+            IsCaptionAssigned = True
+          end
+          object cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn
+            Caption = 'Conte'#250'do'
+            DataBinding.FieldName = 'DESCRICAO_CONTEUDO'
+            PropertiesClassName = 'TcxHyperLinkEditProperties'
+            Properties.LinkColor = 5131854
+            Properties.SingleClick = True
+            Options.Editing = False
+            Width = 450
+          end
+          object cxgridDBTableViewCod_Conteudo: TcxGridDBColumn
+            Caption = 'Cod. Conte'#250'do'
+            DataBinding.FieldName = 'COD_CONTEUDO'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Options.Editing = False
+            Width = 150
+          end
+          object cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn
+            DataBinding.FieldName = 'DESCRICAO_EXERCICIO'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Options.Editing = False
+            Width = 228
+          end
+          object cxgridDBTableViewCOD_AULA: TcxGridDBColumn
+            DataBinding.FieldName = 'COD_AULA'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Options.Editing = False
+            Width = 112
+          end
+          object cxgridDBTableViewCOD_EXERCICIO: TcxGridDBColumn
+            DataBinding.FieldName = 'COD_EXERCICIO'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Options.Editing = False
+            Width = 181
+          end
+        end
+        object cxgridLevel: TcxGridLevel
+          GridView = cxgridDBTableView
+        end
+      end
+      object pnlTitulo: TPanel
+        Left = 0
+        Top = 0
+        Width = 1479
+        Height = 41
+        Align = alTop
+        BevelOuter = bvNone
+        Color = 3013529
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Padding.Top = 8
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+        StyleElements = []
+        object lblAula: TLabel
+          Left = 0
+          Top = 8
+          Width = 1479
+          Height = 33
+          Align = alClient
+          Alignment = taCenter
+          Caption = 'lblAula'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 12615680
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          StyleElements = []
+          ExplicitWidth = 66
+          ExplicitHeight = 23
+        end
+        object Button1: TButton
+          Left = 376
+          Top = 10
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+      end
     end
     object tbsExercicios: TTabSheet
       Caption = 'tbsExercicios'
@@ -625,19 +821,19 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
       TextColor = 5131854
     end
     object cxStyle2: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 15394787
+      Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       TextColor = 5131854
     end
@@ -645,19 +841,19 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       AssignedValues = [svColor, svFont, svTextColor]
       Color = 15921390
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
       Font.Style = []
       TextColor = 5131854
     end
     object cxStyle4: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = clWhite
+      Color = 3013529
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       TextColor = 5131854
     end
@@ -673,13 +869,13 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     end
     object cxStyle6: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 14275534
+      Color = 12648160
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
+      Font.Color = 5904911
+      Font.Height = -15
+      Font.Name = 'Tahoma'
       Font.Style = [fsBold]
-      TextColor = 5131854
+      TextColor = 6249307
     end
     object cxStyle7: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -703,7 +899,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     end
     object cxStyle9: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = clWhite
+      Color = 240988
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -912,17 +1108,22 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       TextColor = 5131854
     end
     object CorFiltro: TcxStyle
-      AssignedValues = [svColor, svTextColor]
+      AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
       TextColor = clWhite
     end
     object FilterRowText: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 15921390
+      Color = clBlack
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
-      Font.Name = 'Roboto'
+      Font.Color = 6249307
+      Font.Height = -15
+      Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       TextColor = 3158064
     end
@@ -938,39 +1139,472 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   end
   object dtsAulas: TDataSource
     DataSet = cldsAulas
-    Left = 208
-    Top = 128
+    Left = 88
+    Top = 360
   end
   object cldsAulas: TClientDataSet
     PersistDataPacket.Data = {
-      5C0000009619E0BD0100000018000000020000000000030000005C0009444553
-      43524943414F020049001000010005574944544802000200FF0006494D414745
-      4D04004B0010000100075355425459504502004900070042696E617279000000}
+      6D0000009619E0BD0100000018000000030000000000030000006D0009444553
+      43524943414F020049000000010005574944544802000200FF0006494D414745
+      4D04004B0000000100075355425459504502004900070042696E617279000843
+      4F445F41554C4104000100000000000000}
     Active = True
     Aggregates = <>
     FieldDefs = <
       item
         Name = 'DESCRICAO'
-        Attributes = [faUnNamed]
         DataType = ftString
         Size = 255
       end
       item
         Name = 'IMAGEM'
-        Attributes = [faUnNamed]
         DataType = ftBlob
+      end
+      item
+        Name = 'COD_AULA'
+        DataType = ftInteger
       end>
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 144
-    Top = 128
+    Left = 40
+    Top = 368
     object cldsAulasDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
       Size = 255
     end
     object cldsAulasIMAGEM: TBlobField
       FieldName = 'IMAGEM'
+    end
+    object cldsAulasCOD_AULA: TIntegerField
+      FieldName = 'COD_AULA'
+    end
+  end
+  object cldsConteudo: TClientDataSet
+    PersistDataPacket.Data = {
+      000100009619E0BD010000001800000009000000000003000000000105474155
+      474504000100100000001244455343524943414F5F434F4E544555444F020049
+      001000010005574944544802000200FF001344455343524943414F5F45584552
+      434943494F020049001000010005574944544802000200FF0008434F445F4155
+      4C4104000100100000000D434F445F45584552434943494F0400010010000000
+      1244455343524943414F5F414752555041444102004900100001000557494454
+      4802000200FF000947415547455F494E4904000100100000000B47415547455F
+      46494E414C04000100100000000C434F445F434F4E544555444F040001001000
+      00000000}
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'GAUGE'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end
+      item
+        Name = 'DESCRICAO_CONTEUDO'
+        Attributes = [faUnNamed]
+        DataType = ftString
+        Size = 255
+      end
+      item
+        Name = 'DESCRICAO_EXERCICIO'
+        Attributes = [faUnNamed]
+        DataType = ftString
+        Size = 255
+      end
+      item
+        Name = 'COD_AULA'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end
+      item
+        Name = 'COD_EXERCICIO'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end
+      item
+        Name = 'DESCRICAO_AGRUPADA'
+        Attributes = [faUnNamed]
+        DataType = ftString
+        Size = 255
+      end
+      item
+        Name = 'GAUGE_INI'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end
+      item
+        Name = 'GAUGE_FINAL'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end
+      item
+        Name = 'COD_CONTEUDO'
+        Attributes = [faUnNamed]
+        DataType = ftInteger
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 388
+    Top = 328
+    object cldsConteudoGAUGE: TIntegerField
+      FieldName = 'GAUGE'
+    end
+    object cldsConteudoDESCRICAO_CONTEUDO: TStringField
+      FieldName = 'DESCRICAO_CONTEUDO'
+      Size = 255
+    end
+    object cldsConteudoDESCRICAO_EXERCICIO: TStringField
+      FieldName = 'DESCRICAO_EXERCICIO'
+      Size = 255
+    end
+    object cldsConteudoCOD_AULA: TIntegerField
+      FieldName = 'COD_AULA'
+    end
+    object cldsConteudoCOD_EXERCICIO: TIntegerField
+      FieldName = 'COD_EXERCICIO'
+    end
+    object cldsConteudoDESCRICAO_AGRUPADA: TStringField
+      FieldName = 'DESCRICAO_AGRUPADA'
+      Size = 255
+    end
+    object cldsConteudoGAUGE_INI: TIntegerField
+      FieldName = 'GAUGE_INI'
+    end
+    object cldsConteudoGAUGE_FINAL: TIntegerField
+      FieldName = 'GAUGE_FINAL'
+    end
+    object cldsConteudoCOD_CONTEUDO: TIntegerField
+      FieldName = 'COD_CONTEUDO'
+    end
+  end
+  object dtsConteudo: TDataSource
+    DataSet = cldsConteudo
+    Left = 460
+    Top = 328
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 1078
+    Top = 332
+    PixelsPerInch = 96
+    object cxStyle29: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = 5131854
+    end
+    object cxStyle30: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 15394787
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      TextColor = 5131854
+    end
+    object cxStyle31: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 15921390
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = 5131854
+    end
+    object cxStyle32: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      TextColor = 5131854
+    end
+    object cxStyle33: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 13541201
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+    object cxStyle34: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 14275534
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      TextColor = 5131854
+    end
+    object cxStyle35: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = 5131854
+    end
+    object cxStyle36: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle37: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle38: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle39: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle40: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle41: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle42: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle43: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle44: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle45: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle46: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle47: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle48: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle49: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle50: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle51: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle52: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle53: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle54: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle55: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle56: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle57: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16382199
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      TextColor = 5131854
+    end
+    object cxStyle58: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 6249307
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = 6249307
+    end
+    object cxStyle59: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 15921390
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5131854
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      TextColor = 3158064
+    end
+    object cxStyle60: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 16119285
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
     end
   end
 end
