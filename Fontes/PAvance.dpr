@@ -27,7 +27,9 @@ uses
   UrelEscolas in 'UrelEscolas.pas' {relEscolas},
   URelUsuarios in 'URelUsuarios.pas' {relUsuarios},
   UrelTurmas in 'UrelTurmas.pas' {relTurmas},
-  UrelAulas in 'UrelAulas.pas' {relAulas};
+  UrelAulas in 'UrelAulas.pas' {relAulas},
+  UfrmRelatorios in 'UfrmRelatorios.pas' {frmRelatorios},
+  UdtmRelatorios in 'UdtmRelatorios.pas' {dtmRelatorios: TDataModule};
 
 {$R *.res}
 
@@ -46,5 +48,6 @@ begin
   Application.CreateForm(TdtmAulasExercicios, dtmAulasExercicios);
   Application.CreateForm(TdtmFrames_Aulas, dtmFrames_Aulas);
   Application.CreateForm(TdtmAulasQuestoes, dtmAulasQuestoes);
+  Application.CreateForm(TdtmRelatorios, dtmRelatorios);
   Application.Run;
 end.

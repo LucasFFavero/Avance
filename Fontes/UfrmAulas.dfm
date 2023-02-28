@@ -1421,8 +1421,8 @@ object frmAulas: TfrmAulas
             AlignWithMargins = True
             Left = 3
             Top = 11
-            Width = 912
-            Height = 27
+            Width = 61
+            Height = 16
             Align = alClient
             Caption = 'Quest'#245'es'
             Font.Charset = DEFAULT_CHARSET
@@ -1431,8 +1431,6 @@ object frmAulas: TfrmAulas
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 61
-            ExplicitHeight = 16
           end
         end
       end

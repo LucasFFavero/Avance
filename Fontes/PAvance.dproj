@@ -206,6 +206,15 @@
             <Form>relAulas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UfrmRelatorios.pas">
+            <Form>frmRelatorios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UdtmRelatorios.pas">
+            <Form>dtmRelatorios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -23,7 +23,7 @@ type
     scol: TcxImageList;
     pnlProfessores: TPanel;
     btnCadEscolas: TAdvGlowButton;
-    btnCadAulas: TAdvGlowButton;
+    btnRelatorios: TAdvGlowButton;
     btnCadUsuarios: TAdvGlowButton;
     btnCadTurmas: TAdvGlowButton;
     pnlAlunos: TPanel;
@@ -45,6 +45,7 @@ type
     Panel6: TPanel;
     Panel10: TPanel;
     cxImageList5: TcxImageList;
+    btnCadAulas: TAdvGlowButton;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
@@ -56,6 +57,7 @@ type
     procedure btnAno3Click(Sender: TObject);
     procedure btnAno4Click(Sender: TObject);
     procedure btnAno5Click(Sender: TObject);
+    procedure btnRelatoriosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,7 +73,7 @@ implementation
 {$R *.dfm}
 
 uses UfrmLogon, UfrmUsuarios, UfrmEscolas, UfrmTurmas, UfrmAulas,
-  UfrmFrames_Aulas;
+  UfrmFrames_Aulas, UfrmRelatorios;
 
 procedure TfrmMain.btnAno1Click(Sender: TObject);
 begin
@@ -118,6 +120,12 @@ procedure TfrmMain.btnCadUsuariosClick(Sender: TObject);
 begin
   if (frmUsuarios = nil) then
     Application.CreateForm(TfrmUsuarios, frmUsuarios);
+end;
+
+procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
+begin
+  if (frmRelatorios = nil) then
+    Application.CreateForm(TfrmRelatorios, frmRelatorios);
 end;
 
 procedure TfrmMain.btnCadTurmasClick(Sender: TObject);
