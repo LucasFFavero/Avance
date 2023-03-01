@@ -4,7 +4,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   BorderStyle = bsDialog
   Caption = 'Aulas | Exerc'#237'cios'
   ClientHeight = 643
-  ClientWidth = 1487
+  ClientWidth = 1366
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   object pnlTopo: TPanel
     Left = 0
     Top = 0
-    Width = 1487
+    Width = 1366
     Height = 48
     Align = alTop
     BevelOuter = bvNone
@@ -36,7 +36,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 1487
+      Width = 1366
       Height = 48
       Align = alClient
       Center = True
@@ -210,12 +210,13 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         EE84104271278410427127841042712784104271278410D204FE2FC00039DB88
         CDBCF92AFB0000000049454E44AE426082}
       ExplicitTop = -6
+      ExplicitWidth = 1487
     end
   end
   object PageControl1: TPageControl
     Left = 0
     Top = 48
-    Width = 1487
+    Width = 1366
     Height = 595
     ActivePage = tbsAulas
     Align = alClient
@@ -225,7 +226,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       object cxGridEmployees: TcxGrid
         Left = 0
         Top = 0
-        Width = 1479
+        Width = 1358
         Height = 567
         Align = alClient
         BevelInner = bvNone
@@ -476,7 +477,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       object cxgrid: TcxGrid
         Left = 0
         Top = 41
-        Width = 1479
+        Width = 1358
         Height = 526
         Align = alClient
         BevelInner = bvNone
@@ -533,6 +534,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           OptionsView.EditAutoHeightBorderColor = clWhite
           OptionsView.GridLineColor = 10091981
           OptionsView.GridLines = glHorizontal
+          OptionsView.GroupByBox = False
           OptionsView.GroupRowHeight = 50
           OptionsView.HeaderHeight = 50
           OptionsView.RowSeparatorColor = 10091981
@@ -616,7 +618,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       object pnlTitulo: TPanel
         Left = 0
         Top = 0
-        Width = 1479
+        Width = 1358
         Height = 41
         Align = alTop
         BevelOuter = bvNone
@@ -634,7 +636,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         object lblAula: TLabel
           Left = 0
           Top = 8
-          Width = 1479
+          Width = 1358
           Height = 33
           Align = alClient
           Alignment = taCenter
@@ -656,6 +658,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           Height = 25
           Caption = 'Button1'
           TabOrder = 0
+          Visible = False
           OnClick = Button1Click
         end
       end
