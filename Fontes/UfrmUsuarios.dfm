@@ -1,7 +1,6 @@
 object frmUsuarios: TfrmUsuarios
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
   Caption = 'Usu'#225'rios'
   ClientHeight = 541
   ClientWidth = 944
@@ -909,6 +908,7 @@ object frmUsuarios: TfrmUsuarios
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmUsuarios.dtsUsuarios
@@ -985,6 +985,7 @@ object frmUsuarios: TfrmUsuarios
           Lookup.Font.Name = 'Arial'
           Lookup.Font.Style = []
           Lookup.Separator = ';'
+          CharCase = ecUpperCase
           Color = clWindow
           ShortCut = 0
           TabOrder = 1
@@ -1185,7 +1186,7 @@ object frmUsuarios: TfrmUsuarios
           DataSource = dtmUsuarios.dtsUsuarios
           KeyField = 'CODIGO'
           ListField = 'NOME'
-          ListSource = dtmUsuarios.dtsEscola
+          ListSource = dtmUsuarios.dtsEscolas
           TabOrder = 6
           OnEnter = dblkcbEscolaEnter
         end

@@ -176,8 +176,8 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Font.Height = -9
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
-                ImageIndex = 14
-                Images = frmMain.cxImageList1
+                ImageIndex = 0
+                Images = frmMain.cxImageList5
                 NotesFont.Charset = DEFAULT_CHARSET
                 NotesFont.Color = clWindowText
                 NotesFont.Height = -11
@@ -207,7 +207,7 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Layout = blGlyphTop
               end
               object btnRemoverAudio: TAdvGlowButton
-                Left = 0
+                Left = 2
                 Top = 51
                 Width = 32
                 Height = 32
@@ -217,8 +217,8 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Font.Height = -9
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
-                ImageIndex = 13
-                Images = frmMain.cxImageList1
+                ImageIndex = 1
+                Images = frmMain.cxImageList5
                 NotesFont.Charset = DEFAULT_CHARSET
                 NotesFont.Color = clWindowText
                 NotesFont.Height = -11
@@ -264,8 +264,6 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Height = 97
                 Align = alClient
                 TabOrder = 0
-                ExplicitLeft = 0
-                ExplicitTop = 0
                 ExplicitWidth = 245
                 ExplicitHeight = 240
                 ControlData = {
@@ -343,8 +341,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -384,8 +382,8 @@ object frmAulasConteudos: TfrmAulasConteudos
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -432,8 +430,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Align = alClient
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 0
-              ExplicitTop = 0
               ExplicitWidth = 245
               ExplicitHeight = 240
               ControlData = {
@@ -648,6 +644,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmAulasConteudos.dtsConteudos
@@ -660,6 +657,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Width = 540
           Height = 21
           Hint = 'Informe a descri'#231#227'o'
+          CharCase = ecUpperCase
           DataField = 'DESCRICAO'
           DataSource = dtmAulasConteudos.dtsConteudos
           TabOrder = 1

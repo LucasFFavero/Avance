@@ -75,7 +75,6 @@ object frmAulasQuestoes: TfrmAulasQuestoes
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitTop = 4
     end
     object btnCancelar: TAdvGlowButton
       AlignWithMargins = True
@@ -169,8 +168,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 14
-              Images = frmMain.cxImageList1
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -209,8 +208,8 @@ object frmAulasQuestoes: TfrmAulasQuestoes
               Font.Height = -9
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ImageIndex = 13
-              Images = frmMain.cxImageList1
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
               NotesFont.Charset = DEFAULT_CHARSET
               NotesFont.Color = clWindowText
               NotesFont.Height = -11
@@ -469,6 +468,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmAulasQuestoes.dtsQuestoes
@@ -476,7 +476,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           TabOrder = 0
         end
         object edtDescricao: TDBEdit
-          Left = 25
+          Left = 24
           Top = 91
           Width = 540
           Height = 21
@@ -487,7 +487,7 @@ object frmAulasQuestoes: TfrmAulasQuestoes
           TabOrder = 1
         end
         object dbcbCorreta: TDBCheckBox
-          Left = 594
+          Left = 590
           Top = 93
           Width = 90
           Height = 17

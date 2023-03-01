@@ -58,9 +58,11 @@ type
     TransactionExcluir: TFDTransaction;
     qryBuscaAulasDESCRICAO: TStringField;
     qryExcluirExercicio: TFDQuery;
+    qryExcluirQuestoes: TFDQuery;
     procedure dtsAulasStateChange(Sender: TObject);
     procedure qryAulasAfterScroll(DataSet: TDataSet);
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);
+    procedure qryConteudosAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -150,6 +152,13 @@ var
   b: TStream;
   Jpg: TJpegImage;
 begin
+  // Carrega os Conteúdos
+  dtmAulas.qryConteudos.Close;
+  dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
+    dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulas.qryConteudos.Open;
+
+  // Carrega Imagem
   Jpg := nil;
   b := qryAulas.CreateBlobStream(qryAulas.FieldByName('IMAGEM'), bmRead);
 
@@ -168,6 +177,19 @@ begin
   // liberar memoria
   b.Destroy;
   Jpg.Free;
+end;
+
+procedure TdtmAulas.qryConteudosAfterScroll(DataSet: TDataSet);
+begin
+  // Carrega Exercícios e Questões
+  dtmAulas.qryQuestoes.Close;
+
+  dtmAulas.qryExercicios.Close;
+  dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
+    dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger :=
+    dtmAulas.qryConteudosCODIGO.AsInteger;
+  dtmAulas.qryExercicios.Open;
 end;
 
 procedure TdtmAulas.qryExerciciosAfterScroll(DataSet: TDataSet);

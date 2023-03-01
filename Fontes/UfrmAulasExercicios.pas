@@ -39,10 +39,8 @@ type
     pnlCadastro: TPanel;
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
     edtCodigo: TDBEdit;
     edtDescricao: TDBEdit;
-    dblkcbConteudo: TDBLookupComboBox;
     cbImagem: TCheckBox;
     cbVideo: TCheckBox;
     tbsResumo: TTabSheet;
@@ -53,7 +51,6 @@ type
     btnEditarConteudo: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure dblkcbConteudoEnter(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -178,6 +175,42 @@ end;
 
 procedure TfrmAulasExercicios.btnIncluirConteudoClick(Sender: TObject);
 begin
+  try
+    // Salvar novo registro
+    if (dtmAulasExercicios.qryExercicios.State = dsInsert) then
+    begin
+      if (cbImagem.Checked = true) then
+        dtmAulasExercicios.qryExerciciosTIPO.AsString := 'I'
+      else if (cbVideo.Checked = true) then
+        dtmAulasExercicios.qryExerciciosTIPO.AsString := 'V';
+
+      dtmAulasExercicios.qryExercicios.Post;
+      dtmAulasExercicios.Transaction.CommitRetaining;
+
+      // Carrega Exercícios da Aula
+      dtmAulas.qryExercicios.Close;
+      dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
+        dtmAulas.qryAulasCODIGO.AsInteger;
+      dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger :=
+        dtmAulas.qryConteudosCODIGO.AsInteger;
+      dtmAulas.qryExercicios.Open;
+      dtmAulas.qryExercicios.Last;
+
+      // Abre novamente Exercícios
+      if dtmAulasExercicios.Transaction.Active then
+        dtmAulasExercicios.Transaction.Rollback;
+      if not dtmAulasExercicios.Transaction.Active then
+        dtmAulasExercicios.Transaction.StartTransaction;
+
+      dtmAulasExercicios.qryExercicios.Close;
+      dtmAulasExercicios.qryExercicios.ParamByName('CODIGO').AsInteger :=
+        dtmAulas.qryExerciciosCODIGO.AsInteger;
+      dtmAulasExercicios.qryExercicios.Open;
+    end;
+  except
+
+  end;
+
   if (frmAulasQuestoes = nil) then
     Application.CreateForm(TfrmAulasQuestoes, frmAulasQuestoes);
 
@@ -225,15 +258,6 @@ end;
 
 procedure TfrmAulasExercicios.btnSalvarClick(Sender: TObject);
 begin
-  if Trim(dblkcbConteudo.Text) = '' then
-  begin
-    Application.MessageBox('Informe o conteúdo.',
-      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
-      20)), 0 + 48 + 0);
-    dblkcbConteudo.SetFocus;
-    Exit;
-  end;
-
   if Trim(edtDescricao.Text) = '' then
   begin
     Application.MessageBox('Informe a descrição.',
@@ -247,15 +271,18 @@ begin
     // Salvar novo registro
     if dtmAulasExercicios.qryExercicios.Active then
     begin
-      if (cbImagem.Checked = true) then
-        dtmAulasExercicios.qryExerciciosTIPO.AsString := 'I'
-      else if (cbVideo.Checked = true) then
-        dtmAulasExercicios.qryExerciciosTIPO.AsString := 'V';
+      if (dtmAulasExercicios.qryExercicios.State = dsInsert) or (dtmAulasExercicios.qryExercicios.State = dsEdit) then
+      begin
+        if (cbImagem.Checked = true) then
+          dtmAulasExercicios.qryExerciciosTIPO.AsString := 'I'
+        else if (cbVideo.Checked = true) then
+          dtmAulasExercicios.qryExerciciosTIPO.AsString := 'V';
 
-      dtmAulasExercicios.qryExercicios.Post;
+        dtmAulasExercicios.qryExercicios.Post;
+
+        dtmAulasExercicios.Transaction.CommitRetaining;
+      end;
     end;
-
-    dtmAulasExercicios.Transaction.CommitRetaining;
   except
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
@@ -302,9 +329,8 @@ end;
 procedure TfrmAulasExercicios.dbGridQuestoesDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  if not dtmAulasExercicios.qryConteudos.IsEmpty then
+  if not dtmAulasExercicios.qryQuestoes.IsEmpty then
   begin
-
     if gdSelected in State then
     begin
       with dbGridQuestoes.Canvas do
@@ -353,12 +379,6 @@ begin
   end;
 end;
 
-procedure TfrmAulasExercicios.dblkcbConteudoEnter(Sender: TObject);
-begin
-  if not dtmAulasExercicios.qryConteudos.Active then
-    dtmAulasExercicios.qryConteudos.Open;
-end;
-
 procedure TfrmAulasExercicios.FormActivate(Sender: TObject);
 begin
   THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
@@ -397,18 +417,20 @@ end;
 
 procedure TfrmAulasExercicios.FormShow(Sender: TObject);
 begin
-  if not dtmAulasExercicios.qryConteudos.Active then
-    dtmAulasExercicios.qryConteudos.Open;
-
   THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulasExercicios.tbsResumoShow(Sender: TObject);
 begin
   dtmAulasExercicios.qryQuestoes.Close;
-  dtmAulasExercicios.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
-    dtmAulas.qryExerciciosCODIGO.AsInteger;
-  dtmAulasExercicios.qryQuestoes.Open;
+
+  if (dtmAulasExercicios.qryExerciciosCODIGO.AsInteger > 0) then
+  begin
+    dtmAulasExercicios.qryQuestoes.Close;
+    dtmAulasExercicios.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger
+      := dtmAulasExercicios.qryExerciciosCODIGO.AsInteger;
+    dtmAulasExercicios.qryQuestoes.Open;
+  end;
 
   THackDBGrid(dbGridQuestoes).DefaultRowHeight := 30;
 end;

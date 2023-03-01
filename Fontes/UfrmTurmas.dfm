@@ -565,6 +565,7 @@ object frmTurmas: TfrmTurmas
       ParentFont = False
       Transparent = True
       TabOrder = 14
+      OnClick = btnImprimirClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -693,6 +694,7 @@ object frmTurmas: TfrmTurmas
           Width = 80
           Height = 21
           Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
           Color = 16771797
           DataField = 'CODIGO'
           DataSource = dtmTurmas.dtsTurmas

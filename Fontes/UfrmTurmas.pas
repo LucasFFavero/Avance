@@ -65,6 +65,7 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbGridLocalizarDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +79,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdtmTurmas, UfrmMain;
+uses UdtmTurmas, UfrmMain, UrelTurmas;
 
 procedure TfrmTurmas.btnAnteriorClick(Sender: TObject);
 begin
@@ -143,6 +144,23 @@ begin
   Application.MessageBox('Exclusão realizada com sucesso.',
     pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
     ), 0 + 64 + 0);
+end;
+
+procedure TfrmTurmas.btnImprimirClick(Sender: TObject);
+begin
+  if dtmTurmas.qryTurmas.IsEmpty then
+  begin
+    Application.MessageBox('Não há registro(s) para imprimir.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
+    Exit;
+  end;
+
+  relTurmas := nil;
+  Application.CreateForm(TrelTurmas, relTurmas);
+  relTurmas.qrTurmas.Preview;
+
+  dtmTurmas.qryTurmas.First;
 end;
 
 procedure TfrmTurmas.btnIncluirClick(Sender: TObject);

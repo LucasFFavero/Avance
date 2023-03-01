@@ -566,6 +566,7 @@ object frmAulas: TfrmAulas
       ParentFont = False
       Transparent = True
       TabOrder = 14
+      OnClick = btnImprimirClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -875,6 +876,7 @@ object frmAulas: TfrmAulas
             Width = 80
             Height = 21
             Hint = 'C'#243'digo Autom'#225'tico'
+            CharCase = ecUpperCase
             Color = 16771797
             DataField = 'CODIGO'
             DataSource = dtmAulas.dtsAulas
@@ -1419,18 +1421,16 @@ object frmAulas: TfrmAulas
             AlignWithMargins = True
             Left = 3
             Top = 11
-            Width = 912
-            Height = 27
+            Width = 61
+            Height = 16
             Align = alClient
-            Caption = 'Respostas'
+            Caption = 'Quest'#245'es'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clRed
             Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 68
-            ExplicitHeight = 16
           end
         end
       end

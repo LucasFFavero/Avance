@@ -2522,23 +2522,23 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
     end
-    object btnCadAulas: TAdvGlowButton
+    object btnRelatorios: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
-      Top = 381
+      Top = 507
       Width = 147
       Height = 120
       Cursor = crHandPoint
       Align = alTop
       BorderStyle = bsNone
-      Caption = 'Cadastro de Aulas'
+      Caption = 'Relat'#243'rios'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 3618615
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
-      ImageIndex = 3
-      Images = cxImageList3
+      ImageIndex = 9
+      Images = cxImageList1
       NotesFont.Charset = DEFAULT_CHARSET
       NotesFont.Color = clWindowText
       NotesFont.Height = -11
@@ -2547,7 +2547,7 @@ object frmMain: TfrmMain
       ParentFont = False
       Transparent = True
       TabOrder = 1
-      OnClick = btnCadAulasClick
+      OnClick = btnRelatoriosClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -2565,6 +2565,7 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
+      ExplicitTop = 381
     end
     object btnCadUsuarios: TAdvGlowButton
       AlignWithMargins = True
@@ -2636,6 +2637,50 @@ object frmMain: TfrmMain
       Transparent = True
       TabOrder = 3
       OnClick = btnCadTurmasClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Layout = blGlyphTop
+    end
+    object btnCadAulas: TAdvGlowButton
+      AlignWithMargins = True
+      Left = 3
+      Top = 381
+      Width = 147
+      Height = 120
+      Cursor = crHandPoint
+      Align = alTop
+      BorderStyle = bsNone
+      Caption = 'Cadastro de Aulas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3618615
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ImageIndex = 3
+      Images = cxImageList3
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Transparent = True
+      TabOrder = 4
+      OnClick = btnCadAulasClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
