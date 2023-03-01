@@ -33,33 +33,6 @@ uses
 
 type
   TfrmFrames_Aulas = class(TForm)
-    clEmployees: TClientDataSet;
-    clEmployeesId: TIntegerField;
-    clEmployeesDepartment: TIntegerField;
-    clEmployeesTitle: TWideStringField;
-    clEmployeesStatus: TIntegerField;
-    clEmployeesHireDate: TDateTimeField;
-    clEmployeesPersonalProfile: TWideStringField;
-    clEmployeesFirstName: TWideStringField;
-    clEmployeesLastName: TWideStringField;
-    clEmployeesFullName: TWideStringField;
-    clEmployeesPrefix: TIntegerField;
-    clEmployeesHomePhone: TWideStringField;
-    clEmployeesMobilePhone: TWideStringField;
-    clEmployeesEmail: TWideStringField;
-    clEmployeesSkype: TWideStringField;
-    clEmployeesBirthDate: TDateTimeField;
-    clEmployeesPictureId: TIntegerField;
-    clEmployeesAddress_Line: TWideStringField;
-    clEmployeesAddress_City: TWideStringField;
-    clEmployeesAddress_State: TIntegerField;
-    clEmployeesAddress_ZipCode: TWideStringField;
-    clEmployeesAddress_Latitude: TFloatField;
-    clEmployeesAddress_Longitude: TFloatField;
-    clEmployeesProbationReason_Id: TIntegerField;
-    clEmployeesPicture: TBlobField;
-    clEmployeesFull_Address: TStringField;
-    dsEmployees: TDataSource;
     cxStyleRepository: TcxStyleRepository;
     cxStyle1: TcxStyle;
     cxStyle2: TcxStyle;
@@ -183,7 +156,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure gvEmployeesCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-    procedure Button1Click(Sender: TObject);
     procedure tbsConteudoShow(Sender: TObject);
   private
     { Private declarations }
@@ -199,11 +171,6 @@ implementation
 {$R *.dfm}
 
 uses UfrmMain, UdtmFrames_Aulas;
-
-procedure TfrmFrames_Aulas.Button1Click(Sender: TObject);
-begin
-  cldsConteudo.SaveToFile('C:\AMD\XML1.XML');
-end;
 
 procedure TfrmFrames_Aulas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
