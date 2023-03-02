@@ -2,7 +2,7 @@ object frmRelatorios: TfrmRelatorios
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rios'
-  ClientHeight = 514
+  ClientHeight = 541
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,14 +12,16 @@ object frmRelatorios: TfrmRelatorios
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
+  Position = poMainFormCenter
   Visible = True
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
     Left = 0
     Top = 0
     Width = 964
-    Height = 140
+    Height = 100
     Align = alTop
     BevelOuter = bvNone
     Color = 15461355
@@ -29,81 +31,95 @@ object frmRelatorios: TfrmRelatorios
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
-    object rgFiltros: TRadioGroup
+    object gpbFiltros: TGroupBox
       Left = 5
       Top = 2
-      Width = 276
-      Height = 136
+      Width = 750
+      Height = 96
       Align = alLeft
       Caption = 'Filtros'
-      Items.Strings = (
-        'Escola'
-        'Alunos'
-        'Exerc'#237'cios')
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = -2
-    end
-    object gpbCampos: TGroupBox
-      Left = 281
-      Top = 2
-      Width = 256
-      Height = 136
-      Align = alLeft
-      Caption = 'Campos'
-      TabOrder = 1
-      ExplicitHeight = 149
-      object pnlAlunos: TPanel
-        Left = 2
-        Top = 15
-        Width = 252
-        Height = 119
-        Align = alClient
-        BevelOuter = bvNone
+      object cbEscola: TCheckBox
+        Left = 10
+        Top = 27
+        Width = 97
+        Height = 17
+        Caption = 'Escola'
         TabOrder = 0
-        ExplicitLeft = 256
-        ExplicitTop = 11
-        ExplicitWidth = 257
-        ExplicitHeight = 129
-        object Label1: TLabel
-          Left = 10
-          Top = 21
-          Width = 27
-          Height = 13
-          Caption = 'Aluno'
-        end
-        object DBLookupComboBox1: TDBLookupComboBox
-          Left = 10
-          Top = 39
-          Width = 217
-          Height = 21
-          TabOrder = 0
-        end
+      end
+      object cbAlunos: TCheckBox
+        Left = 267
+        Top = 27
+        Width = 97
+        Height = 17
+        Caption = 'Aluno'
+        TabOrder = 1
+      end
+      object cbAulas: TCheckBox
+        Left = 486
+        Top = 27
+        Width = 97
+        Height = 17
+        Caption = 'Aula'
+        TabOrder = 2
+      end
+      object dbcbEscola: TDBLookupComboBox
+        Left = 10
+        Top = 48
+        Width = 240
+        Height = 21
+        KeyField = 'CODIGO'
+        ListField = 'NOME'
+        ListSource = dtmRelatorios.dtsBuscaEscolas
+        TabOrder = 3
+        OnEnter = dbcbEscolaEnter
+      end
+      object dbcbAlunos: TDBLookupComboBox
+        Left = 267
+        Top = 48
+        Width = 200
+        Height = 21
+        KeyField = 'CODIGO'
+        ListField = 'NOME'
+        ListSource = dtmRelatorios.dtsBuscaUsuarios
+        TabOrder = 4
+        OnEnter = dbcbAlunosEnter
+      end
+      object dbcbAulas: TDBLookupComboBox
+        Left = 486
+        Top = 48
+        Width = 240
+        Height = 21
+        KeyField = 'CODIGO'
+        ListField = 'TITULO'
+        ListSource = dtmRelatorios.dtsBuscaAulas
+        TabOrder = 5
+        OnEnter = dbcbAulasEnter
       end
     end
     object gpbOpcoes: TGroupBox
-      Left = 537
+      Left = 755
       Top = 2
-      Width = 425
-      Height = 136
+      Width = 207
+      Height = 96
       Align = alClient
       Caption = 'Op'#231#245'es'
-      TabOrder = 2
-      ExplicitLeft = 672
-      ExplicitTop = 56
-      ExplicitWidth = 185
-      ExplicitHeight = 105
-      object btnLocalizarUsuarios: TAdvGlowButton
+      TabOrder = 1
+      ExplicitLeft = 573
+      ExplicitTop = -2
+      ExplicitWidth = 393
+      ExplicitHeight = 136
+      object btnBuscar: TAdvGlowButton
         Left = 17
-        Top = 20
-        Width = 110
+        Top = 37
+        Width = 32
         Height = 32
-        Caption = 'Buscar'
+        BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 3618615
-        Font.Height = -11
+        Font.Height = -9
         Font.Name = 'Tahoma'
-        Font.Style = []
+        Font.Style = [fsBold]
         ImageIndex = 0
         Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
@@ -112,6 +128,8 @@ object frmRelatorios: TfrmRelatorios
         NotesFont.Name = 'Tahoma'
         NotesFont.Style = []
         ParentFont = False
+        ShowCaption = False
+        Transparent = True
         TabOrder = 0
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
@@ -129,19 +147,19 @@ object frmRelatorios: TfrmRelatorios
         Appearance.ColorMirrorCheckedTo = 16768988
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
-        Layout = blGlyphRight
+        Layout = blGlyphTop
       end
-      object AdvGlowButton1: TAdvGlowButton
-        Left = 17
-        Top = 58
-        Width = 110
+      object btnLimpar: TAdvGlowButton
+        Left = 73
+        Top = 37
+        Width = 32
         Height = 32
-        Caption = 'Limpar'
+        BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 3618615
-        Font.Height = -11
+        Font.Height = -9
         Font.Name = 'Tahoma'
-        Font.Style = []
+        Font.Style = [fsBold]
         ImageIndex = 0
         Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
@@ -150,6 +168,8 @@ object frmRelatorios: TfrmRelatorios
         NotesFont.Name = 'Tahoma'
         NotesFont.Style = []
         ParentFont = False
+        ShowCaption = False
+        Transparent = True
         TabOrder = 1
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
@@ -167,19 +187,19 @@ object frmRelatorios: TfrmRelatorios
         Appearance.ColorMirrorCheckedTo = 16768988
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
-        Layout = blGlyphRight
+        Layout = blGlyphTop
       end
-      object AdvGlowButton2: TAdvGlowButton
-        Left = 17
-        Top = 96
-        Width = 110
+      object btnImprimir: TAdvGlowButton
+        Left = 129
+        Top = 37
+        Width = 32
         Height = 32
-        Caption = 'Imprimir'
+        BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 3618615
-        Font.Height = -11
+        Font.Height = -9
         Font.Name = 'Tahoma'
-        Font.Style = []
+        Font.Style = [fsBold]
         ImageIndex = 0
         Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
@@ -188,6 +208,8 @@ object frmRelatorios: TfrmRelatorios
         NotesFont.Name = 'Tahoma'
         NotesFont.Style = []
         ParentFont = False
+        ShowCaption = False
+        Transparent = True
         TabOrder = 2
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
@@ -205,15 +227,15 @@ object frmRelatorios: TfrmRelatorios
         Appearance.ColorMirrorCheckedTo = 16768988
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
-        Layout = blGlyphRight
+        Layout = blGlyphTop
       end
     end
   end
   object dbgRelatorios: TDBGrid
     Left = 0
-    Top = 140
+    Top = 100
     Width = 964
-    Height = 374
+    Height = 441
     Align = alClient
     DataSource = dtmAulas.dtsConteudos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
