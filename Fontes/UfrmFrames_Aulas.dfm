@@ -34,7 +34,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 1366
     object Image1: TImage
       Left = 0
       Top = 0
@@ -221,6 +220,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Height = 25
       Caption = 'Salvar Aulas'
       TabOrder = 0
+      Visible = False
       OnClick = Button2Click
     end
     object Button3: TButton
@@ -230,6 +230,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Height = 25
       Caption = 'Salvar Conteudos'
       TabOrder = 1
+      Visible = False
       OnClick = Button3Click
     end
   end
@@ -241,8 +242,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     ActivePage = tbsAulas
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1366
-    ExplicitHeight = 595
+    ExplicitTop = 39
     object tbsAulas: TTabSheet
       Caption = 'tbsAulas'
       object cxGridEmployees: TcxGrid
@@ -257,8 +257,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         TabOrder = 0
         LookAndFeel.ScrollbarMode = sbmClassic
         LookAndFeel.SkinName = ''
-        ExplicitWidth = 1358
-        ExplicitHeight = 567
         object gvEmployees: TcxGridDBLayoutView
           Navigator.Buttons.CustomButtons = <>
           OnCellClick = gvEmployeesCellClick
@@ -266,14 +264,22 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
-          OptionsBehavior.ItemHotTrack = False
-          OptionsBehavior.RecordScrollMode = rsmByRecord
+          OptionsBehavior.CopyCaptionsToClipboard = False
+          OptionsBehavior.CopyRecordsToClipboard = False
+          OptionsBehavior.DragHighlighting = False
+          OptionsBehavior.DragOpening = False
+          OptionsBehavior.DragScrolling = False
+          OptionsBehavior.FocusCellOnTab = True
+          OptionsBehavior.FocusFirstCellOnNewRecord = True
+          OptionsBehavior.ExpandRecordOnDblClick = False
           OptionsData.CancelOnExit = False
           OptionsData.Deleting = False
           OptionsData.DeletingConfirmation = False
           OptionsData.Editing = False
           OptionsData.Inserting = False
+          OptionsSelection.HideSelection = True
           OptionsView.NavigatorOffset = 20
+          OptionsView.ShowEditButtons = gsebForFocusedRecord
           OptionsView.ItemPadding.AssignedValues = [lpavRight]
           OptionsView.ItemPadding.Right = 2
           OptionsView.MaxColumnCount = 4
@@ -281,17 +287,19 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           OptionsView.RecordIndent = 2
           OptionsView.SeparatorColor = 16511978
           OptionsView.ViewMode = lvvmMultiRow
-          Styles.Group = cxStyle17
+          Styles.Group = styleCategoryRow
           object gvEmployeesItemPicture: TcxGridDBLayoutViewItem
             Caption = 'Imagem'
             DataBinding.FieldName = 'IMAGEM'
             PropertiesClassName = 'TcxImageProperties'
             Properties.FitMode = ifmStretch
             Properties.GraphicClassName = 'TdxSmartImage'
+            Properties.GraphicTransparency = gtTransparent
             Properties.ReadOnly = True
             LayoutItem = cxGridLayoutItem1
             Options.Editing = False
             Options.Filtering = False
+            Styles.Content = styleCardHeader
           end
           object gvEmployeesItemFullName: TcxGridDBLayoutViewItem
             Caption = 'Descri'#231#227'o'
@@ -302,7 +310,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Options.Editing = False
             Options.Filtering = False
             Options.Focusing = False
-            Styles.Content = cxStyle5
+            Styles.Content = styleCardHeader
           end
           object gvEmployeesItem1: TcxGridDBLayoutViewItem
             DataBinding.FieldName = 'COD_AULA'
@@ -511,8 +519,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         LookAndFeel.Kind = lfFlat
         LookAndFeel.NativeStyle = False
         LookAndFeel.ScrollbarMode = sbmHybrid
-        ExplicitWidth = 1358
-        ExplicitHeight = 526
+        ExplicitTop = 47
         object cxgridDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           FilterBox.CustomizeDialog = False
@@ -560,6 +567,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           OptionsView.EditAutoHeightBorderColor = clWhite
           OptionsView.GridLineColor = 10091981
           OptionsView.GridLines = glHorizontal
+          OptionsView.GroupByBox = False
           OptionsView.GroupRowHeight = 50
           OptionsView.HeaderHeight = 50
           OptionsView.RowSeparatorColor = 10091981
@@ -574,13 +582,16 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             DataBinding.FieldName = 'GAUGE'
             PropertiesClassName = 'TcxProgressBarProperties'
             Properties.AssignedValues.Min = True
-            Properties.BarStyle = cxbsAnimation
-            Properties.BeginColor = 54056
+            Properties.BarStyle = cxbsGradient
+            Properties.BeginColor = 917310
             Properties.BorderWidth = 10
-            Properties.EndColor = 240988
+            Properties.EndColor = 37149
+            Properties.Max = 100.000000000000000000
             Properties.OverloadBeginColor = clBlue
+            Properties.OverloadValue = 1.000000000000000000
             Properties.PeakSize = 1
             Properties.PeakValue = 80.000000000000000000
+            Properties.SolidTextColor = True
             FooterAlignmentHorz = taCenter
             GroupSummaryAlignment = taCenter
             HeaderAlignmentHorz = taCenter
@@ -667,7 +678,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         ParentFont = False
         TabOrder = 1
         StyleElements = []
-        ExplicitWidth = 1358
         object lblAula: TLabel
           Left = 0
           Top = 8
@@ -677,7 +687,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           Alignment = taCenter
           Caption = 'lblAula'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = 12615680
+          Font.Color = 8404992
           Font.Height = -19
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -685,15 +695,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           StyleElements = []
           ExplicitWidth = 66
           ExplicitHeight = 23
-        end
-        object Button1: TButton
-          Left = 376
-          Top = 10
-          Width = 75
-          Height = 25
-          Caption = 'Button1'
-          TabOrder = 0
-          Visible = False
         end
       end
     end
@@ -1028,15 +1029,16 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   end
   object dtsAulas: TDataSource
     DataSet = cldsAulas
-    Left = 96
-    Top = 368
+    Left = 272
+    Top = 472
   end
   object cldsAulas: TClientDataSet
     PersistDataPacket.Data = {
-      6D0000009619E0BD0100000018000000030000000000030000006D0009444553
+      830000009619E0BD010000001800000003000000000003000000830009444553
       43524943414F020049001000010005574944544802000200FF0006494D414745
       4D04004B0010000100075355425459504502004900070042696E617279000843
-      4F445F41554C4104000100100000000000}
+      4F445F41554C41040001001000000001000D44454641554C545F4F5244455202
+      00820000000000}
     Active = True
     Aggregates = <>
     FieldDefs = <
@@ -1056,11 +1058,17 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         Attributes = [faUnNamed]
         DataType = ftInteger
       end>
-    IndexDefs = <>
+    IndexDefs = <
+      item
+        Name = 'DEFAULT_ORDER'
+      end
+      item
+        Name = 'CHANGEINDEX'
+      end>
     Params = <>
     StoreDefs = True
-    Left = 40
-    Top = 368
+    Left = 320
+    Top = 480
     object cldsAulasDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
       Size = 255
@@ -1085,7 +1093,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       00000000}
     Active = True
     Aggregates = <>
-    FileName = 'C:\AMD\XML_CONTEUDO.XML'
     FieldDefs = <
       item
         Name = 'GAUGE'
@@ -1474,7 +1481,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 6249307
+      Font.Color = 3354929
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -1498,6 +1505,257 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
+    end
+  end
+  object StyleRepository: TcxStyleRepository
+    Left = 732
+    Top = 300
+    PixelsPerInch = 96
+    object cxStyle61: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15451300
+    end
+    object cxStyle62: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle63: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle64: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle65: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 14811135
+      TextColor = clBlack
+    end
+    object cxStyle66: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 14811135
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clNavy
+    end
+    object cxStyle67: TcxStyle
+      AssignedValues = [svColor]
+      Color = 14872561
+    end
+    object cxStyle68: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 4707838
+      TextColor = clBlack
+    end
+    object cxStyle69: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 12937777
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+    object cxStyle70: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15451300
+    end
+    object cxStyle71: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 4707838
+      TextColor = clBlack
+    end
+    object cxStyle72: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15451300
+    end
+    object cxStyle73: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 14811135
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clNavy
+    end
+    object cxStyle74: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 12937777
+      TextColor = clWhite
+    end
+    object cxStyle75: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15451300
+    end
+    object cxStyle76: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 12937777
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+    object cxStyle77: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 12937777
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+    object cxStyle78: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle79: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle80: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16247513
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxStyle81: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15451300
+    end
+    object cxStyle82: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 4707838
+      TextColor = clBlack
+    end
+    object cxStyle83: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 16749885
+      TextColor = clWhite
+    end
+    object cxStyle84: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 12937777
+      TextColor = clWhite
+    end
+    object styleSelection: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 5228795
+      TextColor = clBlack
+    end
+    object styleCardHeader: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 16708566
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3354929
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = 5131854
+    end
+    object styleCardBorder: TcxStyle
+      AssignedValues = [svColor]
+      Color = 13603685
+    end
+    object styleBackground: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15918293
+    end
+    object styleCategoryRow: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 16772021
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+    end
+    object stylePrice: TcxStyle
+      AssignedValues = [svTextColor]
+      TextColor = clRed
+    end
+    object GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+      Caption = 'DevExpress'
+      Styles.Background = cxStyle61
+      Styles.Content = cxStyle62
+      Styles.ContentEven = cxStyle63
+      Styles.ContentOdd = cxStyle64
+      Styles.FilterBox = cxStyle65
+      Styles.IncSearch = cxStyle71
+      Styles.Footer = cxStyle66
+      Styles.Group = cxStyle67
+      Styles.GroupByBox = cxStyle68
+      Styles.Header = cxStyle69
+      Styles.Inactive = cxStyle70
+      Styles.Indicator = cxStyle72
+      Styles.Preview = cxStyle73
+      Styles.Selection = cxStyle74
+      BuiltIn = True
+    end
+    object GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+      Caption = 'DevExpress'
+      Styles.Background = cxStyle75
+      Styles.Content = cxStyle78
+      Styles.ContentEven = cxStyle79
+      Styles.ContentOdd = cxStyle80
+      Styles.IncSearch = cxStyle82
+      Styles.CaptionRow = cxStyle76
+      Styles.CardBorder = cxStyle77
+      Styles.Inactive = cxStyle81
+      Styles.RowCaption = cxStyle83
+      Styles.Selection = cxStyle84
+      BuiltIn = True
+    end
+    object CardsStyleSheet: TcxGridCardViewStyleSheet
+      Styles.Background = styleBackground
+      Styles.CardBorder = styleCardBorder
+      Styles.CategoryRow = styleCategoryRow
+      Styles.CategorySeparator = styleCardBorder
+      Styles.LayerSeparator = styleCardBorder
+      Styles.Selection = styleSelection
+      BuiltIn = True
     end
   end
 end
