@@ -136,6 +136,7 @@ Coordinates=394,628,91,36
 
 [cxGridLayoutItem1]
 Coordinates=783,826,122,36
+Visible=False
 
 [FilterRowText]
 Coordinates=783,881,94,36
