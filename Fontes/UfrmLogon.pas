@@ -44,7 +44,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmLogonTransp, UfrmMain, UdtmMain;
+uses UfrmLogonTransp, UfrmMain, UdtmMain, UfrmFrames_Aulas;
 
 procedure TfrmLogon.AdvShapeButton1Click(Sender: TObject);
 begin
@@ -55,16 +55,14 @@ procedure TfrmLogon.btnLogonClick(Sender: TObject);
 begin
   if (edtUsuario.Text = '') then
   begin
-    Application.MessageBox(PChar('Informe o Usuário.'), 'ATENÇÃO - Usuário ',
-      0 + 48 + 0);
+    Application.MessageBox(PChar('Informe o Usuário.'), 'ATENÇÃO - Usuário ', 0 + 48 + 0);
     edtUsuario.SetFocus;
     Exit;
   end;
 
   dtmMain.qryUsuarios.Close;
   dtmMain.qryUsuarios.SQL.Clear;
-  dtmMain.qryUsuarios.SQL.Add
-    ('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO');
+  dtmMain.qryUsuarios.SQL.Add('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO, USUARIOS.COD_TURMA');
   dtmMain.qryUsuarios.SQL.Add('FROM USUARIOS');
 
   dtmMain.qryUsuarios.SQL.Add('WHERE USUARIOS.LOGIN =:NOME');
@@ -78,8 +76,7 @@ begin
 
   if not dtmMain.qryUsuarios.IsEmpty then
   begin
-    frmMain.sbPrincipal.Panels[2].Text := 'Usuário: ' +
-      dtmMain.qryUsuariosLOGIN.AsString;
+    frmMain.sbPrincipal.Panels[2].Text := 'Usuário: ' + dtmMain.qryUsuariosLOGIN.AsString;
 
     frmMain.pnlProfessores.Visible := True;
     frmMain.pnlAlunos.Visible := False;
@@ -87,10 +84,8 @@ begin
     // Verifica se é usuário ou aluno
     if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
     begin
-      frmMain.pnlAlunos.Visible := True;
+      frmMain.pnlAlunos.Visible := False;
       frmMain.pnlProfessores.Visible := False;
-
-      //Mostrar as aulas, sem mostrar os icones
     end;
 
     Application.ProcessMessages;
@@ -101,15 +96,12 @@ begin
     // Após 3 tentativas encerrar
     if (Tentativa = 3) then
     begin
-      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)' + #13 + #13
-        + 'Limite de tentativas excedido...'), 'ATENÇÃO - Usuário ',
-        0 + 16 + 0);
+      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)' + #13 + #13 + 'Limite de tentativas excedido...'), 'ATENÇÃO - Usuário ', 0 + 16 + 0);
       Application.Terminate;
     end
     else
     begin
-      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)'),
-        'ATENÇÃO - Usuário ', 0 + 48 + 0);
+      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)'), 'ATENÇÃO - Usuário ', 0 + 48 + 0);
       edtUsuario.SetFocus;
       Abort;
     end;
