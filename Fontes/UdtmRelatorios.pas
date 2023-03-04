@@ -10,13 +10,37 @@ uses
 
 type
   TdtmRelatorios = class(TDataModule)
-    qryBuscaAulas: TFDQuery;
-    qryBuscaAulasCODIGO: TIntegerField;
-    qryBuscaAulasCOD_TURMA: TIntegerField;
-    qryBuscaAulasDESCRICAO: TStringField;
-    qryBuscaAulasTITULO: TStringField;
-    qryBuscaAulasIMAGEM: TBlobField;
-    dtsBuscaAulas: TDataSource;
+    qryAulas: TFDQuery;
+    qryAulasCODIGO: TIntegerField;
+    qryAulasCOD_TURMA: TIntegerField;
+    qryAulasDESCRICAO: TStringField;
+    qryAulasTITULO: TStringField;
+    qryAulasIMAGEM: TBlobField;
+    dtsAulas: TDataSource;
+    qryEscolas: TFDQuery;
+    qryEscolasCODIGO: TIntegerField;
+    qryEscolasNOME: TStringField;
+    qryEscolasCIDADE: TStringField;
+    qryEscolasESTADO: TStringField;
+    dtsEscolas: TDataSource;
+    qryUsuarios: TFDQuery;
+    qryUsuariosCODIGO: TIntegerField;
+    qryUsuariosNOME: TStringField;
+    qryUsuariosCOD_ESCOLA: TIntegerField;
+    qryUsuariosESCOLA: TStringField;
+    qryUsuariosCOD_TURMA: TIntegerField;
+    qryUsuariosTURMA: TStringField;
+    qryUsuariosEMAIL: TStringField;
+    qryUsuariosLOGIN: TStringField;
+    qryUsuariosSENHA: TStringField;
+    qryUsuariosDATA_NASCIMENTO: TSQLTimeStampField;
+    qryUsuariosATIVO: TSmallintField;
+    qryUsuariosGESTOR: TSmallintField;
+    qryUsuariosPROFESSOR: TSmallintField;
+    qryUsuariosALUNO: TSmallintField;
+    qryUsuariosDATA_INGRESSO: TSQLTimeStampField;
+    qryUsuariosULTIMO_ACESSO: TSQLTimeStampField;
+    dtsUsuarios: TDataSource;
     qryBuscaEscolas: TFDQuery;
     qryBuscaEscolasCODIGO: TIntegerField;
     qryBuscaEscolasNOME: TStringField;

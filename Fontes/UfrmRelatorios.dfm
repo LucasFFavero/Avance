@@ -46,6 +46,7 @@ object frmRelatorios: TfrmRelatorios
         Height = 17
         Caption = 'Escola'
         TabOrder = 0
+        OnClick = cbEscolaClick
       end
       object cbAlunos: TCheckBox
         Left = 267
@@ -54,6 +55,7 @@ object frmRelatorios: TfrmRelatorios
         Height = 17
         Caption = 'Aluno'
         TabOrder = 1
+        OnClick = cbAlunosClick
       end
       object cbAulas: TCheckBox
         Left = 486
@@ -62,15 +64,17 @@ object frmRelatorios: TfrmRelatorios
         Height = 17
         Caption = 'Aula'
         TabOrder = 2
+        OnClick = cbAulasClick
       end
       object dbcbEscola: TDBLookupComboBox
         Left = 10
         Top = 48
         Width = 240
         Height = 21
+        Enabled = False
         KeyField = 'CODIGO'
         ListField = 'NOME'
-        ListSource = dtmRelatorios.dtsBuscaEscolas
+        ListSource = dtmRelatorios.dtsEscolas
         TabOrder = 3
         OnEnter = dbcbEscolaEnter
       end
@@ -79,9 +83,10 @@ object frmRelatorios: TfrmRelatorios
         Top = 48
         Width = 200
         Height = 21
+        Enabled = False
         KeyField = 'CODIGO'
         ListField = 'NOME'
-        ListSource = dtmRelatorios.dtsBuscaUsuarios
+        ListSource = dtmRelatorios.dtsUsuarios
         TabOrder = 4
         OnEnter = dbcbAlunosEnter
       end
@@ -90,9 +95,10 @@ object frmRelatorios: TfrmRelatorios
         Top = 48
         Width = 240
         Height = 21
+        Enabled = False
         KeyField = 'CODIGO'
         ListField = 'TITULO'
-        ListSource = dtmRelatorios.dtsBuscaAulas
+        ListSource = dtmRelatorios.dtsAulas
         TabOrder = 5
         OnEnter = dbcbAulasEnter
       end
@@ -105,10 +111,6 @@ object frmRelatorios: TfrmRelatorios
       Align = alClient
       Caption = 'Op'#231#245'es'
       TabOrder = 1
-      ExplicitLeft = 573
-      ExplicitTop = -2
-      ExplicitWidth = 393
-      ExplicitHeight = 136
       object btnBuscar: TAdvGlowButton
         Left = 17
         Top = 37
@@ -131,6 +133,7 @@ object frmRelatorios: TfrmRelatorios
         ShowCaption = False
         Transparent = True
         TabOrder = 0
+        OnClick = btnBuscarClick
         Appearance.ColorChecked = 16111818
         Appearance.ColorCheckedTo = 16367008
         Appearance.ColorDisabled = 15921906
@@ -160,7 +163,7 @@ object frmRelatorios: TfrmRelatorios
         Font.Height = -9
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
-        ImageIndex = 0
+        ImageIndex = 2
         Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
         NotesFont.Color = clWindowText
@@ -200,7 +203,7 @@ object frmRelatorios: TfrmRelatorios
         Font.Height = -9
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
-        ImageIndex = 0
+        ImageIndex = 1
         Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
         NotesFont.Color = clWindowText
@@ -231,108 +234,229 @@ object frmRelatorios: TfrmRelatorios
       end
     end
   end
-  object dbgRelatorios: TDBGrid
+  object pnlCenter: TPanel
     Left = 0
     Top = 100
     Width = 964
-    Height = 441
-    Align = alClient
-    DataSource = dtmAulas.dtsConteudos
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-    ReadOnly = True
+    Height = 180
+    Align = alTop
+    BevelOuter = bvNone
     TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODIGO'
-        Title.Caption = 'C'#243'digo'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Visible = True
+    object pnlEscolas: TPanel
+      Left = 0
+      Top = 0
+      Width = 472
+      Height = 180
+      Align = alLeft
+      BevelOuter = bvNone
+      Padding.Left = 10
+      TabOrder = 0
+      ExplicitHeight = 221
+      object dbgEscolas: TDBGrid
+        Left = 10
+        Top = 35
+        Width = 462
+        Height = 145
+        Align = alClient
+        DataSource = dtmRelatorios.dtsBuscaEscolas
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
       end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 240
-        Visible = True
+      object Panel2: TPanel
+        Left = 10
+        Top = 0
+        Width = 462
+        Height = 35
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        ExplicitLeft = 0
+        ExplicitTop = 4
+        ExplicitWidth = 472
+        object Label1: TLabel
+          Left = 2
+          Top = 8
+          Width = 47
+          Height = 16
+          Caption = 'Escolas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
-      item
-        Expanded = False
-        FieldName = 'IMAGEM'
-        Title.Alignment = taCenter
-        Title.Caption = 'Imagem'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 60
-        Visible = True
+    end
+    object pnlAulas: TPanel
+      Left = 472
+      Top = 0
+      Width = 492
+      Height = 180
+      Align = alClient
+      BevelOuter = bvNone
+      Padding.Left = 10
+      TabOrder = 1
+      ExplicitLeft = 8
+      ExplicitWidth = 472
+      ExplicitHeight = 221
+      object dbgAulas: TDBGrid
+        Left = 10
+        Top = 35
+        Width = 482
+        Height = 145
+        Align = alClient
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
       end
-      item
-        Expanded = False
-        FieldName = 'VIDEO'
-        Title.Alignment = taCenter
-        Title.Caption = 'V'#237'deo'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 60
-        Visible = True
+      object Panel4: TPanel
+        Left = 10
+        Top = 0
+        Width = 482
+        Height = 35
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        ExplicitLeft = 0
+        ExplicitWidth = 472
+        object Label2: TLabel
+          Left = 2
+          Top = 8
+          Width = 36
+          Height = 16
+          Caption = 'Aulas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
-      item
-        Expanded = False
-        FieldName = 'AUDIO'
-        Title.Alignment = taCenter
-        Title.Caption = 'Audio'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 60
-        Visible = True
+    end
+  end
+  object pnlClient: TPanel
+    Left = 0
+    Top = 280
+    Width = 964
+    Height = 261
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 2
+    ExplicitLeft = 248
+    ExplicitTop = 352
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object pnlAlunos: TPanel
+      Left = 0
+      Top = 0
+      Width = 472
+      Height = 261
+      Align = alLeft
+      BevelOuter = bvNone
+      Padding.Left = 10
+      TabOrder = 0
+      ExplicitLeft = 8
+      ExplicitHeight = 220
+      object dbgAlunos: TDBGrid
+        Left = 10
+        Top = 35
+        Width = 462
+        Height = 226
+        Align = alClient
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
       end
-      item
-        Expanded = False
-        FieldName = 'RESUMO'
-        Title.Caption = 'Resumo'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 240
-        Visible = True
+      object Panel6: TPanel
+        Left = 10
+        Top = 0
+        Width = 462
+        Height = 35
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Label3: TLabel
+          Left = 2
+          Top = 8
+          Width = 44
+          Height = 16
+          Caption = 'Alunos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
-      item
-        Expanded = False
-        FieldName = 'RESUMO_IMAGEM'
-        Title.Alignment = taCenter
-        Title.Caption = 'Imagem Resumo'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 110
-        Visible = True
-      end>
+    end
+    object pnlExercicios: TPanel
+      Left = 472
+      Top = 0
+      Width = 492
+      Height = 261
+      Align = alClient
+      BevelOuter = bvNone
+      Padding.Left = 10
+      TabOrder = 1
+      ExplicitLeft = 8
+      ExplicitWidth = 472
+      ExplicitHeight = 221
+      object dbgExercicios: TDBGrid
+        Left = 10
+        Top = 35
+        Width = 482
+        Height = 226
+        Align = alClient
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+      object Panel8: TPanel
+        Left = 10
+        Top = 0
+        Width = 482
+        Height = 35
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Label4: TLabel
+          Left = 2
+          Top = 8
+          Width = 63
+          Height = 16
+          Caption = 'Exerc'#237'cios'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+      end
+    end
   end
 end
