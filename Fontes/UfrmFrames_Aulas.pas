@@ -29,7 +29,8 @@ uses
   cxGridCustomLayoutView, cxGrid, Datasnap.DBClient, Vcl.StdCtrls, cxTextEdit,
   cxDBLookupComboBox, cxImageComboBox, Vcl.ExtCtrls, dxGDIPlusClasses,
   Vcl.ComCtrls, dxDateRanges, cxCheckBox, cxDropDownEdit, cxCalendar,
-  cxMaskEdit, cxGridTableView, cxGridDBTableView, cxHyperLinkEdit, cxProgressBar;
+  cxMaskEdit, cxGridTableView, cxGridDBTableView, cxHyperLinkEdit, cxProgressBar,
+  cxGridCardView;
 
 type
   TfrmFrames_Aulas = class(TForm)
@@ -140,7 +141,6 @@ type
     gvEmployeesLayoutItem1: TcxGridLayoutItem;
     gvEmployeesItem1: TcxGridDBLayoutViewItem;
     cldsAulasCOD_AULA: TIntegerField;
-    Button1: TButton;
     cldsConteudoDESCRICAO_AGRUPADA: TStringField;
     cxgridDBTableViewGAUGE: TcxGridDBColumn;
     cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn;
@@ -154,6 +154,40 @@ type
     cxgridDBTableViewCod_Conteudo: TcxGridDBColumn;
     Button2: TButton;
     Button3: TButton;
+    StyleRepository: TcxStyleRepository;
+    cxStyle61: TcxStyle;
+    cxStyle62: TcxStyle;
+    cxStyle63: TcxStyle;
+    cxStyle64: TcxStyle;
+    cxStyle65: TcxStyle;
+    cxStyle66: TcxStyle;
+    cxStyle67: TcxStyle;
+    cxStyle68: TcxStyle;
+    cxStyle69: TcxStyle;
+    cxStyle70: TcxStyle;
+    cxStyle71: TcxStyle;
+    cxStyle72: TcxStyle;
+    cxStyle73: TcxStyle;
+    cxStyle74: TcxStyle;
+    cxStyle75: TcxStyle;
+    cxStyle76: TcxStyle;
+    cxStyle77: TcxStyle;
+    cxStyle78: TcxStyle;
+    cxStyle79: TcxStyle;
+    cxStyle80: TcxStyle;
+    cxStyle81: TcxStyle;
+    cxStyle82: TcxStyle;
+    cxStyle83: TcxStyle;
+    cxStyle84: TcxStyle;
+    styleSelection: TcxStyle;
+    styleCardHeader: TcxStyle;
+    styleCardBorder: TcxStyle;
+    styleBackground: TcxStyle;
+    styleCategoryRow: TcxStyle;
+    stylePrice: TcxStyle;
+    GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
+    GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet;
+    CardsStyleSheet: TcxGridCardViewStyleSheet;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -202,8 +236,14 @@ begin
   end;
 
   // Fechar form usando "ESC"
- { if (Key = #27) then
-    Close;}
+  if (Key = #27) then
+  begin
+    if tbsExercicios.Showing then
+      tbsConteudo.Show;
+
+    if tbsConteudo.Showing then
+      tbsAulas.Show;
+  end;
 end;
 
 procedure TfrmFrames_Aulas.FormShow(Sender: TObject);
@@ -301,6 +341,8 @@ begin
     lblAula.Caption := cldsAulasDESCRICAO.AsString;
     Application.ProcessMessages;
     tbsConteudo.Show;
+
+    cxGridDBTableView.DataController.Groups.FullExpand;
   end;
 
 end;
