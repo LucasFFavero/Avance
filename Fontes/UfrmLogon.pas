@@ -89,6 +89,8 @@ begin
     begin
       frmMain.pnlAlunos.Visible := True;
       frmMain.pnlProfessores.Visible := False;
+
+      //Mostrar as aulas, sem mostrar os icones
     end;
 
     Application.ProcessMessages;
