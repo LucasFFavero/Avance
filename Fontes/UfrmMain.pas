@@ -40,18 +40,20 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
+    TimerAbrirAulas: TTimer;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
     procedure btnCadEscolasClick(Sender: TObject);
     procedure btnCadTurmasClick(Sender: TObject);
     procedure btnCadAulasClick(Sender: TObject);
-    procedure btnAno1Click(Sender: TObject);
     procedure btnAno2Click(Sender: TObject);
     procedure btnAno3Click(Sender: TObject);
     procedure btnAno4Click(Sender: TObject);
     procedure btnAno5Click(Sender: TObject);
     procedure btnRelatoriosClick(Sender: TObject);
+    procedure btnAno1Click(Sender: TObject);
+    procedure TimerAbrirAulasTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,40 +69,58 @@ implementation
 {$R *.dfm}
 
 uses UfrmLogon, UfrmUsuarios, UfrmEscolas, UfrmTurmas, UfrmAulas,
-  UfrmFrames_Aulas, UfrmRelatorios;
+  UfrmFrames_Aulas, UfrmRelatorios, UdtmMain;
 
 procedure TfrmMain.btnAno1Click(Sender: TObject);
 begin
   IntAnoClicado := 1;
-  if (frmEscolas = nil) then
+  if (frmFrames_Aulas <> nil) then
+    Close;
+
+  if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno2Click(Sender: TObject);
 begin
   IntAnoClicado := 2;
-  if (frmEscolas = nil) then
+  if (frmFrames_Aulas <> nil) then
+    Close;
+
+  if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno3Click(Sender: TObject);
 begin
   IntAnoClicado := 3;
-  if (frmEscolas = nil) then
+
+  if (frmFrames_Aulas <> nil) then
+    Close;
+
+  if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno4Click(Sender: TObject);
 begin
   IntAnoClicado := 4;
-  if (frmEscolas = nil) then
+
+  if (frmFrames_Aulas <> nil) then
+    Close;
+
+  if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.btnAno5Click(Sender: TObject);
 begin
   IntAnoClicado := 5;
-  if (frmEscolas = nil) then
+
+  if (frmFrames_Aulas <> nil) then
+    Close;
+
+  if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
@@ -137,13 +157,24 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   frmLogon.ShowModal;
+
+  // Verifica se é usuário ou aluno
+  if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
+    TimerAbrirAulas.Enabled := True;
+end;
+
+procedure TfrmMain.TimerAbrirAulasTimer(Sender: TObject);
+begin
+  TimerAbrirAulas.Enabled := false;
+  frmMain.IntAnoClicado := dtmMain.qryUsuariosCOD_TURMA.AsInteger;
+  if (frmFrames_Aulas = nil) then
+    Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
 end;
 
 procedure TfrmMain.tPrincipalTimer(Sender: TObject);
 begin
   // Passar informações do dia e hora para o sistema
-  sbPrincipal.Panels[0].Text := 'Data: ' +
-    FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
+  sbPrincipal.Panels[0].Text := 'Data: ' + FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
   sbPrincipal.Panels[1].Text := 'Hora: ' + FormatDatetime('hh:mm:ss', Time);
   sbPrincipal.Panels[3].Text := 'Avance';
 end;
