@@ -19,6 +19,7 @@ type
     qryUsuariosNOME: TStringField;
     qryUsuariosLOGIN: TStringField;
     qryUsuariosALUNO: TSmallintField;
+    qryUsuariosCOD_TURMA: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
