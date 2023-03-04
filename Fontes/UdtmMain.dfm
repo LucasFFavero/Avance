@@ -5,11 +5,12 @@ object dtmMain: TdtmMain
   Width = 812
   object FDConnectionMain: TFDConnection
     Params.Strings = (
-      'Database=C:\Desenvolvimento\Projetos\Avance\Dados\Dados.fdb'
+      'Database=C:\Temp\Dados.fdb'
       'User_Name=sysdba'
       'Password=masterkey'
       'SQLDialect=1'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Transaction = FDTransactionMain
     Left = 40
@@ -31,7 +32,7 @@ object dtmMain: TdtmMain
     UpdateOptions.AutoIncFields = 'CODIGO'
     SQL.Strings = (
       'SELECT USUARIOS.CODIGO, USUARIOS.NOME, USUARIOS.LOGIN,'
-      'USUARIOS.ALUNO'
+      'USUARIOS.ALUNO, USUARIOS.COD_TURMA'
       'FROM USUARIOS')
     Left = 136
     Top = 16
@@ -54,6 +55,10 @@ object dtmMain: TdtmMain
     object qryUsuariosALUNO: TSmallintField
       FieldName = 'ALUNO'
       Origin = 'ALUNO'
+    end
+    object qryUsuariosCOD_TURMA: TIntegerField
+      FieldName = 'COD_TURMA'
+      Origin = 'COD_TURMA'
     end
   end
 end
