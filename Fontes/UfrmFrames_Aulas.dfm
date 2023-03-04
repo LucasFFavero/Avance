@@ -1,10 +1,11 @@
 object frmFrames_Aulas: TfrmFrames_Aulas
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
+  BorderIcons = []
+  BorderStyle = bsToolWindow
   Caption = 'Aulas | Exerc'#237'cios'
-  ClientHeight = 643
-  ClientWidth = 1366
+  ClientHeight = 653
+  ClientWidth = 1376
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +25,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   object pnlTopo: TPanel
     Left = 0
     Top = 0
-    Width = 1366
+    Width = 1376
     Height = 48
     Align = alTop
     BevelOuter = bvNone
@@ -33,10 +34,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 1366
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 1366
+      Width = 1376
       Height = 48
       Align = alClient
       Center = True
@@ -212,22 +214,42 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       ExplicitTop = -6
       ExplicitWidth = 1487
     end
+    object Button2: TButton
+      Left = 64
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Salvar Aulas'
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 160
+      Top = 8
+      Width = 105
+      Height = 25
+      Caption = 'Salvar Conteudos'
+      TabOrder = 1
+      OnClick = Button3Click
+    end
   end
   object PageControl1: TPageControl
     Left = 0
     Top = 48
-    Width = 1366
-    Height = 595
+    Width = 1376
+    Height = 605
     ActivePage = tbsAulas
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1366
+    ExplicitHeight = 595
     object tbsAulas: TTabSheet
       Caption = 'tbsAulas'
       object cxGridEmployees: TcxGrid
         Left = 0
         Top = 0
-        Width = 1358
-        Height = 567
+        Width = 1368
+        Height = 577
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -235,6 +257,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         TabOrder = 0
         LookAndFeel.ScrollbarMode = sbmClassic
         LookAndFeel.SkinName = ''
+        ExplicitWidth = 1358
+        ExplicitHeight = 567
         object gvEmployees: TcxGridDBLayoutView
           Navigator.Buttons.CustomButtons = <>
           OnCellClick = gvEmployeesCellClick
@@ -252,6 +276,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           OptionsView.NavigatorOffset = 20
           OptionsView.ItemPadding.AssignedValues = [lpavRight]
           OptionsView.ItemPadding.Right = 2
+          OptionsView.MaxColumnCount = 4
           OptionsView.RecordCaption.Visible = False
           OptionsView.RecordIndent = 2
           OptionsView.SeparatorColor = 16511978
@@ -261,13 +286,12 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Caption = 'Imagem'
             DataBinding.FieldName = 'IMAGEM'
             PropertiesClassName = 'TcxImageProperties'
-            Properties.FitMode = ifmProportionalStretch
+            Properties.FitMode = ifmStretch
             Properties.GraphicClassName = 'TdxSmartImage'
             Properties.ReadOnly = True
             LayoutItem = cxGridLayoutItem1
             Options.Editing = False
             Options.Filtering = False
-            Options.Focusing = False
           end
           object gvEmployeesItemFullName: TcxGridDBLayoutViewItem
             Caption = 'Descri'#231#227'o'
@@ -477,8 +501,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       object cxgrid: TcxGrid
         Left = 0
         Top = 41
-        Width = 1358
-        Height = 526
+        Width = 1368
+        Height = 536
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -487,6 +511,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         LookAndFeel.Kind = lfFlat
         LookAndFeel.NativeStyle = False
         LookAndFeel.ScrollbarMode = sbmHybrid
+        ExplicitWidth = 1358
+        ExplicitHeight = 526
         object cxgridDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           FilterBox.CustomizeDialog = False
@@ -534,7 +560,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           OptionsView.EditAutoHeightBorderColor = clWhite
           OptionsView.GridLineColor = 10091981
           OptionsView.GridLines = glHorizontal
-          OptionsView.GroupByBox = False
           OptionsView.GroupRowHeight = 50
           OptionsView.HeaderHeight = 50
           OptionsView.RowSeparatorColor = 10091981
@@ -560,8 +585,12 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             GroupSummaryAlignment = taCenter
             HeaderAlignmentHorz = taCenter
             HeaderGlyphAlignmentHorz = taCenter
+            MinWidth = 120
             Options.Editing = False
+            Options.Filtering = False
             Options.Focusing = False
+            Options.HorzSizing = False
+            Options.Moving = False
             Options.ShowCaption = False
             Options.Sorting = False
             Styles.Content = cxStyle58
@@ -572,7 +601,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           object cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn
             DataBinding.FieldName = 'DESCRICAO_AGRUPADA'
             PropertiesClassName = 'TcxTextEditProperties'
+            Visible = False
+            GroupIndex = 0
             Options.Editing = False
+            Options.Filtering = False
+            Options.Moving = False
             Width = 150
             IsCaptionAssigned = True
           end
@@ -583,6 +616,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Properties.LinkColor = 5131854
             Properties.SingleClick = True
             Options.Editing = False
+            Options.Filtering = False
             Width = 450
           end
           object cxgridDBTableViewCod_Conteudo: TcxGridDBColumn
@@ -618,7 +652,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       object pnlTitulo: TPanel
         Left = 0
         Top = 0
-        Width = 1358
+        Width = 1368
         Height = 41
         Align = alTop
         BevelOuter = bvNone
@@ -633,10 +667,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         ParentFont = False
         TabOrder = 1
         StyleElements = []
+        ExplicitWidth = 1358
         object lblAula: TLabel
           Left = 0
           Top = 8
-          Width = 1358
+          Width = 1368
           Height = 33
           Align = alClient
           Alignment = taCenter
@@ -993,29 +1028,32 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   end
   object dtsAulas: TDataSource
     DataSet = cldsAulas
-    Left = 88
-    Top = 360
+    Left = 96
+    Top = 368
   end
   object cldsAulas: TClientDataSet
     PersistDataPacket.Data = {
       6D0000009619E0BD0100000018000000030000000000030000006D0009444553
-      43524943414F020049000000010005574944544802000200FF0006494D414745
-      4D04004B0000000100075355425459504502004900070042696E617279000843
-      4F445F41554C4104000100000000000000}
+      43524943414F020049001000010005574944544802000200FF0006494D414745
+      4D04004B0010000100075355425459504502004900070042696E617279000843
+      4F445F41554C4104000100100000000000}
     Active = True
     Aggregates = <>
     FieldDefs = <
       item
         Name = 'DESCRICAO'
+        Attributes = [faUnNamed]
         DataType = ftString
         Size = 255
       end
       item
         Name = 'IMAGEM'
+        Attributes = [faUnNamed]
         DataType = ftBlob
       end
       item
         Name = 'COD_AULA'
+        Attributes = [faUnNamed]
         DataType = ftInteger
       end>
     IndexDefs = <>
@@ -1047,6 +1085,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       00000000}
     Active = True
     Aggregates = <>
+    FileName = 'C:\AMD\XML_CONTEUDO.XML'
     FieldDefs = <
       item
         Name = 'GAUGE'
