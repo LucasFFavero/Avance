@@ -152,11 +152,15 @@ type
     cldsConteudoGAUGE_FINAL: TIntegerField;
     cldsConteudoCOD_CONTEUDO: TIntegerField;
     cxgridDBTableViewCod_Conteudo: TcxGridDBColumn;
+    Button2: TButton;
+    Button3: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure gvEmployeesCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
     procedure tbsConteudoShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -171,6 +175,16 @@ implementation
 {$R *.dfm}
 
 uses UfrmMain, UdtmFrames_Aulas;
+
+procedure TfrmFrames_Aulas.Button2Click(Sender: TObject);
+begin
+  cldsAulas.SaveToFile('C:\AMD\XML_AULAS.XML');
+end;
+
+procedure TfrmFrames_Aulas.Button3Click(Sender: TObject);
+begin
+  cldsConteudo.SaveToFile('C:\AMD\XML_CONTEUDO.XML');
+end;
 
 procedure TfrmFrames_Aulas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -188,19 +202,14 @@ begin
   end;
 
   // Fechar form usando "ESC"
-  if (Key = #27) then
-    Close;
+ { if (Key = #27) then
+    Close;}
 end;
 
 procedure TfrmFrames_Aulas.FormShow(Sender: TObject);
 var
   Count: Integer;
 begin
-  frmFrames_Aulas.Height := frmMain.Image1.Height - 10;
-  frmFrames_Aulas.Width := frmMain.Image1.Width - 10;
-  frmFrames_Aulas.Left := 5;
-  frmFrames_Aulas.Top := 5;
-
   cxgridDBTableViewCod_Conteudo.Visible := false;
   cxgridDBTableViewDESCRICAO_EXERCICIO.Visible := false;
   cxgridDBTableViewCOD_AULA.Visible := false;
@@ -227,7 +236,15 @@ begin
 
   Count := Round(cldsAulas.RecordCount / 2);
 
-  gvEmployees.OptionsView.MaxColumnCount := Count;
+  // gvEmployees.OptionsView.MaxColumnCount := Count;
+  gvEmployees.OptionsView.MaxColumnCount := 4;
+  gvEmployees.Controller.FocusedItemIndex := 0;
+  dtmFrames_Aulas.qryBuscaAulas.first;
+
+  frmFrames_Aulas.Height := frmMain.Image1.Height - 10;
+  frmFrames_Aulas.Width := frmMain.Image1.Width - 10;
+  frmFrames_Aulas.Left := 5;
+  frmFrames_Aulas.Top := 5;
 end;
 
 procedure TfrmFrames_Aulas.gvEmployeesCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
