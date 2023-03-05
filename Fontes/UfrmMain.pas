@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Menus,
   System.Classes, Vcl.Graphics, Vcl.DBGrids, Vcl.Controls, Vcl.Forms, AdvPanel,
   Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
-  Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls;
+  Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls, AdvMenus,
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus;
 
 type
   THackDBGrid = class(TDBGrid)
@@ -41,6 +42,8 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     TimerAbrirAulas: TTimer;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
