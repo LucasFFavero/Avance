@@ -10,7 +10,6 @@ object dtmMain: TdtmMain
       'Password=masterkey'
       'SQLDialect=1'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Transaction = FDTransactionMain
     Left = 40
@@ -32,7 +31,7 @@ object dtmMain: TdtmMain
     UpdateOptions.AutoIncFields = 'CODIGO'
     SQL.Strings = (
       'SELECT USUARIOS.CODIGO, USUARIOS.NOME, USUARIOS.LOGIN,'
-      'USUARIOS.ALUNO, USUARIOS.COD_TURMA'
+      'USUARIOS.ALUNO, USUARIOS.COD_TURMA, USUARIOS.PROFESSOR'
       'FROM USUARIOS')
     Left = 136
     Top = 16
@@ -59,6 +58,10 @@ object dtmMain: TdtmMain
     object qryUsuariosCOD_TURMA: TIntegerField
       FieldName = 'COD_TURMA'
       Origin = 'COD_TURMA'
+    end
+    object qryUsuariosPROFESSOR: TSmallintField
+      FieldName = 'PROFESSOR'
+      Origin = 'PROFESSOR'
     end
   end
 end
