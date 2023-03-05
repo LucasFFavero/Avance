@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Avance'
-  ClientHeight = 746
+  ClientHeight = 726
   ClientWidth = 1237
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object frmMain: TfrmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIForm
+  Menu = MainMenu1
   OldCreateOrder = False
   Scaled = False
   WindowState = wsMaximized
@@ -21,7 +22,7 @@ object frmMain: TfrmMain
     Left = 287
     Top = 0
     Width = 950
-    Height = 726
+    Height = 706
     Align = alClient
     Center = True
     Picture.Data = {
@@ -2446,13 +2447,13 @@ object frmMain: TfrmMain
       0000000000000010200000000000000008100000000000000080000100000000
       0000408000000000000000000408000000000000000204000000000000D0ECFC
       BF00030006F9CF4906D6CA960000000049454E44AE426082}
-    ExplicitLeft = 289
-    ExplicitTop = -6
-    ExplicitWidth = 951
+    ExplicitLeft = 290
+    ExplicitTop = 8
+    ExplicitHeight = 726
   end
   object sbPrincipal: TStatusBar
     Left = 0
-    Top = 726
+    Top = 706
     Width = 1237
     Height = 20
     Panels = <
@@ -2468,13 +2469,15 @@ object frmMain: TfrmMain
       item
         Width = 50
       end>
+    ExplicitTop = 726
   end
   object pnlProfessores: TPanel
     Left = 157
     Top = 0
     Width = 130
-    Height = 726
+    Height = 706
     Align = alLeft
+    BevelKind = bkFlat
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
@@ -2483,7 +2486,7 @@ object frmMain: TfrmMain
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 124
+      Width = 120
       Height = 105
       Cursor = crHandPoint
       Align = alTop
@@ -2522,13 +2525,13 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitWidth = 123
+      ExplicitLeft = 2
     end
     object btnRelatorios: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
       Top = 447
-      Width = 124
+      Width = 120
       Height = 105
       Cursor = crHandPoint
       Align = alTop
@@ -2567,13 +2570,13 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitWidth = 123
+      ExplicitWidth = 124
     end
     object btnCadUsuarios: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
       Top = 114
-      Width = 124
+      Width = 120
       Height = 105
       Cursor = crHandPoint
       Align = alTop
@@ -2612,13 +2615,13 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitWidth = 123
+      ExplicitWidth = 124
     end
     object btnCadTurmas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
       Top = 225
-      Width = 124
+      Width = 120
       Height = 105
       Cursor = crHandPoint
       Align = alTop
@@ -2657,13 +2660,13 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitWidth = 123
+      ExplicitWidth = 124
     end
     object btnCadAulas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
       Top = 336
-      Width = 124
+      Width = 120
       Height = 105
       Cursor = crHandPoint
       Align = alTop
@@ -2702,15 +2705,16 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitWidth = 123
+      ExplicitWidth = 124
     end
   end
   object pnlAlunos: TPanel
     Left = 0
     Top = 0
     Width = 157
-    Height = 726
+    Height = 706
     Align = alLeft
+    BevelKind = bkFlat
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
@@ -2719,18 +2723,20 @@ object frmMain: TfrmMain
     object ScrollBox1: TScrollBox
       Left = 0
       Top = 0
-      Width = 157
-      Height = 726
+      Width = 153
+      Height = 702
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
       TabOrder = 0
       StyleElements = []
+      ExplicitWidth = 157
+      ExplicitHeight = 706
       object btnAno1: TAdvGlowButton
         Left = 0
         Top = 0
-        Width = 140
+        Width = 136
         Height = 140
         Cursor = crHandPoint
         Align = alTop
@@ -2772,11 +2778,14 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
+        ExplicitLeft = -3
+        ExplicitTop = -6
+        ExplicitWidth = 140
       end
       object btnAno2: TAdvGlowButton
         Left = 0
         Top = 153
-        Width = 140
+        Width = 136
         Height = 140
         Cursor = crHandPoint
         Align = alTop
@@ -2818,11 +2827,12 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
+        ExplicitWidth = 140
       end
       object btnAno3: TAdvGlowButton
         Left = 0
         Top = 306
-        Width = 140
+        Width = 136
         Height = 140
         Cursor = crHandPoint
         Align = alTop
@@ -2864,11 +2874,12 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
+        ExplicitWidth = 140
       end
       object btnAno4: TAdvGlowButton
         Left = 0
         Top = 459
-        Width = 140
+        Width = 136
         Height = 140
         Cursor = crHandPoint
         Align = alTop
@@ -2910,11 +2921,12 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
+        ExplicitWidth = 140
       end
       object btnAno5: TAdvGlowButton
         Left = 0
         Top = 612
-        Width = 140
+        Width = 136
         Height = 140
         Cursor = crHandPoint
         Align = alTop
@@ -2956,11 +2968,12 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
+        ExplicitWidth = 140
       end
       object Panel1: TPanel
         Left = 0
         Top = 140
-        Width = 140
+        Width = 136
         Height = 13
         Align = alTop
         BevelOuter = bvNone
@@ -2968,11 +2981,12 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 5
         StyleElements = []
+        ExplicitWidth = 140
       end
       object Panel2: TPanel
         Left = 0
         Top = 293
-        Width = 140
+        Width = 136
         Height = 13
         Align = alTop
         BevelOuter = bvNone
@@ -2980,11 +2994,12 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 6
         StyleElements = []
+        ExplicitWidth = 140
       end
       object Panel3: TPanel
         Left = 0
         Top = 446
-        Width = 140
+        Width = 136
         Height = 13
         Align = alTop
         BevelOuter = bvNone
@@ -2992,11 +3007,12 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 7
         StyleElements = []
+        ExplicitWidth = 140
       end
       object Panel4: TPanel
         Left = 0
         Top = 599
-        Width = 140
+        Width = 136
         Height = 13
         Align = alTop
         BevelOuter = bvNone
@@ -3004,6 +3020,7 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 8
         StyleElements = []
+        ExplicitWidth = 140
       end
     end
   end
@@ -15743,5 +15760,16 @@ object frmMain: TfrmMain
     OnTimer = TimerAbrirAulasTimer
     Left = 304
     Top = 16
+  end
+  object MainMenu1: TMainMenu
+    AutoLineReduction = maManual
+    BiDiMode = bdLeftToRight
+    ParentBiDiMode = False
+    Left = 408
+    Top = 32
+    object N1: TMenuItem
+      Caption = ' '
+      Visible = False
+    end
   end
 end
