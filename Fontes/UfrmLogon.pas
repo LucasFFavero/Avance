@@ -62,7 +62,7 @@ begin
 
   dtmMain.qryUsuarios.Close;
   dtmMain.qryUsuarios.SQL.Clear;
-  dtmMain.qryUsuarios.SQL.Add('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO, USUARIOS.COD_TURMA');
+  dtmMain.qryUsuarios.SQL.Add('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO, USUARIOS.COD_TURMA, USUARIOS.PROFESSOR');
   dtmMain.qryUsuarios.SQL.Add('FROM USUARIOS');
 
   dtmMain.qryUsuarios.SQL.Add('WHERE USUARIOS.LOGIN =:NOME');
@@ -85,6 +85,11 @@ begin
     if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
     begin
       frmMain.pnlAlunos.Visible := False;
+      frmMain.pnlProfessores.Visible := False;
+    end
+    else if (dtmMain.qryUsuariosPROFESSOR.AsInteger = 1) then
+    begin
+      frmMain.pnlAlunos.Visible := True;
       frmMain.pnlProfessores.Visible := False;
     end;
 
