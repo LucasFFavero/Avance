@@ -9,20 +9,20 @@ uses
   Vcl.Mask, Vcl.ExtCtrls, Vcl.Buttons, AdvGlowButton, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
   dxSkinsDefaultPainters, cxImage, dxGDIPlusClasses, Vcl.Menus, cxButtons,
-  AdvGlassButton, AdvShapeButton;
+  AdvGlassButton, AdvShapeButton, System.ImageList, Vcl.ImgList, cxImageList;
 
 type
   TfrmLogon = class(TForm)
     Image1: TImage;
     edtUsuario: TEdit;
     edtSenha: TEdit;
-    AdvShapeButton1: TAdvShapeButton;
     btnLogon: TAdvShapeButton;
     edtFoco: TEdit;
+    cxImageList1: TcxImageList;
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure AdvShapeButton1Click(Sender: TObject);
     procedure btnLogonClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
@@ -30,6 +30,7 @@ type
     procedure edtSenhaExit(Sender: TObject);
     procedure edtUsuarioEnter(Sender: TObject);
     procedure edtUsuarioExit(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,11 +46,6 @@ implementation
 {$R *.dfm}
 
 uses UfrmLogonTransp, UfrmMain, UdtmMain, UfrmFrames_Aulas;
-
-procedure TfrmLogon.AdvShapeButton1Click(Sender: TObject);
-begin
-  Application.Terminate;
-end;
 
 procedure TfrmLogon.btnLogonClick(Sender: TObject);
 begin
@@ -122,7 +118,7 @@ begin
 
   if edtSenha.Text = 'Senha' then
   begin
-    edtSenha.font.color := $00525252;
+    edtSenha.font.color := $005A1A0F;
     edtSenha.Clear;
     edtSenha.PasswordChar := '*';
   end;
@@ -135,7 +131,7 @@ begin
 
   if (edtSenha.Text = 'Senha') or (edtSenha.Text = '') then
   begin
-    edtSenha.font.color := $00C4800F;
+    edtSenha.font.color := $005A1A0F;
     edtSenha.PasswordChar := #0;
     edtSenha.Text := 'Senha'
   end;
@@ -153,7 +149,7 @@ begin
   if edtUsuario.Text = 'USUÁRIO' then
   begin
     edtUsuario.Clear;
-    edtUsuario.font.color := $00525252;
+    edtUsuario.font.color := $005A1A0F;
   end;
   Application.ProcessMessages;
 end;
@@ -162,7 +158,7 @@ procedure TfrmLogon.edtUsuarioExit(Sender: TObject);
 begin
   if (edtUsuario.Text = 'USUÁRIO') or (edtUsuario.Text = '') then
   begin
-    edtUsuario.font.color := $00C4800F;
+    edtUsuario.font.color := $005A1A0F;
     edtUsuario.Text := 'USUÁRIO'
   end;
   Application.ProcessMessages;
@@ -207,6 +203,11 @@ begin
   frmMain.tPrincipal.Enabled := True;
   edtFoco.SetFocus;
   Tentativa := 0;
+end;
+
+procedure TfrmLogon.SpeedButton1Click(Sender: TObject);
+begin
+  Application.Terminate;
 end;
 
 end.
