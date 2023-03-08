@@ -11,7 +11,7 @@ uses
   Vcl.DBCtrls, AdvEdit, AdvEdBtn, PlannerDatePicker, PlannerDBDatePicker,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
   dxSkinsCore, dxSkinsDefaultPainters, cxTextEdit, cxMaskEdit, cxSpinEdit,
-  cxDBEdit;
+  cxDBEdit, cxDropDownEdit, cxCalendar;
 
 type
   TfrmUsuarios = class(TForm)
@@ -51,7 +51,6 @@ type
     edtConfirmaSenha: TMaskEdit;
     edtLogin: TDBEdit;
     edtEmail: TDBEdit;
-    edtNascimento: TPlannerDBDatePicker;
     dbcbGestor: TDBCheckBox;
     dbcbProfessor: TDBCheckBox;
     dbcbAluno: TDBCheckBox;
@@ -65,6 +64,7 @@ type
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
     ImageList: TImageList;
+    edtNascimento: TcxDBDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnIncluirClick(Sender: TObject);
@@ -142,14 +142,18 @@ end;
 
 procedure TfrmUsuarios.btnEditarClick(Sender: TObject);
 begin
-  if (edtLogin.Text <> Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)))
-  then
+  // Libera somente para Gestor
+  if (Copy(frmMain.sbPrincipal.Panels[3].Text, 9, 20) <> 'Gestor') then
   begin
-    Application.MessageBox
-      ('Você não pode alterar informações de outro usuário.',
-      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
-      20)), 0 + 48 + 0);
-    Exit;
+    if (edtLogin.Text <> Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)))
+    then
+    begin
+      Application.MessageBox
+        ('Você não pode alterar informações de outro usuário.',
+        pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+        20)), 0 + 48 + 0);
+      Exit;
+    end;
   end;
 
   // Edita registro
@@ -368,13 +372,17 @@ begin
     (edtSenha.Text <> dtmMain.JvVigenereCipher.EncodeString
     (dtmMain.JvVigenereCipher.Key, edtConfirmaSenha.Text))) then }
 
-  if ((edtSenha.Text <> '') and (edtSenha.Text <> edtConfirmaSenha.Text)) then
+  // Somente quando NÃO for Gestor confirma a senha
+  if (Copy(frmMain.sbPrincipal.Panels[3].Text, 9, 20) <> 'Gestor') then
   begin
-    Application.MessageBox('Confirme a Senha.',
-      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
-      20)), 0 + 48 + 0);
-    edtConfirmaSenha.SetFocus;
-    Exit;
+    if ((edtSenha.Text <> '') and (edtSenha.Text <> edtConfirmaSenha.Text)) then
+    begin
+      Application.MessageBox('Confirme a Senha.',
+        pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+        20)), 0 + 48 + 0);
+      edtConfirmaSenha.SetFocus;
+      Exit;
+    end;
   end;
 
   try

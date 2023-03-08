@@ -1558,9 +1558,9 @@ object frmAulas: TfrmAulas
           TabOrder = 0
         end
         object btnLocalizarUsuarios: TAdvGlowButton
-          Left = 527
+          Left = 532
           Top = 21
-          Width = 32
+          Width = 36
           Height = 32
           BorderStyle = bsNone
           Font.Charset = DEFAULT_CHARSET

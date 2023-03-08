@@ -19,7 +19,7 @@ type
     btnLogon: TAdvShapeButton;
     edtFoco: TEdit;
     cxImageList1: TcxImageList;
-    SpeedButton1: TSpeedButton;
+    btnSair: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -30,7 +30,7 @@ type
     procedure edtSenhaExit(Sender: TObject);
     procedure edtUsuarioEnter(Sender: TObject);
     procedure edtUsuarioExit(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,20 +51,22 @@ procedure TfrmLogon.btnLogonClick(Sender: TObject);
 begin
   if (edtUsuario.Text = '') then
   begin
-    Application.MessageBox(PChar('Informe o Usuário.'), 'ATENÇÃO - Usuário ', 0 + 48 + 0);
+    Application.MessageBox(PChar('Informe o Usuário.'), 'ATENÇÃO - Usuário ',
+      0 + 48 + 0);
     edtUsuario.SetFocus;
     Exit;
   end;
 
   dtmMain.qryUsuarios.Close;
   dtmMain.qryUsuarios.SQL.Clear;
-  dtmMain.qryUsuarios.SQL.Add('SELECT USUARIOS.CODIGO, USUARIOS.NOME,  USUARIOS.LOGIN, USUARIOS.ALUNO, USUARIOS.COD_TURMA, USUARIOS.PROFESSOR');
+  dtmMain.qryUsuarios.SQL.Add
+    ('SELECT USUARIOS.CODIGO, USUARIOS.NOME, USUARIOS.LOGIN, USUARIOS.ALUNO,');
+  dtmMain.qryUsuarios.SQL.Add
+    (' USUARIOS.COD_TURMA, USUARIOS.PROFESSOR, USUARIOS.GESTOR');
   dtmMain.qryUsuarios.SQL.Add('FROM USUARIOS');
-
   dtmMain.qryUsuarios.SQL.Add('WHERE USUARIOS.LOGIN =:NOME');
   dtmMain.qryUsuarios.Params[0].DataType := ftString;
   dtmMain.qryUsuarios.Params[0].AsString := AnsiUpperCase(edtUsuario.Text);
-
   dtmMain.qryUsuarios.SQL.Add('AND USUARIOS.SENHA =:SENHA');
   dtmMain.qryUsuarios.Params[1].DataType := ftString;
   dtmMain.qryUsuarios.Params[1].AsString := edtSenha.Text;
@@ -72,21 +74,47 @@ begin
 
   if not dtmMain.qryUsuarios.IsEmpty then
   begin
-    frmMain.sbPrincipal.Panels[2].Text := 'Usuário: ' + dtmMain.qryUsuariosLOGIN.AsString;
+    frmMain.sbPrincipal.Panels[2].Text := 'Usuário: ' +
+      dtmMain.qryUsuariosLOGIN.AsString;
+
+    if (dtmMain.qryUsuariosALUNO.Value = 1) then
+      frmMain.sbPrincipal.Panels[3].Text := 'Perfil: Aluno'
+    else if (dtmMain.qryUsuariosPROFESSOR.Value = 1) then
+      frmMain.sbPrincipal.Panels[3].Text := 'Perfil: Professor'
+    else if (dtmMain.qryUsuariosGESTOR.Value = 1) then
+      frmMain.sbPrincipal.Panels[3].Text := 'Perfil: Gestor';
 
     frmMain.pnlProfessores.Visible := True;
     frmMain.pnlAlunos.Visible := False;
 
-    // Verifica se é usuário ou aluno
+    // Verifica se é aluno ou professor
     if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
     begin
       frmMain.pnlAlunos.Visible := False;
       frmMain.pnlProfessores.Visible := False;
     end
-    else if (dtmMain.qryUsuariosPROFESSOR.AsInteger = 1) then
+    else if (dtmMain.qryUsuariosPROFESSOR.AsInteger = 1)  then
     begin
       frmMain.pnlAlunos.Visible := True;
       frmMain.pnlProfessores.Visible := False;
+    end;
+
+    // Grava acesso
+    if dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.Rollback;
+    if not dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.StartTransaction;
+
+    try
+      dtmMain.qryGravaAcesso.Close;
+      dtmMain.qryGravaAcesso.ParamByName('DATA').Value := now;
+      dtmMain.qryGravaAcesso.ParamByName('COD_USUARIO').AsInteger :=
+        dtmMain.qryUsuariosCODIGO.AsInteger;
+      dtmMain.qryGravaAcesso.ExecSql;
+
+      dtmMain.TransactionAcesso.Commit;
+    finally
+
     end;
 
     Application.ProcessMessages;
@@ -97,12 +125,15 @@ begin
     // Após 3 tentativas encerrar
     if (Tentativa = 3) then
     begin
-      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)' + #13 + #13 + 'Limite de tentativas excedido...'), 'ATENÇÃO - Usuário ', 0 + 16 + 0);
+      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)' + #13 + #13
+        + 'Limite de tentativas excedido...'), 'ATENÇÃO - Usuário ',
+        0 + 16 + 0);
       Application.Terminate;
     end
     else
     begin
-      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)'), 'ATENÇÃO - Usuário ', 0 + 48 + 0);
+      Application.MessageBox(PChar('Senha e/ou Usuário inválido(s)'),
+        'ATENÇÃO - Usuário ', 0 + 48 + 0);
       edtUsuario.SetFocus;
       Abort;
     end;
@@ -205,7 +236,7 @@ begin
   Tentativa := 0;
 end;
 
-procedure TfrmLogon.SpeedButton1Click(Sender: TObject);
+procedure TfrmLogon.btnSairClick(Sender: TObject);
 begin
   Application.Terminate;
 end;

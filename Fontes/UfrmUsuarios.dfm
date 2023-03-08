@@ -968,146 +968,6 @@ object frmUsuarios: TfrmUsuarios
           DataSource = dtmUsuarios.dtsUsuarios
           TabOrder = 5
         end
-        object edtNascimento: TPlannerDBDatePicker
-          Left = 391
-          Top = 91
-          Width = 120
-          Height = 21
-          EmptyTextStyle = []
-          LabelFont.Charset = DEFAULT_CHARSET
-          LabelFont.Color = clWindowText
-          LabelFont.Height = -11
-          LabelFont.Name = 'Tahoma'
-          LabelFont.Style = []
-          Lookup.Font.Charset = DEFAULT_CHARSET
-          Lookup.Font.Color = clWindowText
-          Lookup.Font.Height = -11
-          Lookup.Font.Name = 'Arial'
-          Lookup.Font.Style = []
-          Lookup.Separator = ';'
-          CharCase = ecUpperCase
-          Color = clWindow
-          ShortCut = 0
-          TabOrder = 1
-          Text = '20/09/1985'
-          Visible = True
-          Version = '2.0.1.0'
-          ButtonStyle = bsDropDown
-          ButtonWidth = 16
-          Flat = False
-          Etched = False
-          Glyph.Data = {
-            DA020000424DDA0200000000000036000000280000000D0000000D0000000100
-            200000000000A402000000000000000000000000000000000000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F00000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000000000000000000000000000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F0000000000000000000000000000000000000000000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F0000000000000000000000000000000
-            0000000000000000000000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
-            F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000}
-          Calendar = cal40_.Owner
-          HideCalendarAfterSelection = True
-          DataField = 'DATA_NASCIMENTO'
-          DataSource = dtmUsuarios.dtsUsuarios
-          TMSStyle = 0
-          object cal40_: TPlannerCalendar
-            Left = 0
-            Top = 0
-            Width = 180
-            Height = 180
-            EventDayColor = clBlack
-            EventFont.Charset = DEFAULT_CHARSET
-            EventFont.Color = clWindowText
-            EventFont.Height = -11
-            EventFont.Name = 'Tahoma'
-            EventFont.Style = [fsBold]
-            EventMarkerColor = clYellow
-            EventMarkerShape = evsCircle
-            BackgroundPosition = bpTiled
-            BevelOuter = bvRaised
-            BorderWidth = 1
-            CaptionColor = clNone
-            CaptionTextColor = clBlack
-            DateDownColor = clNone
-            DateHoverColor = clNone
-            DayFont.Charset = DEFAULT_CHARSET
-            DayFont.Color = clWindowText
-            DayFont.Height = -11
-            DayFont.Name = 'Tahoma'
-            DayFont.Style = []
-            FocusColor = clHighlight
-            HeaderColor = clNone
-            InActiveColor = clGray
-            InversColor = clTeal
-            LineColor = clGray
-            Line3D = True
-            Look = lookFlat
-            NameOfDays.Monday = 'seg'
-            NameOfDays.Tuesday = 'ter'
-            NameOfDays.Wednesday = 'qua'
-            NameOfDays.Thursday = 'qui'
-            NameOfDays.Friday = 'sex'
-            NameOfDays.Saturday = 's'#225'b'
-            NameOfDays.Sunday = 'dom'
-            NameOfMonths.January = 'jan'
-            NameOfMonths.February = 'fev'
-            NameOfMonths.March = 'mar'
-            NameOfMonths.April = 'abr'
-            NameOfMonths.May = 'mai'
-            NameOfMonths.June = 'jun'
-            NameOfMonths.July = 'jul'
-            NameOfMonths.August = 'ago'
-            NameOfMonths.September = 'set'
-            NameOfMonths.October = 'out'
-            NameOfMonths.November = 'nov'
-            NameOfMonths.December = 'dez'
-            NameOfMonths.UseIntlNames = True
-            WeekFont.Charset = DEFAULT_CHARSET
-            WeekFont.Color = clWindowText
-            WeekFont.Height = -11
-            WeekFont.Name = 'Tahoma'
-            WeekFont.Style = []
-            WeekName = 'Wk'
-            SelectColor = clTeal
-            SelectFontColor = clWhite
-            StartDay = 7
-            TextColor = clBlack
-            TodayFormat = '"Today" DDD/mm, YYYY'
-            WeekendColor = clRed
-            Day = 20
-            Month = 9
-            Year = 1985
-            TabStop = True
-            TabOrder = 0
-            GradientStartColor = clWhite
-            GradientEndColor = clBtnFace
-            GradientDirection = gdVertical
-            MonthGradientStartColor = clNone
-            MonthGradientEndColor = clNone
-            MonthGradientDirection = gdHorizontal
-            HintPrevYear = 'Previous Year'
-            HintPrevMonth = 'Previous Month'
-            HintNextMonth = 'Next Month'
-            HintNextYear = 'Next Year'
-            Version = '2.3.3.0'
-            TMSStyle = 0
-          end
-        end
         object dbcbGestor: TDBCheckBox
           Left = 25
           Top = 274
@@ -1203,6 +1063,14 @@ object frmUsuarios: TfrmUsuarios
           TabOrder = 7
           OnEnter = dblkcbTurmaEnter
         end
+        object edtNascimento: TcxDBDateEdit
+          Left = 391
+          Top = 91
+          DataBinding.DataField = 'DATA_NASCIMENTO'
+          DataBinding.DataSource = dtmUsuarios.dtsUsuarios
+          TabOrder = 1
+          Width = 120
+        end
       end
     end
     object tbsLocalizar: TTabSheet
@@ -1241,9 +1109,9 @@ object frmUsuarios: TfrmUsuarios
           TabOrder = 0
         end
         object btnLocalizarUsuarios: TAdvGlowButton
-          Left = 527
+          Left = 531
           Top = 21
-          Width = 32
+          Width = 36
           Height = 32
           BorderStyle = bsNone
           Font.Charset = DEFAULT_CHARSET

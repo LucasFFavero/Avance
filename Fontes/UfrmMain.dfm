@@ -2,8 +2,8 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Avance'
-  ClientHeight = 726
-  ClientWidth = 1237
+  ClientHeight = 605
+  ClientWidth = 1101
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object frmMain: TfrmMain
   object Image1: TImage
     Left = 287
     Top = 0
-    Width = 950
-    Height = 706
+    Width = 814
+    Height = 585
     Align = alClient
     Picture.Data = {
       0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000780
@@ -7445,8 +7445,8 @@ object frmMain: TfrmMain
   end
   object sbPrincipal: TStatusBar
     Left = 0
-    Top = 706
-    Width = 1237
+    Top = 585
+    Width = 1101
     Height = 20
     Panels = <
       item
@@ -7456,23 +7456,28 @@ object frmMain: TfrmMain
         Width = 150
       end
       item
-        Width = 250
+        Width = 200
+      end
+      item
+        Width = 200
       end
       item
         Width = 50
       end>
+    ExplicitTop = 588
   end
   object pnlProfessores: TPanel
     Left = 157
     Top = 0
     Width = 130
-    Height = 706
+    Height = 585
     Align = alLeft
     BevelKind = bkFlat
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitHeight = 706
     object btnCadEscolas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
@@ -7698,7 +7703,7 @@ object frmMain: TfrmMain
     Left = 0
     Top = 0
     Width = 157
-    Height = 706
+    Height = 585
     Align = alLeft
     BevelKind = bkFlat
     BevelOuter = bvNone
@@ -7706,17 +7711,19 @@ object frmMain: TfrmMain
     ParentBackground = False
     TabOrder = 2
     Visible = False
+    ExplicitHeight = 706
     object ScrollBox1: TScrollBox
       Left = 0
       Top = 0
       Width = 153
-      Height = 702
+      Height = 581
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
       TabOrder = 0
       StyleElements = []
+      ExplicitHeight = 702
       object btnAno1: TAdvGlowButton
         Left = 0
         Top = 0
@@ -8002,7 +8009,7 @@ object frmMain: TfrmMain
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 852656
+    DesignInfo = 1049264
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -9175,14 +9182,14 @@ object frmMain: TfrmMain
     Enabled = False
     OnTimer = tPrincipalTimer
     Left = 625
-    Top = 13
+    Top = 16
   end
   object cxImageList2: TcxImageList
     SourceDPI = 96
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 852728
+    DesignInfo = 1049336
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -9342,7 +9349,7 @@ object frmMain: TfrmMain
     Height = 80
     Width = 80
     FormatVersion = 1
-    DesignInfo = 852800
+    DesignInfo = 1049408
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -10461,7 +10468,7 @@ object frmMain: TfrmMain
     Height = 140
     Width = 140
     FormatVersion = 1
-    DesignInfo = 852864
+    DesignInfo = 1049472
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -12862,7 +12869,7 @@ object frmMain: TfrmMain
     Height = 150
     Width = 350
     FormatVersion = 1
-    DesignInfo = 852928
+    DesignInfo = 1049536
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -20651,7 +20658,7 @@ object frmMain: TfrmMain
   object cxImageList5: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 853000
+    DesignInfo = 1049608
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -20731,15 +20738,15 @@ object frmMain: TfrmMain
     Enabled = False
     Interval = 50
     OnTimer = TimerAbrirAulasTimer
-    Left = 304
+    Left = 488
     Top = 16
   end
   object MainMenu1: TMainMenu
     AutoLineReduction = maManual
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
-    Left = 408
-    Top = 32
+    Left = 568
+    Top = 16
     object N1: TMenuItem
       Caption = ' '
       Visible = False

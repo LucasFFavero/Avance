@@ -825,7 +825,7 @@ object frmEscolas: TfrmEscolas
         object btnLocalizarUsuarios: TAdvGlowButton
           Left = 531
           Top = 21
-          Width = 32
+          Width = 36
           Height = 32
           BorderStyle = bsNone
           Font.Charset = DEFAULT_CHARSET

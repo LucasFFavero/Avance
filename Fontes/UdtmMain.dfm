@@ -5,7 +5,7 @@ object dtmMain: TdtmMain
   Width = 812
   object FDConnectionMain: TFDConnection
     Params.Strings = (
-      'Database=C:\Temp\Dados.fdb'
+      'Database=C:\Desenvolvimento\Projetos\Avance\Dados\Dados.fdb'
       'User_Name=sysdba'
       'Password=masterkey'
       'SQLDialect=1'
@@ -31,7 +31,8 @@ object dtmMain: TdtmMain
     UpdateOptions.AutoIncFields = 'CODIGO'
     SQL.Strings = (
       'SELECT USUARIOS.CODIGO, USUARIOS.NOME, USUARIOS.LOGIN,'
-      'USUARIOS.ALUNO, USUARIOS.COD_TURMA, USUARIOS.PROFESSOR'
+      'USUARIOS.ALUNO, USUARIOS.COD_TURMA, USUARIOS.PROFESSOR, '
+      'USUARIOS.GESTOR'
       'FROM USUARIOS')
     Left = 136
     Top = 16
@@ -63,5 +64,42 @@ object dtmMain: TdtmMain
       FieldName = 'PROFESSOR'
       Origin = 'PROFESSOR'
     end
+    object qryUsuariosGESTOR: TSmallintField
+      FieldName = 'GESTOR'
+      Origin = 'GESTOR'
+    end
+  end
+  object qryGravaAcesso: TFDQuery
+    Connection = FDConnectionMain
+    Transaction = TransactionAcesso
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'UPDATE USUARIOS'
+      'SET ULTIMO_ACESSO =:DATA'
+      'WHERE CODIGO =:COD_USUARIO')
+    Left = 224
+    Top = 16
+    ParamData = <
+      item
+        Name = 'DATA'
+        DataType = ftDateTime
+        ParamType = ptInput
+      end
+      item
+        Name = 'COD_USUARIO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object TransactionAcesso: TFDTransaction
+    Connection = FDConnectionMain
+    Left = 224
+    Top = 64
   end
 end

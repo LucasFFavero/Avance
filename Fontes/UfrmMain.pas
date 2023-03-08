@@ -177,9 +177,10 @@ end;
 procedure TfrmMain.tPrincipalTimer(Sender: TObject);
 begin
   // Passar informações do dia e hora para o sistema
-  sbPrincipal.Panels[0].Text := 'Data: ' + FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
+  sbPrincipal.Panels[0].Text := 'Data: ' +
+    FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
   sbPrincipal.Panels[1].Text := 'Hora: ' + FormatDatetime('hh:mm:ss', Time);
-  sbPrincipal.Panels[3].Text := 'Avance';
+  sbPrincipal.Panels[4].Text := 'Avance';
 end;
 
 end.

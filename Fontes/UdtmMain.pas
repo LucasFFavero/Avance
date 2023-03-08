@@ -21,6 +21,9 @@ type
     qryUsuariosALUNO: TSmallintField;
     qryUsuariosCOD_TURMA: TIntegerField;
     qryUsuariosPROFESSOR: TSmallintField;
+    qryUsuariosGESTOR: TSmallintField;
+    qryGravaAcesso: TFDQuery;
+    TransactionAcesso: TFDTransaction;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
