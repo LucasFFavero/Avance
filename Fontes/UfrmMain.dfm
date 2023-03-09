@@ -7464,7 +7464,6 @@ object frmMain: TfrmMain
       item
         Width = 50
       end>
-    ExplicitTop = 588
   end
   object pnlProfessores: TPanel
     Left = 157
@@ -7477,7 +7476,6 @@ object frmMain: TfrmMain
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 706
     object btnCadEscolas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
@@ -7711,7 +7709,6 @@ object frmMain: TfrmMain
     ParentBackground = False
     TabOrder = 2
     Visible = False
-    ExplicitHeight = 706
     object ScrollBox1: TScrollBox
       Left = 0
       Top = 0
@@ -7723,7 +7720,6 @@ object frmMain: TfrmMain
       BorderStyle = bsNone
       TabOrder = 0
       StyleElements = []
-      ExplicitHeight = 702
       object btnAno1: TAdvGlowButton
         Left = 0
         Top = 0
@@ -20751,5 +20747,25 @@ object frmMain: TfrmMain
       Caption = ' '
       Visible = False
     end
+  end
+  object cxHintStyleController1: TcxHintStyleController
+    HintStyleClassName = 'TcxHintStyle'
+    HintStyle.Animate = cxhaHide
+    HintStyle.CaptionFont.Charset = DEFAULT_CHARSET
+    HintStyle.CaptionFont.Color = clWindowText
+    HintStyle.CaptionFont.Height = -13
+    HintStyle.CaptionFont.Name = 'Tahoma'
+    HintStyle.CaptionFont.Style = []
+    HintStyle.Color = 16636070
+    HintStyle.Font.Charset = DEFAULT_CHARSET
+    HintStyle.Font.Color = cl3DDkShadow
+    HintStyle.Font.Height = -16
+    HintStyle.Font.Name = 'Tahoma'
+    HintStyle.Font.Style = []
+    HintStyle.IconSize = cxisLarge
+    LookAndFeel.NativeStyle = True
+    LookAndFeel.SkinName = ''
+    Left = 664
+    Top = 104
   end
 end
