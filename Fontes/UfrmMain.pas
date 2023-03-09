@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics, Vcl.DBGrids, Vcl.Controls, Vcl.Forms, AdvPanel,
   Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
   Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls, AdvMenus,
-  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus;
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, dxScreenTip,
+  cxClasses, dxCustomHint, cxHint, AdvOfficeHint;
 
 type
   THackDBGrid = class(TDBGrid)
@@ -44,6 +45,7 @@ type
     TimerAbrirAulas: TTimer;
     MainMenu1: TMainMenu;
     N1: TMenuItem;
+    cxHintStyleController1: TcxHintStyleController;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
