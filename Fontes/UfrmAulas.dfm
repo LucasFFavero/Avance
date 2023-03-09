@@ -2,7 +2,7 @@ object frmAulas: TfrmAulas
   Left = 0
   Top = 0
   Caption = 'Aulas'
-  ClientHeight = 611
+  ClientHeight = 651
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,7 +13,7 @@ object frmAulas: TfrmAulas
   FormStyle = fsMDIChild
   KeyPreview = True
   OldCreateOrder = False
-  Position = poMainFormCenter
+  Position = poDefault
   Visible = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -601,7 +601,7 @@ object frmAulas: TfrmAulas
     Left = 0
     Top = 60
     Width = 964
-    Height = 551
+    Height = 591
     ActivePage = tbsDadosCadastrais
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
@@ -613,6 +613,7 @@ object frmAulas: TfrmAulas
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
+    ExplicitHeight = 551
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       OnShow = tbsDadosCadastraisShow
@@ -620,7 +621,7 @@ object frmAulas: TfrmAulas
         Left = 0
         Top = 0
         Width = 956
-        Height = 511
+        Height = 551
         Align = alClient
         DataSource = dtmAulas.dtsAulas
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -676,43 +677,57 @@ object frmAulas: TfrmAulas
         Left = 0
         Top = 0
         Width = 956
-        Height = 511
+        Height = 551
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        object pnlCadastroClient: TPanel
+        ExplicitHeight = 511
+        object pnlImagem: TPanel
           Left = 0
           Top = 140
           Width = 956
-          Height = 371
+          Height = 411
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitWidth = 592
           object pnlCadastroRight: TPanel
-            Left = 566
+            Left = 921
             Top = 0
-            Width = 390
-            Height = 371
-            Align = alRight
+            Width = 35
+            Height = 411
+            Align = alClient
             BevelOuter = bvNone
-            TabOrder = 2
+            TabOrder = 1
+            ExplicitLeft = 632
+            ExplicitWidth = 324
+          end
+          object pnlCadastroLeft: TPanel
+            Left = 0
+            Top = 0
+            Width = 25
+            Height = 411
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 0
+            ExplicitLeft = -6
           end
           object gpbImagem: TGroupBox
             Left = 25
             Top = 0
-            Width = 541
-            Height = 371
-            Align = alClient
+            Width = 896
+            Height = 411
+            Align = alLeft
             Caption = 'Imagem'
-            TabOrder = 0
+            TabOrder = 2
             object Image: TImage
               AlignWithMargins = True
               Left = 43
               Top = 18
-              Width = 493
-              Height = 348
+              Width = 848
+              Height = 388
               Align = alClient
               Stretch = True
               ExplicitLeft = 39
@@ -724,15 +739,16 @@ object frmAulas: TfrmAulas
               Left = 2
               Top = 15
               Width = 38
-              Height = 354
+              Height = 394
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
               object btnIncluirImagem: TAdvGlowButton
-                Left = 2
-                Top = 13
-                Width = 32
+                Left = 0
+                Top = 0
+                Width = 38
                 Height = 32
+                Align = alTop
                 BorderStyle = bsNone
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 3618615
@@ -770,10 +786,11 @@ object frmAulas: TfrmAulas
                 Layout = blGlyphTop
               end
               object btnRemoverImagem: TAdvGlowButton
-                Left = 2
-                Top = 51
-                Width = 32
+                Left = 0
+                Top = 32
+                Width = 38
                 Height = 32
+                Align = alTop
                 BorderStyle = bsNone
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 3618615
@@ -812,15 +829,6 @@ object frmAulas: TfrmAulas
               end
             end
           end
-          object pnlCadastroLeft: TPanel
-            Left = 0
-            Top = 0
-            Width = 25
-            Height = 371
-            Align = alLeft
-            BevelOuter = bvNone
-            TabOrder = 1
-          end
         end
         object pnlCadastroTop: TPanel
           Left = 0
@@ -830,6 +838,8 @@ object frmAulas: TfrmAulas
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitLeft = -4
+          ExplicitTop = -6
           object Label1: TLabel
             Left = 25
             Top = 16
@@ -858,7 +868,7 @@ object frmAulas: TfrmAulas
             ParentFont = False
           end
           object Label3: TLabel
-            Left = 593
+            Left = 617
             Top = 72
             Width = 37
             Height = 13
@@ -886,7 +896,7 @@ object frmAulas: TfrmAulas
           object edtTitulo: TDBEdit
             Left = 25
             Top = 91
-            Width = 540
+            Width = 567
             Height = 21
             Hint = 'Informe a descri'#231#227'o'
             CharCase = ecUpperCase
@@ -895,7 +905,7 @@ object frmAulas: TfrmAulas
             TabOrder = 1
           end
           object dblkcbTurma: TDBLookupComboBox
-            Left = 593
+            Left = 617
             Top = 91
             Width = 304
             Height = 21
@@ -914,270 +924,168 @@ object frmAulas: TfrmAulas
       Caption = 'Conte'#250'dos'
       ImageIndex = 2
       OnShow = tbsConteudosShow
-      object dbgConteudo: TDBGrid
-        Left = 38
-        Top = 0
-        Width = 918
-        Height = 511
-        Align = alClient
-        DataSource = dtmAulas.dtsConteudos
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-        ReadOnly = True
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        OnDrawColumnCell = dbgConteudoDrawColumnCell
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'CODIGO'
-            Title.Caption = 'C'#243'digo'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'DESCRICAO'
-            Title.Caption = 'Descri'#231#227'o'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 240
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'IMAGEM'
-            Title.Alignment = taCenter
-            Title.Caption = 'Imagem'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 60
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'VIDEO'
-            Title.Alignment = taCenter
-            Title.Caption = 'V'#237'deo'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 60
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'AUDIO'
-            Title.Alignment = taCenter
-            Title.Caption = 'Audio'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 60
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'RESUMO'
-            Title.Caption = 'Resumo'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 240
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'RESUMO_IMAGEM'
-            Title.Alignment = taCenter
-            Title.Caption = 'Imagem Resumo'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 110
-            Visible = True
-          end>
-      end
       object pnlConteudo: TPanel
         Left = 0
         Top = 0
-        Width = 38
-        Height = 511
-        Align = alLeft
-        BevelOuter = bvNone
-        TabOrder = 1
-        object btnIncluirConteudo: TAdvGlowButton
-          Left = 2
-          Top = 21
-          Width = 32
-          Height = 32
-          BorderStyle = bsNone
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -9
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ImageIndex = 0
-          Images = frmMain.cxImageList5
-          NotesFont.Charset = DEFAULT_CHARSET
-          NotesFont.Color = clWindowText
-          NotesFont.Height = -11
-          NotesFont.Name = 'Tahoma'
-          NotesFont.Style = []
-          ParentFont = False
-          ShowCaption = False
-          Transparent = True
-          TabOrder = 0
-          OnClick = btnIncluirConteudoClick
-          Appearance.ColorChecked = 16111818
-          Appearance.ColorCheckedTo = 16367008
-          Appearance.ColorDisabled = 15921906
-          Appearance.ColorDisabledTo = 15921906
-          Appearance.ColorDown = 16111818
-          Appearance.ColorDownTo = 16367008
-          Appearance.ColorHot = 16117985
-          Appearance.ColorHotTo = 16372402
-          Appearance.ColorMirrorHot = 16107693
-          Appearance.ColorMirrorHotTo = 16775412
-          Appearance.ColorMirrorDown = 16102556
-          Appearance.ColorMirrorDownTo = 16768988
-          Appearance.ColorMirrorChecked = 16102556
-          Appearance.ColorMirrorCheckedTo = 16768988
-          Appearance.ColorMirrorDisabled = 11974326
-          Appearance.ColorMirrorDisabledTo = 15921906
-          Layout = blGlyphTop
-        end
-        object btnExcluirConteudo: TAdvGlowButton
-          Left = 2
-          Top = 97
-          Width = 32
-          Height = 32
-          BorderStyle = bsNone
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -9
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ImageIndex = 1
-          Images = frmMain.cxImageList5
-          NotesFont.Charset = DEFAULT_CHARSET
-          NotesFont.Color = clWindowText
-          NotesFont.Height = -11
-          NotesFont.Name = 'Tahoma'
-          NotesFont.Style = []
-          ParentFont = False
-          ShowCaption = False
-          Transparent = True
-          TabOrder = 1
-          OnClick = btnExcluirConteudoClick
-          Appearance.ColorChecked = 16111818
-          Appearance.ColorCheckedTo = 16367008
-          Appearance.ColorDisabled = 15921906
-          Appearance.ColorDisabledTo = 15921906
-          Appearance.ColorDown = 16111818
-          Appearance.ColorDownTo = 16367008
-          Appearance.ColorHot = 16117985
-          Appearance.ColorHotTo = 16372402
-          Appearance.ColorMirrorHot = 16107693
-          Appearance.ColorMirrorHotTo = 16775412
-          Appearance.ColorMirrorDown = 16102556
-          Appearance.ColorMirrorDownTo = 16768988
-          Appearance.ColorMirrorChecked = 16102556
-          Appearance.ColorMirrorCheckedTo = 16768988
-          Appearance.ColorMirrorDisabled = 11974326
-          Appearance.ColorMirrorDisabledTo = 15921906
-          Layout = blGlyphTop
-        end
-        object btnEditarConteudo: TAdvGlowButton
-          Left = 2
-          Top = 59
-          Width = 32
-          Height = 32
-          BorderStyle = bsNone
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -9
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ImageIndex = 2
-          Images = frmMain.cxImageList5
-          NotesFont.Charset = DEFAULT_CHARSET
-          NotesFont.Color = clWindowText
-          NotesFont.Height = -11
-          NotesFont.Name = 'Tahoma'
-          NotesFont.Style = []
-          ParentFont = False
-          ShowCaption = False
-          Transparent = True
-          TabOrder = 2
-          OnClick = btnEditarConteudoClick
-          Appearance.ColorChecked = 16111818
-          Appearance.ColorCheckedTo = 16367008
-          Appearance.ColorDisabled = 15921906
-          Appearance.ColorDisabledTo = 15921906
-          Appearance.ColorDown = 16111818
-          Appearance.ColorDownTo = 16367008
-          Appearance.ColorHot = 16117985
-          Appearance.ColorHotTo = 16372402
-          Appearance.ColorMirrorHot = 16107693
-          Appearance.ColorMirrorHotTo = 16775412
-          Appearance.ColorMirrorDown = 16102556
-          Appearance.ColorMirrorDownTo = 16768988
-          Appearance.ColorMirrorChecked = 16102556
-          Appearance.ColorMirrorCheckedTo = 16768988
-          Appearance.ColorMirrorDisabled = 11974326
-          Appearance.ColorMirrorDisabledTo = 15921906
-          Layout = blGlyphTop
-        end
-      end
-    end
-    object tbsExercicios: TTabSheet
-      Caption = 'Exerc'#237'cios'
-      ImageIndex = 4
-      OnShow = tbsExerciciosShow
-      object pnlExercicios: TPanel
-        Left = 0
-        Top = 0
         Width = 956
-        Height = 193
+        Height = 160
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        object dbgExercicios: TDBGrid
+        ExplicitWidth = 1029
+        object pnlConteudoBotoes: TPanel
+          Left = 0
+          Top = 0
+          Width = 38
+          Height = 160
+          Align = alLeft
+          BevelOuter = bvNone
+          TabOrder = 0
+          ExplicitHeight = 279
+          object btnIncluirConteudo: TAdvGlowButton
+            Left = 0
+            Top = 0
+            Width = 38
+            Height = 32
+            Align = alTop
+            BorderStyle = bsNone
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 3618615
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ImageIndex = 0
+            Images = frmMain.cxImageList5
+            NotesFont.Charset = DEFAULT_CHARSET
+            NotesFont.Color = clWindowText
+            NotesFont.Height = -11
+            NotesFont.Name = 'Tahoma'
+            NotesFont.Style = []
+            ParentFont = False
+            ShowCaption = False
+            Transparent = True
+            TabOrder = 0
+            OnClick = btnIncluirConteudoClick
+            Appearance.ColorChecked = 16111818
+            Appearance.ColorCheckedTo = 16367008
+            Appearance.ColorDisabled = 15921906
+            Appearance.ColorDisabledTo = 15921906
+            Appearance.ColorDown = 16111818
+            Appearance.ColorDownTo = 16367008
+            Appearance.ColorHot = 16117985
+            Appearance.ColorHotTo = 16372402
+            Appearance.ColorMirrorHot = 16107693
+            Appearance.ColorMirrorHotTo = 16775412
+            Appearance.ColorMirrorDown = 16102556
+            Appearance.ColorMirrorDownTo = 16768988
+            Appearance.ColorMirrorChecked = 16102556
+            Appearance.ColorMirrorCheckedTo = 16768988
+            Appearance.ColorMirrorDisabled = 11974326
+            Appearance.ColorMirrorDisabledTo = 15921906
+            Layout = blGlyphTop
+            ExplicitLeft = 2
+            ExplicitTop = 21
+            ExplicitWidth = 32
+          end
+          object btnExcluirConteudo: TAdvGlowButton
+            Left = 0
+            Top = 64
+            Width = 38
+            Height = 32
+            Align = alTop
+            BorderStyle = bsNone
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 3618615
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ImageIndex = 1
+            Images = frmMain.cxImageList5
+            NotesFont.Charset = DEFAULT_CHARSET
+            NotesFont.Color = clWindowText
+            NotesFont.Height = -11
+            NotesFont.Name = 'Tahoma'
+            NotesFont.Style = []
+            ParentFont = False
+            ShowCaption = False
+            Transparent = True
+            TabOrder = 1
+            OnClick = btnExcluirConteudoClick
+            Appearance.ColorChecked = 16111818
+            Appearance.ColorCheckedTo = 16367008
+            Appearance.ColorDisabled = 15921906
+            Appearance.ColorDisabledTo = 15921906
+            Appearance.ColorDown = 16111818
+            Appearance.ColorDownTo = 16367008
+            Appearance.ColorHot = 16117985
+            Appearance.ColorHotTo = 16372402
+            Appearance.ColorMirrorHot = 16107693
+            Appearance.ColorMirrorHotTo = 16775412
+            Appearance.ColorMirrorDown = 16102556
+            Appearance.ColorMirrorDownTo = 16768988
+            Appearance.ColorMirrorChecked = 16102556
+            Appearance.ColorMirrorCheckedTo = 16768988
+            Appearance.ColorMirrorDisabled = 11974326
+            Appearance.ColorMirrorDisabledTo = 15921906
+            Layout = blGlyphTop
+            ExplicitLeft = 2
+            ExplicitTop = 97
+            ExplicitWidth = 32
+          end
+          object btnEditarConteudo: TAdvGlowButton
+            Left = 0
+            Top = 32
+            Width = 38
+            Height = 32
+            Align = alTop
+            BorderStyle = bsNone
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 3618615
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ImageIndex = 2
+            Images = frmMain.cxImageList5
+            NotesFont.Charset = DEFAULT_CHARSET
+            NotesFont.Color = clWindowText
+            NotesFont.Height = -11
+            NotesFont.Name = 'Tahoma'
+            NotesFont.Style = []
+            ParentFont = False
+            ShowCaption = False
+            Transparent = True
+            TabOrder = 2
+            OnClick = btnEditarConteudoClick
+            Appearance.ColorChecked = 16111818
+            Appearance.ColorCheckedTo = 16367008
+            Appearance.ColorDisabled = 15921906
+            Appearance.ColorDisabledTo = 15921906
+            Appearance.ColorDown = 16111818
+            Appearance.ColorDownTo = 16367008
+            Appearance.ColorHot = 16117985
+            Appearance.ColorHotTo = 16372402
+            Appearance.ColorMirrorHot = 16107693
+            Appearance.ColorMirrorHotTo = 16775412
+            Appearance.ColorMirrorDown = 16102556
+            Appearance.ColorMirrorDownTo = 16768988
+            Appearance.ColorMirrorChecked = 16102556
+            Appearance.ColorMirrorCheckedTo = 16768988
+            Appearance.ColorMirrorDisabled = 11974326
+            Appearance.ColorMirrorDisabledTo = 15921906
+            Layout = blGlyphTop
+            ExplicitLeft = 2
+            ExplicitTop = 59
+            ExplicitWidth = 32
+          end
+        end
+        object dbgConteudo: TDBGrid
           Left = 38
           Top = 0
           Width = 918
-          Height = 193
+          Height = 160
           Align = alClient
-          DataSource = dtmAulas.dtsExercicios
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = []
+          DataSource = dtmAulas.dtsConteudos
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-          ParentFont = False
           ReadOnly = True
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
@@ -1185,7 +1093,7 @@ object frmAulas: TfrmAulas
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
-          OnDrawColumnCell = dbgExerciciosDrawColumnCell
+          OnDrawColumnCell = dbgConteudoDrawColumnCell
           Columns = <
             item
               Expanded = False
@@ -1200,18 +1108,6 @@ object frmAulas: TfrmAulas
             end
             item
               Expanded = False
-              FieldName = 'CONTEUDO'
-              Title.Caption = 'Conte'#250'do'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -11
-              Title.Font.Name = 'Tahoma'
-              Title.Font.Style = [fsBold]
-              Width = 250
-              Visible = True
-            end
-            item
-              Expanded = False
               FieldName = 'DESCRICAO'
               Title.Caption = 'Descri'#231#227'o'
               Title.Font.Charset = DEFAULT_CHARSET
@@ -1219,7 +1115,7 @@ object frmAulas: TfrmAulas
               Title.Font.Height = -11
               Title.Font.Name = 'Tahoma'
               Title.Font.Style = [fsBold]
-              Width = 350
+              Width = 240
               Visible = True
             end
             item
@@ -1247,278 +1143,637 @@ object frmAulas: TfrmAulas
               Title.Font.Style = [fsBold]
               Width = 60
               Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'AUDIO'
+              Title.Alignment = taCenter
+              Title.Caption = 'Audio'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RESUMO'
+              Title.Caption = 'Resumo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 240
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RESUMO_IMAGEM'
+              Title.Alignment = taCenter
+              Title.Caption = 'Imagem Resumo'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 110
+              Visible = True
             end>
         end
-        object pnlExerciciosBotoes: TPanel
-          Left = 0
-          Top = 0
-          Width = 38
-          Height = 193
-          Align = alLeft
-          BevelOuter = bvNone
-          TabOrder = 0
-          object btnIncluirExercicios: TAdvGlowButton
-            Left = 2
-            Top = 21
-            Width = 32
-            Height = 32
-            BorderStyle = bsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -9
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ImageIndex = 0
-            Images = frmMain.cxImageList5
-            NotesFont.Charset = DEFAULT_CHARSET
-            NotesFont.Color = clWindowText
-            NotesFont.Height = -11
-            NotesFont.Name = 'Tahoma'
-            NotesFont.Style = []
-            ParentFont = False
-            ShowCaption = False
-            Transparent = True
-            TabOrder = 0
-            OnClick = btnIncluirExerciciosClick
-            Appearance.ColorChecked = 16111818
-            Appearance.ColorCheckedTo = 16367008
-            Appearance.ColorDisabled = 15921906
-            Appearance.ColorDisabledTo = 15921906
-            Appearance.ColorDown = 16111818
-            Appearance.ColorDownTo = 16367008
-            Appearance.ColorHot = 16117985
-            Appearance.ColorHotTo = 16372402
-            Appearance.ColorMirrorHot = 16107693
-            Appearance.ColorMirrorHotTo = 16775412
-            Appearance.ColorMirrorDown = 16102556
-            Appearance.ColorMirrorDownTo = 16768988
-            Appearance.ColorMirrorChecked = 16102556
-            Appearance.ColorMirrorCheckedTo = 16768988
-            Appearance.ColorMirrorDisabled = 11974326
-            Appearance.ColorMirrorDisabledTo = 15921906
-            Layout = blGlyphTop
-          end
-          object btnExcluirExercicios: TAdvGlowButton
-            Left = 2
-            Top = 97
-            Width = 32
-            Height = 32
-            BorderStyle = bsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -9
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ImageIndex = 1
-            Images = frmMain.cxImageList5
-            NotesFont.Charset = DEFAULT_CHARSET
-            NotesFont.Color = clWindowText
-            NotesFont.Height = -11
-            NotesFont.Name = 'Tahoma'
-            NotesFont.Style = []
-            ParentFont = False
-            ShowCaption = False
-            Transparent = True
-            TabOrder = 1
-            OnClick = btnExcluirExerciciosClick
-            Appearance.ColorChecked = 16111818
-            Appearance.ColorCheckedTo = 16367008
-            Appearance.ColorDisabled = 15921906
-            Appearance.ColorDisabledTo = 15921906
-            Appearance.ColorDown = 16111818
-            Appearance.ColorDownTo = 16367008
-            Appearance.ColorHot = 16117985
-            Appearance.ColorHotTo = 16372402
-            Appearance.ColorMirrorHot = 16107693
-            Appearance.ColorMirrorHotTo = 16775412
-            Appearance.ColorMirrorDown = 16102556
-            Appearance.ColorMirrorDownTo = 16768988
-            Appearance.ColorMirrorChecked = 16102556
-            Appearance.ColorMirrorCheckedTo = 16768988
-            Appearance.ColorMirrorDisabled = 11974326
-            Appearance.ColorMirrorDisabledTo = 15921906
-            Layout = blGlyphTop
-          end
-          object AdvGlowButton1: TAdvGlowButton
-            Left = 2
-            Top = 59
-            Width = 32
-            Height = 32
-            BorderStyle = bsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 3618615
-            Font.Height = -9
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ImageIndex = 2
-            Images = frmMain.cxImageList5
-            NotesFont.Charset = DEFAULT_CHARSET
-            NotesFont.Color = clWindowText
-            NotesFont.Height = -11
-            NotesFont.Name = 'Tahoma'
-            NotesFont.Style = []
-            ParentFont = False
-            ShowCaption = False
-            Transparent = True
-            TabOrder = 2
-            OnClick = AdvGlowButton1Click
-            Appearance.ColorChecked = 16111818
-            Appearance.ColorCheckedTo = 16367008
-            Appearance.ColorDisabled = 15921906
-            Appearance.ColorDisabledTo = 15921906
-            Appearance.ColorDown = 16111818
-            Appearance.ColorDownTo = 16367008
-            Appearance.ColorHot = 16117985
-            Appearance.ColorHotTo = 16372402
-            Appearance.ColorMirrorHot = 16107693
-            Appearance.ColorMirrorHotTo = 16775412
-            Appearance.ColorMirrorDown = 16102556
-            Appearance.ColorMirrorDownTo = 16768988
-            Appearance.ColorMirrorChecked = 16102556
-            Appearance.ColorMirrorCheckedTo = 16768988
-            Appearance.ColorMirrorDisabled = 11974326
-            Appearance.ColorMirrorDisabledTo = 15921906
-            Layout = blGlyphTop
-          end
-        end
       end
-      object Panel8: TPanel
+      object Panel9: TPanel
         Left = 0
-        Top = 193
+        Top = 160
         Width = 956
-        Height = 41
-        Align = alTop
-        BevelOuter = bvNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clRed
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        object Panel6: TPanel
-          Left = 0
-          Top = 0
-          Width = 38
-          Height = 41
-          Align = alLeft
-          BevelOuter = bvNone
-          TabOrder = 0
-        end
-        object Panel7: TPanel
-          Left = 38
-          Top = 0
-          Width = 918
-          Height = 41
-          Align = alClient
-          Alignment = taLeftJustify
-          BevelOuter = bvNone
-          Color = clWhite
-          Padding.Top = 8
-          ParentBackground = False
-          TabOrder = 1
-          object Label4: TLabel
-            AlignWithMargins = True
-            Left = 3
-            Top = 11
-            Width = 912
-            Height = 27
-            Align = alClient
-            Caption = 'Quest'#245'es'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clRed
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-            ExplicitWidth = 61
-            ExplicitHeight = 16
-          end
-        end
-      end
-      object pnlQuestoes: TPanel
-        Left = 0
-        Top = 234
-        Width = 956
-        Height = 277
+        Height = 391
         Align = alClient
         BevelOuter = bvNone
-        TabOrder = 2
-        object dbgQuestoes: TDBGrid
-          Left = 38
-          Top = 0
-          Width = 918
-          Height = 277
-          Align = alClient
-          DataSource = dtmAulas.dtsQuestoes
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-          ReadOnly = True
-          TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = []
-          OnDrawColumnCell = dbgQuestoesDrawColumnCell
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'CODIGO'
-              Title.Caption = 'C'#243'digo'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -11
-              Title.Font.Name = 'Tahoma'
-              Title.Font.Style = [fsBold]
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DESCRICAO'
-              Title.Caption = 'Descri'#231#227'o'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -11
-              Title.Font.Name = 'Tahoma'
-              Title.Font.Style = [fsBold]
-              Width = 400
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'IMAGEM'
-              Title.Alignment = taCenter
-              Title.Caption = 'Imagem'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -11
-              Title.Font.Name = 'Tahoma'
-              Title.Font.Style = [fsBold]
-              Width = 60
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CORRETA'
-              Title.Alignment = taCenter
-              Title.Caption = 'Correta'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -11
-              Title.Font.Name = 'Tahoma'
-              Title.Font.Style = [fsBold]
-              Width = 60
-              Visible = True
-            end>
-        end
-        object pnlQuestoesBotoes: TPanel
+        TabOrder = 1
+        ExplicitLeft = 224
+        ExplicitTop = 240
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object pnlExercicios: TPanel
           Left = 0
           Top = 0
-          Width = 38
-          Height = 277
-          Align = alLeft
+          Width = 956
+          Height = 180
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 0
+          ExplicitWidth = 1029
+          object dbgExercicios: TDBGrid
+            Left = 38
+            Top = 30
+            Width = 918
+            Height = 150
+            Align = alClient
+            Color = 3013529
+            DataSource = dtmAulas.dtsExercicios
+            FixedColor = clBtnText
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnDrawColumnCell = dbgExerciciosDrawColumnCell
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'CODIGO'
+                Title.Caption = 'C'#243'digo'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DESCRICAO'
+                Title.Caption = 'Descri'#231#227'o'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 350
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'TITULO'
+                Title.Caption = 'T'#237'tulo'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 300
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'IMAGEM'
+                Title.Alignment = taCenter
+                Title.Caption = 'Imagem'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'VIDEO'
+                Title.Alignment = taCenter
+                Title.Caption = 'V'#237'deo'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 60
+                Visible = True
+              end>
+          end
+          object pnlExerciciosBotoes: TPanel
+            Left = 0
+            Top = 30
+            Width = 38
+            Height = 150
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 0
+            ExplicitLeft = -6
+            ExplicitTop = 29
+            ExplicitHeight = 105
+            object btnIncluirExercicio: TAdvGlowButton
+              Left = 0
+              Top = 0
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 0
+              OnClick = btnIncluirExercicioClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitTop = 12
+            end
+            object btnExcluirExercicio: TAdvGlowButton
+              Left = 0
+              Top = 64
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 1
+              OnClick = btnExcluirExercicioClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 97
+              ExplicitWidth = 32
+            end
+            object btnEditarExercicio: TAdvGlowButton
+              Left = 0
+              Top = 32
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 2
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 2
+              OnClick = btnEditarExercicioClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 59
+              ExplicitWidth = 32
+            end
+          end
+          object pnlExerciciosTituloGeral: TPanel
+            Left = 0
+            Top = 0
+            Width = 956
+            Height = 30
+            Align = alTop
+            BevelOuter = bvNone
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 2
+            ExplicitWidth = 1029
+            object pnlExerciciosTituloLeft: TPanel
+              Left = 0
+              Top = 0
+              Width = 38
+              Height = 30
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+              ExplicitLeft = -6
+              ExplicitTop = 6
+              ExplicitHeight = 31
+            end
+            object pnlExerciciosTitulo: TPanel
+              Left = 38
+              Top = 0
+              Width = 918
+              Height = 30
+              Align = alClient
+              BevelOuter = bvNone
+              Color = 9341578
+              Padding.Top = 2
+              ParentBackground = False
+              TabOrder = 1
+              StyleElements = []
+              ExplicitLeft = 469
+              ExplicitTop = 6
+              ExplicitWidth = 185
+              ExplicitHeight = 41
+              object lblExercicios: TLabel
+                Left = 0
+                Top = 2
+                Width = 918
+                Height = 28
+                Align = alClient
+                Alignment = taCenter
+                Caption = 'Exerc'#237'cios'
+                Color = 14590813
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -19
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                StyleElements = []
+                ExplicitLeft = 6
+                ExplicitTop = -4
+                ExplicitWidth = 991
+              end
+            end
+          end
+        end
+        object pnlQuestoes: TPanel
+          Left = 0
+          Top = 180
+          Width = 956
+          Height = 211
+          Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitTop = 234
+          ExplicitHeight = 277
+          object dbgQuestoes: TDBGrid
+            Left = 38
+            Top = 30
+            Width = 918
+            Height = 181
+            Align = alClient
+            DataSource = dtmAulas.dtsQuestoes
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+            ReadOnly = True
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnDrawColumnCell = dbgQuestoesDrawColumnCell
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'CODIGO'
+                Title.Caption = 'C'#243'digo'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DESCRICAO'
+                Title.Caption = 'Descri'#231#227'o'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 400
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'IMAGEM'
+                Title.Alignment = taCenter
+                Title.Caption = 'Imagem'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CORRETA'
+                Title.Alignment = taCenter
+                Title.Caption = 'Correta'
+                Title.Font.Charset = DEFAULT_CHARSET
+                Title.Font.Color = clWindowText
+                Title.Font.Height = -11
+                Title.Font.Name = 'Tahoma'
+                Title.Font.Style = [fsBold]
+                Width = 60
+                Visible = True
+              end>
+          end
+          object pnlQuestoesBotoes: TPanel
+            Left = 0
+            Top = 30
+            Width = 38
+            Height = 181
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 1
+            ExplicitTop = 0
+            ExplicitHeight = 149
+            object btnIncluirQuestao: TAdvGlowButton
+              Left = 0
+              Top = 0
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 0
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 0
+              OnClick = btnIncluirQuestaoClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitTop = 8
+            end
+            object btnEditarQuestao: TAdvGlowButton
+              Left = 0
+              Top = 32
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 2
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 1
+              OnClick = btnEditarQuestaoClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitTop = 40
+            end
+            object btnExcluirQuestao: TAdvGlowButton
+              Left = 0
+              Top = 64
+              Width = 38
+              Height = 32
+              Align = alTop
+              BorderStyle = bsNone
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3618615
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ImageIndex = 1
+              Images = frmMain.cxImageList5
+              NotesFont.Charset = DEFAULT_CHARSET
+              NotesFont.Color = clWindowText
+              NotesFont.Height = -11
+              NotesFont.Name = 'Tahoma'
+              NotesFont.Style = []
+              ParentFont = False
+              ShowCaption = False
+              Transparent = True
+              TabOrder = 2
+              OnClick = btnExcluirQuestaoClick
+              Appearance.ColorChecked = 16111818
+              Appearance.ColorCheckedTo = 16367008
+              Appearance.ColorDisabled = 15921906
+              Appearance.ColorDisabledTo = 15921906
+              Appearance.ColorDown = 16111818
+              Appearance.ColorDownTo = 16367008
+              Appearance.ColorHot = 16117985
+              Appearance.ColorHotTo = 16372402
+              Appearance.ColorMirrorHot = 16107693
+              Appearance.ColorMirrorHotTo = 16775412
+              Appearance.ColorMirrorDown = 16102556
+              Appearance.ColorMirrorDownTo = 16768988
+              Appearance.ColorMirrorChecked = 16102556
+              Appearance.ColorMirrorCheckedTo = 16768988
+              Appearance.ColorMirrorDisabled = 11974326
+              Appearance.ColorMirrorDisabledTo = 15921906
+              Layout = blGlyphTop
+              ExplicitTop = 72
+            end
+          end
+          object pnlQuestoesTituloGeral: TPanel
+            Left = 0
+            Top = 0
+            Width = 956
+            Height = 30
+            Align = alTop
+            BevelOuter = bvNone
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 2
+            ExplicitTop = 8
+            ExplicitWidth = 1029
+            object pnlQuestoesTituloLeft: TPanel
+              Left = 0
+              Top = 0
+              Width = 38
+              Height = 30
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object pnlQuestoesTitulo: TPanel
+              Left = 38
+              Top = 0
+              Width = 918
+              Height = 30
+              Align = alClient
+              BevelOuter = bvNone
+              Color = 14590816
+              Padding.Top = 2
+              ParentBackground = False
+              TabOrder = 1
+              StyleElements = []
+              ExplicitWidth = 991
+              object lblQuestoes: TLabel
+                Left = 0
+                Top = 2
+                Width = 918
+                Height = 28
+                Align = alClient
+                Alignment = taCenter
+                Caption = 'Quest'#245'es / Respostas'
+                Color = 14590813
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -19
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                StyleElements = []
+                ExplicitLeft = 6
+                ExplicitTop = -4
+                ExplicitWidth = 991
+              end
+            end
+          end
         end
       end
     end
@@ -1556,6 +1811,9 @@ object frmAulas: TfrmAulas
           Height = 21
           CharCase = ecUpperCase
           TabOrder = 0
+          OnEnter = edtLocAulasEnter
+          OnExit = edtLocAulasExit
+          OnKeyPress = edtLocAulasKeyPress
         end
         object btnLocalizarUsuarios: TAdvGlowButton
           Left = 532
@@ -1603,7 +1861,7 @@ object frmAulas: TfrmAulas
         Left = 0
         Top = 81
         Width = 956
-        Height = 430
+        Height = 470
         Align = alClient
         DataSource = dtmAulas.dtsBuscaAulas
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
@@ -1670,12 +1928,12 @@ object frmAulas: TfrmAulas
   end
   object OpenPicture: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg'
-    Left = 600
-    Top = 244
+    Left = 688
+    Top = 324
   end
   object imgDetail: TImageList
-    Left = 658
-    Top = 244
+    Left = 746
+    Top = 324
     Bitmap = {
       494C010105000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020

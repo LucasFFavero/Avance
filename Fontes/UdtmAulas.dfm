@@ -240,8 +240,8 @@ object dtmAulas: TdtmAulas
         '_EXERCICIOS.COD_CONTEUDO,'
       
         '       AULAS_CONTEUDOS.DESCRICAO AS CONTEUDO, AULAS_EXERCICIOS.D' +
-        'ESCRICAO, AULAS_EXERCICIOS.IMAGEM,'
-      '       AULAS_EXERCICIOS.VIDEO'
+        'ESCRICAO, AULAS_EXERCICIOS.TITULO,'
+      '       AULAS_EXERCICIOS.IMAGEM, AULAS_EXERCICIOS.VIDEO'
       'FROM AULAS_EXERCICIOS'
       
         'INNER JOIN AULAS_CONTEUDOS ON (AULAS_EXERCICIOS.COD_CONTEUDO = A' +
@@ -254,10 +254,12 @@ object dtmAulas: TdtmAulas
     ParamData = <
       item
         Name = 'COD_AULA'
+        DataType = ftInteger
         ParamType = ptInput
       end
       item
         Name = 'COD_CONTEUDO'
+        DataType = ftInteger
         ParamType = ptInput
       end>
     object qryExerciciosCODIGO: TFDAutoIncField
@@ -284,9 +286,15 @@ object dtmAulas: TdtmAulas
       Size = 200
     end
     object qryExerciciosDESCRICAO: TStringField
+      DisplayWidth = 200
       FieldName = 'DESCRICAO'
       Origin = 'DESCRICAO'
-      Size = 120
+      Size = 200
+    end
+    object qryExerciciosTITULO: TStringField
+      FieldName = 'TITULO'
+      Origin = 'TITULO'
+      Size = 200
     end
     object qryExerciciosIMAGEM: TBlobField
       Alignment = taCenter
@@ -432,6 +440,28 @@ object dtmAulas: TdtmAulas
     ParamData = <
       item
         Name = 'COD_AULAS_EXERCICIOS'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object qryExcluirQuestao: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    Transaction = TransactionExcluir
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'DELETE FROM AULAS_EXERCICIOS_QUESTOES'
+      'WHERE AULAS_EXERCICIOS_QUESTOES.CODIGO =:CODIGO')
+    Left = 336
+    Top = 200
+    ParamData = <
+      item
+        Name = 'CODIGO'
         DataType = ftInteger
         ParamType = ptInput
       end>

@@ -20,9 +20,9 @@ object dtmAulasExercicios: TdtmAulasExercicios
         'SELECT AULAS_EXERCICIOS.CODIGO, AULAS_EXERCICIOS.COD_AULA, AULAS' +
         '_EXERCICIOS.COD_CONTEUDO,'
       
-        '       AULAS_EXERCICIOS.DESCRICAO, AULAS_EXERCICIOS.TIPO, AULAS_' +
-        'EXERCICIOS.IMAGEM,'
-      '       AULAS_EXERCICIOS.VIDEO'
+        '       AULAS_EXERCICIOS.DESCRICAO, AULAS_EXERCICIOS.TITULO, AULA' +
+        'S_EXERCICIOS.TIPO,'
+      '       AULAS_EXERCICIOS.IMAGEM, AULAS_EXERCICIOS.VIDEO'
       'FROM AULAS_EXERCICIOS'
       'WHERE AULAS_EXERCICIOS.CODIGO = :CODIGO'
       'ORDER BY AULAS_EXERCICIOS.CODIGO  ')
@@ -50,9 +50,15 @@ object dtmAulasExercicios: TdtmAulasExercicios
       Origin = 'COD_CONTEUDO'
     end
     object qryExerciciosDESCRICAO: TStringField
+      DisplayWidth = 200
       FieldName = 'DESCRICAO'
       Origin = 'DESCRICAO'
-      Size = 120
+      Size = 200
+    end
+    object qryExerciciosTITULO: TStringField
+      FieldName = 'TITULO'
+      Origin = 'TITULO'
+      Size = 200
     end
     object qryExerciciosTIPO: TStringField
       FieldName = 'TIPO'
@@ -79,11 +85,11 @@ object dtmAulasExercicios: TdtmAulasExercicios
     InsertSQL.Strings = (
       'INSERT INTO AULAS_EXERCICIOS'
       '(COD_AULA, COD_CONTEUDO, DESCRICAO, TIPO, '
-      '  IMAGEM, VIDEO)'
+      '  IMAGEM, VIDEO, TITULO)'
       
         'VALUES (:NEW_COD_AULA, :NEW_COD_CONTEUDO, :NEW_DESCRICAO, :NEW_T' +
         'IPO, '
-      '  :NEW_IMAGEM, :NEW_VIDEO)'
+      '  :NEW_IMAGEM, :NEW_VIDEO, :NEW_TITULO)'
       'RETURNING CODIGO')
     ModifySQL.Strings = (
       'UPDATE AULAS_EXERCICIOS'
@@ -91,7 +97,7 @@ object dtmAulasExercicios: TdtmAulasExercicios
       
         '  DESCRICAO = :NEW_DESCRICAO, TIPO = :NEW_TIPO, IMAGEM = :NEW_IM' +
         'AGEM, '
-      '  VIDEO = :NEW_VIDEO'
+      '  VIDEO = :NEW_VIDEO, TITULO = :NEW_TITULO'
       'WHERE CODIGO = :OLD_CODIGO'
       'RETURNING CODIGO')
     DeleteSQL.Strings = (
@@ -100,7 +106,8 @@ object dtmAulasExercicios: TdtmAulasExercicios
     FetchRowSQL.Strings = (
       
         'SELECT CODIGO, COD_AULA, COD_CONTEUDO, DESCRICAO, TIPO, IMAGEM, ' +
-        'VIDEO'
+        'VIDEO, '
+      '  TITULO'
       'FROM AULAS_EXERCICIOS'
       'WHERE CODIGO = :OLD_CODIGO')
     Left = 32

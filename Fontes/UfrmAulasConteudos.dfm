@@ -1,7 +1,7 @@
 object frmAulasConteudos: TfrmAulasConteudos
   Left = 0
   Top = 0
-  Caption = 'Conte'#250'dos da Aula'
+  Caption = 'Conte'#250'dos'
   ClientHeight = 611
   ClientWidth = 964
   Color = clBtnFace
@@ -130,6 +130,7 @@ object frmAulasConteudos: TfrmAulasConteudos
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
+    ExplicitTop = 61
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlAudio: TPanel
@@ -146,7 +147,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 541
           Height = 371
-          Align = alClient
+          Align = alLeft
           BevelOuter = bvNone
           TabOrder = 2
           object gpbAudio: TGroupBox
@@ -157,6 +158,8 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alTop
             Caption = #193'udio'
             TabOrder = 0
+            ExplicitLeft = -6
+            ExplicitTop = -6
             object Panel3: TPanel
               Left = 2
               Top = 15
@@ -166,10 +169,11 @@ object frmAulasConteudos: TfrmAulasConteudos
               BevelOuter = bvNone
               TabOrder = 0
               object btnIncluirAudio: TAdvGlowButton
-                Left = 2
-                Top = 13
-                Width = 32
+                Left = 0
+                Top = 0
+                Width = 38
                 Height = 32
+                Align = alTop
                 BorderStyle = bsNone
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 3618615
@@ -205,12 +209,16 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Appearance.ColorMirrorDisabled = 11974326
                 Appearance.ColorMirrorDisabledTo = 15921906
                 Layout = blGlyphTop
+                ExplicitLeft = 2
+                ExplicitTop = 13
+                ExplicitWidth = 32
               end
               object btnRemoverAudio: TAdvGlowButton
-                Left = 2
-                Top = 51
-                Width = 32
+                Left = 0
+                Top = 32
+                Width = 38
                 Height = 32
+                Align = alTop
                 BorderStyle = bsNone
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 3618615
@@ -246,6 +254,9 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Appearance.ColorMirrorDisabled = 11974326
                 Appearance.ColorMirrorDisabledTo = 15921906
                 Layout = blGlyphTop
+                ExplicitLeft = 2
+                ExplicitTop = 51
+                ExplicitWidth = 32
               end
             end
             object pnlAudioReproduzir: TPanel
@@ -300,7 +311,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 390
           Height = 371
-          Align = alRight
+          Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
         end
@@ -319,7 +330,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 541
           Height = 371
-          Align = alClient
+          Align = alLeft
           Caption = 'V'#237'deo'
           TabOrder = 0
           object pnlBotoesVideo: TPanel
@@ -331,10 +342,11 @@ object frmAulasConteudos: TfrmAulasConteudos
             BevelOuter = bvNone
             TabOrder = 0
             object btnIncluirVideo: TAdvGlowButton
-              Left = 2
-              Top = 13
-              Width = 32
+              Left = 0
+              Top = 0
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -370,12 +382,16 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 13
+              ExplicitWidth = 32
             end
             object btnRemoverVideo: TAdvGlowButton
-              Left = 2
-              Top = 51
-              Width = 32
+              Left = 0
+              Top = 32
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -411,6 +427,9 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 51
+              ExplicitWidth = 32
             end
           end
           object pnlVideoReproduzir: TPanel
@@ -456,7 +475,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 390
           Height = 371
-          Align = alRight
+          Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
         end
@@ -474,7 +493,7 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 390
           Height = 371
-          Align = alRight
+          Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
         end
@@ -483,9 +502,10 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 541
           Height = 371
-          Align = alClient
+          Align = alLeft
           Caption = 'Imagem'
           TabOrder = 0
+          ExplicitLeft = 19
           object Image: TImage
             AlignWithMargins = True
             Left = 43
@@ -508,10 +528,11 @@ object frmAulasConteudos: TfrmAulasConteudos
             BevelOuter = bvNone
             TabOrder = 0
             object btnIncluirImagem: TAdvGlowButton
-              Left = 2
-              Top = 13
-              Width = 32
+              Left = 0
+              Top = 0
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -547,12 +568,16 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 13
+              ExplicitWidth = 32
             end
             object btnRemoverImagem: TAdvGlowButton
-              Left = 2
-              Top = 51
-              Width = 32
+              Left = 0
+              Top = 32
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -588,6 +613,9 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 51
+              ExplicitWidth = 32
             end
           end
         end
@@ -696,7 +724,7 @@ object frmAulasConteudos: TfrmAulasConteudos
     object tbsResumo: TTabSheet
       Caption = 'Resumo'
       ImageIndex = 1
-      object Panel1: TPanel
+      object pnlResumo: TPanel
         Left = 0
         Top = 140
         Width = 956
@@ -718,16 +746,16 @@ object frmAulasConteudos: TfrmAulasConteudos
           Top = 0
           Width = 390
           Height = 371
-          Align = alRight
+          Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
         end
-        object GroupBox4: TGroupBox
+        object gpbResumo: TGroupBox
           Left = 25
           Top = 0
           Width = 541
           Height = 371
-          Align = alClient
+          Align = alLeft
           Caption = 'Imagem do Resumo'
           TabOrder = 2
           object ImageResumo: TImage
@@ -749,11 +777,12 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            object AdvGlowButton7: TAdvGlowButton
-              Left = 2
-              Top = 13
-              Width = 32
+            object btnIncluirImagemResumo: TAdvGlowButton
+              Left = 0
+              Top = 0
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -771,7 +800,7 @@ object frmAulasConteudos: TfrmAulasConteudos
               ShowCaption = False
               Transparent = True
               TabOrder = 0
-              OnClick = AdvGlowButton7Click
+              OnClick = btnIncluirImagemResumoClick
               Appearance.ColorChecked = 16111818
               Appearance.ColorCheckedTo = 16367008
               Appearance.ColorDisabled = 15921906
@@ -789,12 +818,16 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 13
+              ExplicitWidth = 32
             end
-            object AdvGlowButton8: TAdvGlowButton
-              Left = 2
-              Top = 51
-              Width = 32
+            object btnRemoverImagemResumo: TAdvGlowButton
+              Left = 0
+              Top = 32
+              Width = 38
               Height = 32
+              Align = alTop
               BorderStyle = bsNone
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 3618615
@@ -812,7 +845,7 @@ object frmAulasConteudos: TfrmAulasConteudos
               ShowCaption = False
               Transparent = True
               TabOrder = 1
-              OnClick = AdvGlowButton8Click
+              OnClick = btnRemoverImagemResumoClick
               Appearance.ColorChecked = 16111818
               Appearance.ColorCheckedTo = 16367008
               Appearance.ColorDisabled = 15921906
@@ -830,6 +863,9 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
+              ExplicitLeft = 2
+              ExplicitTop = 51
+              ExplicitWidth = 32
             end
           end
         end

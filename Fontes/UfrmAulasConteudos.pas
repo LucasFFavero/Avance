@@ -56,14 +56,14 @@ type
     cbVideo: TCheckBox;
     cbAudio: TCheckBox;
     tbsResumo: TTabSheet;
-    Panel1: TPanel;
+    pnlResumo: TPanel;
     Panel14: TPanel;
     Panel15: TPanel;
-    GroupBox4: TGroupBox;
+    gpbResumo: TGroupBox;
     ImageResumo: TImage;
     Panel4: TPanel;
-    AdvGlowButton7: TAdvGlowButton;
-    AdvGlowButton8: TAdvGlowButton;
+    btnIncluirImagemResumo: TAdvGlowButton;
+    btnRemoverImagemResumo: TAdvGlowButton;
     Panel13: TPanel;
     dbResumo: TDBMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -75,8 +75,8 @@ type
     procedure cbImagemClick(Sender: TObject);
     procedure cbVideoClick(Sender: TObject);
     procedure cbAudioClick(Sender: TObject);
-    procedure AdvGlowButton7Click(Sender: TObject);
-    procedure AdvGlowButton8Click(Sender: TObject);
+    procedure btnIncluirImagemResumoClick(Sender: TObject);
+    procedure btnRemoverImagemResumoClick(Sender: TObject);
     procedure btnIncluirVideoClick(Sender: TObject);
     procedure btnRemoverVideoClick(Sender: TObject);
     procedure btnIncluirAudioClick(Sender: TObject);
@@ -96,7 +96,7 @@ implementation
 
 uses UdtmAulasConteudos, UfrmMain, UdtmAulas;
 
-procedure TfrmAulasConteudos.AdvGlowButton7Click(Sender: TObject);
+procedure TfrmAulasConteudos.btnIncluirImagemResumoClick(Sender: TObject);
 var
   b: TMemoryStream;
 begin
@@ -106,6 +106,7 @@ begin
   if OpenPicture.Execute then
   begin
     ImageResumo.Picture.LoadFromFile(OpenPicture.FileName);
+    ImageResumo.Visible := true;
 
     b := TMemoryStream.Create;
     ImageResumo.Picture.Graphic.SaveToStream(b);
@@ -115,7 +116,7 @@ begin
   end;
 end;
 
-procedure TfrmAulasConteudos.AdvGlowButton8Click(Sender: TObject);
+procedure TfrmAulasConteudos.btnRemoverImagemResumoClick(Sender: TObject);
 begin
   if dtmAulasConteudos.qryConteudos.State in [dsbrowse] then
     dtmAulasConteudos.qryConteudos.Edit;
@@ -235,7 +236,7 @@ begin
       dtmAulasConteudos.qryConteudos.Post;
     end;
 
-    dtmAulasConteudos.Transaction.CommitRetaining;
+    dtmAulasConteudos.Transaction.Commit;
   except
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,

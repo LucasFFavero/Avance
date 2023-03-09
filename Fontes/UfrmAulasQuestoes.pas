@@ -14,16 +14,8 @@ type
     btnSalvar: TAdvGlowButton;
     btnCancelar: TAdvGlowButton;
     pgcDadosCadastrais: TPageControl;
-    tbsDadosCadastrais: TTabSheet;
-    pnlVideo: TPanel;
-    gpbVideo: TGroupBox;
-    pnlBotoesVideo: TPanel;
-    btnIncluirVideo: TAdvGlowButton;
-    btnRemoverVideo: TAdvGlowButton;
-    pnlVideoReproduzir: TPanel;
-    WindowsMediaPlayer: TWindowsMediaPlayer;
-    Panel7: TPanel;
-    Panel8: TPanel;
+    OpenPicture: TOpenPictureDialog;
+    pnlGeral: TPanel;
     pnlImagem: TPanel;
     gpbImagem: TGroupBox;
     Image: TImage;
@@ -38,7 +30,6 @@ type
     edtCodigo: TDBEdit;
     edtDescricao: TDBEdit;
     dbcbCorreta: TDBCheckBox;
-    OpenPicture: TOpenPictureDialog;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -58,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdtmAulasQuestoes, UfrmMain, UdtmAulasExercicios;
+uses UdtmAulasQuestoes, UfrmMain, UdtmAulasExercicios, UdtmAulas;
 
 procedure TfrmAulasQuestoes.btnIncluirImagemClick(Sender: TObject);
 var
@@ -114,7 +105,7 @@ begin
     if dtmAulasQuestoes.qryQuestoes.Active then
       dtmAulasQuestoes.qryQuestoes.Post;
 
-    dtmAulasQuestoes.Transaction.CommitRetaining;
+    dtmAulasQuestoes.Transaction.Commit;
   except
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
@@ -123,11 +114,15 @@ begin
     Abort;
   end;
 
-  dtmAulasExercicios.qryQuestoes.Close;
-  dtmAulasExercicios.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
+  { dtmAulasExercicios.qryQuestoes.Close;
+    dtmAulasExercicios.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
     dtmAulasExercicios.qryExerciciosCODIGO.AsInteger;
-  dtmAulasExercicios.qryQuestoes.Open;
+    dtmAulasExercicios.qryQuestoes.Open; }
 
+  dtmAulas.qryQuestoes.Close;
+  dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
+    dtmAulas.qryExerciciosCODIGO.AsInteger;
+  dtmAulas.qryQuestoes.Open;
   Close;
 end;
 

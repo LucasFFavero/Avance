@@ -30,6 +30,7 @@ type
     dtsQuestoes: TDataSource;
     TransactionExcluir: TFDTransaction;
     qryExcluirQuestoes: TFDQuery;
+    qryExerciciosTITULO: TStringField;
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }

@@ -41,34 +41,10 @@ type
     edtCodigo: TDBEdit;
     edtTitulo: TDBEdit;
     dblkcbTurma: TDBLookupComboBox;
-    pnlCadastroClient: TPanel;
-    gpbImagem: TGroupBox;
-    Image: TImage;
-    Panel5: TPanel;
-    btnIncluirImagem: TAdvGlowButton;
-    btnRemoverImagem: TAdvGlowButton;
+    pnlImagem: TPanel;
     pnlCadastroLeft: TPanel;
     pnlCadastroRight: TPanel;
     tbsConteudos: TTabSheet;
-    dbgConteudo: TDBGrid;
-    pnlConteudo: TPanel;
-    btnIncluirConteudo: TAdvGlowButton;
-    btnExcluirConteudo: TAdvGlowButton;
-    btnEditarConteudo: TAdvGlowButton;
-    tbsExercicios: TTabSheet;
-    pnlExercicios: TPanel;
-    dbgExercicios: TDBGrid;
-    pnlExerciciosBotoes: TPanel;
-    btnIncluirExercicios: TAdvGlowButton;
-    btnExcluirExercicios: TAdvGlowButton;
-    AdvGlowButton1: TAdvGlowButton;
-    Panel8: TPanel;
-    Panel6: TPanel;
-    Panel7: TPanel;
-    Label4: TLabel;
-    pnlQuestoes: TPanel;
-    dbgQuestoes: TDBGrid;
-    pnlQuestoesBotoes: TPanel;
     tbsLocalizar: TTabSheet;
     pnlLocalizar: TPanel;
     Label10: TLabel;
@@ -76,6 +52,38 @@ type
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
     dbGrid: TDBGrid;
+    pnlConteudo: TPanel;
+    pnlConteudoBotoes: TPanel;
+    btnIncluirConteudo: TAdvGlowButton;
+    btnExcluirConteudo: TAdvGlowButton;
+    btnEditarConteudo: TAdvGlowButton;
+    dbgConteudo: TDBGrid;
+    Panel9: TPanel;
+    pnlExercicios: TPanel;
+    dbgExercicios: TDBGrid;
+    pnlExerciciosBotoes: TPanel;
+    btnIncluirExercicio: TAdvGlowButton;
+    btnExcluirExercicio: TAdvGlowButton;
+    btnEditarExercicio: TAdvGlowButton;
+    pnlQuestoes: TPanel;
+    dbgQuestoes: TDBGrid;
+    pnlQuestoesBotoes: TPanel;
+    pnlExerciciosTituloGeral: TPanel;
+    pnlExerciciosTituloLeft: TPanel;
+    pnlExerciciosTitulo: TPanel;
+    lblExercicios: TLabel;
+    pnlQuestoesTituloGeral: TPanel;
+    pnlQuestoesTituloLeft: TPanel;
+    pnlQuestoesTitulo: TPanel;
+    lblQuestoes: TLabel;
+    gpbImagem: TGroupBox;
+    Image: TImage;
+    Panel5: TPanel;
+    btnIncluirImagem: TAdvGlowButton;
+    btnRemoverImagem: TAdvGlowButton;
+    btnIncluirQuestao: TAdvGlowButton;
+    btnEditarQuestao: TAdvGlowButton;
+    btnExcluirQuestao: TAdvGlowButton;
     procedure btnIncluirImagemClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
     procedure dblkcbTurmaEnter(Sender: TObject);
@@ -98,18 +106,17 @@ type
     procedure tbsConteudosShow(Sender: TObject);
     procedure btnExcluirConteudoClick(Sender: TObject);
     procedure btnEditarConteudoClick(Sender: TObject);
-    procedure tbsExerciciosShow(Sender: TObject);
     procedure dbGridLocalizarDblClick(Sender: TObject);
     procedure tbsDadosCadastraisShow(Sender: TObject);
-    procedure btnIncluirExerciciosClick(Sender: TObject);
+    procedure btnIncluirExercicioClick(Sender: TObject);
     procedure dbgConteudoDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbGridLocalizarDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure AdvGlowButton1Click(Sender: TObject);
-    procedure btnExcluirExerciciosClick(Sender: TObject);
+    procedure btnEditarExercicioClick(Sender: TObject);
+    procedure btnExcluirExercicioClick(Sender: TObject);
     procedure dbgExerciciosDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgQuestoesDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -119,6 +126,12 @@ type
     procedure FormShow(Sender: TObject);
     procedure tbsLocalizarShow(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
+    procedure edtLocAulasKeyPress(Sender: TObject; var Key: Char);
+    procedure edtLocAulasEnter(Sender: TObject);
+    procedure edtLocAulasExit(Sender: TObject);
+    procedure btnIncluirQuestaoClick(Sender: TObject);
+    procedure btnEditarQuestaoClick(Sender: TObject);
+    procedure btnExcluirQuestaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -133,7 +146,8 @@ implementation
 {$R *.dfm}
 
 uses UdtmAulas, UfrmMain, UfrmAulasConteudos, UdtmAulasConteudos,
-  UfrmAulasExercicios, UdtmAulasExercicios, UrelAulas;
+  UfrmAulasExercicios, UdtmAulasExercicios, UrelAulas, UfrmAulasQuestoes,
+  UdtmAulasQuestoes;
 
 procedure TfrmAulas.btnIncluirImagemClick(Sender: TObject);
 var
@@ -154,6 +168,29 @@ begin
   end;
 end;
 
+procedure TfrmAulas.btnIncluirQuestaoClick(Sender: TObject);
+begin
+  if (frmAulasQuestoes = nil) then
+    Application.CreateForm(TfrmAulasQuestoes, frmAulasQuestoes);
+
+  if dtmAulasQuestoes.Transaction.Active then
+    dtmAulasQuestoes.Transaction.Rollback;
+  if not dtmAulasQuestoes.Transaction.Active then
+    dtmAulasQuestoes.Transaction.StartTransaction;
+
+  if not dtmAulasQuestoes.qryQuestoes.Active then
+    dtmAulasQuestoes.qryQuestoes.Open;
+
+  dtmAulasQuestoes.qryQuestoes.Insert;
+  dtmAulasQuestoes.qryQuestoesCOD_AULAS_EXERCICIOS.AsInteger :=
+    dtmAulas.qryExerciciosCODIGO.AsInteger;
+  dtmAulasQuestoes.qryQuestoesCORRETA.Value := 0;
+
+  frmAulasQuestoes.edtDescricao.SetFocus;
+
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+end;
+
 procedure TfrmAulas.btnRemoverImagemClick(Sender: TObject);
 begin
   if dtmAulas.qryAulas.State in [dsbrowse] then
@@ -163,7 +200,7 @@ begin
   Image.Picture.Assign(nil);
 end;
 
-procedure TfrmAulas.AdvGlowButton1Click(Sender: TObject);
+procedure TfrmAulas.btnEditarExercicioClick(Sender: TObject);
 begin
   if (frmAulasExercicios = nil) then
     Application.CreateForm(TfrmAulasExercicios, frmAulasExercicios);
@@ -180,6 +217,27 @@ begin
 
   dtmAulasExercicios.qryExercicios.Edit;
   frmAulasExercicios.edtDescricao.SetFocus;
+end;
+
+procedure TfrmAulas.btnEditarQuestaoClick(Sender: TObject);
+begin
+  if (frmAulasQuestoes = nil) then
+    Application.CreateForm(TfrmAulasQuestoes, frmAulasQuestoes);
+
+  if dtmAulasQuestoes.Transaction.Active then
+    dtmAulasQuestoes.Transaction.Rollback;
+  if not dtmAulasQuestoes.Transaction.Active then
+    dtmAulasQuestoes.Transaction.StartTransaction;
+
+  dtmAulasQuestoes.qryQuestoes.Close;
+  dtmAulasQuestoes.qryQuestoes.ParamByName('CODIGO').AsInteger :=
+    dtmAulas.qryQuestoesCODIGO.AsInteger;
+  dtmAulasQuestoes.qryQuestoes.Open;
+
+  dtmAulasQuestoes.qryQuestoes.Edit;
+  frmAulasQuestoes.edtDescricao.SetFocus;
+
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulas.btnAnteriorClick(Sender: TObject);
@@ -300,7 +358,7 @@ begin
     ), 0 + 64 + 0);
 end;
 
-procedure TfrmAulas.btnExcluirExerciciosClick(Sender: TObject);
+procedure TfrmAulas.btnExcluirExercicioClick(Sender: TObject);
 begin
   if dtmAulas.TransactionExcluir.Active then
     dtmAulas.TransactionExcluir.Rollback;
@@ -338,6 +396,41 @@ begin
       20)), 0 + 16 + 0);
     Abort;
   end;
+
+  Application.MessageBox('Exclusão realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
+end;
+
+procedure TfrmAulas.btnExcluirQuestaoClick(Sender: TObject);
+begin
+  if dtmAulas.TransactionExcluir.Active then
+    dtmAulas.TransactionExcluir.Rollback;
+  if not dtmAulas.TransactionExcluir.Active then
+    dtmAulas.TransactionExcluir.StartTransaction;
+
+  try
+    dtmAulas.qryExcluirQuestao.Close;
+    dtmAulas.qryExcluirQuestao.ParamByName('CODIGO').AsInteger :=
+      dtmAulas.qryQuestoesCODIGO.AsInteger;
+    dtmAulas.qryExcluirQuestao.ExecSql;
+
+    dtmAulas.TransactionExcluir.CommitRetaining;
+
+    dtmAulas.qryQuestoes.Close;
+    dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
+      dtmAulas.qryExerciciosCODIGO.AsInteger;
+    dtmAulas.qryQuestoes.Open;
+  except
+    THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
+
+    Application.MessageBox(pchar('Erro ao realizar a operação.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
+    Abort;
+  end;
+
+  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
 
   Application.MessageBox('Exclusão realizada com sucesso.',
     pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
@@ -391,7 +484,7 @@ begin
   frmAulasConteudos.edtDescricao.SetFocus;
 end;
 
-procedure TfrmAulas.btnIncluirExerciciosClick(Sender: TObject);
+procedure TfrmAulas.btnIncluirExercicioClick(Sender: TObject);
 begin
   if (frmAulasExercicios = nil) then
     Application.CreateForm(TfrmAulasExercicios, frmAulasExercicios);
@@ -507,7 +600,7 @@ begin
     if dtmAulas.qryAulas.Active then
       dtmAulas.qryAulas.Post;
 
-    dtmAulas.Transaction.CommitRetaining;
+    dtmAulas.Transaction.Commit;
   except
     Application.MessageBox(pchar('Erro ao realizar a operação.'),
       pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
@@ -828,6 +921,22 @@ begin
     dtmAulas.qryTurmas.Open;
 end;
 
+procedure TfrmAulas.edtLocAulasEnter(Sender: TObject);
+begin
+  frmAulas.KeyPreview := false;
+end;
+
+procedure TfrmAulas.edtLocAulasExit(Sender: TObject);
+begin
+  frmAulas.KeyPreview := true;
+end;
+
+procedure TfrmAulas.edtLocAulasKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Key = #13) then
+    btnLocalizarUsuariosClick(Self);
+end;
+
 procedure TfrmAulas.FormActivate(Sender: TObject);
 begin
   THackDBGrid(dbGrid).DefaultRowHeight := 30;
@@ -879,6 +988,11 @@ begin
   THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
   THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
   THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
+
+  frmAulas.Height := frmMain.Image1.Height - 20;
+  frmAulas.Width := frmMain.Image1.Width - 20;
+  frmAulas.Left := 10;
+  frmAulas.Top := 10;
 end;
 
 procedure TfrmAulas.tbsConteudosShow(Sender: TObject);
@@ -895,17 +1009,6 @@ end;
 procedure TfrmAulas.tbsDadosCadastraisShow(Sender: TObject);
 begin
   pnlTop.Enabled := true;
-end;
-
-procedure TfrmAulas.tbsExerciciosShow(Sender: TObject);
-begin
-  pnlTop.Enabled := false;
-
-  THackDBGrid(dbGrid).DefaultRowHeight := 30;
-  THackDBGrid(dbgConteudo).DefaultRowHeight := 30;
-  THackDBGrid(dbgExercicios).DefaultRowHeight := 30;
-  THackDBGrid(dbgQuestoes).DefaultRowHeight := 30;
-  THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
 end;
 
 procedure TfrmAulas.tbsLocalizarShow(Sender: TObject);
