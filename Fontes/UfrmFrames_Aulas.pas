@@ -195,6 +195,9 @@ type
     procedure tbsConteudoShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
   public
@@ -218,6 +221,13 @@ end;
 procedure TfrmFrames_Aulas.Button3Click(Sender: TObject);
 begin
   cldsConteudo.SaveToFile('C:\AMD\XML_CONTEUDO.XML');
+end;
+
+procedure TfrmFrames_Aulas.cxgridDBTableViewCellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+ShowMessage('Aqui');
 end;
 
 procedure TfrmFrames_Aulas.FormClose(Sender: TObject; var Action: TCloseAction);
