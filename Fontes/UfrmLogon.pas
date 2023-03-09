@@ -9,7 +9,8 @@ uses
   Vcl.Mask, Vcl.ExtCtrls, Vcl.Buttons, AdvGlowButton, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
   dxSkinsDefaultPainters, cxImage, dxGDIPlusClasses, Vcl.Menus, cxButtons,
-  AdvGlassButton, AdvShapeButton, System.ImageList, Vcl.ImgList, cxImageList;
+  AdvGlassButton, AdvShapeButton, System.ImageList, Vcl.ImgList, cxImageList,
+  dxScreenTip, cxClasses, dxCustomHint, cxHint;
 
 type
   TfrmLogon = class(TForm)
