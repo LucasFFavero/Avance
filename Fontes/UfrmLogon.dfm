@@ -2658,11 +2658,14 @@ object frmLogon: TfrmLogon
     Width = 107
     Height = 102
     Cursor = crHandPoint
+    Hint = 'Sair. At'#233' logo...'
     ImageIndex = 0
     Images = cxImageList1
     HotImageIndex = 1
     Flat = True
+    ParentShowHint = False
     PressedImageIndex = 1
+    ShowHint = True
     SelectedImageIndex = 0
     StyleElements = []
     OnClick = btnSairClick
@@ -2672,6 +2675,7 @@ object frmLogon: TfrmLogon
     Top = 174
     Width = 194
     Height = 31
+    Hint = 'Informe seu nome de usu'#225'rio'
     AutoSize = False
     BorderStyle = bsNone
     CharCase = ecUpperCase
@@ -2682,6 +2686,8 @@ object frmLogon: TfrmLogon
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
     Text = 'USU'#193'RIO'
     StyleElements = []
@@ -2693,6 +2699,7 @@ object frmLogon: TfrmLogon
     Top = 244
     Width = 195
     Height = 30
+    Hint = 'Informe sua senha'
     AutoSize = False
     BorderStyle = bsNone
     Color = 7264956
@@ -2702,6 +2709,8 @@ object frmLogon: TfrmLogon
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     Text = 'Senha'
     StyleElements = []
