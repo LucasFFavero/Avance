@@ -177,13 +177,6 @@ Coordinates=1025,496,153,36
 [cxStyle21]
 Coordinates=1025,551,70,36
 
-[cxgrid]
-Coordinates=10,628,49,36
-Visible=True
-
-[cxgridDBTableView]
-Coordinates=1253,111,127,36
-
 [cldsConteudo]
 Coordinates=300,10,93,58
 
@@ -193,11 +186,9 @@ Coordinates=403,10,54,58
 [dtsConteudo]
 Coordinates=694,954,87,36
 
-[cxgridLevel]
-Coordinates=1253,881,80,36
-
 []
-Coordinates=237,1,91,36
+Coordinates=10,628,49,36
+Visible=True
 
 [pnlTitulo]
 Coordinates=467,10,54,58
