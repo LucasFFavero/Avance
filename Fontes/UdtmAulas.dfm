@@ -62,8 +62,9 @@ object dtmAulas: TdtmAulas
     UpdateOptions.AutoIncFields = 'CODIGO'
     UpdateObject = UpdateSQL
     SQL.Strings = (
-      'SELECT AULAS.CODIGO, AULAS.COD_TURMA, AULAS.TITULO, AULAS.IMAGEM'
-      'FROM AULAS'
+      
+        'SELECT AULAS.CODIGO, AULAS.COD_TURMA, AULAS.TITULO, AULAS.IMAGEM' +
+        ' FROM AULAS'
       'ORDER BY AULAS.CODIGO')
     Left = 32
     Top = 16
@@ -165,7 +166,7 @@ object dtmAulas: TdtmAulas
       
         '       AULAS_CONTEUDOS.IMAGEM, AULAS_CONTEUDOS.VIDEO, AULAS_CONT' +
         'EUDOS.AUDIO, AULAS_CONTEUDOS.RESUMO,'
-      '       AULAS_CONTEUDOS.RESUMO_IMAGEM'
+      '       AULAS_CONTEUDOS.RESUMO_IMAGEM, AULAS_CONTEUDOS.TIPO'
       'FROM AULAS_CONTEUDOS'
       'WHERE AULAS_CONTEUDOS.COD_AULA = :COD_AULA'
       'ORDER BY AULAS_CONTEUDOS.CODIGO')
@@ -218,6 +219,12 @@ object dtmAulas: TdtmAulas
       FieldName = 'RESUMO_IMAGEM'
       Origin = 'RESUMO_IMAGEM'
     end
+    object qryConteudosTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 1
+    end
   end
   object dtsConteudos: TDataSource
     DataSet = qryConteudos
@@ -241,7 +248,9 @@ object dtmAulas: TdtmAulas
       
         '       AULAS_CONTEUDOS.DESCRICAO AS CONTEUDO, AULAS_EXERCICIOS.D' +
         'ESCRICAO, AULAS_EXERCICIOS.TITULO,'
-      '       AULAS_EXERCICIOS.IMAGEM, AULAS_EXERCICIOS.VIDEO'
+      
+        '       AULAS_EXERCICIOS.IMAGEM, AULAS_EXERCICIOS.VIDEO, AULAS_EX' +
+        'ERCICIOS.TIPO'
       'FROM AULAS_EXERCICIOS'
       
         'INNER JOIN AULAS_CONTEUDOS ON (AULAS_EXERCICIOS.COD_CONTEUDO = A' +
@@ -305,6 +314,12 @@ object dtmAulas: TdtmAulas
       Alignment = taCenter
       FieldName = 'VIDEO'
       Origin = 'VIDEO'
+    end
+    object qryExerciciosTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 1
     end
   end
   object dtsExercicios: TDataSource
