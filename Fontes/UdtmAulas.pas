@@ -61,6 +61,8 @@ type
     qryExcluirQuestoes: TFDQuery;
     qryExerciciosTITULO: TStringField;
     qryExcluirQuestao: TFDQuery;
+    qryConteudosTIPO: TStringField;
+    qryExerciciosTIPO: TStringField;
     procedure dtsAulasStateChange(Sender: TObject);
     procedure qryAulasAfterScroll(DataSet: TDataSet);
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);
