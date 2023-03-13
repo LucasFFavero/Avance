@@ -30,7 +30,8 @@ uses
   cxDBLookupComboBox, cxImageComboBox, Vcl.ExtCtrls, dxGDIPlusClasses,
   Vcl.ComCtrls, dxDateRanges, cxCheckBox, cxDropDownEdit, cxCalendar,
   cxMaskEdit, cxGridTableView, cxGridDBTableView, cxHyperLinkEdit, cxProgressBar,
-  cxGridCardView;
+  cxGridCardView, System.ImageList, Vcl.ImgList, cxImageList, Vcl.Buttons,
+  AdvGlowButton, Vcl.OleCtrls, WMPLib_TLB;
 
 type
   TfrmFrames_Aulas = class(TForm)
@@ -93,9 +94,6 @@ type
     cxGridLayoutItem2: TcxGridLayoutItem;
     cxGridEmployeesLevel1: TcxGridLevel;
     pnlTopo: TPanel;
-    cxGrid: TcxGrid;
-    cxGridDBTableView: TcxGridDBTableView;
-    cxGridLevel: TcxGridLevel;
     cldsConteudo: TClientDataSet;
     dtsConteudo: TDataSource;
     pnlTitulo: TPanel;
@@ -142,16 +140,9 @@ type
     gvEmployeesItem1: TcxGridDBLayoutViewItem;
     cldsAulasCOD_AULA: TIntegerField;
     cldsConteudoDESCRICAO_AGRUPADA: TStringField;
-    cxgridDBTableViewGAUGE: TcxGridDBColumn;
-    cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn;
-    cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn;
-    cxgridDBTableViewCOD_AULA: TcxGridDBColumn;
-    cxgridDBTableViewCOD_EXERCICIO: TcxGridDBColumn;
-    cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn;
     cldsConteudoGAUGE_INI: TIntegerField;
     cldsConteudoGAUGE_FINAL: TIntegerField;
     cldsConteudoCOD_CONTEUDO: TIntegerField;
-    cxgridDBTableViewCod_Conteudo: TcxGridDBColumn;
     Button2: TButton;
     Button3: TButton;
     StyleRepository: TcxStyleRepository;
@@ -188,6 +179,33 @@ type
     GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
     GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet;
     CardsStyleSheet: TcxGridCardViewStyleSheet;
+    cldsConteudoConteudo_Exercicio: TStringField;
+    cxImageList1: TcxImageList;
+    cxImageList2: TcxImageList;
+    btnVoltar: TAdvGlowButton;
+    pnlGrid: TPanel;
+    cxGrid: TcxGrid;
+    cxGridDBTableView: TcxGridDBTableView;
+    cxgridDBTableViewGAUGE: TcxGridDBColumn;
+    cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn;
+    cxgridDBTableViewColumn1: TcxGridDBColumn;
+    cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn;
+    cxgridDBTableViewCod_Conteudo: TcxGridDBColumn;
+    cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn;
+    cxgridDBTableViewCOD_AULA: TcxGridDBColumn;
+    cxgridDBTableViewCOD_EXERCICIO: TcxGridDBColumn;
+    cxGridLevel: TcxGridLevel;
+    pnlCONTEUDO: TPanel;
+    pnlConteudo_Imagem: TPanel;
+    Panel2: TPanel;
+    lblResumoImagem: TLabel;
+    pnlImage: TPanel;
+    ImageConteudo: TImage;
+    pnlConteudo_Video: TPanel;
+    pnlVideo: TPanel;
+    WindowsMediaPlayer: TWindowsMediaPlayer;
+    Panel1: TPanel;
+    lblResumoVideo: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -195,9 +213,10 @@ type
     procedure tbsConteudoShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
+    procedure cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+    procedure cxgridDBTableViewMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure tbsAulasShow(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -213,6 +232,28 @@ implementation
 
 uses UfrmMain, UdtmFrames_Aulas;
 
+procedure TfrmFrames_Aulas.btnVoltarClick(Sender: TObject);
+begin
+  if pnlGrid.Visible = false then
+  begin
+    pnlCONTEUDO.Visible := false;
+    pnlGrid.Visible := True;
+    Exit;
+  end;
+
+  if tbsExercicios.Showing then
+  begin
+    tbsConteudo.Show;
+    Exit;
+  end;
+
+  if tbsConteudo.Showing then
+  begin
+    tbsAulas.Show;
+    Exit;
+  end;
+end;
+
 procedure TfrmFrames_Aulas.Button2Click(Sender: TObject);
 begin
   cldsAulas.SaveToFile('C:\AMD\XML_AULAS.XML');
@@ -223,11 +264,51 @@ begin
   cldsConteudo.SaveToFile('C:\AMD\XML_CONTEUDO.XML');
 end;
 
-procedure TfrmFrames_Aulas.cxgridDBTableViewCellClick(
-  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
-  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+procedure TfrmFrames_Aulas.cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
-ShowMessage('Aqui');
+  // Aqui vai buscar o Conteudo ou o Exercicio
+  if cldsConteudoConteudo_Exercicio.AsString = 'Conteudo' then
+  begin
+    dtmFrames_Aulas.qryBuscaConteudoClicado.Close;
+    dtmFrames_Aulas.qryBuscaConteudoClicado.ParamByName('COD_CONTEUDO').AsInteger := cldsConteudoCOD_CONTEUDO.AsInteger;
+    dtmFrames_Aulas.qryBuscaConteudoClicado.Open;
+
+    /// SEGUE AQUI
+    if not dtmFrames_Aulas.qryBuscaConteudoClicado.IsEmpty then
+    begin
+      pnlGrid.Visible := false;
+      pnlCONTEUDO.Visible := True;
+
+    end;
+
+  end
+  else
+  begin
+    dtmFrames_Aulas.qryBuscaExercicioClicado.Close;
+    dtmFrames_Aulas.qryBuscaExercicioClicado.ParamByName('COD_CONTEUDO').AsInteger := cldsConteudoCOD_CONTEUDO.AsInteger;
+    dtmFrames_Aulas.qryBuscaExercicioClicado.Open;
+
+    /// SEGUE AQUI
+  end;
+end;
+
+procedure TfrmFrames_Aulas.cxgridDBTableViewMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  AGridSite: TcxGridSite;
+  AGridView: TcxGridTableView;
+  AHitTest: TcxCustomGridHitTest;
+
+  ht: TcxCustomGridHitTest;
+  CheckBox: String;
+begin
+  AGridSite := Sender as TcxGridSite;
+  AGridView := AGridSite.GridView as TcxGridTableView;
+  AHitTest := AGridView.GetHitTest(X, Y);
+
+  AGridSite.Cursor := crDefault;
+
+  if (AHitTest is TcxGridRecordCellHitTest) and (((AHitTest as TcxGridRecordCellHitTest).Item = cxgridDBTableViewDESCRICAO_CONTEUDO)) then
+    AGridSite.Cursor := crHandPoint;
 end;
 
 procedure TfrmFrames_Aulas.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -248,11 +329,24 @@ begin
   // Fechar form usando "ESC"
   if (Key = #27) then
   begin
+    if pnlGrid.Visible = false then
+    begin
+      pnlCONTEUDO.Visible := false;
+      pnlGrid.Visible := True;
+      Exit;
+    end;
+
     if tbsExercicios.Showing then
+    begin
       tbsConteudo.Show;
+      Exit;
+    end;
 
     if tbsConteudo.Showing then
+    begin
       tbsAulas.Show;
+      Exit;
+    end;
   end;
 end;
 
@@ -265,6 +359,7 @@ begin
   cxgridDBTableViewCOD_AULA.Visible := false;
   cxgridDBTableViewCOD_EXERCICIO.Visible := false;
   cxGridDBTableView.OptionsView.Header := false;
+  cxGridDBTableView.OptionsView.GroupByBox := false;
 
   dtmFrames_Aulas.qryBuscaAulas.Close;
   dtmFrames_Aulas.qryBuscaAulas.ParamByName('COD_TURMA').AsInteger := frmMain.IntAnoClicado;
@@ -295,6 +390,8 @@ begin
   frmFrames_Aulas.Width := frmMain.Image1.Width - 10;
   frmFrames_Aulas.Left := 5;
   frmFrames_Aulas.Top := 5;
+
+  cxgridDBTableViewDESCRICAO_CONTEUDO.Width := cxGridEmployees.Width - 276;
 end;
 
 procedure TfrmFrames_Aulas.gvEmployeesCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
@@ -315,6 +412,7 @@ begin
       cldsConteudoGAUGE.AsInteger := 20;
       cldsConteudoCOD_CONTEUDO.AsInteger := dtmFrames_Aulas.qryBuscaConteudoCODIGO.AsInteger;
       cldsConteudoCOD_AULA.AsInteger := cldsAulasCOD_AULA.AsInteger;
+      cldsConteudoConteudo_Exercicio.AsString := 'Conteudo';
       cldsConteudoDESCRICAO_CONTEUDO.AsString := dtmFrames_Aulas.qryBuscaConteudoDESCRICAO.AsString;
       cldsConteudoCOD_EXERCICIO.AsVariant := null;
       cldsConteudoDESCRICAO_EXERCICIO.AsVariant := null;
@@ -330,6 +428,7 @@ begin
       begin
         cldsConteudo.Append;
         cldsConteudoGAUGE.AsInteger := 80;
+        cldsConteudoConteudo_Exercicio.AsString := 'Exercicios';
         cldsConteudoCOD_CONTEUDO.AsInteger := dtmFrames_Aulas.qryBuscaConteudoCODIGO.AsInteger;
         cldsConteudoCOD_AULA.AsInteger := cldsAulasCOD_AULA.AsInteger;
         cldsConteudoDESCRICAO_CONTEUDO.AsString := dtmFrames_Aulas.qryBuscaExercicioDESCRICAO.AsString;
@@ -357,9 +456,16 @@ begin
 
 end;
 
+procedure TfrmFrames_Aulas.tbsAulasShow(Sender: TObject);
+begin
+  btnVoltar.Visible := false;
+  Application.ProcessMessages;
+end;
+
 procedure TfrmFrames_Aulas.tbsConteudoShow(Sender: TObject);
 begin
-  cxgridDBTableViewDESCRICAO_AGRUPADA.Width := pnlTitulo.Width - 10;
+  btnVoltar.Visible := True;
+  Application.ProcessMessages;
 end;
 
 end.
