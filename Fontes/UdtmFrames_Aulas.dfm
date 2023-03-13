@@ -95,4 +95,107 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
       Required = True
     end
   end
+  object qryBuscaConteudoClicado: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    SQL.Strings = (
+      'SELECT * FROM AULAS_CONTEUDOS'
+      'WHERE AULAS_CONTEUDOS.CODIGO =:COD_CONTEUDO')
+    Left = 160
+    Top = 136
+    ParamData = <
+      item
+        Name = 'COD_CONTEUDO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryBuscaConteudoClicadoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryBuscaConteudoClicadoCOD_AULA: TIntegerField
+      FieldName = 'COD_AULA'
+      Origin = 'COD_AULA'
+    end
+    object qryBuscaConteudoClicadoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 200
+    end
+    object qryBuscaConteudoClicadoTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryBuscaConteudoClicadoIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+      Origin = 'IMAGEM'
+    end
+    object qryBuscaConteudoClicadoVIDEO: TBlobField
+      FieldName = 'VIDEO'
+      Origin = 'VIDEO'
+    end
+    object qryBuscaConteudoClicadoAUDIO: TBlobField
+      FieldName = 'AUDIO'
+      Origin = 'AUDIO'
+    end
+    object qryBuscaConteudoClicadoRESUMO: TStringField
+      FieldName = 'RESUMO'
+      Origin = 'RESUMO'
+      Size = 2000
+    end
+    object qryBuscaConteudoClicadoRESUMO_IMAGEM: TBlobField
+      FieldName = 'RESUMO_IMAGEM'
+      Origin = 'RESUMO_IMAGEM'
+    end
+  end
+  object qryBuscaExercicioClicado: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    SQL.Strings = (
+      'SELECT * from AULAS_EXERCICIOS'
+      'WHERE AULAS_EXERCICIOS.COD_CONTEUDO =:COD_CONTEUDO')
+    Left = 160
+    Top = 224
+    ParamData = <
+      item
+        Name = 'COD_CONTEUDO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryBuscaExercicioClicadoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryBuscaExercicioClicadoCOD_AULA: TIntegerField
+      FieldName = 'COD_AULA'
+      Origin = 'COD_AULA'
+    end
+    object qryBuscaExercicioClicadoCOD_CONTEUDO: TIntegerField
+      FieldName = 'COD_CONTEUDO'
+      Origin = 'COD_CONTEUDO'
+    end
+    object qryBuscaExercicioClicadoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 120
+    end
+    object qryBuscaExercicioClicadoTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryBuscaExercicioClicadoIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+      Origin = 'IMAGEM'
+    end
+    object qryBuscaExercicioClicadoVIDEO: TBlobField
+      FieldName = 'VIDEO'
+      Origin = 'VIDEO'
+    end
+  end
 end
