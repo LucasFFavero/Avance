@@ -3,8 +3,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   Top = 0
   BorderIcons = []
   BorderStyle = bsToolWindow
-  Caption = 'Aulas | Exerc'#237'cios'
-  ClientHeight = 653
+  ClientHeight = 772
   ClientWidth = 1376
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -35,9 +34,9 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     TabOrder = 0
     StyleElements = []
     object Image1: TImage
-      Left = 0
+      Left = 89
       Top = 0
-      Width = 1376
+      Width = 1287
       Height = 48
       Align = alClient
       Center = True
@@ -210,12 +209,13 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         4208C59D104208C59D104228EE84104228EE84104228EE84104228EE84104228
         EE84104271278410427127841042712784104271278410D204FE2FC00039DB88
         CDBCF92AFB0000000049454E44AE426082}
+      ExplicitLeft = 0
       ExplicitTop = -6
-      ExplicitWidth = 1487
+      ExplicitWidth = 1376
     end
     object Button2: TButton
-      Left = 64
-      Top = 8
+      Left = 183
+      Top = 12
       Width = 75
       Height = 25
       Caption = 'Salvar Aulas'
@@ -223,30 +223,83 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 160
-      Top = 8
+      Left = 264
+      Top = 12
       Width = 105
       Height = 25
       Caption = 'Salvar Conteudos'
       TabOrder = 1
       OnClick = Button3Click
     end
+    object btnVoltar: TAdvGlowButton
+      Left = 0
+      Top = 0
+      Width = 89
+      Height = 48
+      Cursor = crHandPoint
+      Hint = 'Voltar...'
+      Align = alLeft
+      BorderStyle = bsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3618615
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ImageIndex = 0
+      Images = cxImageList2
+      MarginVert = 0
+      MarginHorz = 0
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      ShowCaption = False
+      Transparent = True
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      Visible = False
+      OnClick = btnVoltarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Layout = blGlyphTop
+    end
   end
   object PageControl1: TPageControl
     Left = 0
     Top = 48
     Width = 1376
-    Height = 605
-    ActivePage = tbsAulas
+    Height = 724
+    ActivePage = tbsConteudo
     Align = alClient
+    TabHeight = 20
     TabOrder = 1
+    TabWidth = 250
+    ExplicitHeight = 794
     object tbsAulas: TTabSheet
       Caption = 'tbsAulas'
+      OnShow = tbsAulasShow
       object cxGridEmployees: TcxGrid
         Left = 0
         Top = 0
         Width = 1368
-        Height = 577
+        Height = 694
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -254,6 +307,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         TabOrder = 0
         LookAndFeel.ScrollbarMode = sbmClassic
         LookAndFeel.SkinName = ''
+        ExplicitHeight = 575
         object gvEmployees: TcxGridDBLayoutView
           Navigator.Buttons.CustomButtons = <>
           OnCellClick = gvEmployeesCellClick
@@ -503,161 +557,201 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Caption = 'tbsConteudo'
       ImageIndex = 2
       OnShow = tbsConteudoShow
-      object cxgrid: TcxGrid
+      object pnlGrid: TPanel
         Left = 0
         Top = 41
         Width = 1368
-        Height = 536
+        Height = 319
         Align = alClient
-        BevelInner = bvNone
         BevelOuter = bvNone
-        BorderStyle = cxcbsNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        LookAndFeel.Kind = lfFlat
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmHybrid
-        object cxgridDBTableView: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          FilterBox.CustomizeDialog = False
-          OnCellClick = cxgridDBTableViewCellClick
-          DataController.DataModeController.GridMode = True
-          DataController.DataModeController.GridModeBufferCount = 250
-          DataController.DataSource = dtsConteudo
-          DataController.Filter.MaxValueListCount = 1000
-          DataController.Filter.Options = [fcoCaseInsensitive]
-          DataController.Filter.AutoDataSetFilter = True
-          DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoSortByDisplayText]
-          DataController.Summary.DefaultGroupSummaryItems.Separator = ', '
-          DataController.Summary.DefaultGroupSummaryItems = <
-            item
-              Format = '00#'
-              Kind = skCount
-            end>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <
-            item
-              Links = <>
-              SummaryItems.Separator = ', '
-              SummaryItems = <
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 1
+        ExplicitHeight = 272
+        object cxgrid: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 1368
+          Height = 319
+          Align = alClient
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = cxcbsNone
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          LookAndFeel.Kind = lfFlat
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmHybrid
+          ExplicitTop = 2
+          object cxgridDBTableView: TcxGridDBTableView
+            OnMouseMove = cxgridDBTableViewMouseMove
+            Navigator.Buttons.CustomButtons = <>
+            FilterBox.CustomizeDialog = False
+            OnCellClick = cxgridDBTableViewCellClick
+            DataController.DataModeController.GridMode = True
+            DataController.DataModeController.GridModeBufferCount = 250
+            DataController.DataSource = dtsConteudo
+            DataController.Filter.MaxValueListCount = 1000
+            DataController.Filter.Options = [fcoCaseInsensitive]
+            DataController.Filter.AutoDataSetFilter = True
+            DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoSortByDisplayText]
+            DataController.Summary.DefaultGroupSummaryItems.Separator = ', '
+            DataController.Summary.DefaultGroupSummaryItems = <
+              item
+                Format = '00#'
+                Kind = skCount
+              end>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <
+              item
+                Links = <>
+                SummaryItems.Separator = ', '
+                SummaryItems = <
+                  item
+                    Format = '00#'
+                    Kind = skCount
+                  end>
+              end>
+            Filtering.ColumnPopup.MaxDropDownItemCount = 12
+            FilterRow.InfoText = 'Clique aqui para definir um filtro'
+            FilterRow.SeparatorColor = clBlack
+            FilterRow.SeparatorWidth = 3
+            FilterRow.ApplyChanges = fracImmediately
+            OptionsBehavior.CopyCaptionsToClipboard = False
+            OptionsBehavior.CopyRecordsToClipboard = False
+            OptionsCustomize.ColumnFiltering = False
+            OptionsCustomize.ColumnHorzSizing = False
+            OptionsCustomize.ColumnMoving = False
+            OptionsCustomize.ColumnSorting = False
+            OptionsCustomize.ColumnsQuickCustomizationShowCommands = False
+            OptionsData.Deleting = False
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsView.FocusRect = False
+            OptionsView.DataRowHeight = 55
+            OptionsView.EditAutoHeightBorderColor = clWhite
+            OptionsView.GridLineColor = 10091981
+            OptionsView.GridLines = glHorizontal
+            OptionsView.GroupRowHeight = 35
+            OptionsView.HeaderHeight = 25
+            OptionsView.RowSeparatorColor = 10091981
+            Preview.AutoHeight = False
+            Preview.MaxLineCount = 2
+            Styles.Content = cxStyle1
+            Styles.Group = cxStyle2
+            Styles.GroupByBox = cxStyle3
+            Styles.Selection = cxStyle5
+            object cxgridDBTableViewGAUGE: TcxGridDBColumn
+              DataBinding.FieldName = 'GAUGE'
+              PropertiesClassName = 'TcxProgressBarProperties'
+              Properties.AssignedValues.Min = True
+              Properties.BarStyle = cxbsGradient
+              Properties.BeginColor = 917310
+              Properties.BorderWidth = 10
+              Properties.EndColor = 37149
+              Properties.Max = 100.000000000000000000
+              Properties.OverloadBeginColor = clBlue
+              Properties.OverloadValue = 1.000000000000000000
+              Properties.PeakSize = 1
+              Properties.PeakValue = 80.000000000000000000
+              Properties.SolidTextColor = True
+              FooterAlignmentHorz = taCenter
+              GroupSummaryAlignment = taCenter
+              HeaderAlignmentHorz = taCenter
+              HeaderGlyphAlignmentHorz = taCenter
+              MinWidth = 120
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Focusing = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.ShowCaption = False
+              Options.Sorting = False
+              Width = 120
+            end
+            object cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn
+              DataBinding.FieldName = 'DESCRICAO_AGRUPADA'
+              PropertiesClassName = 'TcxTextEditProperties'
+              Visible = False
+              GroupIndex = 0
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Moving = False
+              Width = 150
+              IsCaptionAssigned = True
+            end
+            object cxgridDBTableViewColumn1: TcxGridDBColumn
+              DataBinding.FieldName = 'Conteudo_Exercicio'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Images = cxImageList1
+              Properties.Items = <
                 item
-                  Format = '00#'
-                  Kind = skCount
+                  Description = 'Exercicios'
+                  ImageIndex = 0
+                  Value = 'Exercicios'
+                end
+                item
+                  Description = 'Conteudo'
+                  ImageIndex = 1
+                  Value = 'Conteudo'
                 end>
-            end>
-          Filtering.ColumnPopup.MaxDropDownItemCount = 12
-          FilterRow.InfoText = 'Clique aqui para definir um filtro'
-          FilterRow.SeparatorColor = clBlack
-          FilterRow.SeparatorWidth = 3
-          FilterRow.ApplyChanges = fracImmediately
-          OptionsBehavior.CopyCaptionsToClipboard = False
-          OptionsBehavior.CopyRecordsToClipboard = False
-          OptionsCustomize.ColumnFiltering = False
-          OptionsCustomize.ColumnHorzSizing = False
-          OptionsCustomize.ColumnMoving = False
-          OptionsCustomize.ColumnSorting = False
-          OptionsCustomize.ColumnsQuickCustomizationShowCommands = False
-          OptionsData.Deleting = False
-          OptionsSelection.CellSelect = False
-          OptionsSelection.HideFocusRectOnExit = False
-          OptionsView.FocusRect = False
-          OptionsView.DataRowHeight = 50
-          OptionsView.EditAutoHeightBorderColor = clWhite
-          OptionsView.GridLineColor = 10091981
-          OptionsView.GridLines = glHorizontal
-          OptionsView.GroupRowHeight = 50
-          OptionsView.HeaderHeight = 30
-          OptionsView.RowSeparatorColor = 10091981
-          Preview.AutoHeight = False
-          Preview.MaxLineCount = 2
-          Styles.Content = cxStyle1
-          Styles.Group = cxStyle2
-          Styles.GroupByBox = cxStyle3
-          object cxgridDBTableViewGAUGE: TcxGridDBColumn
-            DataBinding.FieldName = 'GAUGE'
-            PropertiesClassName = 'TcxProgressBarProperties'
-            Properties.AssignedValues.Min = True
-            Properties.BarStyle = cxbsGradient
-            Properties.BeginColor = 917310
-            Properties.BorderWidth = 10
-            Properties.EndColor = 37149
-            Properties.Max = 100.000000000000000000
-            Properties.OverloadBeginColor = clBlue
-            Properties.OverloadValue = 1.000000000000000000
-            Properties.PeakSize = 1
-            Properties.PeakValue = 80.000000000000000000
-            Properties.SolidTextColor = True
-            FooterAlignmentHorz = taCenter
-            GroupSummaryAlignment = taCenter
-            HeaderAlignmentHorz = taCenter
-            HeaderGlyphAlignmentHorz = taCenter
-            MinWidth = 120
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Focusing = False
-            Options.HorzSizing = False
-            Options.Moving = False
-            Options.ShowCaption = False
-            Options.Sorting = False
-            Width = 120
+              Properties.ReadOnly = True
+              MinWidth = 140
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              VisibleForCustomization = False
+              Width = 140
+            end
+            object cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn
+              Caption = 'Conte'#250'do'
+              DataBinding.FieldName = 'DESCRICAO_CONTEUDO'
+              PropertiesClassName = 'TcxTextEditProperties'
+              MinWidth = 450
+              Options.Editing = False
+              Options.Filtering = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              Width = 450
+            end
+            object cxgridDBTableViewCod_Conteudo: TcxGridDBColumn
+              Caption = 'Cod. Conte'#250'do'
+              DataBinding.FieldName = 'COD_CONTEUDO'
+              PropertiesClassName = 'TcxTextEditProperties'
+              Options.Editing = False
+              Width = 150
+            end
+            object cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn
+              DataBinding.FieldName = 'DESCRICAO_EXERCICIO'
+              PropertiesClassName = 'TcxTextEditProperties'
+              Options.Editing = False
+              Width = 228
+            end
+            object cxgridDBTableViewCOD_AULA: TcxGridDBColumn
+              DataBinding.FieldName = 'COD_AULA'
+              PropertiesClassName = 'TcxTextEditProperties'
+              Options.Editing = False
+              Width = 112
+            end
+            object cxgridDBTableViewCOD_EXERCICIO: TcxGridDBColumn
+              DataBinding.FieldName = 'COD_EXERCICIO'
+              PropertiesClassName = 'TcxTextEditProperties'
+              Options.Editing = False
+              Width = 181
+            end
           end
-          object cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn
-            DataBinding.FieldName = 'DESCRICAO_AGRUPADA'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Visible = False
-            GroupIndex = 0
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Moving = False
-            Width = 150
-            IsCaptionAssigned = True
+          object cxgridLevel: TcxGridLevel
+            GridView = cxgridDBTableView
           end
-          object cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn
-            Caption = 'Conte'#250'do'
-            DataBinding.FieldName = 'DESCRICAO_CONTEUDO'
-            PropertiesClassName = 'TcxHyperLinkEditProperties'
-            Properties.LinkColor = 5131854
-            Properties.ReadOnly = False
-            Properties.SingleClick = True
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Moving = False
-            Options.Sorting = False
-            Width = 450
-          end
-          object cxgridDBTableViewCod_Conteudo: TcxGridDBColumn
-            Caption = 'Cod. Conte'#250'do'
-            DataBinding.FieldName = 'COD_CONTEUDO'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Options.Editing = False
-            Width = 150
-          end
-          object cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn
-            DataBinding.FieldName = 'DESCRICAO_EXERCICIO'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Options.Editing = False
-            Width = 228
-          end
-          object cxgridDBTableViewCOD_AULA: TcxGridDBColumn
-            DataBinding.FieldName = 'COD_AULA'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Options.Editing = False
-            Width = 112
-          end
-          object cxgridDBTableViewCOD_EXERCICIO: TcxGridDBColumn
-            DataBinding.FieldName = 'COD_EXERCICIO'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Options.Editing = False
-            Width = 181
-          end
-        end
-        object cxgridLevel: TcxGridLevel
-          GridView = cxgridDBTableView
         end
       end
       object pnlTitulo: TPanel
@@ -676,7 +770,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         Padding.Top = 8
         ParentBackground = False
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 0
         StyleElements = []
         object lblAula: TLabel
           Left = 0
@@ -699,6 +793,181 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           ExplicitHeight = 23
         end
       end
+      object pnlCONTEUDO: TPanel
+        Left = 0
+        Top = 360
+        Width = 1368
+        Height = 334
+        Align = alBottom
+        BevelOuter = bvNone
+        Color = 16445404
+        ParentBackground = False
+        TabOrder = 2
+        Visible = False
+        object pnlConteudo_Imagem: TPanel
+          Left = 0
+          Top = 0
+          Width = 1368
+          Height = 145
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          object Panel2: TPanel
+            Left = 0
+            Top = 0
+            Width = 1368
+            Height = 41
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 5904911
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Padding.Top = 8
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 0
+            StyleElements = []
+            object lblResumoImagem: TLabel
+              Left = 0
+              Top = 8
+              Width = 1368
+              Height = 33
+              Align = alClient
+              Alignment = taCenter
+              Caption = 'lblResumoImagem'
+              Color = 5904911
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              StyleElements = []
+              ExplicitWidth = 180
+              ExplicitHeight = 23
+            end
+          end
+          object pnlImage: TPanel
+            Left = 0
+            Top = 41
+            Width = 1368
+            Height = 104
+            Align = alClient
+            BevelOuter = bvNone
+            Color = clWhite
+            Padding.Left = 10
+            Padding.Top = 10
+            Padding.Right = 10
+            Padding.Bottom = 10
+            ParentBackground = False
+            TabOrder = 1
+            object ImageConteudo: TImage
+              Left = 10
+              Top = 10
+              Width = 1348
+              Height = 84
+              Align = alClient
+              Stretch = True
+              ExplicitTop = 6
+              ExplicitWidth = 1342
+              ExplicitHeight = 78
+            end
+          end
+        end
+        object pnlConteudo_Video: TPanel
+          Left = 0
+          Top = 145
+          Width = 1368
+          Height = 145
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 1
+          object pnlVideo: TPanel
+            Left = 0
+            Top = 41
+            Width = 1368
+            Height = 104
+            Align = alClient
+            BevelOuter = bvNone
+            Color = clWhite
+            Padding.Left = 10
+            Padding.Top = 10
+            Padding.Right = 10
+            Padding.Bottom = 10
+            ParentBackground = False
+            TabOrder = 0
+            ExplicitLeft = 408
+            ExplicitTop = 8
+            ExplicitWidth = 185
+            ExplicitHeight = 41
+            object WindowsMediaPlayer: TWindowsMediaPlayer
+              Left = 10
+              Top = 10
+              Width = 1348
+              Height = 84
+              Align = alClient
+              TabOrder = 0
+              ExplicitTop = 6
+              ExplicitHeight = 60
+              ControlData = {
+                000300000800000000000500000000000000F03F030000000000050000000000
+                0000000008000200000000000300010000000B00FFFF0300000000000B00FFFF
+                08000200000000000300320000000B00000008000A000000660075006C006C00
+                00000B0000000B0000000B00FFFF0B00FFFF0B00000008000200000000000800
+                020000000000080002000000000008000200000000000B00000093330000A726
+                0000}
+            end
+          end
+          object Panel1: TPanel
+            Left = 0
+            Top = 0
+            Width = 1368
+            Height = 41
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 5904911
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Padding.Top = 8
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 1
+            StyleElements = []
+            ExplicitTop = 16
+            object lblResumoVideo: TLabel
+              Left = 0
+              Top = 8
+              Width = 1368
+              Height = 33
+              Align = alClient
+              Alignment = taCenter
+              Caption = 'lblResumoVideo'
+              Color = 5904911
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              StyleElements = []
+              ExplicitWidth = 155
+              ExplicitHeight = 23
+            end
+          end
+        end
+      end
     end
     object tbsExercicios: TTabSheet
       Caption = 'tbsExercicios'
@@ -706,8 +975,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     end
   end
   object cxStyleRepository: TcxStyleRepository
-    Left = 1078
-    Top = 404
+    Left = 558
+    Top = 176
     PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -751,10 +1020,10 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     end
     object cxStyle5: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 13541201
+      Color = 14922873
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5131854
-      Font.Height = -13
+      Font.Color = clWhite
+      Font.Height = -20
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       TextColor = clWhite
@@ -1031,7 +1300,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   end
   object dtsAulas: TDataSource
     DataSet = cldsAulas
-    Left = 272
+    Left = 132
     Top = 464
   end
   object cldsAulas: TClientDataSet
@@ -1043,6 +1312,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       00820000000000}
     Active = True
     Aggregates = <>
+    FileName = 'C:\AMD\XML_AULAS.XML'
     FieldDefs = <
       item
         Name = 'DESCRICAO'
@@ -1069,8 +1339,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       end>
     Params = <>
     StoreDefs = True
-    Left = 344
-    Top = 456
+    Left = 60
+    Top = 464
     object cldsAulasDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
       Size = 255
@@ -1084,71 +1354,68 @@ object frmFrames_Aulas: TfrmFrames_Aulas
   end
   object cldsConteudo: TClientDataSet
     PersistDataPacket.Data = {
-      000100009619E0BD010000001800000009000000000003000000000105474155
-      474504000100100000001244455343524943414F5F434F4E544555444F020049
-      001000010005574944544802000200FF001344455343524943414F5F45584552
-      434943494F020049001000010005574944544802000200FF0008434F445F4155
-      4C4104000100100000000D434F445F45584552434943494F0400010010000000
-      1244455343524943414F5F414752555041444102004900100001000557494454
-      4802000200FF000947415547455F494E4904000100100000000B47415547455F
-      46494E414C04000100100000000C434F445F434F4E544555444F040001001000
-      00000000}
+      270100009619E0BD01000000180000000A000000000003000000270105474155
+      474504000100000000001244455343524943414F5F434F4E544555444F020049
+      000000010005574944544802000200FF001344455343524943414F5F45584552
+      434943494F020049000000010005574944544802000200FF0008434F445F4155
+      4C4104000100000000000D434F445F45584552434943494F0400010000000000
+      1244455343524943414F5F414752555041444102004900000001000557494454
+      4802000200FF000947415547455F494E4904000100000000000B47415547455F
+      46494E414C04000100000000000C434F445F434F4E544555444F040001000000
+      000012436F6E746575646F5F45786572636963696F0100490000000100055749
+      4454480200020032000000}
     Active = True
     Aggregates = <>
     FieldDefs = <
       item
         Name = 'GAUGE'
-        Attributes = [faUnNamed]
         DataType = ftInteger
       end
       item
         Name = 'DESCRICAO_CONTEUDO'
-        Attributes = [faUnNamed]
         DataType = ftString
         Size = 255
       end
       item
         Name = 'DESCRICAO_EXERCICIO'
-        Attributes = [faUnNamed]
         DataType = ftString
         Size = 255
       end
       item
         Name = 'COD_AULA'
-        Attributes = [faUnNamed]
         DataType = ftInteger
       end
       item
         Name = 'COD_EXERCICIO'
-        Attributes = [faUnNamed]
         DataType = ftInteger
       end
       item
         Name = 'DESCRICAO_AGRUPADA'
-        Attributes = [faUnNamed]
         DataType = ftString
         Size = 255
       end
       item
         Name = 'GAUGE_INI'
-        Attributes = [faUnNamed]
         DataType = ftInteger
       end
       item
         Name = 'GAUGE_FINAL'
-        Attributes = [faUnNamed]
         DataType = ftInteger
       end
       item
         Name = 'COD_CONTEUDO'
-        Attributes = [faUnNamed]
         DataType = ftInteger
+      end
+      item
+        Name = 'Conteudo_Exercicio'
+        DataType = ftString
+        Size = 50
       end>
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 388
-    Top = 328
+    Left = 60
+    Top = 408
     object cldsConteudoGAUGE: TIntegerField
       FieldName = 'GAUGE'
     end
@@ -1179,15 +1446,19 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     object cldsConteudoCOD_CONTEUDO: TIntegerField
       FieldName = 'COD_CONTEUDO'
     end
+    object cldsConteudoConteudo_Exercicio: TStringField
+      FieldName = 'Conteudo_Exercicio'
+      Size = 50
+    end
   end
   object dtsConteudo: TDataSource
     DataSet = cldsConteudo
-    Left = 460
-    Top = 328
+    Left = 132
+    Top = 408
   end
   object cxStyleRepository1: TcxStyleRepository
-    Left = 1078
-    Top = 332
+    Left = 686
+    Top = 176
     PixelsPerInch = 96
     object cxStyle29: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -1323,11 +1594,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
+      Font.Color = 5131854
+      Font.Height = -16
       Font.Name = 'Roboto'
       Font.Style = []
-      TextColor = clBlack
+      TextColor = 5131854
     end
     object cxStyle43: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -1510,8 +1781,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     end
   end
   object StyleRepository: TcxStyleRepository
-    Left = 716
-    Top = 356
+    Left = 404
+    Top = 176
     PixelsPerInch = 96
     object cxStyle61: TcxStyle
       AssignedValues = [svColor]
@@ -1759,5 +2030,194 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Styles.Selection = styleSelection
       BuiltIn = True
     end
+  end
+  object cxImageList1: TcxImageList
+    SourceDPI = 96
+    Height = 24
+    Width = 24
+    FormatVersion = 1
+    DesignInfo = 11534512
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F80000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C0000032269545874584D4C3A636F6D2E61646F62652E786D7000
+          000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+          4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+          6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+          786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+          362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+          2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+          3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+          7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+          626F75743D222220786D6C6E733A786D703D22687474703A2F2F6E732E61646F
+          62652E636F6D2F7861702F312E302F2220786D6C6E733A786D704D4D3D226874
+          74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F222078
+          6D6C6E733A73745265663D22687474703A2F2F6E732E61646F62652E636F6D2F
+          7861702F312E302F73547970652F5265736F75726365526566232220786D703A
+          43726561746F72546F6F6C3D2241646F62652050686F746F73686F7020435336
+          202857696E646F7773292220786D704D4D3A496E7374616E636549443D22786D
+          702E6969643A3531424642373137433030433131454442383836454635433544
+          4242443730442220786D704D4D3A446F63756D656E7449443D22786D702E6469
+          643A353142464237313843303043313145444238383645463543354442424437
+          3044223E203C786D704D4D3A4465726976656446726F6D2073745265663A696E
+          7374616E636549443D22786D702E6969643A3531424642373135433030433131
+          454442383836454635433544424244373044222073745265663A646F63756D65
+          6E7449443D22786D702E6469643A353142464237313643303043313145444238
+          3836454635433544424244373044222F3E203C2F7264663A4465736372697074
+          696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E203C3F78
+          7061636B657420656E643D2272223F3EAE496F5F000001BC4944415478DA62FC
+          FFFF3F032D010B21053AB51B98809413101B00B13454F839105F00E2FD579A03
+          7EE3D3CF88CB0740835981543910A702B11C0EFD4F81781E10B7032DFA4EB405
+          40C3DDA11AA5880C8957409C0EB46403410B80864701A9A56406792AD0923938
+          2D001A6E07A40E5218AFDE404BB6615800349C19487D04626E0A2DF803C4BC40
+          4B7E80384C4812E554301C96321B517C00743D48F035100BE0D0740088D70171
+          03100B116109C8F5C2405F7C83F9C01E8FE1207017A87832909607E2E94458C0
+          01C4EEC841644E40033F88005AF20588B3804C3D20DE46408F01B20592A40432
+          D092CB40EC0D641A01F1431CCA44902D602433423F03F13F5CA5047259F48214
+          538189420548B50171281E656F902D384D844B61A90D64702911EEB8841C44FB
+          6086E000B240C39380F403220D0795B03BE016408BDC7E3C1A5C80782E52714D
+          084C03A538F49CDC02C43FA954CF54C1184C48490FE40B7F2A181E02CAC11816
+          402DD909AD60C805054033D61253E104012950B92E48427EC8001ABE0C5D8209
+          474E5D072D773A61E91907780F4D1CF2D80CC75B2723F9861B9A8A7480580C9A
+          434155E43520DE0334F81359953EB500408001007076965EF0B8DAE100000000
+          49454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F80000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C0000036669545874584D4C3A636F6D2E61646F62652E786D7000
+          000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+          4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+          6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+          786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+          362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+          2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+          3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+          7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+          626F75743D222220786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61
+          646F62652E636F6D2F7861702F312E302F6D6D2F2220786D6C6E733A73745265
+          663D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73
+          547970652F5265736F75726365526566232220786D6C6E733A786D703D226874
+          74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F2220786D704D
+          4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A3635
+          3230333344303035433045443131383246413838443346373236324539382220
+          786D704D4D3A446F63756D656E7449443D22786D702E6469643A353335393438
+          44384330304331314544424641394336303037313336354344382220786D704D
+          4D3A496E7374616E636549443D22786D702E6969643A35333539343844374330
+          304331314544424641394336303037313336354344382220786D703A43726561
+          746F72546F6F6C3D2241646F62652050686F746F73686F702043533620285769
+          6E646F777329223E203C786D704D4D3A4465726976656446726F6D2073745265
+          663A696E7374616E636549443D22786D702E6969643A36353230333344303035
+          43304544313138324641383844334637323632453938222073745265663A646F
+          63756D656E7449443D22786D702E6469643A3635323033334430303543304544
+          313138324641383844334637323632453938222F3E203C2F7264663A44657363
+          72697074696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E
+          203C3F787061636B657420656E643D2272223F3E854BD5DC000001ED49444154
+          78DAAC964F28047114C76798FC595A7142C905A94539E0801C4851A268CF4251
+          94FC2F7F4EA21C5C70C0DEE448A4287F0E921C90CB6E717011919B25ACC2FAFE
+          F29D9AA699D9D96D5E7D76DEEFCDDBF77EBFDF7BF39B913D935B999224758019
+          F021FD4B1C085397C12FF8A66E2632FF130F5C6016F814FCF483113AB924E764
+          1C248899A632AB2A227339682665B459C91D27FAAEB3BBB45BA1CA39B8003BE4
+          9236ADF8C09866DC14986E59C07557E71756625CFE1A380559E004C1FD4553DB
+          BDD0BD7AC758138899168301049710BC0FFAA291635C8C09DCC02F1404F79A05
+          375B8168D71E90CCF127C83149F214A9F38C1278881DC98CE46094E088CB7773
+          1C0425A0CE22CE1B3BADD64E0D96C020E82243B4692500F634E361145B4C60C3
+          A92EEAE48C6FC02682AFA2D8F9D06B9C4A300ADA4021DBB414FA95936DDA0A8E
+          D9A60566C1CD56D00D2A401AC72FA0D4C04F6CC73EC88DB68B1A881DA98FA54D
+          6FC13348E438C47ECFB388F3035E41BA9D1A0C832A1ED3826ADAB412E453ACCA
+          3A8A9D81EBA153456E04D9D40F10BC9D7A92536D2A4ED233207AFF81DD742DDA
+          D6A904CB3C0027F91C048C82AB09F42F72B1EFF79A2D78A44D2F13A2B0085E69
+          7138CA0ABF247E35F5982076642EC2FD90C283EC0B4CF1A52D47F1D9A2FA8575
+          B614300F56FE04180025A676EB5FF2B8350000000049454E44AE426082}
+      end>
+  end
+  object cxImageList2: TcxImageList
+    SourceDPI = 96
+    Height = 44
+    Width = 44
+    FormatVersion = 1
+    DesignInfo = 11534424
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D494844520000002C0000002C08060000001E845A
+          010000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C0000032269545874584D4C3A636F6D2E61646F62652E786D7000
+          000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+          4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+          6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+          786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+          362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+          2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+          3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+          7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+          626F75743D222220786D6C6E733A786D703D22687474703A2F2F6E732E61646F
+          62652E636F6D2F7861702F312E302F2220786D6C6E733A786D704D4D3D226874
+          74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F222078
+          6D6C6E733A73745265663D22687474703A2F2F6E732E61646F62652E636F6D2F
+          7861702F312E302F73547970652F5265736F75726365526566232220786D703A
+          43726561746F72546F6F6C3D2241646F62652050686F746F73686F7020435336
+          202857696E646F7773292220786D704D4D3A496E7374616E636549443D22786D
+          702E6969643A3630413044433130433031313131454441383841453045364631
+          4235323533422220786D704D4D3A446F63756D656E7449443D22786D702E6469
+          643A363041304443313143303131313145444138384145304536463142353235
+          3342223E203C786D704D4D3A4465726976656446726F6D2073745265663A696E
+          7374616E636549443D22786D702E6969643A3630413044433045433031313131
+          454441383841453045364631423532353342222073745265663A646F63756D65
+          6E7449443D22786D702E6469643A363041304443304643303131313145444138
+          3841453045364631423532353342222F3E203C2F7264663A4465736372697074
+          696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E203C3F78
+          7061636B657420656E643D2272223F3ECB3CCC410000056D4944415478DAEC99
+          5F681C5514C6772793B0865602C11858EA42D7065B4C6AB18642115A5BC13EC4
+          979682F5A52D5AC417516C7D28F541454A052B141FC43F2BA414B1AD2F8D54B1
+          D052ABA5B49492225A942518238998068C12926C367E27CC19BE3DBD333B13B2
+          48C10B1F77EEECCCBDBF3973EEB9E7CE66E7E7E7337753F1327759F107070713
+          5D98CD669DC75A8237751FEA57517F059D4FD26F4F4F4F3AE034B052AB1CB0CB
+          50BF87DF76A15E971438B58593C0B23CCFAB011658683374A25AAD7606F0BD0D
+          7389A45615D0A6A6A6105814C0BE05D083737373FC20B71B3599FD3858855358
+          050ECE1700750AB0EB2B958AC2671A1D75FC7A565558DFF74368FCF602740CB0
+          BE585641D10E2DDF7060865550860DD482763FAED929D70AAC140575458F8600
+          DB49A52250D136E8039C5FA156D45AC0D9B7652E360CD8C2EA6B67CB363737BF
+          81F62139966BD4AA5AB3AFABB54DC85B3A60D7C422AB7641FD50AFC28AD8BAEC
+          3A0A8FF2008EAFE07759956E40D72169579704D84EACC0AABB519778B2A975D5
+          6A1656CFC345E4CDF5A2DD4BD163143F9D854A38FE76D1B904012EA8A5A52507
+          9DC27149DA0ACCBE1D3329C37EB44D0FDB09EDC1835C84AE42CF2E06385B2E97
+          79C04DD07128EF88BBA16F6A0813490C56C9E463E935226D73080CDCE465E413
+          9713030F0F0FAB650E03F035EB02BC14738CB5300A648FF99C7D085A68DEE9EE
+          EE3E9008786C6C6C05203F8736E8C4B24BB0CDD07855636BBB2CCAB0FC162C38
+          CA05D44FC1DAD3B1C01313135300CCB1AF6AD4A8934ADE01EE7A000BACD05A1B
+          E85F503F0EE8D148E0C9C9C91B805DCB13C965555761F038CB5B6097DF13F41F
+          A85702FA1F679400EC23B0EC87D60D922CB336E58C597834022D882309CF9760
+          CC0EE8BBC8B0165CB84F126F6872B1F9802B6FB68B11835B68138DD66227F489
+          739CE9E969BEB813EAC7F9AD4BB18CB2ABB05F8B2BCCCECED6885D84DCAA0FAE
+          31506361136246A127A1D79702382A4F616B47593928FDB074CD2BF75CA106E5
+          4D403F86BA5CCF827172F97AD4EAA8C7661EB5E1F6FD35C0FC4A4C98B906AD82
+          3E4AF3BA034DE1FC15D43FA1FECBC2BBA02326A0944335C0333333190B4D6146
+          CCFD3CEA1DA867AD65A3E22DF43BB401E757CBC614EAC2F5DB71EB5180942D34
+          C33B26E032B8C54B35C02C01B74B29063B0D3D28DF1B6CCC8D88B33E1D4FE19A
+          9FA12FA057704F11B76F863E5670B6AE6B9565B7085D822D6D5D2480FB15DA86
+          7B0E5A589EF5F6E12316880BE8E739003D04B8CF6CFC76AC097958797D38E9B4
+          F3B8C1C8B7DF8636423F5A6009912AD79BB34640B98598FC0CE0FA0079DB265D
+          C697B787C03AA01D206A4242DF436BA05294855DF0DC1F27FCB95C6E00705D80
+          BD19E3160B6B83AF7BB3A85C40FC4BDBC1163F4C2F01BB17F559D49F02A29540
+          B2AED54E2797C2CA6F12D2A4B4B6B68ECBA7B6F1F1F17338BF45EFA53DE23AB8
+          459BE79A38D6DA713E099D848AD0799A78F747F5C196D6CF045CDADBDBB702F4
+          07475ED3043DEAD74B15F581F4583BD2ED7DA051E809E800B41FBF9DD46B39EC
+          A9754DF2EE4A7036618C3149744C6EF3B0AFB00AC19D59B7D05DB1EE9C352F20
+          FF3E02BD8BDF2A7ABFF4ABF771FF71A5A3A3E3CF919191A771EF80F1E355BEEB
+          FB015B9D0712B11FAB954D125E61EBB131D27C7FCBE7F35F0E0D0D9DC1BD7DF4
+          F1B1E0BB965CB58A6B5BA45F29F98DD80D669C11D27C5CC1182F0A30B53BBD7A
+          490D4FC88429E11D40511B57B937AE140A85DF509D21B768F393E6B3EC1E711B
+          D2B8BEF4CDC5FDF5E0B0F2FBA8D4CAF7FA4992707EFDAE81ECDE2E29B42BAC39
+          CA37D0DFF29704748F9774E710B7ADB7932CCD2EA45E29168B553CE4A5A0B9DC
+          4BBBE5499AB427ED27E1F5A5E070D8CFFC8725C5A7D8AFA163D0B5ECFFFF8436
+          B8FC2BC00005E21E6C55499FBA0000000049454E44AE426082}
+      end>
   end
 end
