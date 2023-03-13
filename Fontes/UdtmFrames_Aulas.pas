@@ -21,6 +21,24 @@ type
     qryBuscaExercicioCOD_CONTEUDO: TIntegerField;
     qryBuscaConteudoCODIGO: TIntegerField;
     qryBuscaExercicioCODIGO: TIntegerField;
+    qryBuscaConteudoClicado: TFDQuery;
+    qryBuscaConteudoClicadoCODIGO: TIntegerField;
+    qryBuscaConteudoClicadoCOD_AULA: TIntegerField;
+    qryBuscaConteudoClicadoDESCRICAO: TStringField;
+    qryBuscaConteudoClicadoTIPO: TStringField;
+    qryBuscaConteudoClicadoIMAGEM: TBlobField;
+    qryBuscaConteudoClicadoVIDEO: TBlobField;
+    qryBuscaConteudoClicadoAUDIO: TBlobField;
+    qryBuscaConteudoClicadoRESUMO: TStringField;
+    qryBuscaConteudoClicadoRESUMO_IMAGEM: TBlobField;
+    qryBuscaExercicioClicado: TFDQuery;
+    qryBuscaExercicioClicadoCODIGO: TIntegerField;
+    qryBuscaExercicioClicadoCOD_AULA: TIntegerField;
+    qryBuscaExercicioClicadoCOD_CONTEUDO: TIntegerField;
+    qryBuscaExercicioClicadoDESCRICAO: TStringField;
+    qryBuscaExercicioClicadoTIPO: TStringField;
+    qryBuscaExercicioClicadoIMAGEM: TBlobField;
+    qryBuscaExercicioClicadoVIDEO: TBlobField;
   private
     { Private declarations }
   public
