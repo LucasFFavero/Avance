@@ -1062,6 +1062,7 @@ object frmAulas: TfrmAulas
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = cxcbsNone
+          Images = cxImageList1
           TabOrder = 1
           LookAndFeel.Kind = lfUltraFlat
           LookAndFeel.NativeStyle = True
@@ -1102,32 +1103,73 @@ object frmAulas: TfrmAulas
               Width = 415
             end
             object cxGrid1DBTableView1IMAGEM: TcxGridDBColumn
-              Caption = 'Tipo'
-              DataBinding.FieldName = 'TIPO'
+              Caption = 'Imagem'
+              DataBinding.FieldName = 'IMAGEM_1'
               PropertiesClassName = 'TcxImageComboBoxProperties'
-              Properties.Alignment.Horz = taCenter
               Properties.Images = cxImageList1
               Properties.Items = <
                 item
-                  Description = 'Imagem'
                   ImageIndex = 3
-                  Value = 'I'
-                end
-                item
-                  Description = 'V'#237'deo'
-                  ImageIndex = 4
-                  Value = 'V'
-                end
-                item
-                  Description = #193'udio'
-                  ImageIndex = 0
-                  Value = 'A'
+                  Value = 1
                 end>
+              Properties.ReadOnly = True
+              Properties.ShowDescriptions = False
+              HeaderAlignmentHorz = taCenter
+              HeaderGlyphAlignmentHorz = taCenter
+              MinWidth = 66
               Options.Editing = False
               Options.Filtering = False
               Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
               Options.Sorting = False
-              Width = 120
+              Width = 66
+            end
+            object cxGrid1DBTableView1Column1: TcxGridDBColumn
+              Caption = 'V'#237'deo'
+              DataBinding.FieldName = 'VIDEO_1'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Images = cxImageList1
+              Properties.Items = <
+                item
+                  ImageIndex = 4
+                  Value = 1
+                end>
+              Properties.ReadOnly = True
+              Properties.ShowDescriptions = False
+              HeaderAlignmentHorz = taCenter
+              HeaderGlyphAlignmentHorz = taCenter
+              MinWidth = 66
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              Width = 66
+            end
+            object cxGrid1DBTableView1Column2: TcxGridDBColumn
+              Caption = 'Audio'
+              DataBinding.FieldName = 'AUDIO_1'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Images = cxImageList1
+              Properties.Items = <
+                item
+                  ImageIndex = 0
+                  Value = 1
+                end>
+              Properties.ReadOnly = True
+              Properties.ShowDescriptions = False
+              HeaderAlignmentHorz = taCenter
+              HeaderGlyphAlignmentHorz = taCenter
+              MinWidth = 66
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              Width = 66
             end
             object cxGrid1DBTableView1RESUMO: TcxGridDBColumn
               Caption = 'Resumo'
@@ -1137,6 +1179,27 @@ object frmAulas: TfrmAulas
               Options.Filtering = False
               Options.Sorting = False
               Width = 350
+            end
+            object cxGrid1DBTableView1Column3: TcxGridDBColumn
+              Caption = 'Imagem Resumo'
+              DataBinding.FieldName = 'RESUMO_IMAGEM_1'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Images = cxImageList1
+              Properties.Items = <
+                item
+                  ImageIndex = 3
+                  Value = 1
+                end>
+              Properties.ReadOnly = True
+              Properties.ShowDescriptions = False
+              MinWidth = 120
+              Options.Editing = False
+              Options.Filtering = False
+              Options.Grouping = False
+              Options.HorzSizing = False
+              Options.Moving = False
+              Options.Sorting = False
+              Width = 120
             end
           end
           object cxGrid1Level1: TcxGridLevel
@@ -1395,31 +1458,51 @@ object frmAulas: TfrmAulas
                 Width = 424
               end
               object cxGridDBColumn3: TcxGridDBColumn
-                Caption = 'Tipo'
-                DataBinding.FieldName = 'TIPO'
+                Caption = 'Imagem'
+                DataBinding.FieldName = 'IMAGEM_1'
                 PropertiesClassName = 'TcxImageComboBoxProperties'
                 Properties.Alignment.Horz = taCenter
                 Properties.Images = cxImageList1
                 Properties.Items = <
                   item
-                    Description = 'Imagem'
                     ImageIndex = 3
-                    Value = 'I'
-                  end
-                  item
-                    Description = 'V'#237'deo'
-                    ImageIndex = 4
-                    Value = 'V'
-                  end
-                  item
-                    Description = 'Audio'
-                    ImageIndex = 0
-                    Value = 'A'
+                    Value = 1
                   end>
+                Properties.ReadOnly = True
+                Properties.ShowDescriptions = False
+                HeaderAlignmentHorz = taCenter
+                HeaderGlyphAlignmentHorz = taCenter
+                MinWidth = 66
                 Options.Editing = False
                 Options.Filtering = False
+                Options.Grouping = False
+                Options.HorzSizing = False
+                Options.Moving = False
                 Options.Sorting = False
-                Width = 120
+                Width = 66
+              end
+              object cxGridDBTableView1Column1: TcxGridDBColumn
+                Caption = 'V'#237'deo'
+                DataBinding.FieldName = 'VIDEO_1'
+                PropertiesClassName = 'TcxImageComboBoxProperties'
+                Properties.Images = cxImageList1
+                Properties.Items = <
+                  item
+                    ImageIndex = 4
+                    Value = 1
+                  end>
+                Properties.ReadOnly = True
+                Properties.ShowDescriptions = False
+                HeaderAlignmentHorz = taCenter
+                HeaderGlyphAlignmentHorz = taCenter
+                MinWidth = 66
+                Options.Editing = False
+                Options.Filtering = False
+                Options.Grouping = False
+                Options.HorzSizing = False
+                Options.Moving = False
+                Options.Sorting = False
+                Width = 66
               end
             end
             object cxGridLevel1: TcxGridLevel
@@ -1669,6 +1752,28 @@ object frmAulas: TfrmAulas
                 Options.Sorting = False
                 Width = 414
               end
+              object cxGridDBTableView2Column1: TcxGridDBColumn
+                Caption = 'Imagem'
+                DataBinding.FieldName = 'IMAGEM_1'
+                PropertiesClassName = 'TcxImageComboBoxProperties'
+                Properties.Images = cxImageList1
+                Properties.Items = <
+                  item
+                    ImageIndex = 3
+                    Value = 1
+                  end>
+                Properties.ReadOnly = True
+                Properties.ShowDescriptions = False
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                HeaderGlyphAlignmentHorz = taCenter
+                Options.Editing = False
+                Options.Filtering = False
+                Options.Moving = False
+                Options.Sorting = False
+                Width = 66
+              end
               object cxGridDBColumn7: TcxGridDBColumn
                 Caption = 'Correta'
                 DataBinding.FieldName = 'CORRETA'
@@ -1677,21 +1782,23 @@ object frmAulas: TfrmAulas
                 Properties.Images = cxImageList1
                 Properties.Items = <
                   item
-                    Description = 'Correta'
                     ImageIndex = 1
                     Value = 1
                   end
                   item
-                    Description = 'Errada'
                     ImageIndex = 2
                     Value = 0
                   end>
-                FooterAlignmentHorz = taLeftJustify
-                GroupSummaryAlignment = taLeftJustify
+                Properties.ReadOnly = True
+                Properties.ShowDescriptions = False
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                HeaderGlyphAlignmentHorz = taCenter
                 Options.Editing = False
                 Options.Filtering = False
                 Options.Sorting = False
-                Width = 120
+                Width = 66
               end
             end
             object cxGridLevel2: TcxGridLevel
@@ -1838,25 +1945,26 @@ object frmAulas: TfrmAulas
           end
           object cxGridDBColumn10: TcxGridDBColumn
             Caption = 'Imagem'
-            DataBinding.FieldName = 'IMAGEM'
+            DataBinding.FieldName = 'IMAGEM_1'
             PropertiesClassName = 'TcxImageComboBoxProperties'
             Properties.Alignment.Horz = taCenter
             Properties.Images = cxImageList1
             Properties.Items = <
               item
-                Description = 'Imagem'
-                ImageIndex = 0
-                Value = 'I'
-              end
-              item
-                Description = 'V'#237'deo'
-                ImageIndex = 1
-                Value = 'V'
+                ImageIndex = 3
+                Value = 1
               end>
+            Properties.ShowDescriptions = False
+            FooterAlignmentHorz = taCenter
+            GroupSummaryAlignment = taCenter
+            HeaderAlignmentHorz = taCenter
+            HeaderGlyphAlignmentHorz = taCenter
             Options.Editing = False
             Options.Filtering = False
+            Options.Grouping = False
+            Options.Moving = False
             Options.Sorting = False
-            Width = 120
+            Width = 66
           end
         end
         object cxGridLevel3: TcxGridLevel
