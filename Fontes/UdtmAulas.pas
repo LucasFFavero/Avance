@@ -33,11 +33,7 @@ type
     qryConteudosCODIGO: TFDAutoIncField;
     qryConteudosCOD_AULA: TIntegerField;
     qryConteudosDESCRICAO: TStringField;
-    qryConteudosIMAGEM: TBlobField;
-    qryConteudosVIDEO: TBlobField;
-    qryConteudosAUDIO: TBlobField;
     qryConteudosRESUMO: TStringField;
-    qryConteudosRESUMO_IMAGEM: TBlobField;
     qryExercicios: TFDQuery;
     dtsExercicios: TDataSource;
     qryExerciciosCODIGO: TFDAutoIncField;
@@ -45,14 +41,11 @@ type
     qryExerciciosCOD_CONTEUDO: TIntegerField;
     qryExerciciosCONTEUDO: TStringField;
     qryExerciciosDESCRICAO: TStringField;
-    qryExerciciosIMAGEM: TBlobField;
-    qryExerciciosVIDEO: TBlobField;
     qryQuestoes: TFDQuery;
     dtsQuestoes: TDataSource;
     qryQuestoesCODIGO: TFDAutoIncField;
     qryQuestoesCOD_AULAS_EXERCICIOS: TIntegerField;
     qryQuestoesDESCRICAO: TStringField;
-    qryQuestoesIMAGEM: TBlobField;
     qryQuestoesCORRETA: TSmallintField;
     qryExcluirConteudo: TFDQuery;
     TransactionExcluir: TFDTransaction;
@@ -63,6 +56,14 @@ type
     qryExcluirQuestao: TFDQuery;
     qryConteudosTIPO: TStringField;
     qryExerciciosTIPO: TStringField;
+    qryConteudosIMAGEM_1: TIntegerField;
+    qryConteudosVIDEO_1: TIntegerField;
+    qryConteudosAUDIO_1: TIntegerField;
+    qryConteudosRESUMO_IMAGEM_1: TIntegerField;
+    qryExerciciosIMAGEM_1: TIntegerField;
+    qryExerciciosVIDEO_1: TIntegerField;
+    qryQuestoesIMAGEM_1: TIntegerField;
+    qryBuscaAulasIMAGEM_1: TIntegerField;
     procedure dtsAulasStateChange(Sender: TObject);
     procedure qryAulasAfterScroll(DataSet: TDataSet);
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);
@@ -102,30 +103,21 @@ begin
     end
     else
     begin
-      frmAulas.btnBuscar.Enabled := (qryAulas.State = dsBrowse) and
-        (qryAulas.IsEmpty);
+      frmAulas.btnBuscar.Enabled := (qryAulas.State = dsBrowse) and (qryAulas.IsEmpty);
       frmAulas.btnIncluir.Enabled := qryAulas.State = dsBrowse;
-      frmAulas.btnEditar.Enabled := (qryAulas.State = dsBrowse) and
-        (not(qryAulas.IsEmpty));
-      frmAulas.btnExcluir.Enabled := (qryAulas.State = dsBrowse) and
-        (not(qryAulas.IsEmpty));
+      frmAulas.btnEditar.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
+      frmAulas.btnExcluir.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
       frmAulas.btnSalvar.Enabled := qryAulas.State <> dsBrowse;
       frmAulas.btnCancelar.Enabled := qryAulas.State <> dsBrowse;
     end;
 
-    frmAulas.btnImprimir.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
-    frmAulas.btnListar.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
+    frmAulas.btnImprimir.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
+    frmAulas.btnListar.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
 
-    frmAulas.btnPrimeiro.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
-    frmAulas.btnAnterior.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
-    frmAulas.btnProximo.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
-    frmAulas.btnUltimo.Enabled := (qryAulas.State = dsBrowse) and
-      (not(qryAulas.IsEmpty));
+    frmAulas.btnPrimeiro.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
+    frmAulas.btnAnterior.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
+    frmAulas.btnProximo.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
+    frmAulas.btnUltimo.Enabled := (qryAulas.State = dsBrowse) and (not(qryAulas.IsEmpty));
 
     frmAulas.pnlCadastro.Enabled := qryAulas.State <> dsBrowse;
 
@@ -158,8 +150,7 @@ var
 begin
   // Carrega os Conteúdos
   dtmAulas.qryConteudos.Close;
-  dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
-    dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
   dtmAulas.qryConteudos.Open;
 
   // Carrega Imagem
@@ -189,18 +180,15 @@ begin
   dtmAulas.qryQuestoes.Close;
 
   dtmAulas.qryExercicios.Close;
-  dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
-    dtmAulas.qryAulasCODIGO.AsInteger;
-  dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger :=
-    dtmAulas.qryConteudosCODIGO.AsInteger;
+  dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger := dtmAulas.qryConteudosCODIGO.AsInteger;
   dtmAulas.qryExercicios.Open;
 end;
 
 procedure TdtmAulas.qryExerciciosAfterScroll(DataSet: TDataSet);
 begin
   dtmAulas.qryQuestoes.Close;
-  dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
-    dtmAulas.qryExerciciosCODIGO.AsInteger;
+  dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
   dtmAulas.qryQuestoes.Open;
 end;
 
