@@ -7,7 +7,11 @@ object dtmAulas: TdtmAulas
     SQL.Strings = (
       
         'SELECT AULAS.CODIGO, AULAS.COD_TURMA, TURMAS.DESCRICAO, AULAS.TI' +
-        'TULO, AULAS.IMAGEM'
+        'TULO, AULAS.IMAGEM,'
+      ' case'
+      '         when AULAS.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1'
       'FROM AULAS'
       'INNER JOIN TURMAS ON (AULAS.COD_TURMA = TURMAS.CODIGO)   ')
     Left = 224
@@ -41,6 +45,13 @@ object dtmAulas: TdtmAulas
       Alignment = taCenter
       FieldName = 'IMAGEM'
       Origin = 'IMAGEM'
+    end
+    object qryBuscaAulasIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dtsBuscaAulas: TDataSource
@@ -161,15 +172,28 @@ object dtmAulas: TdtmAulas
     UpdateOptions.AutoIncFields = 'CODIGO'
     SQL.Strings = (
       
-        'SELECT AULAS_CONTEUDOS.CODIGO, AULAS_CONTEUDOS.COD_AULA, AULAS_C' +
+        'select AULAS_CONTEUDOS.CODIGO, AULAS_CONTEUDOS.COD_AULA, AULAS_C' +
         'ONTEUDOS.DESCRICAO,'
-      
-        '       AULAS_CONTEUDOS.IMAGEM, AULAS_CONTEUDOS.VIDEO, AULAS_CONT' +
-        'EUDOS.AUDIO, AULAS_CONTEUDOS.RESUMO,'
-      '       AULAS_CONTEUDOS.RESUMO_IMAGEM, AULAS_CONTEUDOS.TIPO'
-      'FROM AULAS_CONTEUDOS'
-      'WHERE AULAS_CONTEUDOS.COD_AULA = :COD_AULA'
-      'ORDER BY AULAS_CONTEUDOS.CODIGO')
+      '       AULAS_CONTEUDOS.RESUMO, AULAS_CONTEUDOS.TIPO,'
+      '       case'
+      '         when AULAS_CONTEUDOS.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1,'
+      '       case'
+      '         when AULAS_CONTEUDOS.VIDEO > 0 then 1'
+      '         else 0'
+      '       end as VIDEO_1,'
+      '       case'
+      '         when AULAS_CONTEUDOS.AUDIO > 0 then 1'
+      '         else 0'
+      '       end as AUDIO_1,'
+      '       case'
+      '         when AULAS_CONTEUDOS.RESUMO_IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as RESUMO_IMAGEM_1'
+      'from AULAS_CONTEUDOS'
+      'where AULAS_CONTEUDOS.COD_AULA = :COD_AULA'
+      'order by AULAS_CONTEUDOS.CODIGO  ')
     Left = 32
     Top = 200
     ParamData = <
@@ -194,36 +218,44 @@ object dtmAulas: TdtmAulas
       Origin = 'DESCRICAO'
       Size = 200
     end
-    object qryConteudosIMAGEM: TBlobField
-      Alignment = taCenter
-      FieldName = 'IMAGEM'
-      Origin = 'IMAGEM'
-    end
-    object qryConteudosVIDEO: TBlobField
-      Alignment = taCenter
-      FieldName = 'VIDEO'
-      Origin = 'VIDEO'
-    end
-    object qryConteudosAUDIO: TBlobField
-      Alignment = taCenter
-      FieldName = 'AUDIO'
-      Origin = 'AUDIO'
-    end
     object qryConteudosRESUMO: TStringField
       FieldName = 'RESUMO'
       Origin = 'RESUMO'
       Size = 2000
-    end
-    object qryConteudosRESUMO_IMAGEM: TBlobField
-      Alignment = taCenter
-      FieldName = 'RESUMO_IMAGEM'
-      Origin = 'RESUMO_IMAGEM'
     end
     object qryConteudosTIPO: TStringField
       FieldName = 'TIPO'
       Origin = 'TIPO'
       FixedChar = True
       Size = 1
+    end
+    object qryConteudosIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryConteudosVIDEO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'VIDEO_1'
+      Origin = 'VIDEO_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryConteudosAUDIO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'AUDIO_1'
+      Origin = 'AUDIO_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryConteudosRESUMO_IMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'RESUMO_IMAGEM_1'
+      Origin = 'RESUMO_IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dtsConteudos: TDataSource
@@ -248,9 +280,15 @@ object dtmAulas: TdtmAulas
       
         '       AULAS_CONTEUDOS.DESCRICAO AS CONTEUDO, AULAS_EXERCICIOS.D' +
         'ESCRICAO, AULAS_EXERCICIOS.TITULO,'
-      
-        '       AULAS_EXERCICIOS.IMAGEM, AULAS_EXERCICIOS.VIDEO, AULAS_EX' +
-        'ERCICIOS.TIPO'
+      '       AULAS_EXERCICIOS.TIPO,'
+      '        case'
+      '         when AULAS_EXERCICIOS.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1,'
+      '         case'
+      '         when AULAS_EXERCICIOS.VIDEO > 0 then 1'
+      '         else 0'
+      '       end as VIDEO_1'
       'FROM AULAS_EXERCICIOS'
       
         'INNER JOIN AULAS_CONTEUDOS ON (AULAS_EXERCICIOS.COD_CONTEUDO = A' +
@@ -305,21 +343,25 @@ object dtmAulas: TdtmAulas
       Origin = 'TITULO'
       Size = 200
     end
-    object qryExerciciosIMAGEM: TBlobField
-      Alignment = taCenter
-      FieldName = 'IMAGEM'
-      Origin = 'IMAGEM'
-    end
-    object qryExerciciosVIDEO: TBlobField
-      Alignment = taCenter
-      FieldName = 'VIDEO'
-      Origin = 'VIDEO'
-    end
     object qryExerciciosTIPO: TStringField
       FieldName = 'TIPO'
       Origin = 'TIPO'
       FixedChar = True
       Size = 1
+    end
+    object qryExerciciosIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryExerciciosVIDEO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'VIDEO_1'
+      Origin = 'VIDEO_1'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dtsExercicios: TDataSource
@@ -338,22 +380,28 @@ object dtmAulas: TdtmAulas
     UpdateOptions.AutoIncFields = 'CODIGO'
     SQL.Strings = (
       
-        'SELECT AULAS_EXERCICIOS_QUESTOES.CODIGO, AULAS_EXERCICIOS_QUESTO' +
+        'select AULAS_EXERCICIOS_QUESTOES.CODIGO, AULAS_EXERCICIOS_QUESTO' +
         'ES.COD_AULAS_EXERCICIOS,'
       
         '       AULAS_EXERCICIOS_QUESTOES.DESCRICAO, AULAS_EXERCICIOS_QUE' +
-        'STOES.IMAGEM,'
-      '       AULAS_EXERCICIOS_QUESTOES.CORRETA'
-      'FROM AULAS_EXERCICIOS_QUESTOES'
+        'STOES.CORRETA,'
+      ''
+      '       case'
+      '         when AULAS_EXERCICIOS_QUESTOES.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1'
+      ''
+      'from AULAS_EXERCICIOS_QUESTOES'
       
-        'WHERE AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS = :COD_AULA' +
+        'where AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS = :COD_AULA' +
         'S_EXERCICIO'
-      'ORDER BY AULAS_EXERCICIOS_QUESTOES.CODIGO')
+      'order by AULAS_EXERCICIOS_QUESTOES.CODIGO ')
     Left = 32
     Top = 312
     ParamData = <
       item
         Name = 'COD_AULAS_EXERCICIO'
+        DataType = ftInteger
         ParamType = ptInput
       end>
     object qryQuestoesCODIGO: TFDAutoIncField
@@ -372,13 +420,16 @@ object dtmAulas: TdtmAulas
       Origin = 'DESCRICAO'
       Size = 200
     end
-    object qryQuestoesIMAGEM: TBlobField
-      FieldName = 'IMAGEM'
-      Origin = 'IMAGEM'
-    end
     object qryQuestoesCORRETA: TSmallintField
       FieldName = 'CORRETA'
       Origin = 'CORRETA'
+    end
+    object qryQuestoesIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dtsQuestoes: TDataSource
