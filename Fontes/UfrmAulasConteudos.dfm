@@ -130,7 +130,6 @@ object frmAulasConteudos: TfrmAulasConteudos
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitTop = 61
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object pnlAudio: TPanel
@@ -158,8 +157,6 @@ object frmAulasConteudos: TfrmAulasConteudos
             Align = alTop
             Caption = #193'udio'
             TabOrder = 0
-            ExplicitLeft = -6
-            ExplicitTop = -6
             object Panel3: TPanel
               Left = 2
               Top = 15
@@ -209,9 +206,6 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Appearance.ColorMirrorDisabled = 11974326
                 Appearance.ColorMirrorDisabledTo = 15921906
                 Layout = blGlyphTop
-                ExplicitLeft = 2
-                ExplicitTop = 13
-                ExplicitWidth = 32
               end
               object btnRemoverAudio: TAdvGlowButton
                 Left = 0
@@ -254,9 +248,6 @@ object frmAulasConteudos: TfrmAulasConteudos
                 Appearance.ColorMirrorDisabled = 11974326
                 Appearance.ColorMirrorDisabledTo = 15921906
                 Layout = blGlyphTop
-                ExplicitLeft = 2
-                ExplicitTop = 51
-                ExplicitWidth = 32
               end
             end
             object pnlAudioReproduzir: TPanel
@@ -382,9 +373,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 13
-              ExplicitWidth = 32
             end
             object btnRemoverVideo: TAdvGlowButton
               Left = 0
@@ -427,9 +415,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 51
-              ExplicitWidth = 32
             end
           end
           object pnlVideoReproduzir: TPanel
@@ -505,7 +490,6 @@ object frmAulasConteudos: TfrmAulasConteudos
           Align = alLeft
           Caption = 'Imagem'
           TabOrder = 0
-          ExplicitLeft = 19
           object Image: TImage
             AlignWithMargins = True
             Left = 43
@@ -568,9 +552,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 13
-              ExplicitWidth = 32
             end
             object btnRemoverImagem: TAdvGlowButton
               Left = 0
@@ -613,9 +594,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 51
-              ExplicitWidth = 32
             end
           end
         end
@@ -818,9 +796,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 13
-              ExplicitWidth = 32
             end
             object btnRemoverImagemResumo: TAdvGlowButton
               Left = 0
@@ -863,9 +838,6 @@ object frmAulasConteudos: TfrmAulasConteudos
               Appearance.ColorMirrorDisabled = 11974326
               Appearance.ColorMirrorDisabledTo = 15921906
               Layout = blGlyphTop
-              ExplicitLeft = 2
-              ExplicitTop = 51
-              ExplicitWidth = 32
             end
           end
         end

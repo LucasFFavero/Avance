@@ -4,10 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvGlowButton, Vcl.ExtCtrls, Data.DB,
-  Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
-  Vcl.ExtDlgs, Vcl.MPlayer, Vcl.OleCtrls, WMPLib_TLB;
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  AdvGlowButton, Vcl.ExtCtrls, Data.DB, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.ExtDlgs, Vcl.MPlayer, Vcl.OleCtrls,
+  WMPLib_TLB;
 
 type
   TfrmAulasConteudos = class(TForm)
@@ -81,6 +81,7 @@ type
     procedure btnRemoverVideoClick(Sender: TObject);
     procedure btnIncluirAudioClick(Sender: TObject);
     procedure btnRemoverAudioClick(Sender: TObject);
+    procedure LimpaPastasTemporarias(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,7 +107,7 @@ begin
   if OpenPicture.Execute then
   begin
     ImageResumo.Picture.LoadFromFile(OpenPicture.FileName);
-    ImageResumo.Visible := true;
+    ImageResumo.Visible := True;
 
     b := TMemoryStream.Create;
     ImageResumo.Picture.Graphic.SaveToStream(b);
@@ -142,7 +143,7 @@ begin
   if OpenAudio.Execute then
   begin
     WindowsMediaPlayerAudio.URL := OpenAudio.FileName;
-    WindowsMediaPlayerAudio.Visible := true;
+    WindowsMediaPlayerAudio.Visible := True;
 
     dtmAulasConteudos.qryConteudosAUDIO.LoadFromFile(OpenAudio.FileName);
   end;
@@ -158,7 +159,7 @@ begin
   if OpenPicture.Execute then
   begin
     Image.Picture.LoadFromFile(OpenPicture.FileName);
-    Image.Visible := true;
+    Image.Visible := True;
 
     b := TMemoryStream.Create;
     Image.Picture.Graphic.SaveToStream(b);
@@ -176,7 +177,7 @@ begin
   if OpenVideo.Execute then
   begin
     WindowsMediaPlayer.URL := OpenVideo.FileName;
-    WindowsMediaPlayer.Visible := true;
+    WindowsMediaPlayer.Visible := True;
 
     dtmAulasConteudos.qryConteudosVIDEO.LoadFromFile(OpenVideo.FileName);
   end;
@@ -188,7 +189,7 @@ begin
     dtmAulasConteudos.qryConteudos.Edit;
 
   WindowsMediaPlayerAudio.URL := '';
-  WindowsMediaPlayerAudio.Visible := false;
+  WindowsMediaPlayerAudio.Visible := False;
   dtmAulasConteudos.qryConteudosAUDIO.AsVariant := null;
 end;
 
@@ -207,7 +208,7 @@ begin
     dtmAulasConteudos.qryConteudos.Edit;
 
   WindowsMediaPlayer.URL := '';
-  WindowsMediaPlayer.Visible := false;
+  WindowsMediaPlayer.Visible := False;
   dtmAulasConteudos.qryConteudosVIDEO.AsVariant := null;
 end;
 
@@ -216,7 +217,7 @@ begin
   if Trim(edtDescricao.Text) = '' then
   begin
     Application.MessageBox('Informe a descrição.',
-      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      PChar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
       20)), 0 + 48 + 0);
     edtDescricao.SetFocus;
     Exit;
@@ -226,11 +227,11 @@ begin
     // Salvar novo registro
     if dtmAulasConteudos.qryConteudos.Active then
     begin
-      if (cbImagem.Checked = true) then
+      if (cbImagem.Checked = True) then
         dtmAulasConteudos.qryConteudosTIPO.AsString := 'I'
-      else if (cbVideo.Checked = true) then
+      else if (cbVideo.Checked = True) then
         dtmAulasConteudos.qryConteudosTIPO.AsString := 'V'
-      else if (cbAudio.Checked = true) then
+      else if (cbAudio.Checked = True) then
         dtmAulasConteudos.qryConteudosTIPO.AsString := 'A';
 
       dtmAulasConteudos.qryConteudos.Post;
@@ -238,8 +239,8 @@ begin
 
     dtmAulasConteudos.Transaction.Commit;
   except
-    Application.MessageBox(pchar('Erro ao realizar a operação.'),
-      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+    Application.MessageBox(PChar('Erro ao realizar a operação.'),
+      PChar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
       20)), 0 + 16 + 0);
     edtDescricao.SetFocus;
     Abort;
@@ -255,40 +256,40 @@ end;
 
 procedure TfrmAulasConteudos.cbAudioClick(Sender: TObject);
 begin
-  if (cbAudio.Checked = true) then
+  if (cbAudio.Checked = True) then
   begin
-    cbImagem.Checked := false;
-    cbVideo.Checked := false;
+    cbImagem.Checked := False;
+    cbVideo.Checked := False;
 
-    pnlImagem.Visible := false;
-    pnlVideo.Visible := false;
-    pnlAudio.Visible := true;
+    pnlImagem.Visible := False;
+    pnlVideo.Visible := False;
+    pnlAudio.Visible := True;
   end;
 end;
 
 procedure TfrmAulasConteudos.cbImagemClick(Sender: TObject);
 begin
-  if (cbImagem.Checked = true) then
+  if (cbImagem.Checked = True) then
   begin
-    cbVideo.Checked := false;
-    cbAudio.Checked := false;
+    cbVideo.Checked := False;
+    cbAudio.Checked := False;
 
-    pnlVideo.Visible := false;
-    pnlAudio.Visible := false;
-    pnlImagem.Visible := true;
+    pnlVideo.Visible := False;
+    pnlAudio.Visible := False;
+    pnlImagem.Visible := True;
   end;
 end;
 
 procedure TfrmAulasConteudos.cbVideoClick(Sender: TObject);
 begin
-  if (cbVideo.Checked = true) then
+  if (cbVideo.Checked = True) then
   begin
-    cbImagem.Checked := false;
-    cbAudio.Checked := false;
+    cbImagem.Checked := False;
+    cbAudio.Checked := False;
 
-    pnlImagem.Visible := false;
-    pnlAudio.Visible := false;
-    pnlVideo.Visible := true;
+    pnlImagem.Visible := False;
+    pnlAudio.Visible := False;
+    pnlVideo.Visible := True;
   end;
 end;
 
@@ -299,6 +300,7 @@ begin
     dtmAulasConteudos.Transaction.Rollback;
 
   dtmAulasConteudos.qryConteudos.Close;
+  LimpaPastasTemporarias(self);
 
   Action := cafree;
   frmAulasConteudos := nil;
@@ -316,6 +318,15 @@ begin
   // Fechar form usando "ESC"
   if (Key = #27) then
     Close;
+end;
+
+procedure TfrmAulasConteudos.LimpaPastasTemporarias(Sender: TObject);
+begin
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Videos\' +
+    Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
+
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Audios\' +
+    Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
 end;
 
 end.
