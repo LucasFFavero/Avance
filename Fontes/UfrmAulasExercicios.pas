@@ -55,6 +55,7 @@ type
     procedure tbsResumoShow(Sender: TObject);
     procedure cbImagemClick(Sender: TObject);
     procedure cbVideoClick(Sender: TObject);
+    procedure LimpaPastasTemporarias(Sender: TObject);
   private
     { Private declarations }
   public
@@ -226,6 +227,12 @@ begin
   // Fechar form usando "ESC"
   if (Key = #27) then
     Close;
+end;
+
+procedure TfrmAulasExercicios.LimpaPastasTemporarias(Sender: TObject);
+begin
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Videos\' +
+    Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
 end;
 
 procedure TfrmAulasExercicios.tbsResumoShow(Sender: TObject);

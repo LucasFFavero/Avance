@@ -52,7 +52,7 @@ begin
   begin
     // Imagem do conteúdo
     frmAulasConteudos.Image.Visible := false;
-    if (dtmAulasConteudos.qryConteudosTIPO.AsString = 'I') then
+    if (qryConteudosIMAGEM.AsVariant <> null) then
     begin
       frmAulasConteudos.cbImagem.Checked := true;
 
@@ -80,9 +80,10 @@ begin
 
     // Video do conteúdo
     frmAulasConteudos.WindowsMediaPlayer.Visible := false;
-    if (dtmAulasConteudos.qryConteudosTIPO.AsString = 'V') then
+    if (qryConteudosVIDEO.AsVariant <> null) then
     begin
-      frmAulasConteudos.cbVideo.Checked := true;
+      if (frmAulasConteudos.cbImagem.Checked = false) then
+        frmAulasConteudos.cbVideo.Checked := true;
 
       strCaminhoVideo := ExtractFilePath(paramstr(0)) + 'Videos\' +
         Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
@@ -101,9 +102,11 @@ begin
 
     // Audio do conteúdo
     frmAulasConteudos.WindowsMediaPlayerAudio.Visible := false;
-    if (dtmAulasConteudos.qryConteudosTIPO.AsString = 'A') then
+    if (qryConteudosAUDIO.AsVariant <> null) then
     begin
-      frmAulasConteudos.cbAudio.Checked := true;
+      if (frmAulasConteudos.cbImagem.Checked = false) and
+        (frmAulasConteudos.cbVideo.Checked = false) then
+        frmAulasConteudos.cbAudio.Checked := true;
 
       strCaminhoAudio := ExtractFilePath(paramstr(0)) + 'Audios\' +
         Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
@@ -122,7 +125,7 @@ begin
 
     // Imagem do resumo
     frmAulasConteudos.ImageResumo.Visible := false;
-    if (dtmAulasConteudos.qryConteudosRESUMO_IMAGEM.AsVariant <> null) then
+    if (qryConteudosRESUMO_IMAGEM.AsVariant <> null) then
     begin
       Jpg := nil;
       b := qryConteudos.CreateBlobStream
@@ -145,6 +148,11 @@ begin
       b.Destroy;
       Jpg.Free;
     end;
+
+    if (frmAulasConteudos.cbImagem.Checked = false) and
+      (frmAulasConteudos.cbVideo.Checked = false) and
+      (frmAulasConteudos.cbAudio.Checked = false) then
+      frmAulasConteudos.cbImagem.Checked := true;
   end;
 end;
 

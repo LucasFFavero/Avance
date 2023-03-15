@@ -130,10 +130,6 @@ object frmAulasExercicios: TfrmAulasExercicios
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 256
-    ExplicitTop = 100
-    ExplicitWidth = 737
-    ExplicitHeight = 373
     object pnlVideo: TPanel
       Left = 0
       Top = 190
@@ -145,8 +141,6 @@ object frmAulasExercicios: TfrmAulasExercicios
       ParentBackground = False
       TabOrder = 2
       Visible = False
-      ExplicitWidth = 956
-      ExplicitHeight = 371
       object gpbVideo: TGroupBox
         Left = 25
         Top = 0
@@ -155,7 +149,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alLeft
         Caption = 'V'#237'deo'
         TabOrder = 0
-        ExplicitHeight = 183
         object pnlBotoesVideo: TPanel
           Left = 2
           Top = 15
@@ -164,7 +157,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 166
           object btnIncluirVideo: TAdvGlowButton
             Left = 0
             Top = 0
@@ -258,7 +250,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitHeight = 166
           object WindowsMediaPlayer: TWindowsMediaPlayer
             Left = 0
             Top = 0
@@ -287,7 +278,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitHeight = 183
       end
       object Panel8: TPanel
         Left = 566
@@ -297,8 +287,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitWidth = 171
-        ExplicitHeight = 183
       end
     end
     object pnlImagem: TPanel
@@ -311,8 +299,6 @@ object frmAulasExercicios: TfrmAulasExercicios
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 956
-      ExplicitHeight = 371
       object gpbImagem: TGroupBox
         Left = 25
         Top = 0
@@ -321,7 +307,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alLeft
         Caption = 'Imagem'
         TabOrder = 0
-        ExplicitHeight = 183
         object Image: TImage
           AlignWithMargins = True
           Left = 43
@@ -343,7 +328,6 @@ object frmAulasExercicios: TfrmAulasExercicios
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 166
           object btnIncluirImagem: TAdvGlowButton
             Left = 0
             Top = 0
@@ -438,7 +422,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitHeight = 183
       end
       object pnlImagemRight: TPanel
         Left = 565
@@ -448,7 +431,6 @@ object frmAulasExercicios: TfrmAulasExercicios
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitTop = 6
       end
     end
     object pnlCadastro: TPanel
@@ -461,7 +443,6 @@ object frmAulasExercicios: TfrmAulasExercicios
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 956
       object Label1: TLabel
         Left = 25
         Top = 16

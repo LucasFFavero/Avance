@@ -94,7 +94,7 @@ begin
       frmMain.pnlAlunos.Visible := False;
       frmMain.pnlProfessores.Visible := False;
     end
-    else if (dtmMain.qryUsuariosPROFESSOR.AsInteger = 1)  then
+    else if (dtmMain.qryUsuariosPROFESSOR.AsInteger = 1) then
     begin
       frmMain.pnlAlunos.Visible := True;
       frmMain.pnlProfessores.Visible := False;

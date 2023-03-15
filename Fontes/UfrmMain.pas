@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Menus,
   System.Classes, Vcl.Graphics, Vcl.DBGrids, Vcl.Controls, Vcl.Forms, AdvPanel,
-  Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, dxScreenTip, cxHint,
   Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls, AdvMenus,
-  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, dxScreenTip,
-  cxClasses, dxCustomHint, cxHint, AdvOfficeHint;
+  Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
+  cxClasses, dxCustomHint, AdvOfficeHint, System.IoUtils, System.Types;
 
 type
   THackDBGrid = class(TDBGrid)
@@ -59,6 +59,7 @@ type
     procedure btnRelatoriosClick(Sender: TObject);
     procedure btnAno1Click(Sender: TObject);
     procedure TimerAbrirAulasTimer(Sender: TObject);
+    procedure DeletarDiretorio(const NomeDiretorio: string);
   private
     { Private declarations }
   public
@@ -145,6 +146,30 @@ procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
 begin
   if (frmRelatorios = nil) then
     Application.CreateForm(TfrmRelatorios, frmRelatorios);
+end;
+
+procedure TfrmMain.DeletarDiretorio(const NomeDiretorio: string);
+var
+  arquivos: TStringDynArray;
+  arquivo: string;
+begin
+  if TDirectory.Exists(NomeDiretorio) then
+  begin
+    // obtem todos os arquivos dentro do diretório.
+    arquivos := TDirectory.GetFiles(NomeDiretorio);
+
+    // deleta todos os arquivos.
+    for arquivo in arquivos do
+    begin
+      TFile.Delete(arquivo);
+    end;
+
+    // se não existir mais arquivos, remove o diretorio.
+    if TDirectory.IsEmpty(NomeDiretorio) then
+    begin
+      TDirectory.Delete(NomeDiretorio);
+    end;
+  end;
 end;
 
 procedure TfrmMain.btnCadTurmasClick(Sender: TObject);

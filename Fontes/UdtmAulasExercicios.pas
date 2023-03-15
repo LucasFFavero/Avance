@@ -5,8 +5,9 @@ interface
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Jpeg,
-  FireDAC.Comp.Client, FireDAC.Comp.DataSet;
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, System.Variants,
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet, Data.DB, Jpeg, Vcl.Controls,
+  Vcl.DBGrids;
 
 type
   TdtmAulasExercicios = class(TDataModule)
@@ -58,7 +59,7 @@ begin
   begin
     // Imagem do conteúdo
     frmAulasExercicios.Image.Visible := false;
-    if (dtmAulasExercicios.qryExerciciosTIPO.AsString = 'I') then
+    if (qryExerciciosIMAGEM.AsVariant <> null) then
     begin
       frmAulasExercicios.cbImagem.Checked := true;
 
@@ -86,9 +87,10 @@ begin
 
     // Video do conteúdo
     frmAulasExercicios.WindowsMediaPlayer.Visible := false;
-    if (dtmAulasExercicios.qryExerciciosTIPO.AsString = 'V') then
+    if (qryExerciciosVIDEO.AsVariant <> null) then
     begin
-      frmAulasExercicios.cbVideo.Checked := true;
+      if (frmAulasExercicios.cbImagem.Checked = false) then
+        frmAulasExercicios.cbVideo.Checked := true;
 
       strCaminhoVideo := ExtractFilePath(paramstr(0)) + 'Videos\' +
         Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));

@@ -3,31 +3,29 @@ unit UfrmAulas;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvGlowButton, Vcl.ExtCtrls, Data.DB,
-  Vcl.StdCtrls, Vcl.DBCtrls, AdvEdit, AdvEdBtn, PlannerDatePicker,
-  PlannerDBDatePicker, Vcl.Mask, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
-  Vcl.ExtDlgs, System.ImageList, Vcl.ImgList, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
-  dxSkinsDefaultPainters, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, dxDateRanges, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, cxTextEdit,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Grids,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
+  PlannerDatePicker, PlannerDBDatePicker, Vcl.Mask, Vcl.DBGrids, Vcl.ComCtrls,
+  Vcl.ExtDlgs, System.ImageList, Vcl.ImgList, cxGraphics, cxControls, cxData,
+  AdvGlowButton, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.DBCtrls, AdvEdit, AdvEdBtn,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, cxFilter,
+  dxSkinsDefaultPainters, cxCustomData, cxDataStorage, cxEdit, cxNavigator,
+  dxDateRanges, cxDBData, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxTextEdit,
   cxImageComboBox, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
   dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
-  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
-  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinTheBezier, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVS2010, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinWhiteprint, dxSkinVisualStudio2013Light, dxSkinXmas2008Blue,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxImageList;
 
 type
@@ -254,7 +252,8 @@ begin
     dtmAulasQuestoes.qryQuestoes.Open;
 
   dtmAulasQuestoes.qryQuestoes.Insert;
-  dtmAulasQuestoes.qryQuestoesCOD_AULAS_EXERCICIOS.AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
+  dtmAulasQuestoes.qryQuestoesCOD_AULAS_EXERCICIOS.AsInteger :=
+    dtmAulas.qryExerciciosCODIGO.AsInteger;
   dtmAulasQuestoes.qryQuestoesCORRETA.Value := 0;
 
   frmAulasQuestoes.edtDescricao.SetFocus;
@@ -280,7 +279,8 @@ begin
     dtmAulasExercicios.Transaction.StartTransaction;
 
   dtmAulasExercicios.qryExercicios.Close;
-  dtmAulasExercicios.qryExercicios.ParamByName('CODIGO').AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
+  dtmAulasExercicios.qryExercicios.ParamByName('CODIGO').AsInteger :=
+    dtmAulas.qryExerciciosCODIGO.AsInteger;
   dtmAulasExercicios.qryExercicios.Open;
 
   dtmAulasExercicios.qryExercicios.Edit;
@@ -298,7 +298,8 @@ begin
     dtmAulasQuestoes.Transaction.StartTransaction;
 
   dtmAulasQuestoes.qryQuestoes.Close;
-  dtmAulasQuestoes.qryQuestoes.ParamByName('CODIGO').AsInteger := dtmAulas.qryQuestoesCODIGO.AsInteger;
+  dtmAulasQuestoes.qryQuestoes.ParamByName('CODIGO').AsInteger :=
+    dtmAulas.qryQuestoesCODIGO.AsInteger;
   dtmAulasQuestoes.qryQuestoes.Open;
 
   dtmAulasQuestoes.qryQuestoes.Edit;
@@ -353,7 +354,8 @@ begin
     dtmAulasConteudos.Transaction.StartTransaction;
 
   dtmAulasConteudos.qryConteudos.Close;
-  dtmAulasConteudos.qryConteudos.ParamByName('CODIGO').AsInteger := dtmAulas.qryConteudosCODIGO.AsInteger;
+  dtmAulasConteudos.qryConteudos.ParamByName('CODIGO').AsInteger :=
+    dtmAulas.qryConteudosCODIGO.AsInteger;
   dtmAulasConteudos.qryConteudos.Open;
 
   dtmAulasConteudos.qryConteudos.Edit;
@@ -362,7 +364,9 @@ end;
 
 procedure TfrmAulas.btnExcluirClick(Sender: TObject);
 begin
-  if Application.MessageBox('Deseja realmente excluir esse registro?', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), MB_YesNo + MB_IconQuestion) = idNo then
+  if Application.MessageBox('Deseja realmente excluir esse registro?',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), MB_YesNo + MB_IconQuestion) = idNo then
     Abort;
 
   pnlCadastro.Visible := true;
@@ -376,11 +380,16 @@ begin
 
     dtmAulas.dtsAulasStateChange(Self);
   except
-    Application.MessageBox('Erro ao exluir o registro, verifique se ele não está em uso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 16 + 0);
+    Application.MessageBox
+      ('Erro ao exluir o registro, verifique se ele não está em uso.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
     Exit;
   end;
 
-  Application.MessageBox('Exclusão realizada com sucesso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 64 + 0);
+  Application.MessageBox('Exclusão realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
 end;
 
 procedure TfrmAulas.btnExcluirConteudoClick(Sender: TObject);
@@ -392,21 +401,27 @@ begin
 
   try
     dtmAulas.qryExcluirConteudo.Close;
-    dtmAulas.qryExcluirConteudo.ParamByName('CODIGO').AsInteger := dtmAulas.qryConteudosCODIGO.AsInteger;
+    dtmAulas.qryExcluirConteudo.ParamByName('CODIGO').AsInteger :=
+      dtmAulas.qryConteudosCODIGO.AsInteger;
     dtmAulas.qryExcluirConteudo.ExecSql;
 
     dtmAulas.TransactionExcluir.CommitRetaining;
 
     dtmAulas.qryConteudos.Close;
-    dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
+    dtmAulas.qryConteudos.ParamByName('COD_AULA').AsInteger :=
+      dtmAulas.qryAulasCODIGO.AsInteger;
     dtmAulas.qryConteudos.Open;
   except
-    Application.MessageBox(pchar('Erro ao realizar a operação.'), pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 16 + 0);
+    Application.MessageBox(pchar('Erro ao realizar a operação.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
     edtTitulo.SetFocus;
     Abort;
   end;
 
-  Application.MessageBox('Exclusão realizada com sucesso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 64 + 0);
+  Application.MessageBox('Exclusão realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
 end;
 
 procedure TfrmAulas.btnExcluirExercicioClick(Sender: TObject);
@@ -419,12 +434,14 @@ begin
   try
     // Exclui Questões
     dtmAulas.qryExcluirQuestoes.Close;
-    dtmAulas.qryExcluirQuestoes.ParamByName('COD_AULAS_EXERCICIOS').AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
+    dtmAulas.qryExcluirQuestoes.ParamByName('COD_AULAS_EXERCICIOS').AsInteger :=
+      dtmAulas.qryExerciciosCODIGO.AsInteger;
     dtmAulas.qryExcluirQuestoes.ExecSql;
 
     // Excluir Exercício
     dtmAulas.qryExcluirExercicio.Close;
-    dtmAulas.qryExcluirExercicio.ParamByName('CODIGO').AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
+    dtmAulas.qryExcluirExercicio.ParamByName('CODIGO').AsInteger :=
+      dtmAulas.qryExerciciosCODIGO.AsInteger;
     dtmAulas.qryExcluirExercicio.ExecSql;
 
     dtmAulas.TransactionExcluir.CommitRetaining;
@@ -434,15 +451,21 @@ begin
 
     // Atualiza Exercícios
     dtmAulas.qryExercicios.Close;
-    dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
-    dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger := dtmAulas.qryConteudosCODIGO.AsInteger;
+    dtmAulas.qryExercicios.ParamByName('COD_AULA').AsInteger :=
+      dtmAulas.qryAulasCODIGO.AsInteger;
+    dtmAulas.qryExercicios.ParamByName('COD_CONTEUDO').AsInteger :=
+      dtmAulas.qryConteudosCODIGO.AsInteger;
     dtmAulas.qryExercicios.Open;
   except
-    Application.MessageBox(pchar('Erro ao realizar a operação.'), pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 16 + 0);
+    Application.MessageBox(pchar('Erro ao realizar a operação.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
     Abort;
   end;
 
-  Application.MessageBox('Exclusão realizada com sucesso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 64 + 0);
+  Application.MessageBox('Exclusão realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
 end;
 
 procedure TfrmAulas.btnExcluirQuestaoClick(Sender: TObject);
@@ -454,28 +477,36 @@ begin
 
   try
     dtmAulas.qryExcluirQuestao.Close;
-    dtmAulas.qryExcluirQuestao.ParamByName('CODIGO').AsInteger := dtmAulas.qryQuestoesCODIGO.AsInteger;
+    dtmAulas.qryExcluirQuestao.ParamByName('CODIGO').AsInteger :=
+      dtmAulas.qryQuestoesCODIGO.AsInteger;
     dtmAulas.qryExcluirQuestao.ExecSql;
 
     dtmAulas.TransactionExcluir.CommitRetaining;
 
     dtmAulas.qryQuestoes.Close;
-    dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger := dtmAulas.qryExerciciosCODIGO.AsInteger;
+    dtmAulas.qryQuestoes.ParamByName('COD_AULAS_EXERCICIO').AsInteger :=
+      dtmAulas.qryExerciciosCODIGO.AsInteger;
     dtmAulas.qryQuestoes.Open;
   except
 
-    Application.MessageBox(pchar('Erro ao realizar a operação.'), pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 16 + 0);
+    Application.MessageBox(pchar('Erro ao realizar a operação.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
     Abort;
   end;
 
-  Application.MessageBox('Exclusão realizada com sucesso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 64 + 0);
+  Application.MessageBox('Exclusão realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
 end;
 
 procedure TfrmAulas.btnImprimirClick(Sender: TObject);
 begin
   if dtmAulas.qryAulas.IsEmpty then
   begin
-    Application.MessageBox('Não há registro(s) para imprimir.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 48 + 0);
+    Application.MessageBox('Não há registro(s) para imprimir.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
     Exit;
   end;
 
@@ -511,7 +542,8 @@ begin
     dtmAulasConteudos.qryConteudos.Open;
 
   dtmAulasConteudos.qryConteudos.Insert;
-  dtmAulasConteudos.qryConteudosCOD_AULA.AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulasConteudos.qryConteudosCOD_AULA.AsInteger :=
+    dtmAulas.qryAulasCODIGO.AsInteger;
   frmAulasConteudos.edtDescricao.SetFocus;
 end;
 
@@ -529,8 +561,10 @@ begin
     dtmAulasExercicios.qryExercicios.Open;
 
   dtmAulasExercicios.qryExercicios.Insert;
-  dtmAulasExercicios.qryExerciciosCOD_AULA.AsInteger := dtmAulas.qryAulasCODIGO.AsInteger;
-  dtmAulasExercicios.qryExerciciosCOD_CONTEUDO.AsInteger := dtmAulas.qryConteudosCODIGO.AsInteger;
+  dtmAulasExercicios.qryExerciciosCOD_AULA.AsInteger :=
+    dtmAulas.qryAulasCODIGO.AsInteger;
+  dtmAulasExercicios.qryExerciciosCOD_CONTEUDO.AsInteger :=
+    dtmAulas.qryConteudosCODIGO.AsInteger;
 
   frmAulasExercicios.edtDescricao.SetFocus;
 end;
@@ -553,7 +587,8 @@ begin
   else
   begin
     btnIncluir.Enabled := dtmAulas.qryTurmas.State = dsbrowse;
-    btnEditar.Enabled := (dtmAulas.qryTurmas.State = dsbrowse) and (not(dtmAulas.qryTurmas.IsEmpty));
+    btnEditar.Enabled := (dtmAulas.qryTurmas.State = dsbrowse) and
+      (not(dtmAulas.qryTurmas.IsEmpty));
 
     pnlCadastro.Visible := true;
     cxGrid5.Visible := false;
@@ -566,9 +601,15 @@ begin
   dtmAulas.qryBuscaAulas.SQL.Clear;
 
   dtmAulas.qryBuscaAulas.SQL.Add('SELECT AULAS.CODIGO, AULAS.COD_TURMA,');
-  dtmAulas.qryBuscaAulas.SQL.Add('TURMAS.DESCRICAO, AULAS.TITULO, AULAS.IMAGEM');
+  dtmAulas.qryBuscaAulas.SQL.Add
+    ('TURMAS.DESCRICAO, AULAS.TITULO, AULAS.IMAGEM,');
+  dtmAulas.qryBuscaAulas.SQL.Add('  CASE');
+  dtmAulas.qryBuscaAulas.SQL.Add('    WHEN AULAS.IMAGEM > 0 THEN 1');
+  dtmAulas.qryBuscaAulas.SQL.Add('    ELSE 0');
+  dtmAulas.qryBuscaAulas.SQL.Add('  END AS IMAGEM_1');
   dtmAulas.qryBuscaAulas.SQL.Add('FROM AULAS');
-  dtmAulas.qryBuscaAulas.SQL.Add('INNER JOIN TURMAS ON (AULAS.COD_TURMA = TURMAS.CODIGO)');
+  dtmAulas.qryBuscaAulas.SQL.Add
+    ('INNER JOIN TURMAS ON (AULAS.COD_TURMA = TURMAS.CODIGO)');
 
   if (edtLocAulas.Text <> '') then
   begin
@@ -582,7 +623,9 @@ begin
 
   if dtmAulas.qryBuscaAulas.IsEmpty then
   begin
-    Application.MessageBox('Não há registro(s) para esta filtragem.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 48 + 0);
+    Application.MessageBox('Não há registro(s) para esta filtragem.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
     Exit;
   end;
 end;
@@ -603,7 +646,9 @@ procedure TfrmAulas.btnSalvarClick(Sender: TObject);
 begin
   if Trim(edtTitulo.Text) = '' then
   begin
-    Application.MessageBox('Informe o Título.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 48 + 0);
+    Application.MessageBox('Informe o Título.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
     edtTitulo.SetFocus;
     Exit;
   end;
@@ -615,12 +660,16 @@ begin
 
     dtmAulas.Transaction.Commit;
   except
-    Application.MessageBox(pchar('Erro ao realizar a operação.'), pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 16 + 0);
+    Application.MessageBox(pchar('Erro ao realizar a operação.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 16 + 0);
     edtTitulo.SetFocus;
     Abort;
   end;
 
-  Application.MessageBox('Operação realizada com sucesso.', pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)), 0 + 64 + 0);
+  Application.MessageBox('Operação realizada com sucesso.',
+    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
+    ), 0 + 64 + 0);
 end;
 
 procedure TfrmAulas.btnUltimoClick(Sender: TObject);
@@ -638,8 +687,10 @@ begin
   cxGrid5.Visible := false;
 
   btnIncluir.Enabled := dtmAulas.qryAulas.State = dsbrowse;
-  btnEditar.Enabled := (dtmAulas.qryAulas.State = dsbrowse) and (not(dtmAulas.qryAulas.IsEmpty));
-  btnExcluir.Enabled := (dtmAulas.qryAulas.State = dsbrowse) and (not(dtmAulas.qryAulas.IsEmpty));
+  btnEditar.Enabled := (dtmAulas.qryAulas.State = dsbrowse) and
+    (not(dtmAulas.qryAulas.IsEmpty));
+  btnExcluir.Enabled := (dtmAulas.qryAulas.State = dsbrowse) and
+    (not(dtmAulas.qryAulas.IsEmpty));
 end;
 
 procedure TfrmAulas.cxGridDBTableView4DblClick(Sender: TObject);

@@ -13741,8 +13741,6 @@ object frmMain: TfrmMain
       item
         Width = 50
       end>
-    ExplicitTop = 585
-    ExplicitWidth = 1101
   end
   object pnlProfessores: TPanel
     Left = 157
@@ -13755,7 +13753,6 @@ object frmMain: TfrmMain
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 585
     object btnCadEscolas: TAdvGlowButton
       AlignWithMargins = True
       Left = 3
@@ -13989,7 +13986,6 @@ object frmMain: TfrmMain
     ParentBackground = False
     TabOrder = 2
     Visible = False
-    ExplicitHeight = 585
     object ScrollBox1: TScrollBox
       Left = 0
       Top = 0
@@ -14001,7 +13997,6 @@ object frmMain: TfrmMain
       BorderStyle = bsNone
       TabOrder = 0
       StyleElements = []
-      ExplicitHeight = 581
       object btnAno1: TAdvGlowButton
         Left = 0
         Top = 0
@@ -14047,7 +14042,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitWidth = 136
       end
       object btnAno2: TAdvGlowButton
         Left = 0
@@ -14094,7 +14088,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitWidth = 136
       end
       object btnAno3: TAdvGlowButton
         Left = 0
@@ -14141,7 +14134,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitWidth = 136
       end
       object btnAno4: TAdvGlowButton
         Left = 0
@@ -14188,7 +14180,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitWidth = 136
       end
       object btnAno5: TAdvGlowButton
         Left = 0
@@ -14235,7 +14226,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitWidth = 136
       end
       object Panel1: TPanel
         Left = 0
@@ -14248,7 +14238,6 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 5
         StyleElements = []
-        ExplicitWidth = 136
       end
       object Panel2: TPanel
         Left = 0
@@ -14261,7 +14250,6 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 6
         StyleElements = []
-        ExplicitWidth = 136
       end
       object Panel3: TPanel
         Left = 0
@@ -14274,7 +14262,6 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 7
         StyleElements = []
-        ExplicitWidth = 136
       end
       object Panel4: TPanel
         Left = 0
@@ -14287,7 +14274,6 @@ object frmMain: TfrmMain
         ParentBackground = False
         TabOrder = 8
         StyleElements = []
-        ExplicitWidth = 136
       end
     end
   end

@@ -8,10 +8,10 @@ object dtmAulas: TdtmAulas
       
         'SELECT AULAS.CODIGO, AULAS.COD_TURMA, TURMAS.DESCRICAO, AULAS.TI' +
         'TULO, AULAS.IMAGEM,'
-      ' case'
-      '         when AULAS.IMAGEM > 0 then 1'
-      '         else 0'
-      '       end as IMAGEM_1'
+      '       CASE'
+      '         WHEN AULAS.IMAGEM > 0 THEN 1'
+      '         ELSE 0'
+      '       END AS IMAGEM_1'
       'FROM AULAS'
       'INNER JOIN TURMAS ON (AULAS.COD_TURMA = TURMAS.CODIGO)   ')
     Left = 224
