@@ -169,6 +169,7 @@ type
     cxGrid1DBTableView1Column1: TcxGridDBColumn;
     cxGrid1DBTableView1Column2: TcxGridDBColumn;
     cxGrid1DBTableView1Column3: TcxGridDBColumn;
+    cxGridDBTableView1Column2: TcxGridDBColumn;
     procedure btnIncluirImagemClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
     procedure dblkcbTurmaEnter(Sender: TObject);
