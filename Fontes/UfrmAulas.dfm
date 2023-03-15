@@ -1457,6 +1457,17 @@ object frmAulas: TfrmAulas
                 Options.Sorting = False
                 Width = 424
               end
+              object cxGridDBTableView1Column2: TcxGridDBColumn
+                Caption = 'T'#237'tulo'
+                DataBinding.FieldName = 'TITULO'
+                PropertiesClassName = 'TcxTextEditProperties'
+                Properties.ReadOnly = True
+                Options.Editing = False
+                Options.Filtering = False
+                Options.Grouping = False
+                Options.Sorting = False
+                Width = 263
+              end
               object cxGridDBColumn3: TcxGridDBColumn
                 Caption = 'Imagem'
                 DataBinding.FieldName = 'IMAGEM_1'
