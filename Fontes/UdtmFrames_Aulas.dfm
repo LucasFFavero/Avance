@@ -155,12 +155,12 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
       'SELECT * from AULAS_EXERCICIOS'
-      'WHERE AULAS_EXERCICIOS.COD_CONTEUDO =:COD_CONTEUDO')
+      'WHERE AULAS_EXERCICIOS.CODIGO =:COD_EXERCICIO')
     Left = 160
     Top = 224
     ParamData = <
       item
-        Name = 'COD_CONTEUDO'
+        Name = 'COD_EXERCICIO'
         DataType = ftInteger
         ParamType = ptInput
       end>
@@ -197,5 +197,60 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
       FieldName = 'VIDEO'
       Origin = 'VIDEO'
     end
+    object qryBuscaExercicioClicadoTITULO: TStringField
+      FieldName = 'TITULO'
+      Origin = 'TITULO'
+      Size = 200
+    end
+  end
+  object dtsBuscaExercicioClicado: TDataSource
+    DataSet = qryBuscaExercicioClicado
+    Left = 304
+    Top = 224
+  end
+  object qryBuscaExerciciosQuestoes: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    SQL.Strings = (
+      'SELECT CODIGO, COD_AULAS_EXERCICIOS, DESCRICAO, IMAGEM, CORRETA'
+      'FROM AULAS_EXERCICIOS_QUESTOES'
+      
+        'WHERE AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS =:COD_AULAS' +
+        '_EXERCICIOS')
+    Left = 160
+    Top = 304
+    ParamData = <
+      item
+        Name = 'COD_AULAS_EXERCICIOS'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryBuscaExerciciosQuestoesCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryBuscaExerciciosQuestoesCOD_AULAS_EXERCICIOS: TIntegerField
+      FieldName = 'COD_AULAS_EXERCICIOS'
+      Origin = 'COD_AULAS_EXERCICIOS'
+    end
+    object qryBuscaExerciciosQuestoesDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 200
+    end
+    object qryBuscaExerciciosQuestoesIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+      Origin = 'IMAGEM'
+    end
+    object qryBuscaExerciciosQuestoesCORRETA: TSmallintField
+      FieldName = 'CORRETA'
+      Origin = 'CORRETA'
+    end
+  end
+  object dtsBuscaExerciciosQuestoes: TDataSource
+    DataSet = qryBuscaExerciciosQuestoes
+    Left = 312
+    Top = 304
   end
 end
