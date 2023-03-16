@@ -32,6 +32,7 @@ type
     qryBuscaConteudoClicadoRESUMO: TStringField;
     qryBuscaConteudoClicadoRESUMO_IMAGEM: TBlobField;
     qryBuscaExercicioClicado: TFDQuery;
+    dtsBuscaExercicioClicado: TDataSource;
     qryBuscaExercicioClicadoCODIGO: TIntegerField;
     qryBuscaExercicioClicadoCOD_AULA: TIntegerField;
     qryBuscaExercicioClicadoCOD_CONTEUDO: TIntegerField;
@@ -39,6 +40,14 @@ type
     qryBuscaExercicioClicadoTIPO: TStringField;
     qryBuscaExercicioClicadoIMAGEM: TBlobField;
     qryBuscaExercicioClicadoVIDEO: TBlobField;
+    qryBuscaExercicioClicadoTITULO: TStringField;
+    qryBuscaExerciciosQuestoes: TFDQuery;
+    qryBuscaExerciciosQuestoesCODIGO: TIntegerField;
+    qryBuscaExerciciosQuestoesCOD_AULAS_EXERCICIOS: TIntegerField;
+    qryBuscaExerciciosQuestoesDESCRICAO: TStringField;
+    qryBuscaExerciciosQuestoesIMAGEM: TBlobField;
+    qryBuscaExerciciosQuestoesCORRETA: TSmallintField;
+    dtsBuscaExerciciosQuestoes: TDataSource;
   private
     { Private declarations }
   public
