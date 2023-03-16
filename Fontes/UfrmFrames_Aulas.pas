@@ -206,6 +206,24 @@ type
     WindowsMediaPlayer: TWindowsMediaPlayer;
     Panel1: TPanel;
     lblResumoVideo: TLabel;
+    pnlFundo: TPanel;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    Panel3: TPanel;
+    lblDescricaoQuestao: TLabel;
+    pnlVideoImagem: TPanel;
+    pnlVideoExercicio: TPanel;
+    WindowsMediaPlayer1: TWindowsMediaPlayer;
+    pnlImagemExercicio: TPanel;
+    Image2: TImage;
+    cxGridDBTableView1IMAGEM: TcxGridDBColumn;
+    cxGridDBTableView1CORRETA: TcxGridDBColumn;
+    Panel4: TPanel;
+    lblTituloDaExercicios: TLabel;
+    cxGridDBTableView1Column1: TcxGridDBColumn;
+    Panel5: TPanel;
+    Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -217,6 +235,7 @@ type
     procedure cxgridDBTableViewMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure tbsAulasShow(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -254,6 +273,11 @@ begin
   end;
 end;
 
+procedure TfrmFrames_Aulas.Button1Click(Sender: TObject);
+begin
+// Vai gravar na usuarios_exercicios
+end;
+
 procedure TfrmFrames_Aulas.Button2Click(Sender: TObject);
 begin
   cldsAulas.SaveToFile('C:\AMD\XML_AULAS.XML');
@@ -285,10 +309,12 @@ begin
   else
   begin
     dtmFrames_Aulas.qryBuscaExercicioClicado.Close;
-    dtmFrames_Aulas.qryBuscaExercicioClicado.ParamByName('COD_CONTEUDO').AsInteger := cldsConteudoCOD_CONTEUDO.AsInteger;
+    dtmFrames_Aulas.qryBuscaExercicioClicado.ParamByName('COD_EXERCICIO').AsInteger := cldsConteudoCOD_EXERCICIO.AsInteger;
     dtmFrames_Aulas.qryBuscaExercicioClicado.Open;
 
-    /// SEGUE AQUI
+    dtmFrames_Aulas.qryBuscaExercicioClicado.First;
+
+    tbsExercicios.Show;
   end;
 end;
 
@@ -418,7 +444,12 @@ begin
       cldsConteudoDESCRICAO_EXERCICIO.AsVariant := null;
       cldsConteudoDESCRICAO_AGRUPADA.AsVariant := dtmFrames_Aulas.qryBuscaConteudoDESCRICAO.AsString;
       cldsConteudo.Post;
+      dtmFrames_Aulas.qryBuscaConteudo.next;
+    end;
 
+    dtmFrames_Aulas.qryBuscaConteudo.first;
+    while not dtmFrames_Aulas.qryBuscaConteudo.eof do
+    begin
       dtmFrames_Aulas.qryBuscaExercicio.Close;
       dtmFrames_Aulas.qryBuscaExercicio.ParamByName('COD_CONTEUDO').AsInteger := dtmFrames_Aulas.qryBuscaConteudoCODIGO.AsInteger;
       dtmFrames_Aulas.qryBuscaExercicio.Open;
@@ -439,7 +470,6 @@ begin
 
         dtmFrames_Aulas.qryBuscaExercicio.next;
       end;
-
       dtmFrames_Aulas.qryBuscaConteudo.next;
     end;
 
