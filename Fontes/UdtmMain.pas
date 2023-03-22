@@ -22,13 +22,20 @@ type
     qryUsuariosCOD_TURMA: TIntegerField;
     qryUsuariosPROFESSOR: TSmallintField;
     qryUsuariosGESTOR: TSmallintField;
+    qryGravaUltimoAcesso: TFDQuery;
     qryGravaAcesso: TFDQuery;
     TransactionAcesso: TFDTransaction;
+    qryAtualizaAcesso: TFDQuery;
+    TransactionUltimoAcesso: TFDTransaction;
+    qryAcesso: TFDQuery;
+    qryAcessoCODIGO: TFDAutoIncField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure AtualizaAcesso(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    intCodAcesso: Integer;
   end;
 
 var
@@ -38,6 +45,27 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
+
+procedure TdtmMain.AtualizaAcesso(Sender: TObject);
+begin
+  try
+    // Atualiza saída
+    if dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.Rollback;
+    if not dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.StartTransaction;
+
+    dtmMain.qryAtualizaAcesso.Close;
+    dtmMain.qryAtualizaAcesso.ParamByName('SAIDA').Value := now;
+    dtmMain.qryAtualizaAcesso.ParamByName('CODIGO').AsInteger :=
+      dtmMain.intCodAcesso;
+    dtmMain.qryAtualizaAcesso.ExecSql;
+
+    dtmMain.TransactionAcesso.Commit;
+  finally
+
+  end;
+end;
 
 procedure TdtmMain.DataModuleCreate(Sender: TObject);
 var

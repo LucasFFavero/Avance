@@ -32,6 +32,7 @@ type
     procedure edtUsuarioEnter(Sender: TObject);
     procedure edtUsuarioExit(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure GravaAcesso(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,25 +101,8 @@ begin
       frmMain.pnlProfessores.Visible := False;
     end;
 
-    // Grava acesso
-    if dtmMain.TransactionAcesso.Active then
-      dtmMain.TransactionAcesso.Rollback;
-    if not dtmMain.TransactionAcesso.Active then
-      dtmMain.TransactionAcesso.StartTransaction;
-
-    try
-      dtmMain.qryGravaAcesso.Close;
-      dtmMain.qryGravaAcesso.ParamByName('DATA').Value := now;
-      dtmMain.qryGravaAcesso.ParamByName('COD_USUARIO').AsInteger :=
-        dtmMain.qryUsuariosCODIGO.AsInteger;
-      dtmMain.qryGravaAcesso.ExecSql;
-
-      dtmMain.TransactionAcesso.Commit;
-    finally
-
-    end;
-
     Application.ProcessMessages;
+    GravaAcesso(self);
     Close;
   end
   else
@@ -233,8 +217,58 @@ begin
     end; }
 
   frmMain.tPrincipal.Enabled := True;
+  frmMain.TimerAcesso.Enabled := True;
+
   edtFoco.SetFocus;
   Tentativa := 0;
+end;
+
+procedure TfrmLogon.GravaAcesso(Sender: TObject);
+begin
+  try
+    // Grava último acesso
+    if dtmMain.TransactionUltimoAcesso.Active then
+      dtmMain.TransactionUltimoAcesso.Rollback;
+    if not dtmMain.TransactionUltimoAcesso.Active then
+      dtmMain.TransactionUltimoAcesso.StartTransaction;
+
+    dtmMain.qryGravaUltimoAcesso.Close;
+    dtmMain.qryGravaUltimoAcesso.ParamByName('DATA').Value := now;
+    dtmMain.qryGravaUltimoAcesso.ParamByName('COD_USUARIO').AsInteger :=
+      dtmMain.qryUsuariosCODIGO.AsInteger;
+    dtmMain.qryGravaUltimoAcesso.ExecSql;
+
+    dtmMain.TransactionUltimoAcesso.Commit;
+  finally
+
+  end;
+
+  try
+    // Grava entrada
+    if dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.Rollback;
+    if not dtmMain.TransactionAcesso.Active then
+      dtmMain.TransactionAcesso.StartTransaction;
+
+    dtmMain.qryGravaAcesso.Close;
+    dtmMain.qryGravaAcesso.ParamByName('ENTRADA').Value := now;
+    dtmMain.qryGravaAcesso.ParamByName('COD_USUARIO').AsInteger :=
+      dtmMain.qryUsuariosCODIGO.AsInteger;
+    dtmMain.qryGravaAcesso.ExecSql;
+
+    dtmMain.TransactionAcesso.Commit;
+  finally
+
+  end;
+
+  // Busca código de acesso
+  dtmMain.qryAcesso.Close;
+  dtmMain.qryAcesso.ParamByName('COD_USUARIO').AsInteger :=
+    dtmMain.qryUsuariosCODIGO.AsInteger;
+  dtmMain.qryAcesso.Open;
+
+  dtmMain.intCodAcesso := dtmMain.qryAcessoCODIGO.AsInteger;
+  dtmMain.AtualizaAcesso(self);
 end;
 
 procedure TfrmLogon.btnSairClick(Sender: TObject);

@@ -69,9 +69,9 @@ object dtmMain: TdtmMain
       Origin = 'GESTOR'
     end
   end
-  object qryGravaAcesso: TFDQuery
+  object qryGravaUltimoAcesso: TFDQuery
     Connection = FDConnectionMain
-    Transaction = TransactionAcesso
+    Transaction = TransactionUltimoAcesso
     FetchOptions.AssignedValues = [evMode, evCursorKind]
     FetchOptions.Mode = fmAll
     FetchOptions.CursorKind = ckDefault
@@ -83,7 +83,7 @@ object dtmMain: TdtmMain
       'UPDATE USUARIOS'
       'SET ULTIMO_ACESSO =:DATA'
       'WHERE CODIGO =:COD_USUARIO')
-    Left = 224
+    Left = 232
     Top = 16
     ParamData = <
       item
@@ -97,9 +97,96 @@ object dtmMain: TdtmMain
         ParamType = ptInput
       end>
   end
+  object qryGravaAcesso: TFDQuery
+    Connection = FDConnectionMain
+    Transaction = TransactionAcesso
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'INSERT INTO USUARIOS_ACESSOS (COD_USUARIO, ENTRADA)'
+      'VALUES (:COD_USUARIO, :ENTRADA)  ')
+    Left = 352
+    Top = 16
+    ParamData = <
+      item
+        Name = 'COD_USUARIO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'ENTRADA'
+        DataType = ftDateTime
+        ParamType = ptInput
+      end>
+  end
   object TransactionAcesso: TFDTransaction
     Connection = FDConnectionMain
-    Left = 224
+    Left = 352
+    Top = 115
+  end
+  object qryAtualizaAcesso: TFDQuery
+    Connection = FDConnectionMain
+    Transaction = TransactionAcesso
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'UPDATE USUARIOS_ACESSOS'
+      'SET SAIDA =:SAIDA'
+      'WHERE CODIGO =:CODIGO')
+    Left = 352
     Top = 64
+    ParamData = <
+      item
+        Name = 'SAIDA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'CODIGO'
+        ParamType = ptInput
+      end>
+  end
+  object TransactionUltimoAcesso: TFDTransaction
+    Connection = FDConnectionMain
+    Left = 232
+    Top = 64
+  end
+  object qryAcesso: TFDQuery
+    Connection = FDConnectionMain
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_USUARIOS_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'SELECT USUARIOS_ACESSOS.CODIGO'
+      'FROM USUARIOS_ACESSOS'
+      'WHERE USUARIOS_ACESSOS.COD_USUARIO =:COD_USUARIO'
+      'AND SAIDA IS NULL')
+    Left = 136
+    Top = 64
+    ParamData = <
+      item
+        Name = 'COD_USUARIO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryAcessoCODIGO: TFDAutoIncField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
+    end
   end
 end

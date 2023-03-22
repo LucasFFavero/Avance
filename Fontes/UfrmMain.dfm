@@ -27045,4 +27045,11 @@ object frmMain: TfrmMain
     Left = 664
     Top = 104
   end
+  object TimerAcesso: TTimer
+    Enabled = False
+    Interval = 60000
+    OnTimer = TimerAcessoTimer
+    Left = 760
+    Top = 104
+  end
 end

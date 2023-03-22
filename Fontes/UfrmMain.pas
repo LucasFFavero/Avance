@@ -46,6 +46,7 @@ type
     MainMenu1: TMainMenu;
     N1: TMenuItem;
     cxHintStyleController1: TcxHintStyleController;
+    TimerAcesso: TTimer;
     procedure FormShow(Sender: TObject);
     procedure tPrincipalTimer(Sender: TObject);
     procedure btnCadUsuariosClick(Sender: TObject);
@@ -60,6 +61,7 @@ type
     procedure btnAno1Click(Sender: TObject);
     procedure TimerAbrirAulasTimer(Sender: TObject);
     procedure DeletarDiretorio(const NomeDiretorio: string);
+    procedure TimerAcessoTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -199,6 +201,11 @@ begin
   frmMain.IntAnoClicado := dtmMain.qryUsuariosCOD_TURMA.AsInteger;
   if (frmFrames_Aulas = nil) then
     Application.CreateForm(TfrmFrames_Aulas, frmFrames_Aulas);
+end;
+
+procedure TfrmMain.TimerAcessoTimer(Sender: TObject);
+begin
+  dtmMain.AtualizaAcesso(self);
 end;
 
 procedure TfrmMain.tPrincipalTimer(Sender: TObject);
