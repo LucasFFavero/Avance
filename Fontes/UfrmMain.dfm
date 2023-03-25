@@ -15,6 +15,7 @@ object frmMain: TfrmMain
   OldCreateOrder = False
   Scaled = False
   WindowState = wsMaximized
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -27009,7 +27010,7 @@ object frmMain: TfrmMain
   end
   object TimerAbrirAulas: TTimer
     Enabled = False
-    Interval = 50
+    Interval = 35
     OnTimer = TimerAbrirAulasTimer
     Left = 488
     Top = 16
