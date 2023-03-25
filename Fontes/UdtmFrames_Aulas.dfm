@@ -98,8 +98,31 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
   object qryBuscaConteudoClicado: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
-      'SELECT * FROM AULAS_CONTEUDOS'
-      'WHERE AULAS_CONTEUDOS.CODIGO =:COD_CONTEUDO')
+      
+        'select AULAS_CONTEUDOS.CODIGO, AULAS_CONTEUDOS.COD_AULA, AULAS_C' +
+        'ONTEUDOS.DESCRICAO, AULAS_CONTEUDOS.TIPO,'
+      
+        '       AULAS_CONTEUDOS.IMAGEM, AULAS_CONTEUDOS.VIDEO, AULAS_CONT' +
+        'EUDOS.AUDIO, AULAS_CONTEUDOS.RESUMO,'
+      '       AULAS_CONTEUDOS.RESUMO_IMAGEM,'
+      ''
+      '       case'
+      '         when AULAS_CONTEUDOS.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1,'
+      ''
+      '       case'
+      '         when AULAS_CONTEUDOS.VIDEO > 0 then 1'
+      '         else 0'
+      '       end as VIDEO_1,'
+      ''
+      '       case'
+      '         when AULAS_CONTEUDOS.AUDIO > 0 then 1'
+      '         else 0'
+      '       end as AUDIO_1'
+      ''
+      'from AULAS_CONTEUDOS'
+      'where AULAS_CONTEUDOS.CODIGO = :COD_CONTEUDO   ')
     Left = 160
     Top = 136
     ParamData = <
@@ -149,6 +172,27 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
     object qryBuscaConteudoClicadoRESUMO_IMAGEM: TBlobField
       FieldName = 'RESUMO_IMAGEM'
       Origin = 'RESUMO_IMAGEM'
+    end
+    object qryBuscaConteudoClicadoIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryBuscaConteudoClicadoVIDEO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'VIDEO_1'
+      Origin = 'VIDEO_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryBuscaConteudoClicadoAUDIO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'AUDIO_1'
+      Origin = 'AUDIO_1'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object qryBuscaExercicioClicado: TFDQuery
