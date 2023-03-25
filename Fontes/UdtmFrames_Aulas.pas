@@ -48,6 +48,9 @@ type
     qryBuscaExerciciosQuestoesIMAGEM: TBlobField;
     qryBuscaExerciciosQuestoesCORRETA: TSmallintField;
     dtsBuscaExerciciosQuestoes: TDataSource;
+    qryBuscaConteudoClicadoIMAGEM_1: TIntegerField;
+    qryBuscaConteudoClicadoVIDEO_1: TIntegerField;
+    qryBuscaConteudoClicadoAUDIO_1: TIntegerField;
   private
     { Private declarations }
   public
