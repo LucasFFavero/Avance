@@ -62,7 +62,9 @@ type
     procedure TimerAbrirAulasTimer(Sender: TObject);
     procedure DeletarDiretorio(const NomeDiretorio: string);
     procedure TimerAcessoTimer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
+    procedure LimpaPastasTemporarias(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -78,6 +80,13 @@ implementation
 
 uses UfrmLogon, UfrmUsuarios, UfrmEscolas, UfrmTurmas, UfrmAulas,
   UfrmFrames_Aulas, UfrmRelatorios, UdtmMain;
+
+procedure TfrmMain.LimpaPastasTemporarias(Sender: TObject);
+begin
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Videos\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Audios\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
+  frmMain.DeletarDiretorio(ExtractFilePath(paramstr(0)) + 'Imagens\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)));
+end;
 
 procedure TfrmMain.btnAno1Click(Sender: TObject);
 begin
@@ -186,6 +195,11 @@ begin
     Application.CreateForm(TfrmEscolas, frmEscolas);
 end;
 
+procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  LimpaPastasTemporarias(self);
+end;
+
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   frmLogon.ShowModal;
@@ -211,8 +225,7 @@ end;
 procedure TfrmMain.tPrincipalTimer(Sender: TObject);
 begin
   // Passar informações do dia e hora para o sistema
-  sbPrincipal.Panels[0].Text := 'Data: ' +
-    FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
+  sbPrincipal.Panels[0].Text := 'Data: ' + FormatDatetime('dddd , dd " de " mmmm "de" yyyy', Date);
   sbPrincipal.Panels[1].Text := 'Hora: ' + FormatDatetime('hh:mm:ss', Time);
   sbPrincipal.Panels[4].Text := 'Avance';
 end;
