@@ -201,11 +201,11 @@ type
     lblResumoImagem: TLabel;
     pnlImage: TPanel;
     ImageConteudo: TImage;
-    pnlConteudo_Video: TPanel;
+    pnlConteudo_Video_Audio: TPanel;
     pnlVideo: TPanel;
     WindowsMediaPlayer: TWindowsMediaPlayer;
     Panel1: TPanel;
-    lblResumoVideo: TLabel;
+    lblResumoVideoAudio: TLabel;
     pnlFundo: TPanel;
     cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
@@ -253,6 +253,8 @@ uses UfrmMain, UdtmFrames_Aulas;
 
 procedure TfrmFrames_Aulas.btnVoltarClick(Sender: TObject);
 begin
+  WindowsMediaPlayer.Controls.Stop;
+
   if pnlGrid.Visible = false then
   begin
     pnlCONTEUDO.Visible := false;
@@ -275,7 +277,7 @@ end;
 
 procedure TfrmFrames_Aulas.Button1Click(Sender: TObject);
 begin
-// Vai gravar na usuarios_exercicios
+  // Vai gravar na usuarios_exercicios
 end;
 
 procedure TfrmFrames_Aulas.Button2Click(Sender: TObject);
@@ -289,8 +291,13 @@ begin
 end;
 
 procedure TfrmFrames_Aulas.cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  strCaminho, Imagem_Audio_Video: String;
 begin
   // Aqui vai buscar o Conteudo ou o Exercicio
+  // if (cxGridDBTableView.Columns[cxgridDBTableViewDESCRICAO_CONTEUDO.Index].Focused = True) then
+  // begin
+
   if cldsConteudoConteudo_Exercicio.AsString = 'Conteudo' then
   begin
     dtmFrames_Aulas.qryBuscaConteudoClicado.Close;
@@ -301,7 +308,83 @@ begin
     if not dtmFrames_Aulas.qryBuscaConteudoClicado.IsEmpty then
     begin
       pnlGrid.Visible := false;
+      pnlCONTEUDO.Align := alClient;
       pnlCONTEUDO.Visible := True;
+      Application.ProcessMessages;
+
+      pnlConteudo_Imagem.Visible := false;
+      pnlConteudo_Video_Audio.Visible := false;
+
+      // É Imagem
+      if dtmFrames_Aulas.qryBuscaConteudoClicadoIMAGEM_1.AsInteger = 1 then
+      begin
+        pnlConteudo_Imagem.Visible := True;
+        pnlConteudo_Imagem.Align := alClient;
+
+        strCaminho := ExtractFilePath(paramstr(0)) + 'Imagens\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+        if not DirectoryExists(strCaminho) then
+          ForceDirectories(strCaminho);
+
+        lblResumoImagem.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+        // Verifica onde vai gravar o arquivo e o nome dele.
+        Imagem_Audio_Video := strCaminho + '\IMAGEM_' + Copy(TimeToStr(Time), 1, 2) + Copy(TimeToStr(Time), 4, 2) + Copy(TimeToStr(Time), 7, 2) + '.jpg';
+
+        // Salva o arquivo do banco de dados para o micro com o nome acima (Imagem_Audio_Video)
+        dtmFrames_Aulas.qryBuscaConteudoClicadoIMAGEM.SaveToFile(Imagem_Audio_Video);
+
+        // Abre o arquivo no com a imagem
+        ImageConteudo.Picture.LoadFromFile(Imagem_Audio_Video);
+        Application.ProcessMessages;
+      end // É Vídeo
+      else if dtmFrames_Aulas.qryBuscaConteudoClicadoVIDEO_1.AsInteger = 1 then
+      begin
+        pnlConteudo_Video_Audio.Visible := True;
+        pnlConteudo_Video_Audio.Align := alClient;
+
+        lblResumoVideoAudio.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+        strCaminho := ExtractFilePath(paramstr(0)) + 'Videos\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+        if not DirectoryExists(strCaminho) then
+          ForceDirectories(strCaminho);
+
+        lblResumoImagem.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+        // Verifica onde vai gravar o arquivo e o nome dele.
+        Imagem_Audio_Video := strCaminho + '\VIDEO_' + Copy(TimeToStr(Time), 1, 2) + Copy(TimeToStr(Time), 4, 2) + Copy(TimeToStr(Time), 7, 2) + '.avi';
+
+        // Salva o arquivo do banco de dados para o micro com o nome acima (Imagem_Audio_Video)
+        dtmFrames_Aulas.qryBuscaConteudoClicadoVIDEO.SaveToFile(Imagem_Audio_Video);
+
+        // Abre o arquivo no com o vídeo
+        WindowsMediaPlayer.URL := Imagem_Audio_Video;
+        WindowsMediaPlayer.Controls.play;
+        Application.ProcessMessages;
+      end // É Áudio
+      else if dtmFrames_Aulas.qryBuscaConteudoClicadoAUDIO_1.AsInteger = 1 then
+      begin
+        pnlConteudo_Video_Audio.Visible := True;
+        pnlConteudo_Video_Audio.Align := alClient;
+
+        lblResumoVideoAudio.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+        strCaminho := ExtractFilePath(paramstr(0)) + 'Audio\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+        if not DirectoryExists(strCaminho) then
+          ForceDirectories(strCaminho);
+
+        lblResumoImagem.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+        // Verifica onde vai gravar o arquivo e o nome dele.
+        Imagem_Audio_Video := strCaminho + '\AUDIO_' + Copy(TimeToStr(Time), 1, 2) + Copy(TimeToStr(Time), 4, 2) + Copy(TimeToStr(Time), 7, 2) + '.avi';
+
+        // Salva o arquivo do banco de dados para o micro com o nome acima (Imagem_Audio_Video)
+        dtmFrames_Aulas.qryBuscaConteudoClicadoAUDIO.SaveToFile(Imagem_Audio_Video);
+
+        // Abre o arquivo no com o vídeo
+        WindowsMediaPlayer.URL := Imagem_Audio_Video;
+        WindowsMediaPlayer.Controls.play;
+        Application.ProcessMessages;
+      end;
 
     end;
 
@@ -315,6 +398,7 @@ begin
     dtmFrames_Aulas.qryBuscaExercicioClicado.First;
 
     tbsExercicios.Show;
+    // end;
   end;
 end;
 
@@ -355,6 +439,9 @@ begin
   // Fechar form usando "ESC"
   if (Key = #27) then
   begin
+
+    WindowsMediaPlayer.Controls.Stop;
+
     if pnlGrid.Visible = false then
     begin
       pnlCONTEUDO.Visible := false;
@@ -379,7 +466,27 @@ end;
 procedure TfrmFrames_Aulas.FormShow(Sender: TObject);
 var
   Count: Integer;
+  strCaminho: String;
 begin
+  // Cria diretorio dos videos
+  strCaminho := ExtractFilePath(paramstr(0)) + 'Videos\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+  if not DirectoryExists(strCaminho) then
+    ForceDirectories(strCaminho);
+
+  // Cria diretorio dos Audios
+  strCaminho := ExtractFilePath(paramstr(0)) + 'Audios\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+  if not DirectoryExists(strCaminho) then
+    ForceDirectories(strCaminho);
+
+  // Cria diretorio das Imagens
+  strCaminho := ExtractFilePath(paramstr(0)) + 'Imagens\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+  if not DirectoryExists(strCaminho) then
+    ForceDirectories(strCaminho);
+
+  tbsAulas.TabVisible := false;
+  tbsConteudo.TabVisible := false;
+  tbsExercicios.TabVisible := false;
+
   cxgridDBTableViewCod_Conteudo.Visible := false;
   cxgridDBTableViewDESCRICAO_EXERCICIO.Visible := false;
   cxgridDBTableViewCOD_AULA.Visible := false;
@@ -393,7 +500,7 @@ begin
 
   cldsAulas.EmptyDataSet;
 
-  dtmFrames_Aulas.qryBuscaAulas.first;
+  dtmFrames_Aulas.qryBuscaAulas.First;
   while not dtmFrames_Aulas.qryBuscaAulas.eof do
   begin
     cldsAulas.Append;
@@ -410,14 +517,17 @@ begin
   // gvEmployees.OptionsView.MaxColumnCount := Count;
   gvEmployees.OptionsView.MaxColumnCount := 4;
   gvEmployees.Controller.FocusedItemIndex := 0;
-  dtmFrames_Aulas.qryBuscaAulas.first;
+  dtmFrames_Aulas.qryBuscaAulas.First;
 
   frmFrames_Aulas.Height := frmMain.Image1.Height - 10;
   frmFrames_Aulas.Width := frmMain.Image1.Width - 10;
   frmFrames_Aulas.Left := 5;
   frmFrames_Aulas.Top := 5;
 
-  cxgridDBTableViewDESCRICAO_CONTEUDO.Width := cxGridEmployees.Width - 276;
+  PageControl1.ActivePage := tbsAulas;
+  tbsAulas.Show;
+
+  cxgridDBTableViewDESCRICAO_CONTEUDO.Width := cxGridEmployees.Width - 250;
 end;
 
 procedure TfrmFrames_Aulas.gvEmployeesCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
@@ -431,7 +541,7 @@ begin
   try
     cxGridDBTableView.DataController.DataSource := nil;
 
-    dtmFrames_Aulas.qryBuscaConteudo.first;
+    dtmFrames_Aulas.qryBuscaConteudo.First;
     while not dtmFrames_Aulas.qryBuscaConteudo.eof do
     begin
       cldsConteudo.Append;
@@ -447,14 +557,14 @@ begin
       dtmFrames_Aulas.qryBuscaConteudo.next;
     end;
 
-    dtmFrames_Aulas.qryBuscaConteudo.first;
+    dtmFrames_Aulas.qryBuscaConteudo.First;
     while not dtmFrames_Aulas.qryBuscaConteudo.eof do
     begin
       dtmFrames_Aulas.qryBuscaExercicio.Close;
       dtmFrames_Aulas.qryBuscaExercicio.ParamByName('COD_CONTEUDO').AsInteger := dtmFrames_Aulas.qryBuscaConteudoCODIGO.AsInteger;
       dtmFrames_Aulas.qryBuscaExercicio.Open;
 
-      dtmFrames_Aulas.qryBuscaExercicio.first;
+      dtmFrames_Aulas.qryBuscaExercicio.First;
       while not dtmFrames_Aulas.qryBuscaExercicio.eof do
       begin
         cldsConteudo.Append;
@@ -474,14 +584,13 @@ begin
     end;
 
   finally
-    cldsConteudo.first;
+    cldsConteudo.First;
     cxGridDBTableView.DataController.DataSource := dtsConteudo;
 
     lblAula.Caption := cldsAulasDESCRICAO.AsString;
     Application.ProcessMessages;
     tbsConteudo.Show;
-
-    cxGridDBTableView.DataController.Groups.FullExpand;
+    cxGridDBTableView.DataController.Groups.FullCollapse;
   end;
 
 end;
