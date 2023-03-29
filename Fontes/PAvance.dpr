@@ -29,7 +29,10 @@ uses
   UrelTurmas in 'UrelTurmas.pas' {relTurmas},
   UrelAulas in 'UrelAulas.pas' {relAulas},
   UfrmRelatorios in 'UfrmRelatorios.pas' {frmRelatorios},
-  UdtmRelatorios in 'UdtmRelatorios.pas' {dtmRelatorios: TDataModule};
+  UdtmRelatorios in 'UdtmRelatorios.pas' {dtmRelatorios: TDataModule},
+  UfrmTipoRelatorio in 'UfrmTipoRelatorio.pas' {frmTipoRelatorio},
+  UfrmRelatorioAcessos in 'UfrmRelatorioAcessos.pas' {frmRelatorioAcessos},
+  UdtmRelatorioAcessos in 'UdtmRelatorioAcessos.pas' {dtmRelatorioAcessos: TDataModule};
 
 {$R *.res}
 
@@ -49,5 +52,6 @@ begin
   Application.CreateForm(TdtmFrames_Aulas, dtmFrames_Aulas);
   Application.CreateForm(TdtmAulasQuestoes, dtmAulasQuestoes);
   Application.CreateForm(TdtmRelatorios, dtmRelatorios);
+  Application.CreateForm(TdtmRelatorioAcessos, dtmRelatorioAcessos);
   Application.Run;
 end.

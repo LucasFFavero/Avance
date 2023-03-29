@@ -79,7 +79,7 @@ implementation
 {$R *.dfm}
 
 uses UfrmLogon, UfrmUsuarios, UfrmEscolas, UfrmTurmas, UfrmAulas,
-  UfrmFrames_Aulas, UfrmRelatorios, UdtmMain;
+  UfrmFrames_Aulas, UfrmRelatorios, UdtmMain, UfrmTipoRelatorio;
 
 procedure TfrmMain.LimpaPastasTemporarias(Sender: TObject);
 begin
@@ -155,8 +155,8 @@ end;
 
 procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
 begin
-  if (frmRelatorios = nil) then
-    Application.CreateForm(TfrmRelatorios, frmRelatorios);
+    if (frmTipoRelatorio = nil) then
+    Application.CreateForm(TfrmTipoRelatorio, frmTipoRelatorio);
 end;
 
 procedure TfrmMain.DeletarDiretorio(const NomeDiretorio: string);

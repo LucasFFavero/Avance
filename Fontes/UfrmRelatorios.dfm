@@ -50,7 +50,7 @@ object frmRelatorios: TfrmRelatorios
       end
       object cbAlunos: TCheckBox
         Left = 267
-        Top = 27
+        Top = 25
         Width = 97
         Height = 17
         Caption = 'Aluno'
@@ -251,7 +251,6 @@ object frmRelatorios: TfrmRelatorios
       BevelOuter = bvNone
       Padding.Left = 10
       TabOrder = 0
-      ExplicitHeight = 221
       object dbgEscolas: TDBGrid
         Left = 10
         Top = 35
@@ -276,9 +275,6 @@ object frmRelatorios: TfrmRelatorios
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 0
-        ExplicitTop = 4
-        ExplicitWidth = 472
         object Label1: TLabel
           Left = 2
           Top = 8
@@ -303,9 +299,6 @@ object frmRelatorios: TfrmRelatorios
       BevelOuter = bvNone
       Padding.Left = 10
       TabOrder = 1
-      ExplicitLeft = 8
-      ExplicitWidth = 472
-      ExplicitHeight = 221
       object dbgAulas: TDBGrid
         Left = 10
         Top = 35
@@ -329,8 +322,6 @@ object frmRelatorios: TfrmRelatorios
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 0
-        ExplicitWidth = 472
         object Label2: TLabel
           Left = 2
           Top = 8
@@ -355,10 +346,6 @@ object frmRelatorios: TfrmRelatorios
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitLeft = 248
-    ExplicitTop = 352
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnlAlunos: TPanel
       Left = 0
       Top = 0
@@ -368,8 +355,6 @@ object frmRelatorios: TfrmRelatorios
       BevelOuter = bvNone
       Padding.Left = 10
       TabOrder = 0
-      ExplicitLeft = 8
-      ExplicitHeight = 220
       object dbgAlunos: TDBGrid
         Left = 10
         Top = 35
@@ -417,9 +402,6 @@ object frmRelatorios: TfrmRelatorios
       BevelOuter = bvNone
       Padding.Left = 10
       TabOrder = 1
-      ExplicitLeft = 8
-      ExplicitWidth = 472
-      ExplicitHeight = 221
       object dbgExercicios: TDBGrid
         Left = 10
         Top = 35
