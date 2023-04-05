@@ -3,7 +3,7 @@ object frmUsuarios: TfrmUsuarios
   Top = 0
   Caption = 'Usu'#225'rios'
   ClientHeight = 541
-  ClientWidth = 944
+  ClientWidth = 984
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,7 +25,7 @@ object frmUsuarios: TfrmUsuarios
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 944
+    Width = 984
     Height = 60
     Align = alTop
     BevelOuter = bvNone
@@ -36,6 +36,7 @@ object frmUsuarios: TfrmUsuarios
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 944
     object btnListar: TAdvGlowButton
       AlignWithMargins = True
       Left = 754
@@ -596,23 +597,69 @@ object frmUsuarios: TfrmUsuarios
       ParentBackground = False
       TabOrder = 15
     end
+    object btnImportar: TAdvGlowButton
+      AlignWithMargins = True
+      Left = 912
+      Top = 5
+      Width = 62
+      Height = 50
+      Align = alLeft
+      BorderStyle = bsNone
+      Caption = 'Importar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3618615
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ImageIndex = 11
+      Images = frmMain.cxImageList1
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Transparent = True
+      TabOrder = 16
+      OnClick = btnImportarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Layout = blGlyphTop
+      ExplicitLeft = 932
+      ExplicitTop = 4
+    end
   end
   object pgcDadosCadastrais: TPageControl
     Left = 0
     Top = 60
-    Width = 944
+    Width = 984
     Height = 481
     ActivePage = tbsDadosCadastrais
     Align = alClient
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
+    ExplicitWidth = 944
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object dbGrid: TDBGrid
         Left = 0
         Top = 0
-        Width = 936
+        Width = 976
         Height = 441
         Align = alClient
         DataSource = dtmUsuarios.dtsUsuarios
@@ -771,13 +818,15 @@ object frmUsuarios: TfrmUsuarios
       object pnlCadastro: TPanel
         Left = 0
         Top = 0
-        Width = 936
+        Width = 976
         Height = 441
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitWidth = 936
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -1080,13 +1129,14 @@ object frmUsuarios: TfrmUsuarios
       object pnlLocalizar: TPanel
         Left = 0
         Top = 0
-        Width = 936
+        Width = 976
         Height = 81
         Align = alTop
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 936
         object Label10: TLabel
           Left = 27
           Top = 13
@@ -1153,7 +1203,7 @@ object frmUsuarios: TfrmUsuarios
       object dbGridLocalizar: TDBGrid
         Left = 0
         Top = 81
-        Width = 936
+        Width = 976
         Height = 360
         Align = alClient
         DataSource = dtmUsuarios.dtsBuscaUsuarios
@@ -1235,7 +1285,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item
@@ -1247,7 +1296,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item

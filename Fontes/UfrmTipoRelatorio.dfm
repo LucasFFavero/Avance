@@ -63,8 +63,6 @@ object frmTipoRelatorio: TfrmTipoRelatorio
     Appearance.ColorMirrorDisabled = 11974326
     Appearance.ColorMirrorDisabledTo = 15921906
     Layout = blGlyphTop
-    ExplicitTop = -2
-    ExplicitHeight = 245
   end
   object AdvGlowButton1: TAdvGlowButton
     AlignWithMargins = True
@@ -109,7 +107,5 @@ object frmTipoRelatorio: TfrmTipoRelatorio
     Appearance.ColorMirrorDisabled = 11974326
     Appearance.ColorMirrorDisabledTo = 15921906
     Layout = blGlyphTop
-    ExplicitTop = -2
-    ExplicitHeight = 245
   end
 end

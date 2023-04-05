@@ -65,6 +65,7 @@ type
     dbGridLocalizar: TDBGrid;
     ImageList: TImageList;
     edtNascimento: TcxDBDateEdit;
+    btnImportar: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnIncluirClick(Sender: TObject);
@@ -95,6 +96,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnImportarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,7 +110,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain, UdtmUsuarios, URelUsuarios;
+uses UfrmMain, UdtmUsuarios, URelUsuarios, UfrmImportarUsuarios;
 
 procedure TfrmUsuarios.btnAnteriorClick(Sender: TObject);
 begin
@@ -193,6 +195,12 @@ begin
   Application.MessageBox('Exclusão realizada com sucesso.',
     pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
     ), 0 + 64 + 0);
+end;
+
+procedure TfrmUsuarios.btnImportarClick(Sender: TObject);
+begin
+  if (frmImportarUsuarios = nil) then
+    Application.CreateForm(TfrmImportarUsuarios, frmImportarUsuarios);
 end;
 
 procedure TfrmUsuarios.btnImprimirClick(Sender: TObject);

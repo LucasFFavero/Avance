@@ -63,7 +63,8 @@ object dtmRelatorioAcessos: TdtmRelatorioAcessos
     Left = 104
     Top = 64
   end
-  object qryBuscaUsuarios: TFDQuery
+  object qryAlunos: TFDQuery
+    AfterScroll = qryAlunosAfterScroll
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
       
@@ -74,32 +75,29 @@ object dtmRelatorioAcessos: TdtmRelatorioAcessos
         'MAIL, USUARIOS.LOGIN,'
       
         '       USUARIOS.DATA_NASCIMENTO, USUARIOS.DATA_INGRESSO, USUARIO' +
-        'S.ULTIMO_ACESSO,'
-      '       USUARIOS_ACESSOS.ENTRADA, USUARIOS_ACESSOS.SAIDA'
+        'S.ULTIMO_ACESSO'
       'FROM USUARIOS'
-      
-        'INNER JOIN USUARIOS_ACESSOS ON (USUARIOS.CODIGO = USUARIOS_ACESS' +
-        'OS.COD_USUARIO)'
       'INNER JOIN ESCOLA ON (USUARIOS.COD_ESCOLA = ESCOLA.CODIGO)'
       'INNER JOIN TURMAS ON (USUARIOS.COD_TURMA = TURMAS.CODIGO)')
     Left = 224
-    Top = 64
-    object qryBuscaUsuariosCODIGO: TIntegerField
+    Top = 16
+    object qryAlunosCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
+      DisplayFormat = '0000#'
     end
-    object qryBuscaUsuariosNOME: TStringField
+    object qryAlunosNOME: TStringField
       FieldName = 'NOME'
       Origin = 'NOME'
       Size = 200
     end
-    object qryBuscaUsuariosCOD_ESCOLA: TIntegerField
+    object qryAlunosCOD_ESCOLA: TIntegerField
       FieldName = 'COD_ESCOLA'
       Origin = 'COD_ESCOLA'
     end
-    object qryBuscaUsuariosESCOLA: TStringField
+    object qryAlunosESCOLA: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'ESCOLA'
       Origin = 'NOME'
@@ -107,11 +105,11 @@ object dtmRelatorioAcessos: TdtmRelatorioAcessos
       ReadOnly = True
       Size = 200
     end
-    object qryBuscaUsuariosCOD_TURMA: TIntegerField
+    object qryAlunosCOD_TURMA: TIntegerField
       FieldName = 'COD_TURMA'
       Origin = 'COD_TURMA'
     end
-    object qryBuscaUsuariosTURMA: TStringField
+    object qryAlunosTURMA: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'TURMA'
       Origin = 'DESCRICAO'
@@ -119,46 +117,151 @@ object dtmRelatorioAcessos: TdtmRelatorioAcessos
       ReadOnly = True
       Size = 120
     end
-    object qryBuscaUsuariosEMAIL: TStringField
+    object qryAlunosEMAIL: TStringField
       FieldName = 'EMAIL'
       Origin = 'EMAIL'
       Size = 200
     end
-    object qryBuscaUsuariosLOGIN: TStringField
+    object qryAlunosLOGIN: TStringField
       FieldName = 'LOGIN'
       Origin = 'LOGIN'
       Size = 120
     end
-    object qryBuscaUsuariosDATA_NASCIMENTO: TSQLTimeStampField
+    object qryAlunosDATA_NASCIMENTO: TSQLTimeStampField
       FieldName = 'DATA_NASCIMENTO'
       Origin = 'DATA_NASCIMENTO'
     end
-    object qryBuscaUsuariosDATA_INGRESSO: TSQLTimeStampField
+    object qryAlunosDATA_INGRESSO: TSQLTimeStampField
       FieldName = 'DATA_INGRESSO'
       Origin = 'DATA_INGRESSO'
     end
-    object qryBuscaUsuariosULTIMO_ACESSO: TSQLTimeStampField
+    object qryAlunosULTIMO_ACESSO: TSQLTimeStampField
       FieldName = 'ULTIMO_ACESSO'
       Origin = 'ULTIMO_ACESSO'
     end
-    object qryBuscaUsuariosENTRADA: TSQLTimeStampField
-      AutoGenerateValue = arDefault
+  end
+  object dtsAlunos: TDataSource
+    DataSet = qryAlunos
+    Left = 288
+    Top = 16
+  end
+  object qryAcessos: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    SQL.Strings = (
+      
+        'SELECT USUARIOS_ACESSOS.CODIGO, USUARIOS_ACESSOS.ENTRADA, USUARI' +
+        'OS_ACESSOS.SAIDA'
+      'FROM USUARIOS_ACESSOS'
+      'ORDER BY USUARIOS_ACESSOS.CODIGO  ')
+    Left = 224
+    Top = 112
+    object qryAcessosCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryAcessosENTRADA: TSQLTimeStampField
       FieldName = 'ENTRADA'
       Origin = 'ENTRADA'
-      ProviderFlags = []
-      ReadOnly = True
     end
-    object qryBuscaUsuariosSAIDA: TSQLTimeStampField
-      AutoGenerateValue = arDefault
+    object qryAcessosSAIDA: TSQLTimeStampField
       FieldName = 'SAIDA'
       Origin = 'SAIDA'
-      ProviderFlags = []
-      ReadOnly = True
     end
   end
-  object dtsBuscaUsuarios: TDataSource
-    DataSet = qryBuscaUsuarios
-    Left = 320
+  object dtsAcessos: TDataSource
+    DataSet = cldsAcesso
+    Left = 288
     Top = 64
+  end
+  object cldsAcesso: TClientDataSet
+    PersistDataPacket.Data = {
+      790000009619E0BD010000001800000004000000000003000000790006434F44
+      49474F040001000000000007454E545241444101004900000001000557494454
+      4802000200320005534149444101004900000001000557494454480200020032
+      000554454D504F01004900000001000557494454480200020032000000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 224
+    Top = 64
+    object cldsAcessoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      DisplayFormat = '0000#'
+    end
+    object cldsAcessoENTRADA: TStringField
+      FieldName = 'ENTRADA'
+      Size = 50
+    end
+    object cldsAcessoSAIDA: TStringField
+      FieldName = 'SAIDA'
+      Size = 50
+    end
+    object cldsAcessoTEMPO: TStringField
+      FieldName = 'TEMPO'
+      Size = 50
+    end
+  end
+  object qryUsuarios: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    SQL.Strings = (
+      
+        'SELECT USUARIOS.CODIGO, USUARIOS.NOME, USUARIOS.COD_ESCOLA, USUA' +
+        'RIOS.COD_TURMA, USUARIOS.EMAIL,'
+      
+        '       USUARIOS.LOGIN, USUARIOS.DATA_NASCIMENTO, USUARIOS.DATA_I' +
+        'NGRESSO, USUARIOS.ULTIMO_ACESSO'
+      'FROM USUARIOS'
+      'WHERE USUARIOS.ATIVO = 1'
+      'AND USUARIOS.ALUNO = 1')
+    Left = 32
+    Top = 112
+    object qryUsuariosCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryUsuariosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 200
+    end
+    object qryUsuariosCOD_ESCOLA: TIntegerField
+      FieldName = 'COD_ESCOLA'
+      Origin = 'COD_ESCOLA'
+    end
+    object qryUsuariosCOD_TURMA: TIntegerField
+      FieldName = 'COD_TURMA'
+      Origin = 'COD_TURMA'
+    end
+    object qryUsuariosEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 200
+    end
+    object qryUsuariosLOGIN: TStringField
+      FieldName = 'LOGIN'
+      Origin = 'LOGIN'
+      Size = 120
+    end
+    object qryUsuariosDATA_NASCIMENTO: TSQLTimeStampField
+      FieldName = 'DATA_NASCIMENTO'
+      Origin = 'DATA_NASCIMENTO'
+    end
+    object qryUsuariosDATA_INGRESSO: TSQLTimeStampField
+      FieldName = 'DATA_INGRESSO'
+      Origin = 'DATA_INGRESSO'
+    end
+    object qryUsuariosULTIMO_ACESSO: TSQLTimeStampField
+      FieldName = 'ULTIMO_ACESSO'
+      Origin = 'ULTIMO_ACESSO'
+    end
+  end
+  object dtsUsuarios: TDataSource
+    DataSet = qryUsuarios
+    Left = 104
+    Top = 112
   end
 end
