@@ -31,7 +31,6 @@ object frmImportarUsuarios: TfrmImportarUsuarios
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -45
     object btnSalvar: TAdvGlowButton
       AlignWithMargins = True
       Left = 98
@@ -56,6 +55,7 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       ParentFont = False
       Transparent = True
       TabOrder = 0
+      OnClick = btnSalvarClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -73,7 +73,6 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitLeft = 194
       ExplicitTop = 4
     end
     object btnBuscar: TAdvGlowButton
@@ -100,6 +99,7 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       ParentFont = False
       Transparent = True
       TabOrder = 1
+      OnClick = btnBuscarClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -117,6 +117,8 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
+      ExplicitLeft = 5
+      ExplicitTop = 4
     end
     object btnCancelar: TAdvGlowButton
       AlignWithMargins = True
@@ -160,8 +162,6 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitLeft = 226
-      ExplicitTop = 4
     end
     object Panel1: TPanel
       Left = 73
@@ -181,6 +181,7 @@ object frmImportarUsuarios: TfrmImportarUsuarios
     Width = 944
     Height = 481
     Align = alClient
+    DataSource = dtsImportar
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
     ReadOnly = True
     TabOrder = 1
@@ -192,51 +193,143 @@ object frmImportarUsuarios: TfrmImportarUsuarios
     Columns = <
       item
         Expanded = False
-        FieldName = 'CODIGO'
-        Title.Caption = 'Login'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
+        FieldName = 'Usuario'
         Width = 200
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'NOME'
-        Title.Caption = 'E-mail'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
+        FieldName = 'Email'
         Width = 300
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'CIDADE'
-        Title.Caption = 'Password'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
+        FieldName = 'Password'
         Width = 200
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'ESTADO'
-        Title.Caption = 'Quota'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 60
+        FieldName = 'Quota'
+        Width = 100
         Visible = True
       end>
+  end
+  object OpenDialog: TOpenDialog
+    Filter = 'Excel|*.xlsx'
+    Left = 168
+    Top = 112
+  end
+  object cldsImportar: TClientDataSet
+    PersistDataPacket.Data = {
+      870000009619E0BD010000001800000004000000000003000000870005456D61
+      696C010049000000010005574944544802000200C8000850617373776F726401
+      0049000000010005574944544802000200C8000551756F746101004900000001
+      0005574944544802000200C800075573756172696F0100490000000100055749
+      44544802000200C8000000}
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'Email'
+        DataType = ftString
+        Size = 200
+      end
+      item
+        Name = 'Password'
+        DataType = ftString
+        Size = 200
+      end
+      item
+        Name = 'Quota'
+        DataType = ftString
+        Size = 200
+      end
+      item
+        Name = 'Usuario'
+        DataType = ftString
+        Size = 200
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 40
+    Top = 112
+    object cldsImportarEmail: TStringField
+      FieldName = 'Email'
+      Size = 200
+    end
+    object cldsImportarPassword: TStringField
+      FieldName = 'Password'
+      Size = 200
+    end
+    object cldsImportarQuota: TStringField
+      FieldName = 'Quota'
+      Size = 200
+    end
+    object cldsImportarUsuario: TStringField
+      FieldName = 'Usuario'
+      Size = 200
+    end
+  end
+  object dtsImportar: TDataSource
+    DataSet = cldsImportar
+    Left = 104
+    Top = 112
+  end
+  object qryIncluirUsuario: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    Transaction = TransactionIncluir
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'INSERT INTO USUARIOS (NOME, EMAIL, LOGIN, SENHA, ATIVO, ALUNO)'
+      
+        '              VALUES (:NOME, :EMAIL, :LOGIN, :SENHA, :ATIVO, :AL' +
+        'UNO);')
+    Left = 280
+    Top = 112
+    ParamData = <
+      item
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'EMAIL'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'LOGIN'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'SENHA'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'ATIVO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'ALUNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object TransactionIncluir: TFDTransaction
+    Connection = dtmMain.FDConnectionMain
+    Left = 280
+    Top = 169
   end
 end

@@ -36,7 +36,6 @@ object frmUsuarios: TfrmUsuarios
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 944
     object btnListar: TAdvGlowButton
       AlignWithMargins = True
       Left = 754
@@ -639,7 +638,6 @@ object frmUsuarios: TfrmUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitLeft = 932
       ExplicitTop = 4
     end
   end
@@ -653,7 +651,6 @@ object frmUsuarios: TfrmUsuarios
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
-    ExplicitWidth = 944
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
       object dbGrid: TDBGrid
@@ -825,8 +822,6 @@ object frmUsuarios: TfrmUsuarios
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitWidth = 936
         object Label1: TLabel
           Left = 25
           Top = 16
@@ -1136,7 +1131,6 @@ object frmUsuarios: TfrmUsuarios
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 936
         object Label10: TLabel
           Left = 27
           Top = 13
@@ -1285,6 +1279,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
@@ -1296,6 +1291,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
