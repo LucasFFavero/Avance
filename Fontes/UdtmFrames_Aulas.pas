@@ -33,6 +33,11 @@ type
     qryBuscaConteudoClicadoRESUMO_IMAGEM: TBlobField;
     qryBuscaExercicioClicado: TFDQuery;
     dtsBuscaExercicioClicado: TDataSource;
+    qryBuscaExerciciosQuestoes: TFDQuery;
+    dtsBuscaExerciciosQuestoes: TDataSource;
+    qryBuscaConteudoClicadoIMAGEM_1: TIntegerField;
+    qryBuscaConteudoClicadoVIDEO_1: TIntegerField;
+    qryBuscaConteudoClicadoAUDIO_1: TIntegerField;
     qryBuscaExercicioClicadoCODIGO: TIntegerField;
     qryBuscaExercicioClicadoCOD_AULA: TIntegerField;
     qryBuscaExercicioClicadoCOD_CONTEUDO: TIntegerField;
@@ -41,16 +46,13 @@ type
     qryBuscaExercicioClicadoIMAGEM: TBlobField;
     qryBuscaExercicioClicadoVIDEO: TBlobField;
     qryBuscaExercicioClicadoTITULO: TStringField;
-    qryBuscaExerciciosQuestoes: TFDQuery;
+    qryBuscaExercicioClicadoIMAGEM_1: TIntegerField;
+    qryBuscaExercicioClicadoVIDEO_1: TIntegerField;
     qryBuscaExerciciosQuestoesCODIGO: TIntegerField;
     qryBuscaExerciciosQuestoesCOD_AULAS_EXERCICIOS: TIntegerField;
     qryBuscaExerciciosQuestoesDESCRICAO: TStringField;
     qryBuscaExerciciosQuestoesIMAGEM: TBlobField;
     qryBuscaExerciciosQuestoesCORRETA: TSmallintField;
-    dtsBuscaExerciciosQuestoes: TDataSource;
-    qryBuscaConteudoClicadoIMAGEM_1: TIntegerField;
-    qryBuscaConteudoClicadoVIDEO_1: TIntegerField;
-    qryBuscaConteudoClicadoAUDIO_1: TIntegerField;
   private
     { Private declarations }
   public
