@@ -28,10 +28,10 @@ uses
   cxGridCustomTableView, cxGridDBLayoutView, cxClasses, cxGridCustomView,
   cxGridCustomLayoutView, cxGrid, Datasnap.DBClient, Vcl.StdCtrls, cxTextEdit,
   cxDBLookupComboBox, cxImageComboBox, Vcl.ExtCtrls, dxGDIPlusClasses,
-  Vcl.ComCtrls, dxDateRanges, cxCheckBox, cxDropDownEdit, cxCalendar,
+  Vcl.ComCtrls, cxCheckBox, cxDropDownEdit, cxCalendar,
   cxMaskEdit, cxGridTableView, cxGridDBTableView, cxHyperLinkEdit, cxProgressBar,
   cxGridCardView, System.ImageList, Vcl.ImgList, cxImageList, Vcl.Buttons,
-  AdvGlowButton, Vcl.OleCtrls, WMPLib_TLB;
+  AdvGlowButton, Vcl.OleCtrls, WMPLib_TLB, dxDateRanges;
 
 type
   TfrmFrames_Aulas = class(TForm)
@@ -207,23 +207,25 @@ type
     Panel1: TPanel;
     lblResumoVideoAudio: TLabel;
     pnlFundo: TPanel;
-    cxGrid1: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
     Panel3: TPanel;
-    lblDescricaoQuestao: TLabel;
+    lblTituloDaExercicios: TLabel;
     pnlVideoImagem: TPanel;
     pnlVideoExercicio: TPanel;
     WindowsMediaPlayer1: TWindowsMediaPlayer;
     pnlImagemExercicio: TPanel;
-    Image2: TImage;
-    cxGridDBTableView1IMAGEM: TcxGridDBColumn;
-    cxGridDBTableView1CORRETA: TcxGridDBColumn;
+    imgQuestoes: TImage;
+    pnlQuestoesFundo: TPanel;
     Panel4: TPanel;
-    lblTituloDaExercicios: TLabel;
-    cxGridDBTableView1Column1: TcxGridDBColumn;
+    lblTituloQuestao: TLabel;
     Panel5: TPanel;
     Button1: TButton;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    Button4: TButton;
+    cxImageAtivo: TcxImageList;
+    cxGridDBTableView1DESCRICAO: TcxGridDBColumn;
+    cxGridDBTableView1CORRETA: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -236,6 +238,7 @@ type
     procedure tbsAulasShow(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure cxGridDBTableView1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -290,6 +293,25 @@ begin
   cldsConteudo.SaveToFile('C:\AMD\XML_CONTEUDO.XML');
 end;
 
+procedure TfrmFrames_Aulas.cxGridDBTableView1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  AGridSite: TcxGridSite;
+  AGridView: TcxGridTableView;
+  AHitTest: TcxCustomGridHitTest;
+
+  ht: TcxCustomGridHitTest;
+  CheckBox: String;
+begin
+  AGridSite := Sender as TcxGridSite;
+  AGridView := AGridSite.GridView as TcxGridTableView;
+  AHitTest := AGridView.GetHitTest(X, Y);
+
+  AGridSite.Cursor := crDefault;
+
+  if (AHitTest is TcxGridRecordCellHitTest) and (((AHitTest as TcxGridRecordCellHitTest).Item = cxGridDBTableView1CORRETA)) then
+    AGridSite.Cursor := crHandPoint;
+end;
+
 procedure TfrmFrames_Aulas.cxgridDBTableViewCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 var
   strCaminho, Imagem_Audio_Video: String;
@@ -316,7 +338,7 @@ begin
       pnlConteudo_Video_Audio.Visible := false;
 
       // É Imagem
-      if dtmFrames_Aulas.qryBuscaConteudoClicadoIMAGEM_1.AsInteger = 1 then
+      if (dtmFrames_Aulas.qryBuscaConteudoClicadoIMAGEM_1.AsInteger = 1) then
       begin
         pnlConteudo_Imagem.Visible := True;
         pnlConteudo_Imagem.Align := alClient;
@@ -337,7 +359,7 @@ begin
         ImageConteudo.Picture.LoadFromFile(Imagem_Audio_Video);
         Application.ProcessMessages;
       end // É Vídeo
-      else if dtmFrames_Aulas.qryBuscaConteudoClicadoVIDEO_1.AsInteger = 1 then
+      else if (dtmFrames_Aulas.qryBuscaConteudoClicadoVIDEO_1.AsInteger = 1) then
       begin
         pnlConteudo_Video_Audio.Visible := True;
         pnlConteudo_Video_Audio.Align := alClient;
@@ -361,7 +383,7 @@ begin
         WindowsMediaPlayer.Controls.play;
         Application.ProcessMessages;
       end // É Áudio
-      else if dtmFrames_Aulas.qryBuscaConteudoClicadoAUDIO_1.AsInteger = 1 then
+      else if (dtmFrames_Aulas.qryBuscaConteudoClicadoAUDIO_1.AsInteger = 1) then
       begin
         pnlConteudo_Video_Audio.Visible := True;
         pnlConteudo_Video_Audio.Align := alClient;
@@ -391,11 +413,68 @@ begin
   end
   else
   begin
+    // Busca o Exercício
     dtmFrames_Aulas.qryBuscaExercicioClicado.Close;
     dtmFrames_Aulas.qryBuscaExercicioClicado.ParamByName('COD_EXERCICIO').AsInteger := cldsConteudoCOD_EXERCICIO.AsInteger;
     dtmFrames_Aulas.qryBuscaExercicioClicado.Open;
 
-    dtmFrames_Aulas.qryBuscaExercicioClicado.First;
+    lblTituloDaExercicios.Caption := dtmFrames_Aulas.qryBuscaExercicioClicadoDESCRICAO.AsString;
+
+    // Busca as Questões
+    dtmFrames_Aulas.qryBuscaExerciciosQuestoes.Close;
+    dtmFrames_Aulas.qryBuscaExerciciosQuestoes.ParamByName('COD_EXERCICIO').AsInteger := cldsConteudoCOD_EXERCICIO.AsInteger;
+    dtmFrames_Aulas.qryBuscaExerciciosQuestoes.Open;
+
+    dtmFrames_Aulas.qryBuscaExerciciosQuestoes.First;
+
+    lblTituloQuestao.Caption := dtmFrames_Aulas.qryBuscaExerciciosQuestoesDESCRICAO.AsString;
+
+    // É Imagem
+    if (dtmFrames_Aulas.qryBuscaExercicioClicadoIMAGEM_1.AsInteger = 1) then
+    begin
+      pnlImagemExercicio.Visible := True;
+      pnlImagemExercicio.Align := alClient;
+      pnlVideoExercicio.Visible := false;
+
+      strCaminho := ExtractFilePath(paramstr(0)) + 'Imagens\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+      if not DirectoryExists(strCaminho) then
+        ForceDirectories(strCaminho);
+
+      // Verifica onde vai gravar o arquivo e o nome dele.
+      Imagem_Audio_Video := strCaminho + '\IMAGEM_' + Copy(TimeToStr(Time), 1, 2) + Copy(TimeToStr(Time), 4, 2) + Copy(TimeToStr(Time), 7, 2) + '.jpg';
+
+      // Salva o arquivo do banco de dados para o micro com o nome acima (Imagem_Audio_Video)
+      dtmFrames_Aulas.qryBuscaExercicioClicadoIMAGEM.SaveToFile(Imagem_Audio_Video);
+
+      // Abre o arquivo no com a imagem
+      imgQuestoes.Picture.LoadFromFile(Imagem_Audio_Video);
+      Application.ProcessMessages;
+
+    end // É Vídeo
+    else if (dtmFrames_Aulas.qryBuscaExercicioClicadoVIDEO_1.AsInteger = 1) then
+    begin
+      pnlVideoExercicio.Visible := True;
+      pnlVideoExercicio.Align := alClient;
+      pnlImagemExercicio.Visible := false;
+
+      strCaminho := ExtractFilePath(paramstr(0)) + 'Videos\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
+      if not DirectoryExists(strCaminho) then
+        ForceDirectories(strCaminho);
+
+      lblResumoImagem.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString;
+
+      // Verifica onde vai gravar o arquivo e o nome dele.
+      Imagem_Audio_Video := strCaminho + '\VIDEO_' + Copy(TimeToStr(Time), 1, 2) + Copy(TimeToStr(Time), 4, 2) + Copy(TimeToStr(Time), 7, 2) + '.avi';
+
+      // Salva o arquivo do banco de dados para o micro com o nome acima (Imagem_Audio_Video)
+      dtmFrames_Aulas.qryBuscaConteudoClicadoVIDEO.SaveToFile(Imagem_Audio_Video);
+
+      // Abre o arquivo no com o vídeo
+      WindowsMediaPlayer.URL := Imagem_Audio_Video;
+      WindowsMediaPlayer.Controls.play;
+      Application.ProcessMessages;
+
+    end;
 
     tbsExercicios.Show;
     // end;
