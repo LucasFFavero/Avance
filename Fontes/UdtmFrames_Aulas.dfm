@@ -198,7 +198,17 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
   object qryBuscaExercicioClicado: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
-      'SELECT * from AULAS_EXERCICIOS'
+      'SELECT AULAS_EXERCICIOS.*,'
+      ' case'
+      '         when AULAS_EXERCICIOS.IMAGEM > 0 then 1'
+      '         else 0'
+      '       end as IMAGEM_1,'
+      ''
+      '       case'
+      '         when AULAS_EXERCICIOS.VIDEO > 0 then 1'
+      '         else 0'
+      '       end as VIDEO_1'
+      'from AULAS_EXERCICIOS'
       'WHERE AULAS_EXERCICIOS.CODIGO =:COD_EXERCICIO')
     Left = 160
     Top = 224
@@ -246,6 +256,20 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
       Origin = 'TITULO'
       Size = 200
     end
+    object qryBuscaExercicioClicadoIMAGEM_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'IMAGEM_1'
+      Origin = 'IMAGEM_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryBuscaExercicioClicadoVIDEO_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'VIDEO_1'
+      Origin = 'VIDEO_1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
   object dtsBuscaExercicioClicado: TDataSource
     DataSet = qryBuscaExercicioClicado
@@ -255,16 +279,16 @@ object dtmFrames_Aulas: TdtmFrames_Aulas
   object qryBuscaExerciciosQuestoes: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
-      'SELECT CODIGO, COD_AULAS_EXERCICIOS, DESCRICAO, IMAGEM, CORRETA'
+      'SELECT *'
       'FROM AULAS_EXERCICIOS_QUESTOES'
       
-        'WHERE AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS =:COD_AULAS' +
-        '_EXERCICIOS')
+        'WHERE AULAS_EXERCICIOS_QUESTOES.COD_AULAS_EXERCICIOS =:COD_EXERC' +
+        'ICIO')
     Left = 160
     Top = 304
     ParamData = <
       item
-        Name = 'COD_AULAS_EXERCICIOS'
+        Name = 'COD_EXERCICIO'
         DataType = ftInteger
         ParamType = ptInput
       end>
