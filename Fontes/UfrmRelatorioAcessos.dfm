@@ -3,7 +3,7 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   Top = 0
   Caption = 'frmRelatorioAcessos'
   ClientHeight = 641
-  ClientWidth = 1096
+  ClientWidth = 1094
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1096
+    Width = 1094
     Height = 100
     Align = alTop
     BevelOuter = bvNone
@@ -33,6 +33,7 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1096
     object gpbFiltros: TGroupBox
       Left = 5
       Top = 2
@@ -105,14 +106,12 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     object gpbOpcoes: TGroupBox
       Left = 765
       Top = 2
-      Width = 329
+      Width = 327
       Height = 96
       Align = alClient
       Caption = 'Op'#231#245'es'
       TabOrder = 1
-      ExplicitLeft = 703
-      ExplicitTop = -2
-      ExplicitWidth = 397
+      ExplicitWidth = 329
       object btnBuscar: TAdvGlowButton
         Left = 17
         Top = 37
@@ -197,7 +196,7 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
       end
       object btnImprimir: TAdvGlowButton
         Left = 129
-        Top = 37
+        Top = 36
         Width = 32
         Height = 32
         BorderStyle = bsNone
@@ -249,17 +248,17 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   object pnlAlunos: TPanel
     Left = 0
     Top = 100
-    Width = 1096
+    Width = 1094
     Height = 191
     Align = alClient
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 1
-    ExplicitHeight = 341
+    ExplicitWidth = 1096
     object dbgAlunos: TDBGrid
       Left = 10
       Top = 35
-      Width = 1086
+      Width = 1084
       Height = 156
       Align = alClient
       DataSource = dtmRelatorioAcessos.dtsAlunos
@@ -325,11 +324,12 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     object Panel6: TPanel
       Left = 10
       Top = 0
-      Width = 1086
+      Width = 1084
       Height = 35
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 1086
       object Label3: TLabel
         Left = 2
         Top = 8
@@ -348,16 +348,17 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   object pnlAcessos: TPanel
     Left = 0
     Top = 291
-    Width = 1096
+    Width = 1094
     Height = 350
     Align = alBottom
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 2
+    ExplicitWidth = 1096
     object DBGrid1: TDBGrid
       Left = 10
       Top = 35
-      Width = 1086
+      Width = 1084
       Height = 280
       Align = alClient
       DataSource = dtmRelatorioAcessos.dtsAcessos
@@ -402,11 +403,12 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     object Panel2: TPanel
       Left = 10
       Top = 0
-      Width = 1086
+      Width = 1084
       Height = 35
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 1086
       object Label2: TLabel
         Left = 2
         Top = 8
@@ -424,12 +426,12 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     object Panel1: TPanel
       Left = 10
       Top = 315
-      Width = 1086
+      Width = 1084
       Height = 35
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitTop = 8
+      ExplicitWidth = 1086
       object lblTempoAcesso: TLabel
         Left = 323
         Top = 9

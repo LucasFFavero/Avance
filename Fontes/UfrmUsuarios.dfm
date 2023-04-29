@@ -638,7 +638,6 @@ object frmUsuarios: TfrmUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitTop = 4
     end
   end
   object pgcDadosCadastrais: TPageControl
@@ -1279,7 +1278,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item
@@ -1291,7 +1289,6 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 64
             Visible = True
           end
           item
