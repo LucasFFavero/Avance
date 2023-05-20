@@ -22,7 +22,6 @@ type
     btnBuscar: TAdvGlowButton;
     btnLimpar: TAdvGlowButton;
     btnImprimir: TAdvGlowButton;
-    cbDetalhado: TCheckBox;
     pnlAlunos: TPanel;
     dbgAlunos: TDBGrid;
     Panel6: TPanel;
@@ -55,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain, UdtmRelatorios;
+uses UfrmMain, UdtmRelatorios, UrelDesempenhos;
 
 procedure TfrmRelatorios.btnBuscarClick(Sender: TObject);
 begin
@@ -148,24 +147,16 @@ begin
     Exit;
   end;
 
-  { relDesempenho := nil;
-    Application.CreateForm(TrelDesempenho, relDesempenho);
-
-    if (cbDetalhado.Checked = false) then
-    begin
-    relDesempenho.ChildBand2.Height := 0;
-    relDesempenho.QRSubDetail1.Height := 0;
-    relDesempenho.GroupFooterBand1.Height := 0;
-    end;
-
-    relDesempenho.qrDesempenho.Preview; }
+  relDesempenhos := nil;
+  Application.CreateForm(TrelDesempenhos, relDesempenhos);
+  relDesempenhos.qrDesempenhos.Preview;
 
   dtmRelatorios.qryAlunos.First;
 end;
 
 procedure TfrmRelatorios.btnLimparClick(Sender: TObject);
 begin
-  dtmRelatorios.cldsAcesso.EmptyDataSet;
+  dtmRelatorios.qryExercicios.Close;
   dtmRelatorios.qryAlunos.Close;
 end;
 

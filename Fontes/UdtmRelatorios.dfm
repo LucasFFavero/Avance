@@ -125,6 +125,7 @@ object dtmRelatorios: TdtmRelatorios
     Top = 112
   end
   object qryAlunos: TFDQuery
+    AfterScroll = qryAlunosAfterScroll
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
       
@@ -202,65 +203,58 @@ object dtmRelatorios: TdtmRelatorios
   end
   object dtsAlunos: TDataSource
     DataSet = qryAlunos
-    Left = 288
+    Left = 296
     Top = 16
   end
-  object qryAcessos: TFDQuery
+  object qryExercicios: TFDQuery
     Connection = dtmMain.FDConnectionMain
     SQL.Strings = (
       
-        'SELECT USUARIOS_ACESSOS.CODIGO, USUARIOS_ACESSOS.ENTRADA, USUARI' +
-        'OS_ACESSOS.SAIDA'
-      'FROM USUARIOS_ACESSOS'
-      'ORDER BY USUARIOS_ACESSOS.CODIGO  ')
-    Left = 224
-    Top = 112
-    object qryAcessosCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qryAcessosENTRADA: TSQLTimeStampField
-      FieldName = 'ENTRADA'
-      Origin = 'ENTRADA'
-    end
-    object qryAcessosSAIDA: TSQLTimeStampField
-      FieldName = 'SAIDA'
-      Origin = 'SAIDA'
-    end
-  end
-  object dtsAcessos: TDataSource
-    DataSet = cldsAcesso
-    Left = 288
-    Top = 64
-  end
-  object cldsAcesso: TClientDataSet
-    PersistDataPacket.Data = {
-      790000009619E0BD010000001800000004000000000003000000790006434F44
-      49474F040001000000000007454E545241444101004900000001000557494454
-      4802000200320005534149444101004900000001000557494454480200020032
-      000554454D504F01004900000001000557494454480200020032000000}
-    Active = True
-    Aggregates = <>
-    Params = <>
+        'SELECT AULAS.TITULO AS AULA, AULAS_CONTEUDOS.DESCRICAO AS CONTEU' +
+        'DO,'
+      
+        '       AULAS_EXERCICIOS.DESCRICAO AS EXERCICIO, USUARIOS_EXERCIC' +
+        'IOS.ACERTOU'
+      'FROM USUARIOS_EXERCICIOS'
+      
+        'INNER JOIN AULAS_EXERCICIOS ON (USUARIOS_EXERCICIOS.COD_AULAS_EX' +
+        'ERCICIOS = AULAS_EXERCICIOS.CODIGO)'
+      
+        'INNER JOIN AULAS_CONTEUDOS ON (AULAS_EXERCICIOS.COD_CONTEUDO = A' +
+        'ULAS_CONTEUDOS.CODIGO)'
+      'INNER JOIN AULAS ON (AULAS_CONTEUDOS.COD_AULA = AULAS.CODIGO)'
+      'WHERE USUARIOS_EXERCICIOS.COD_USUARIOS = :COD_USUARIO')
     Left = 224
     Top = 64
-    object cldsAcessoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      DisplayFormat = '0000#'
+    ParamData = <
+      item
+        Name = 'COD_USUARIO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryExerciciosAULA: TStringField
+      FieldName = 'AULA'
+      Origin = 'AULA'
+      Size = 200
     end
-    object cldsAcessoENTRADA: TStringField
-      FieldName = 'ENTRADA'
-      Size = 50
+    object qryExerciciosCONTEUDO: TStringField
+      FieldName = 'CONTEUDO'
+      Origin = 'CONTEUDO'
+      Size = 200
     end
-    object cldsAcessoSAIDA: TStringField
-      FieldName = 'SAIDA'
-      Size = 50
+    object qryExerciciosEXERCICIO: TStringField
+      FieldName = 'EXERCICIO'
+      Origin = 'EXERCICIO'
+      Size = 200
     end
-    object cldsAcessoTEMPO: TStringField
-      FieldName = 'TEMPO'
-      Size = 50
+    object qryExerciciosACERTOU: TSmallintField
+      FieldName = 'ACERTOU'
+      Origin = 'ACERTOU'
     end
+  end
+  object dtsExercicios: TDataSource
+    DataSet = qryExercicios
+    Left = 296
+    Top = 64
   end
 end

@@ -32,8 +32,6 @@ object frmRelatorios: TfrmRelatorios
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -132
-    ExplicitWidth = 1096
     object gpbFiltros: TGroupBox
       Left = 5
       Top = 2
@@ -111,7 +109,6 @@ object frmRelatorios: TfrmRelatorios
       Align = alClient
       Caption = 'Op'#231#245'es'
       TabOrder = 1
-      ExplicitWidth = 329
       object btnBuscar: TAdvGlowButton
         Left = 17
         Top = 37
@@ -235,14 +232,6 @@ object frmRelatorios: TfrmRelatorios
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
       end
-      object cbDetalhado: TCheckBox
-        Left = 185
-        Top = 44
-        Width = 70
-        Height = 17
-        Caption = 'Detalhado'
-        TabOrder = 3
-      end
     end
   end
   object pnlAlunos: TPanel
@@ -254,8 +243,6 @@ object frmRelatorios: TfrmRelatorios
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 1
-    ExplicitLeft = -132
-    ExplicitWidth = 1096
     object dbgAlunos: TDBGrid
       Left = 10
       Top = 35
@@ -330,7 +317,6 @@ object frmRelatorios: TfrmRelatorios
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1086
       object Label3: TLabel
         Left = 2
         Top = 8
@@ -355,15 +341,13 @@ object frmRelatorios: TfrmRelatorios
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 2
-    ExplicitLeft = -132
-    ExplicitTop = 191
-    ExplicitWidth = 1096
     object DBGrid1: TDBGrid
       Left = 10
       Top = 35
       Width = 1084
       Height = 315
       Align = alClient
+      DataSource = dtmRelatorios.dtsExercicios
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
       ReadOnly = True
       TabOrder = 0
@@ -372,6 +356,34 @@ object frmRelatorios: TfrmRelatorios
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'AULA'
+          Title.Caption = 'Aula'
+          Width = 300
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CONTEUDO'
+          Title.Caption = 'Conte'#250'do'
+          Width = 300
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EXERCICIO'
+          Title.Caption = 'Exerc'#237'cio'
+          Width = 300
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ACERTOU'
+          Title.Caption = 'Acertou'
+          Visible = True
+        end>
     end
     object Panel2: TPanel
       Left = 10
@@ -381,7 +393,6 @@ object frmRelatorios: TfrmRelatorios
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1086
       object Label2: TLabel
         Left = 2
         Top = 8

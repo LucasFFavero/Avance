@@ -1986,12 +1986,12 @@ object frmAulas: TfrmAulas
   end
   object OpenPicture: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg'
-    Left = 656
-    Top = 404
+    Left = 216
+    Top = 372
   end
   object imgDetail: TImageList
-    Left = 778
-    Top = 364
+    Left = 362
+    Top = 372
     Bitmap = {
       494C010105000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
@@ -2265,8 +2265,8 @@ object frmAulas: TfrmAulas
       000000000000}
   end
   object cxStyleRepository: TcxStyleRepository
-    Left = 382
-    Top = 236
+    Left = 134
+    Top = 372
     PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -2588,7 +2588,7 @@ object frmAulas: TfrmAulas
     Height = 28
     Width = 28
     FormatVersion = 1
-    DesignInfo = 27787968
+    DesignInfo = 24379680
     ImageInfo = <
       item
         Image.Data = {

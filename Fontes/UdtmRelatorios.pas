@@ -44,16 +44,13 @@ type
     qryAlunosDATA_INGRESSO: TSQLTimeStampField;
     qryAlunosULTIMO_ACESSO: TSQLTimeStampField;
     dtsAlunos: TDataSource;
-    qryAcessos: TFDQuery;
-    qryAcessosCODIGO: TIntegerField;
-    qryAcessosENTRADA: TSQLTimeStampField;
-    qryAcessosSAIDA: TSQLTimeStampField;
-    dtsAcessos: TDataSource;
-    cldsAcesso: TClientDataSet;
-    cldsAcessoCODIGO: TIntegerField;
-    cldsAcessoENTRADA: TStringField;
-    cldsAcessoSAIDA: TStringField;
-    cldsAcessoTEMPO: TStringField;
+    qryExercicios: TFDQuery;
+    dtsExercicios: TDataSource;
+    qryExerciciosAULA: TStringField;
+    qryExerciciosCONTEUDO: TStringField;
+    qryExerciciosEXERCICIO: TStringField;
+    qryExerciciosACERTOU: TSmallintField;
+    procedure qryAlunosAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -66,7 +63,13 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
+
+procedure TdtmRelatorios.qryAlunosAfterScroll(DataSet: TDataSet);
+begin
+  qryExercicios.Close;
+  qryExercicios.ParamByName('COD_USUARIO').Value := qryAlunosCODIGO.Value;
+  qryExercicios.Open;
+end;
 
 end.

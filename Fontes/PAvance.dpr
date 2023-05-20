@@ -34,7 +34,8 @@ uses
   UfrmRelatorioAcessos in 'UfrmRelatorioAcessos.pas' {frmRelatorioAcessos},
   UdtmRelatorioAcessos in 'UdtmRelatorioAcessos.pas' {dtmRelatorioAcessos: TDataModule},
   UrelAcessos in 'UrelAcessos.pas' {relAcessos},
-  UfrmImportarUsuarios in 'UfrmImportarUsuarios.pas' {frmImportarUsuarios};
+  UfrmImportarUsuarios in 'UfrmImportarUsuarios.pas' {frmImportarUsuarios},
+  UrelDesempenhos in 'UrelDesempenhos.pas' {relDesempenhos};
 
 {$R *.res}
 
