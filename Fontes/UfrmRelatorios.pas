@@ -6,7 +6,28 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, AdvGlowButton, Vcl.DBCtrls;
+  Vcl.Grids, Vcl.DBGrids, AdvGlowButton, Vcl.DBCtrls, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinsDefaultPainters, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
+  cxNavigator, dxDateRanges, cxDBData, cxTextEdit, cxImageComboBox, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
+  cxGridCustomView, cxGrid, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxDataControllerConditionalFormattingRulesManagerDialog,
+  System.ImageList, Vcl.ImgList, cxImageList;
 
 type
   TfrmRelatorios = class(TForm)
@@ -30,6 +51,57 @@ type
     DBGrid1: TDBGrid;
     Panel2: TPanel;
     Label2: TLabel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1CODIGO: TcxGridDBColumn;
+    cxGrid1DBTableView1NOME: TcxGridDBColumn;
+    cxGrid1DBTableView1ESCOLA: TcxGridDBColumn;
+    cxGrid1DBTableView1TURMA: TcxGridDBColumn;
+    cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
+    cxGrid1DBTableView1DATA_INGRESSO: TcxGridDBColumn;
+    cxGrid1DBTableView1ULTIMO_ACESSO: TcxGridDBColumn;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1AULA: TcxGridDBColumn;
+    cxGridDBTableView1CONTEUDO: TcxGridDBColumn;
+    cxGridDBTableView1EXERCICIO: TcxGridDBColumn;
+    cxGridDBTableView1ACERTOU: TcxGridDBColumn;
+    cxImageList1: TcxImageList;
+    cxStyleRepository: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    cxStyle5: TcxStyle;
+    cxStyle6: TcxStyle;
+    cxStyle7: TcxStyle;
+    cxStyle8: TcxStyle;
+    cxStyle9: TcxStyle;
+    cxStyle10: TcxStyle;
+    cxStyle11: TcxStyle;
+    cxStyle12: TcxStyle;
+    cxStyle13: TcxStyle;
+    cxStyle14: TcxStyle;
+    cxStyle15: TcxStyle;
+    cxStyle16: TcxStyle;
+    cxStyle17: TcxStyle;
+    cxStyle18: TcxStyle;
+    cxStyle19: TcxStyle;
+    cxStyle20: TcxStyle;
+    cxStyle21: TcxStyle;
+    cxStyle22: TcxStyle;
+    cxStyle23: TcxStyle;
+    cxStyle24: TcxStyle;
+    cxStyle25: TcxStyle;
+    cxStyle26: TcxStyle;
+    cxStyle27: TcxStyle;
+    cxStyle28: TcxStyle;
+    cxStyleAcessibilidade: TcxStyle;
+    CorFiltro: TcxStyle;
+    FilterRowText: TcxStyle;
+    FilterBox: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbcbEscolaEnter(Sender: TObject);
     procedure dbcbAlunosEnter(Sender: TObject);
