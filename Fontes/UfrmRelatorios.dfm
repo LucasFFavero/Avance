@@ -240,72 +240,6 @@ object frmRelatorios: TfrmRelatorios
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 1
-    object dbgAlunos: TDBGrid
-      Left = 10
-      Top = 35
-      Width = 1084
-      Height = 70
-      Align = alTop
-      DataSource = dtmRelatorios.dtsAlunos
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-      ReadOnly = True
-      TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'CODIGO'
-          Title.Caption = 'C'#243'digo'
-          Width = 60
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'NOME'
-          Title.Caption = 'Nome'
-          Width = 186
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'ESCOLA'
-          Title.Caption = 'Escola'
-          Width = 188
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'TURMA'
-          Title.Caption = 'Turma'
-          Width = 116
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'EMAIL'
-          Title.Caption = 'E-mail'
-          Width = 200
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DATA_INGRESSO'
-          Title.Caption = 'Data Ingresso'
-          Width = 135
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'ULTIMO_ACESSO'
-          Title.Caption = #218'ltimo acesso'
-          Width = 135
-          Visible = True
-        end>
-    end
     object Panel6: TPanel
       Left = 10
       Top = 0
@@ -313,7 +247,7 @@ object frmRelatorios: TfrmRelatorios
       Height = 35
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 1
+      TabOrder = 0
       object Label3: TLabel
         Left = 2
         Top = 8
@@ -330,17 +264,19 @@ object frmRelatorios: TfrmRelatorios
     end
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 105
+      Top = 35
       Width = 1084
-      Height = 108
+      Height = 178
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
-      TabOrder = 2
+      TabOrder = 1
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = True
       LookAndFeel.ScrollbarMode = sbmHybrid
+      ExplicitTop = 105
+      ExplicitHeight = 108
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataModeController.GridModeBufferCount = 250
@@ -443,50 +379,6 @@ object frmRelatorios: TfrmRelatorios
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 2
-    object DBGrid1: TDBGrid
-      Left = 10
-      Top = 35
-      Width = 1084
-      Height = 110
-      Align = alTop
-      DataSource = dtmRelatorios.dtsExercicios
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-      ReadOnly = True
-      TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'AULA'
-          Title.Caption = 'Aula'
-          Width = 300
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'CONTEUDO'
-          Title.Caption = 'Conte'#250'do'
-          Width = 300
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'EXERCICIO'
-          Title.Caption = 'Exerc'#237'cio'
-          Width = 300
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'ACERTOU'
-          Title.Caption = 'Acertou'
-          Visible = True
-        end>
-    end
     object Panel2: TPanel
       Left = 10
       Top = 0
@@ -494,7 +386,7 @@ object frmRelatorios: TfrmRelatorios
       Height = 35
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 1
+      TabOrder = 0
       object Label2: TLabel
         Left = 2
         Top = 8
@@ -511,17 +403,19 @@ object frmRelatorios: TfrmRelatorios
     end
     object cxGrid2: TcxGrid
       Left = 10
-      Top = 145
+      Top = 35
       Width = 1084
-      Height = 205
+      Height = 315
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
-      TabOrder = 2
+      TabOrder = 1
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = True
       LookAndFeel.ScrollbarMode = sbmHybrid
+      ExplicitTop = 145
+      ExplicitHeight = 205
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataModeController.GridModeBufferCount = 250
@@ -530,10 +424,10 @@ object frmRelatorios: TfrmRelatorios
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
         OptionsSelection.CellSelect = False
-        OptionsView.DataRowHeight = 31
+        OptionsView.DataRowHeight = 40
         OptionsView.GridLineColor = 15980971
         OptionsView.GroupByBox = False
-        OptionsView.GroupRowHeight = 30
+        OptionsView.GroupRowHeight = 40
         OptionsView.HeaderHeight = 30
         OptionsView.Indicator = True
         OptionsView.RowSeparatorColor = 16445404
