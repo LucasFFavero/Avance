@@ -73,7 +73,6 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitTop = 4
     end
     object btnBuscar: TAdvGlowButton
       AlignWithMargins = True
@@ -117,8 +116,6 @@ object frmImportarUsuarios: TfrmImportarUsuarios
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitLeft = 5
-      ExplicitTop = 4
     end
     object btnCancelar: TAdvGlowButton
       AlignWithMargins = True
@@ -331,5 +328,39 @@ object frmImportarUsuarios: TfrmImportarUsuarios
     Connection = dtmMain.FDConnectionMain
     Left = 280
     Top = 169
+  end
+  object qryBuscaUsuario: TFDQuery
+    Connection = dtmMain.FDConnectionMain
+    FetchOptions.AssignedValues = [evMode, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.CursorKind = ckDefault
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_ESCOLA_ID'
+    UpdateOptions.KeyFields = 'CODIGO'
+    UpdateOptions.AutoIncFields = 'CODIGO'
+    SQL.Strings = (
+      'SELECT USUARIOS.CODIGO, USUARIOS.NOME'
+      'FROM USUARIOS'
+      'WHERE USUARIOS.NOME =:NOME')
+    Left = 368
+    Top = 112
+    ParamData = <
+      item
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 200
+      end>
+    object qryBuscaUsuarioCODIGO: TFDAutoIncField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
+    end
+    object qryBuscaUsuarioNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 200
+    end
   end
 end

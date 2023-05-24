@@ -29,6 +29,9 @@ type
     dtsImportar: TDataSource;
     qryIncluirUsuario: TFDQuery;
     TransactionIncluir: TFDTransaction;
+    qryBuscaUsuario: TFDQuery;
+    qryBuscaUsuarioCODIGO: TFDAutoIncField;
+    qryBuscaUsuarioNOME: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
@@ -46,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain;
+uses UfrmMain, UfrmUsuarios;
 
 procedure TfrmImportarUsuarios.btnBuscarClick(Sender: TObject);
 var
@@ -80,7 +83,7 @@ begin
 
         cldsImportar.Append;
         cldsImportarUsuario.AsString :=
-          Copy(Dados[i, 1], 1, Pos('@', Dados[i, 1]) - 1);
+          UpperCase(Copy(Dados[i, 1], 1, Pos('@', Dados[i, 1]) - 1));
         cldsImportarEmail.AsString := Dados[i, 1];
         cldsImportarPassword.AsString := Dados[i, 2];
         cldsImportarQuota.AsString := Dados[i, 3];
@@ -106,6 +109,8 @@ begin
 end;
 
 procedure TfrmImportarUsuarios.btnSalvarClick(Sender: TObject);
+var
+  IntUsuariosImportados: Integer;
 begin
   try
     if TransactionIncluir.Active then
@@ -113,21 +118,33 @@ begin
     if not TransactionIncluir.Active then
       TransactionIncluir.StartTransaction;
 
+    IntUsuariosImportados := 0;
+
     cldsImportar.First;
     while not cldsImportar.eof do
     begin
-      qryIncluirUsuario.Close;
-      qryIncluirUsuario.ParamByName('NOME').AsString :=
+      qryBuscaUsuario.Close;
+      qryBuscaUsuario.ParamByName('NOME').AsString :=
         cldsImportarUsuario.AsString;
-      qryIncluirUsuario.ParamByName('EMAIL').AsString :=
-        cldsImportarEmail.AsString;
-      qryIncluirUsuario.ParamByName('LOGIN').AsString :=
-        cldsImportarUsuario.AsString;
-      qryIncluirUsuario.ParamByName('SENHA').AsString :=
-        cldsImportarPassword.AsString;
-      qryIncluirUsuario.ParamByName('ATIVO').AsInteger := 1;
-      qryIncluirUsuario.ParamByName('ALUNO').AsInteger := 1;
-      qryIncluirUsuario.ExecSQL;
+      qryBuscaUsuario.Open;
+
+      if qryBuscaUsuario.IsEmpty then
+      begin
+        qryIncluirUsuario.Close;
+        qryIncluirUsuario.ParamByName('NOME').AsString :=
+          cldsImportarUsuario.AsString;
+        qryIncluirUsuario.ParamByName('EMAIL').AsString :=
+          cldsImportarEmail.AsString;
+        qryIncluirUsuario.ParamByName('LOGIN').AsString :=
+          cldsImportarUsuario.AsString;
+        qryIncluirUsuario.ParamByName('SENHA').AsString :=
+          cldsImportarPassword.AsString;
+        qryIncluirUsuario.ParamByName('ATIVO').AsInteger := 1;
+        qryIncluirUsuario.ParamByName('ALUNO').AsInteger := 1;
+        qryIncluirUsuario.ExecSQL;
+
+        IntUsuariosImportados := IntUsuariosImportados + 1;
+      end;
 
       cldsImportar.Next;
     end;
@@ -142,9 +159,22 @@ begin
     Exit;
   end;
 
-  Application.MessageBox('Usuário(s) importado(s) com sucesso.',
-    pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20)
-    ), 0 + 64 + 0);
+  if (IntUsuariosImportados > 0) then
+  begin
+    if (frmUsuarios <> nil) then
+      frmUsuarios.btnBuscarClick(self);
+
+    Application.MessageBox(pchar(InttoStr(IntUsuariosImportados) +
+      ' usuário(s) importado(s) com sucesso.'),
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 64 + 0);
+  end
+  else
+  begin
+    Application.MessageBox('Nenhum usuário novo foi importado.',
+      pchar('Atenção - Usuário ' + Copy(frmMain.sbPrincipal.Panels[2].Text, 9,
+      20)), 0 + 48 + 0);
+  end;
 
   cldsImportar.EmptyDataSet;
   Close;

@@ -125,13 +125,14 @@ begin
   if not dtmUsuarios.Transaction.Active then
     dtmUsuarios.Transaction.StartTransaction;
 
-  if not dtmUsuarios.qryUsuarios.Active then
-    dtmUsuarios.qryUsuarios.Open;
+  dtmUsuarios.qryUsuarios.Close;
+  dtmUsuarios.qryUsuarios.Open;
 
-  if not dtmUsuarios.qryEscolas.Active then
-    dtmUsuarios.qryEscolas.Open;
-  if not dtmUsuarios.qryTurmas.Active then
-    dtmUsuarios.qryTurmas.Open;
+  dtmUsuarios.qryEscolas.Close;
+  dtmUsuarios.qryEscolas.Open;
+
+  dtmUsuarios.qryTurmas.Close;
+  dtmUsuarios.qryTurmas.Open;
 end;
 
 procedure TfrmUsuarios.btnCancelarClick(Sender: TObject);
