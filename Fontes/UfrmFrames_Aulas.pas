@@ -188,7 +188,7 @@ type
     cxGridDBTableView: TcxGridDBTableView;
     cxgridDBTableViewGAUGE: TcxGridDBColumn;
     cxgridDBTableViewDESCRICAO_AGRUPADA: TcxGridDBColumn;
-    cxgridDBTableViewColumn1: TcxGridDBColumn;
+    cxgridDBTableViewImagem: TcxGridDBColumn;
     cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn;
     cxgridDBTableViewCod_Conteudo: TcxGridDBColumn;
     cxgridDBTableViewDESCRICAO_EXERCICIO: TcxGridDBColumn;
@@ -222,10 +222,11 @@ type
     cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    Button4: TButton;
     cxImageAtivo: TcxImageList;
     cxGridDBTableView1DESCRICAO: TcxGridDBColumn;
     cxGridDBTableView1CORRETA: TcxGridDBColumn;
+    Button5: TButton;
+    TimerVideoAudioConteudo: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -239,10 +240,15 @@ type
     procedure btnVoltarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cxGridDBTableView1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure Button5Click(Sender: TObject);
+    procedure cxgridDBTableViewCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure TimerVideoAudioConteudoTimer(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    Cronometro: Integer;
+    Caption: String;
   end;
 
 var
@@ -254,13 +260,33 @@ implementation
 
 uses UfrmMain, UdtmFrames_Aulas;
 
+Procedure SleepNoFreeze(PtimeOut: Integer);
+var
+  LIni: Cardinal;
+  Lpass: Integer;
+Begin
+  LIni := GetTickCount;
+  Lpass := 0;
+  Application.ProcessMessages;
+  Repeat
+    inc(Lpass);
+    Sleep(1);
+    if (Lpass > 10) then
+    Begin
+      Lpass := 0;
+      Application.ProcessMessages;
+    end;
+  Until (GetTickCount - LIni) >= Cardinal(PtimeOut);
+End;
+
 procedure TfrmFrames_Aulas.btnVoltarClick(Sender: TObject);
 begin
   WindowsMediaPlayer.Controls.Stop;
+  TimerVideoAudioConteudo.Enabled := False;
 
-  if pnlGrid.Visible = false then
+  if pnlGrid.Visible = False then
   begin
-    pnlCONTEUDO.Visible := false;
+    pnlCONTEUDO.Visible := False;
     pnlGrid.Visible := True;
     Exit;
   end;
@@ -293,6 +319,11 @@ begin
   cldsConteudo.SaveToFile('C:\AMD\XML_CONTEUDO.XML');
 end;
 
+procedure TfrmFrames_Aulas.Button5Click(Sender: TObject);
+begin
+  lblResumoVideoAudio.Caption := lblResumoVideoAudio.Caption + ' | Tempo do vídeo: ' + WindowsMediaPlayer.Controls.currentPositionString + ' de ' + WindowsMediaPlayer.currentMedia.durationString;
+end;
+
 procedure TfrmFrames_Aulas.cxGridDBTableView1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 var
   AGridSite: TcxGridSite;
@@ -320,6 +351,12 @@ begin
   // if (cxGridDBTableView.Columns[cxgridDBTableViewDESCRICAO_CONTEUDO.Index].Focused = True) then
   // begin
 
+  if (cxGridDBTableView.Columns[cxgridDBTableViewGAUGE.Index].Focused = True) then
+    Exit;
+
+  if (cxGridDBTableView.Columns[cxgridDBTableViewImagem.Index].Focused = True) then
+    Exit;
+
   if cldsConteudoConteudo_Exercicio.AsString = 'Conteudo' then
   begin
     dtmFrames_Aulas.qryBuscaConteudoClicado.Close;
@@ -329,13 +366,13 @@ begin
     /// SEGUE AQUI
     if not dtmFrames_Aulas.qryBuscaConteudoClicado.IsEmpty then
     begin
-      pnlGrid.Visible := false;
+      pnlGrid.Visible := False;
       pnlCONTEUDO.Align := alClient;
       pnlCONTEUDO.Visible := True;
       Application.ProcessMessages;
 
-      pnlConteudo_Imagem.Visible := false;
-      pnlConteudo_Video_Audio.Visible := false;
+      pnlConteudo_Imagem.Visible := False;
+      pnlConteudo_Video_Audio.Visible := False;
 
       // É Imagem
       if (dtmFrames_Aulas.qryBuscaConteudoClicadoIMAGEM_1.AsInteger = 1) then
@@ -380,8 +417,15 @@ begin
 
         // Abre o arquivo no com o vídeo
         WindowsMediaPlayer.URL := Imagem_Audio_Video;
-        WindowsMediaPlayer.Controls.play;
-        Application.ProcessMessages;
+        WindowsMediaPlayer.Enabled := False;
+
+        Caption := '';
+        Cronometro := 0;
+        TimerVideoAudioConteudo.Enabled := True;
+        SleepNoFreeze(1000);
+
+        lblResumoVideoAudio.Caption := dtmFrames_Aulas.qryBuscaConteudoClicadoRESUMO.AsString + ' | Tempo do vídeo: ' + WindowsMediaPlayer.currentMedia.durationString;
+
       end // É Áudio
       else if (dtmFrames_Aulas.qryBuscaConteudoClicadoAUDIO_1.AsInteger = 1) then
       begin
@@ -434,7 +478,7 @@ begin
     begin
       pnlImagemExercicio.Visible := True;
       pnlImagemExercicio.Align := alClient;
-      pnlVideoExercicio.Visible := false;
+      pnlVideoExercicio.Visible := False;
 
       strCaminho := ExtractFilePath(paramstr(0)) + 'Imagens\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
       if not DirectoryExists(strCaminho) then
@@ -455,7 +499,7 @@ begin
     begin
       pnlVideoExercicio.Visible := True;
       pnlVideoExercicio.Align := alClient;
-      pnlImagemExercicio.Visible := false;
+      pnlImagemExercicio.Visible := False;
 
       strCaminho := ExtractFilePath(paramstr(0)) + 'Videos\' + Trim(Copy(frmMain.sbPrincipal.Panels[2].Text, 9, 20));
       if not DirectoryExists(strCaminho) then
@@ -479,6 +523,22 @@ begin
     tbsExercicios.Show;
     // end;
   end;
+end;
+
+procedure TfrmFrames_Aulas.cxgridDBTableViewCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+  if AViewInfo.GridRecord.Selected then
+    // ACanvas.Brush.Color := $00FFF9F2;
+    ACanvas.Brush.Color := $00FFE0BB;
+
+  // Cor da célula focada
+  if AViewInfo.Selected then
+  begin
+    ACanvas.Brush.Color := $00FFE0BB;
+    ACanvas.Font.Color := $004E4E4E;
+    ACanvas.Font.Style := ACanvas.Font.Style + [fsBold];
+  end;
+
 end;
 
 procedure TfrmFrames_Aulas.cxgridDBTableViewMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -521,9 +581,9 @@ begin
 
     WindowsMediaPlayer.Controls.Stop;
 
-    if pnlGrid.Visible = false then
+    if pnlGrid.Visible = False then
     begin
-      pnlCONTEUDO.Visible := false;
+      pnlCONTEUDO.Visible := False;
       pnlGrid.Visible := True;
       Exit;
     end;
@@ -562,16 +622,16 @@ begin
   if not DirectoryExists(strCaminho) then
     ForceDirectories(strCaminho);
 
-  tbsAulas.TabVisible := false;
-  tbsConteudo.TabVisible := false;
-  tbsExercicios.TabVisible := false;
+  tbsAulas.TabVisible := False;
+  tbsConteudo.TabVisible := False;
+  tbsExercicios.TabVisible := False;
 
-  cxgridDBTableViewCod_Conteudo.Visible := false;
-  cxgridDBTableViewDESCRICAO_EXERCICIO.Visible := false;
-  cxgridDBTableViewCOD_AULA.Visible := false;
-  cxgridDBTableViewCOD_EXERCICIO.Visible := false;
-  cxGridDBTableView.OptionsView.Header := false;
-  cxGridDBTableView.OptionsView.GroupByBox := false;
+  cxgridDBTableViewCod_Conteudo.Visible := False;
+  cxgridDBTableViewDESCRICAO_EXERCICIO.Visible := False;
+  cxgridDBTableViewCOD_AULA.Visible := False;
+  cxgridDBTableViewCOD_EXERCICIO.Visible := False;
+  cxGridDBTableView.OptionsView.Header := False;
+  cxGridDBTableView.OptionsView.GroupByBox := False;
 
   dtmFrames_Aulas.qryBuscaAulas.Close;
   dtmFrames_Aulas.qryBuscaAulas.ParamByName('COD_TURMA').AsInteger := frmMain.IntAnoClicado;
@@ -676,13 +736,33 @@ end;
 
 procedure TfrmFrames_Aulas.tbsAulasShow(Sender: TObject);
 begin
-  btnVoltar.Visible := false;
+  btnVoltar.Visible := False;
   Application.ProcessMessages;
 end;
 
 procedure TfrmFrames_Aulas.tbsConteudoShow(Sender: TObject);
 begin
   btnVoltar.Visible := True;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmFrames_Aulas.TimerVideoAudioConteudoTimer(Sender: TObject);
+var
+  Duracao: Double;
+  Duracao1: Double;
+begin
+  if (Caption = '') then
+    Caption := lblResumoVideoAudio.Caption;
+
+  inc(Cronometro, 1);
+
+  Duracao := Round(WindowsMediaPlayer.currentMedia.duration);
+
+  if (Cronometro >= Duracao) then
+  begin
+    TimerVideoAudioConteudo.Enabled := False;
+    showMessage('Cronometro finalizado');
+  end;
   Application.ProcessMessages;
 end;
 
