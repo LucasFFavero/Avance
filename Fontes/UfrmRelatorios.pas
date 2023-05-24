@@ -44,11 +44,9 @@ type
     btnLimpar: TAdvGlowButton;
     btnImprimir: TAdvGlowButton;
     pnlAlunos: TPanel;
-    dbgAlunos: TDBGrid;
     Panel6: TPanel;
     Label3: TLabel;
     pnlAcessos: TPanel;
-    DBGrid1: TDBGrid;
     Panel2: TPanel;
     Label2: TLabel;
     cxGrid1: TcxGrid;
