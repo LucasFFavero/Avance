@@ -280,13 +280,14 @@ object frmFrames_Aulas: TfrmFrames_Aulas
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
     end
-    object Button4: TButton
-      Left = 102
-      Top = 12
+    object Button5: TButton
+      Left = 1000
+      Top = 17
       Width = 75
       Height = 25
-      Caption = 'Salvar Aulas'
+      Caption = 'Tempo Video'
       TabOrder = 3
+      OnClick = Button5Click
     end
   end
   object PageControl1: TPageControl
@@ -294,7 +295,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     Top = 48
     Width = 1376
     Height = 797
-    ActivePage = tbsAulas
+    ActivePage = tbsConteudo
     Align = alClient
     TabHeight = 20
     TabOrder = 1
@@ -597,6 +598,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
             OnCellClick = cxgridDBTableViewCellClick
+            OnCustomDrawCell = cxgridDBTableViewCustomDrawCell
             DataController.DataModeController.GridMode = True
             DataController.DataModeController.GridModeBufferCount = 250
             DataController.DataSource = dtsConteudo
@@ -634,7 +636,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             OptionsCustomize.ColumnSorting = False
             OptionsCustomize.ColumnsQuickCustomizationShowCommands = False
             OptionsData.Deleting = False
-            OptionsSelection.CellSelect = False
             OptionsSelection.HideFocusRectOnExit = False
             OptionsSelection.InvertSelect = False
             OptionsView.DataRowHeight = 55
@@ -670,7 +671,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               MinWidth = 120
               Options.Editing = False
               Options.Filtering = False
-              Options.Focusing = False
               Options.HorzSizing = False
               Options.Moving = False
               Options.ShowCaption = False
@@ -690,7 +690,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               Width = 150
               IsCaptionAssigned = True
             end
-            object cxgridDBTableViewColumn1: TcxGridDBColumn
+            object cxgridDBTableViewImagem: TcxGridDBColumn
               DataBinding.FieldName = 'Conteudo_Exercicio'
               PropertiesClassName = 'TcxImageComboBoxProperties'
               Properties.Images = cxImageList1
@@ -709,7 +709,6 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               MinWidth = 115
               Options.Editing = False
               Options.Filtering = False
-              Options.Focusing = False
               Options.Grouping = False
               Options.HorzSizing = False
               Options.Moving = False
@@ -722,7 +721,10 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             object cxgridDBTableViewDESCRICAO_CONTEUDO: TcxGridDBColumn
               Caption = 'Conte'#250'do'
               DataBinding.FieldName = 'DESCRICAO_CONTEUDO'
-              PropertiesClassName = 'TcxTextEditProperties'
+              PropertiesClassName = 'TcxHyperLinkEditProperties'
+              Properties.LinkColor = 5131854
+              Properties.ReadOnly = True
+              Properties.SingleClick = True
               MinWidth = 450
               Options.Editing = False
               Options.Filtering = False
@@ -783,8 +785,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
         object lblAula: TLabel
           Left = 0
           Top = 8
-          Width = 66
-          Height = 23
+          Width = 1368
+          Height = 33
           Align = alClient
           Alignment = taCenter
           Caption = 'lblAula'
@@ -797,6 +799,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           ParentColor = False
           ParentFont = False
           StyleElements = []
+          ExplicitWidth = 66
+          ExplicitHeight = 23
         end
       end
       object pnlCONTEUDO: TPanel
@@ -841,8 +845,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             object lblResumoImagem: TLabel
               Left = 0
               Top = 8
-              Width = 180
-              Height = 23
+              Width = 1368
+              Height = 33
               Align = alClient
               Alignment = taCenter
               Caption = 'lblResumoImagem'
@@ -855,6 +859,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               ParentColor = False
               ParentFont = False
               StyleElements = []
+              ExplicitWidth = 180
+              ExplicitHeight = 23
             end
           end
           object pnlImage: TPanel
@@ -948,8 +954,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
             object lblResumoVideoAudio: TLabel
               Left = 0
               Top = 8
-              Width = 210
-              Height = 23
+              Width = 1368
+              Height = 33
               Align = alClient
               Alignment = taCenter
               Caption = 'lblResumoVideoAudio'
@@ -962,6 +968,8 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               ParentColor = False
               ParentFont = False
               StyleElements = []
+              ExplicitWidth = 210
+              ExplicitHeight = 23
             end
           end
         end
@@ -2878,5 +2886,11 @@ object frmFrames_Aulas: TfrmFrames_Aulas
           3C32842902D0434A4D6426F981FCFE3F6AFD1EF0FFAFC7FF093000FECF57DF1E
           5ABAE30000000049454E44AE426082}
       end>
+  end
+  object TimerVideoAudioConteudo: TTimer
+    Enabled = False
+    OnTimer = TimerVideoAudioConteudoTimer
+    Left = 404
+    Top = 331
   end
 end
