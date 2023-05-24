@@ -295,7 +295,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
     Top = 48
     Width = 1376
     Height = 797
-    ActivePage = tbsConteudo
+    ActivePage = tbsAulas
     Align = alClient
     TabHeight = 20
     TabOrder = 1
@@ -1169,6 +1169,7 @@ object frmFrames_Aulas: TfrmFrames_Aulas
               Height = 25
               Caption = 'Verificar - Salvar o resultado do exercicio'
               TabOrder = 0
+              Visible = False
               OnClick = Button1Click
             end
           end
