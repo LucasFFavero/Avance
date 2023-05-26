@@ -282,6 +282,8 @@ end;
 
 procedure TfrmRelatorios.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  btnLimparClick(self);
+
   Action := cafree;
   frmRelatorios := nil;
 end;

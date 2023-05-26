@@ -11,10 +11,12 @@ object frmImportarUsuarios: TfrmImportarUsuarios
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
+  KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel

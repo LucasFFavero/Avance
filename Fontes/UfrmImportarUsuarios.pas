@@ -36,6 +36,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -185,6 +186,20 @@ procedure TfrmImportarUsuarios.FormClose(Sender: TObject;
 begin
   Action := cafree;
   frmImportarUsuarios := nil;
+end;
+
+procedure TfrmImportarUsuarios.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  // Usar "ENTER" como "TAB", pular de campo com enter
+  if (Key = #13) then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
+
+  // Fechar form usando "ESC"
+  if (Key = #27) then
+    Close;
 end;
 
 end.

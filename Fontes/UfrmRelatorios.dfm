@@ -2,7 +2,7 @@ object frmRelatorios: TfrmRelatorios
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rios'
-  ClientHeight = 663
+  ClientHeight = 561
   ClientWidth = 1094
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object frmRelatorios: TfrmRelatorios
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
+  KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -109,6 +110,8 @@ object frmRelatorios: TfrmRelatorios
       Align = alClient
       Caption = 'Op'#231#245'es'
       TabOrder = 1
+      ExplicitLeft = 767
+      ExplicitTop = -2
       object btnBuscar: TAdvGlowButton
         Left = 17
         Top = 37
@@ -121,6 +124,7 @@ object frmRelatorios: TfrmRelatorios
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ImageIndex = 0
+        Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
         NotesFont.Color = clWindowText
         NotesFont.Height = -11
@@ -161,6 +165,7 @@ object frmRelatorios: TfrmRelatorios
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ImageIndex = 2
+        Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
         NotesFont.Color = clWindowText
         NotesFont.Height = -11
@@ -201,6 +206,7 @@ object frmRelatorios: TfrmRelatorios
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ImageIndex = 1
+        Images = frmMain.cxImageList2
         NotesFont.Charset = DEFAULT_CHARSET
         NotesFont.Color = clWindowText
         NotesFont.Height = -11
@@ -235,11 +241,12 @@ object frmRelatorios: TfrmRelatorios
     Left = 0
     Top = 100
     Width = 1094
-    Height = 213
-    Align = alClient
+    Height = 181
+    Align = alTop
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 1
+    ExplicitHeight = 213
     object Panel6: TPanel
       Left = 10
       Top = 0
@@ -266,7 +273,7 @@ object frmRelatorios: TfrmRelatorios
       Left = 10
       Top = 35
       Width = 1084
-      Height = 178
+      Height = 146
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -275,8 +282,7 @@ object frmRelatorios: TfrmRelatorios
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = True
       LookAndFeel.ScrollbarMode = sbmHybrid
-      ExplicitTop = 105
-      ExplicitHeight = 108
+      ExplicitTop = 37
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataModeController.GridModeBufferCount = 250
@@ -322,7 +328,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Filtering = False
           Options.Grouping = False
           Options.Sorting = False
-          Width = 185
+          Width = 178
         end
         object cxGrid1DBTableView1TURMA: TcxGridDBColumn
           Caption = 'Turma'
@@ -332,7 +338,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Filtering = False
           Options.Grouping = False
           Options.Sorting = False
-          Width = 118
+          Width = 112
         end
         object cxGrid1DBTableView1EMAIL: TcxGridDBColumn
           Caption = 'E-mail'
@@ -342,7 +348,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Filtering = False
           Options.Grouping = False
           Options.Sorting = False
-          Width = 204
+          Width = 184
         end
         object cxGrid1DBTableView1DATA_INGRESSO: TcxGridDBColumn
           Caption = 'Data acesso'
@@ -362,7 +368,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Filtering = False
           Options.Grouping = False
           Options.Sorting = False
-          Width = 131
+          Width = 157
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -372,10 +378,10 @@ object frmRelatorios: TfrmRelatorios
   end
   object pnlAcessos: TPanel
     Left = 0
-    Top = 313
+    Top = 281
     Width = 1094
-    Height = 350
-    Align = alBottom
+    Height = 280
+    Align = alClient
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 2
@@ -405,7 +411,7 @@ object frmRelatorios: TfrmRelatorios
       Left = 10
       Top = 35
       Width = 1084
-      Height = 315
+      Height = 245
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -414,8 +420,7 @@ object frmRelatorios: TfrmRelatorios
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = True
       LookAndFeel.ScrollbarMode = sbmHybrid
-      ExplicitTop = 145
-      ExplicitHeight = 205
+      ExplicitTop = 30
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataModeController.GridModeBufferCount = 250
@@ -441,7 +446,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Editing = False
           Options.Filtering = False
           Options.Grouping = False
-          Width = 302
+          Width = 288
         end
         object cxGridDBTableView1CONTEUDO: TcxGridDBColumn
           Caption = 'Conte'#250'do'
@@ -450,7 +455,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Editing = False
           Options.Filtering = False
           Options.Grouping = False
-          Width = 305
+          Width = 285
         end
         object cxGridDBTableView1EXERCICIO: TcxGridDBColumn
           Caption = 'Exercic'#237'o'
@@ -459,7 +464,7 @@ object frmRelatorios: TfrmRelatorios
           Options.Editing = False
           Options.Filtering = False
           Options.Grouping = False
-          Width = 293
+          Width = 342
         end
         object cxGridDBTableView1ACERTOU: TcxGridDBColumn
           Caption = 'Acertou'
@@ -499,7 +504,7 @@ object frmRelatorios: TfrmRelatorios
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 25755832
+    DesignInfo = 23134248
     ImageInfo = <
       item
         Image.Data = {
@@ -769,8 +774,8 @@ object frmRelatorios: TfrmRelatorios
       end>
   end
   object cxStyleRepository: TcxStyleRepository
-    Left = 246
-    Top = 396
+    Left = 126
+    Top = 353
     PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]

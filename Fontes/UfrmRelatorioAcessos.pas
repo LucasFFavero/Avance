@@ -219,6 +219,8 @@ end;
 procedure TfrmRelatorioAcessos.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+  btnLimparClick(self);
+
   Action := cafree;
   frmRelatorioAcessos := nil;
 end;

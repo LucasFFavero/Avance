@@ -2,7 +2,7 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   Left = 0
   Top = 0
   Caption = 'frmRelatorioAcessos'
-  ClientHeight = 641
+  ClientHeight = 561
   ClientWidth = 1094
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -33,7 +33,6 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1096
     object gpbFiltros: TGroupBox
       Left = 5
       Top = 2
@@ -111,7 +110,6 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
       Align = alClient
       Caption = 'Op'#231#245'es'
       TabOrder = 1
-      ExplicitWidth = 329
       object btnBuscar: TAdvGlowButton
         Left = 17
         Top = 37
@@ -249,17 +247,17 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     Left = 0
     Top = 100
     Width = 1094
-    Height = 191
-    Align = alClient
+    Height = 181
+    Align = alTop
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 1
-    ExplicitWidth = 1096
+    ExplicitHeight = 191
     object dbgAlunos: TDBGrid
       Left = 10
       Top = 35
       Width = 1084
-      Height = 156
+      Height = 146
       Align = alClient
       DataSource = dtmRelatorioAcessos.dtsAlunos
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
@@ -329,7 +327,6 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1086
       object Label3: TLabel
         Left = 2
         Top = 8
@@ -347,19 +344,18 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
   end
   object pnlAcessos: TPanel
     Left = 0
-    Top = 291
+    Top = 281
     Width = 1094
-    Height = 350
-    Align = alBottom
+    Height = 280
+    Align = alClient
     BevelOuter = bvNone
     Padding.Left = 10
     TabOrder = 2
-    ExplicitWidth = 1096
     object DBGrid1: TDBGrid
       Left = 10
       Top = 35
       Width = 1084
-      Height = 280
+      Height = 210
       Align = alClient
       DataSource = dtmRelatorioAcessos.dtsAcessos
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
@@ -408,7 +404,6 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1086
       object Label2: TLabel
         Left = 2
         Top = 8
@@ -425,13 +420,13 @@ object frmRelatorioAcessos: TfrmRelatorioAcessos
     end
     object Panel1: TPanel
       Left = 10
-      Top = 315
+      Top = 245
       Width = 1084
       Height = 35
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 1086
+      ExplicitTop = 315
       object lblTempoAcesso: TLabel
         Left = 323
         Top = 9
