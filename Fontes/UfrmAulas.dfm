@@ -162,6 +162,8 @@ object frmAulas: TfrmAulas
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
+      ExplicitLeft = 5
+      ExplicitTop = 4
     end
     object btnEditar: TAdvGlowButton
       AlignWithMargins = True
