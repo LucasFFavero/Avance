@@ -8,7 +8,8 @@ uses
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, dxScreenTip, cxHint,
   Vcl.ImgList, cxImageList, cxGraphics, Vcl.ComCtrls, Vcl.ExtCtrls, AdvMenus,
   Vcl.Dialogs, midaslib, AdvGlowButton, System.ImageList, dxGDIPlusClasses,
-  cxClasses, dxCustomHint, AdvOfficeHint, System.IoUtils, System.Types;
+  cxClasses, dxCustomHint, AdvOfficeHint, System.IoUtils, System.Types,
+  Vcl.Grids, AdvObj, BaseGrid, AdvGrid;
 
 type
   THackDBGrid = class(TDBGrid)

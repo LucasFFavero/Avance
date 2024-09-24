@@ -14,13 +14,13 @@ uses
 
 type
   TfrmLogon = class(TForm)
-    Image1: TImage;
     edtUsuario: TEdit;
     edtSenha: TEdit;
-    btnLogon: TAdvShapeButton;
     edtFoco: TEdit;
     cxImageList1: TcxImageList;
+    Image1: TImage;
     btnSair: TSpeedButton;
+    btnLogon: TAdvShapeButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);

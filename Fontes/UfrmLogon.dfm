@@ -2651,6 +2651,7 @@ object frmLogon: TfrmLogon
       00000049454E44AE426082}
     Transparent = True
     ExplicitLeft = -8
+    ExplicitTop = 56
   end
   object btnSair: TSpeedButton
     Left = 531
@@ -2718,6 +2719,22 @@ object frmLogon: TfrmLogon
     OnExit = edtSenhaExit
     OnKeyPress = edtSenhaKeyPress
   end
+  object edtFoco: TEdit
+    Left = -1500
+    Top = 56
+    Width = 137
+    Height = 16
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14737632
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    Text = 'Usu'#225'rio'
+    StyleElements = []
+  end
   object btnLogon: TAdvShapeButton
     Left = 47
     Top = 32
@@ -2735,22 +2752,6 @@ object frmLogon: TfrmLogon
     Version = '6.2.1.5'
     Visible = False
     OnClick = btnLogonClick
-  end
-  object edtFoco: TEdit
-    Left = -1500
-    Top = 56
-    Width = 137
-    Height = 16
-    BorderStyle = bsNone
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 14737632
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 0
-    Text = 'Usu'#225'rio'
-    StyleElements = []
   end
   object cxImageList1: TcxImageList
     SourceDPI = 96

@@ -602,80 +602,13 @@ object frmEscolas: TfrmEscolas
     Top = 60
     Width = 944
     Height = 481
-    ActivePage = tbsDadosCadastrais
+    ActivePage = tbsLocalizar
     Align = alClient
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
-      object dbGrid: TDBGrid
-        Left = 0
-        Top = 0
-        Width = 936
-        Height = 441
-        Align = alClient
-        DataSource = dtmEscolas.dtsEscolas
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
-        ReadOnly = True
-        TabOrder = 1
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        Visible = False
-        OnDrawColumnCell = dbGridDrawColumnCell
-        OnDblClick = dbGridDblClick
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'CODIGO'
-            Title.Caption = 'C'#243'digo'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'NOME'
-            Title.Caption = 'Descri'#231#227'o'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 440
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CIDADE'
-            Title.Caption = 'Cidade'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 240
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'ESTADO'
-            Title.Caption = 'Estado'
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = clWindowText
-            Title.Font.Height = -11
-            Title.Font.Name = 'Tahoma'
-            Title.Font.Style = [fsBold]
-            Width = 60
-            Visible = True
-          end>
-      end
       object pnlCadastro: TPanel
         Left = 0
         Top = 0
@@ -785,6 +718,73 @@ object frmEscolas: TfrmEscolas
           DataSource = dtmEscolas.dtsEscolas
           TabOrder = 2
         end
+      end
+      object dbGrid: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 936
+        Height = 441
+        Align = alClient
+        DataSource = dtmEscolas.dtsEscolas
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs]
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Visible = False
+        OnDrawColumnCell = dbGridDrawColumnCell
+        OnDblClick = dbGridDblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Title.Caption = 'C'#243'digo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Title.Caption = 'Descri'#231#227'o'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 440
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CIDADE'
+            Title.Caption = 'Cidade'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 240
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ESTADO'
+            Title.Caption = 'Estado'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 60
+            Visible = True
+          end>
       end
     end
     object tbsLocalizar: TTabSheet

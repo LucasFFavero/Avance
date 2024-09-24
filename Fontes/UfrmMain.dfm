@@ -13797,7 +13797,6 @@ object frmMain: TfrmMain
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
-      ExplicitLeft = 2
     end
     object btnRelatorios: TAdvGlowButton
       AlignWithMargins = True
@@ -14090,8 +14089,6 @@ object frmMain: TfrmMain
         Appearance.ColorMirrorDisabled = 11974326
         Appearance.ColorMirrorDisabledTo = 15921906
         Layout = blGlyphTop
-        ExplicitLeft = 1
-        ExplicitTop = 147
       end
       object btnAno3: TAdvGlowButton
         Left = 0
