@@ -945,6 +945,20 @@ object frmUsuarios: TfrmUsuarios
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object lblAPIUsuarios: TLabel
+          Left = 391
+          Top = 36
+          Width = 102
+          Height = 13
+          Caption = 'Micro4DelphiTurmas: '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
+        end
         object edtCodigo: TDBEdit
           Left = 25
           Top = 33
@@ -1278,6 +1292,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item
@@ -1289,6 +1304,7 @@ object frmUsuarios: TfrmUsuarios
             Title.Font.Height = -11
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
+            Width = 64
             Visible = True
           end
           item

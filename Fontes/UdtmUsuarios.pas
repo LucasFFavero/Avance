@@ -56,6 +56,7 @@ type
     qryUsuariosALUNO: TSmallintField;
     qryUsuariosDATA_INGRESSO: TSQLTimeStampField;
     qryUsuariosULTIMO_ACESSO: TSQLTimeStampField;
+    FDMTUsuarios: TFDMemTable;
     procedure dtsUsuariosStateChange(Sender: TObject);
   private
     { Private declarations }

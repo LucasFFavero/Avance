@@ -20,6 +20,7 @@ type
     UpdateSQL: TFDUpdateSQL;
     dtsTurmas: TDataSource;
     qryTurmasDESCRICAO: TStringField;
+    FDMTTurmas: TFDMemTable;
     procedure dtsTurmasStateChange(Sender: TObject);
   private
     { Private declarations }

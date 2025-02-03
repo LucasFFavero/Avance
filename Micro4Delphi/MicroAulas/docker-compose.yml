@@ -1,0 +1,29 @@
+version: "2.28"
+
+services: 
+  first-micro4delphi-aulasapp:
+    image: micro4delphi/aulasapp
+    container_name: first-micro4delphi-aulasapp
+    ports: 
+      - "9015:9000"
+    environment:
+      - PONG=1
+
+  second-micro4delphi-aulasapp:
+    image: micro4delphi/aulasapp
+    container_name: second-micro4delphi-aulasapp
+    ports: 
+      - "9016:9000"
+    environment:
+      - PONG=2
+
+  micro4delphiaulasnginx-server:
+    image: micro4delphi/aulasnginx
+    container_name: micro4delphinginx-aulascompose
+    ports: 
+      - "8083:80"
+    depends_on: 
+      - first-micro4delphi-aulasapp
+      - second-micro4delphi-aulasapp
+
+      

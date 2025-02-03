@@ -64,6 +64,7 @@ type
     qryExerciciosVIDEO_1: TIntegerField;
     qryQuestoesIMAGEM_1: TIntegerField;
     qryBuscaAulasIMAGEM_1: TIntegerField;
+    FDMTAulas: TFDMemTable;
     procedure dtsAulasStateChange(Sender: TObject);
     procedure qryAulasAfterScroll(DataSet: TDataSet);
     procedure qryExerciciosAfterScroll(DataSet: TDataSet);

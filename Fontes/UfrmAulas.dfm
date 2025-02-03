@@ -474,8 +474,6 @@ object frmAulas: TfrmAulas
       Color = 15461355
       ParentBackground = False
       TabOrder = 10
-      ExplicitLeft = 70
-      ExplicitTop = -2
     end
     object Panel3: TPanel
       Left = 435
@@ -867,6 +865,20 @@ object frmAulas: TfrmAulas
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
+          end
+          object lblAPIAulas: TLabel
+            Left = 391
+            Top = 36
+            Width = 93
+            Height = 13
+            Caption = 'Micro4DelphiAulas: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Visible = False
           end
           object edtCodigo: TDBEdit
             Left = 25

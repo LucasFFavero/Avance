@@ -69,6 +69,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    blnMicro4Delphi: Boolean;
     IntAnoClicado: Integer;
   end;
 
@@ -208,6 +209,9 @@ begin
   // Verifica se é usuário ou aluno
   if (dtmMain.qryUsuariosALUNO.AsInteger = 1) then
     TimerAbrirAulas.Enabled := True;
+
+    //Ativa/desativa microsserviços
+    blnMicro4Delphi := true;
 end;
 
 procedure TfrmMain.TimerAbrirAulasTimer(Sender: TObject);

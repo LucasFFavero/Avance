@@ -688,6 +688,20 @@ object frmTurmas: TfrmTurmas
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object lblAPITurmas: TLabel
+          Left = 391
+          Top = 36
+          Width = 102
+          Height = 13
+          Caption = 'Micro4DelphiTurmas: '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
+        end
         object edtCodigo: TDBEdit
           Left = 25
           Top = 33

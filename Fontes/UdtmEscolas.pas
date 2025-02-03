@@ -24,6 +24,7 @@ type
     qryBuscaEscolasNOME: TStringField;
     qryBuscaEscolasCIDADE: TStringField;
     qryBuscaEscolasESTADO: TStringField;
+    FDMTEscolas: TFDMemTable;
     procedure dtsEscolasStateChange(Sender: TObject);
   private
     { Private declarations }

@@ -168,6 +168,7 @@ type
     cxGrid1DBTableView1Column2: TcxGridDBColumn;
     cxGrid1DBTableView1Column3: TcxGridDBColumn;
     cxGridDBTableView1Column2: TcxGridDBColumn;
+    lblAPIAulas: TLabel;
     procedure btnIncluirImagemClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
     procedure dblkcbTurmaEnter(Sender: TObject);
@@ -205,6 +206,8 @@ type
     procedure cxGridDBTableView4DblClick(Sender: TObject);
   private
     { Private declarations }
+    procedure getDados;
+    procedure setDados;
   public
     { Public declarations }
   end;
@@ -216,9 +219,10 @@ implementation
 
 {$R *.dfm}
 
-uses UdtmAulas, UfrmMain, UfrmAulasConteudos, UdtmAulasConteudos,
+uses
+  UdtmAulas, UfrmMain, UfrmAulasConteudos, UdtmAulasConteudos,
   UfrmAulasExercicios, UdtmAulasExercicios, UrelAulas, UfrmAulasQuestoes,
-  UdtmAulasQuestoes;
+  UdtmAulasQuestoes, RESTRequest4D, DataSet.Serialize.Adapter.RESTRequest4D;
 
 procedure TfrmAulas.btnIncluirImagemClick(Sender: TObject);
 var
@@ -324,6 +328,10 @@ begin
     dtmAulas.qryAulas.Open;
   if not dtmAulas.qryTurmas.Active then
     dtmAulas.qryTurmas.Open;
+
+  // Microsserviços ativado
+  if (frmMain.blnMicro4Delphi = true) then
+    getDados;
 end;
 
 procedure TfrmAulas.btnCancelarClick(Sender: TObject);
@@ -764,6 +772,30 @@ end;
 procedure TfrmAulas.tbsDadosCadastraisShow(Sender: TObject);
 begin
   pnlTop.Enabled := true;
+end;
+
+procedure TfrmAulas.getDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8083/Aulas')
+    .Adapters(TDataSetSerializeAdapter.New(dtmAulas.FDMTAulas))
+    .Accept('application/json').Get;
+
+  lblAPIAulas.Visible := true;
+  lblAPIAulas.Caption := 'Micro4DelphiAulas: ' + TRequest.New.BaseURL
+    ('http://localhost:8083/ping').Get.Content;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmAulas.setDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8083/Aulas')
+    .ContentType('application/json').AddBody('{"codigo":"0","titulo":"' +
+    edtTitulo.Text + '"}').Post;
+
+  lblAPIAulas.Visible := true;
+  lblAPIAulas.Caption := 'Micro4DelphiAulas: ' + TRequest.New.BaseURL
+    ('http://localhost:8083/ping').Get.Content;
+  Application.ProcessMessages;
 end;
 
 end.

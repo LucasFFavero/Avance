@@ -4,10 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvGlowButton, Vcl.ExtCtrls, Data.DB,
-  Vcl.StdCtrls, Vcl.DBCtrls, AdvEdit, AdvEdBtn, PlannerDatePicker,
-  PlannerDBDatePicker, Vcl.Mask, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  AdvGlowButton, Vcl.ExtCtrls, Data.DB, Vcl.StdCtrls, Vcl.DBCtrls, AdvEdit,
+  AdvEdBtn, PlannerDatePicker, PlannerDBDatePicker, Vcl.Mask, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ComCtrls;
 
 type
   TfrmTurmas = class(TForm)
@@ -42,6 +42,7 @@ type
     edtLocTurmas: TEdit;
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
+    lblAPITurmas: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnBuscarClick(Sender: TObject);
@@ -68,6 +69,8 @@ type
     procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
+    procedure getDados;
+    procedure setDados;
   public
     { Public declarations }
   end;
@@ -79,7 +82,9 @@ implementation
 
 {$R *.dfm}
 
-uses UdtmTurmas, UfrmMain, UrelTurmas;
+uses
+  UdtmTurmas, UfrmMain, UrelTurmas, RESTRequest4D,
+  DataSet.Serialize.Adapter.RESTRequest4D;
 
 procedure TfrmTurmas.btnAnteriorClick(Sender: TObject);
 begin
@@ -96,6 +101,10 @@ begin
 
   if not dtmTurmas.qryTurmas.Active then
     dtmTurmas.qryTurmas.Open;
+
+  // Microsserviços ativado
+  if (frmMain.blnMicro4Delphi = true) then
+    getDados;
 end;
 
 procedure TfrmTurmas.btnCancelarClick(Sender: TObject);
@@ -423,6 +432,30 @@ begin
 
   edtLocTurmas.Clear;
   edtLocTurmas.SetFocus;
+end;
+
+procedure TfrmTurmas.getDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8084/Turmas')
+    .Adapters(TDataSetSerializeAdapter.New(dtmTurmas.FDMTTurmas))
+    .Accept('application/json').Get;
+
+  lblAPITurmas.Visible := true;
+  lblAPITurmas.Caption := 'Micro4DelphiTurmas: ' + TRequest.New.BaseURL
+    ('http://localhost:8084/ping').Get.Content;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmTurmas.setDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8084/Turmas')
+    .ContentType('application/json').AddBody('{"codigo":"0","descricao":"' +
+    edtNome.Text + '"}').Post;
+
+  lblAPITurmas.Visible := true;
+  lblAPITurmas.Caption := 'Micro4DelphiTurmas: ' + TRequest.New.BaseURL
+    ('http://localhost:8084/ping').Get.Content;
+  Application.ProcessMessages;
 end;
 
 end.

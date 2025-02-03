@@ -2,8 +2,8 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Avance'
-  ClientHeight = 803
-  ClientWidth = 1391
+  ClientHeight = 780
+  ClientWidth = 1098
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,8 +22,8 @@ object frmMain: TfrmMain
   object Image1: TImage
     Left = 287
     Top = 0
-    Width = 1104
-    Height = 783
+    Width = 811
+    Height = 760
     Align = alClient
     AutoSize = True
     Picture.Data = {
@@ -13723,8 +13723,8 @@ object frmMain: TfrmMain
   end
   object sbPrincipal: TStatusBar
     Left = 0
-    Top = 783
-    Width = 1391
+    Top = 760
+    Width = 1098
     Height = 20
     Panels = <
       item
@@ -13747,7 +13747,7 @@ object frmMain: TfrmMain
     Left = 157
     Top = 0
     Width = 130
-    Height = 783
+    Height = 760
     Align = alLeft
     BevelKind = bkFlat
     BevelOuter = bvNone
@@ -13979,7 +13979,7 @@ object frmMain: TfrmMain
     Left = 0
     Top = 0
     Width = 157
-    Height = 783
+    Height = 760
     Align = alLeft
     BevelKind = bkFlat
     BevelOuter = bvNone
@@ -13991,7 +13991,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 153
-      Height = 779
+      Height = 756
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone

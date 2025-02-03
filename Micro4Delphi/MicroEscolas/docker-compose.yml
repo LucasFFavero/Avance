@@ -1,0 +1,29 @@
+version: "2.28"
+
+services: 
+  first-micro4delphi-escolasapp:
+    image: micro4delphi/escolasapp
+    container_name: first-micro4delphi-escolasapp
+    ports: 
+      - "9013:9000"
+    environment:
+      - PONG=1
+
+  second-micro4delphi-escolasapp:
+    image: micro4delphi/escolasapp
+    container_name: second-micro4delphi-escolasapp
+    ports: 
+      - "9014:9000"
+    environment:
+      - PONG=2
+
+  micro4delphiescolasnginx-server:
+    image: micro4delphi/escolasnginx
+    container_name: micro4delphinginx-escolascompose
+    ports: 
+      - "8082:80"
+    depends_on: 
+      - first-micro4delphi-escolasapp
+      - second-micro4delphi-escolasapp
+
+      

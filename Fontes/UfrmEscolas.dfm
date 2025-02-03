@@ -602,123 +602,13 @@ object frmEscolas: TfrmEscolas
     Top = 60
     Width = 944
     Height = 481
-    ActivePage = tbsLocalizar
+    ActivePage = tbsDadosCadastrais
     Align = alClient
     TabHeight = 30
     TabOrder = 1
     TabWidth = 140
     object tbsDadosCadastrais: TTabSheet
       Caption = 'Dados Cadastrais'
-      object pnlCadastro: TPanel
-        Left = 0
-        Top = 0
-        Width = 936
-        Height = 441
-        Align = alClient
-        BevelOuter = bvNone
-        Color = clWhite
-        ParentBackground = False
-        TabOrder = 0
-        object Label1: TLabel
-          Left = 25
-          Top = 16
-          Width = 38
-          Height = 13
-          Caption = 'C'#243'digo'
-          FocusControl = edtCodigo
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label2: TLabel
-          Left = 25
-          Top = 72
-          Width = 55
-          Height = 13
-          Caption = 'Descri'#231#227'o'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label3: TLabel
-          Left = 488
-          Top = 72
-          Width = 38
-          Height = 13
-          Caption = 'Cidade'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label4: TLabel
-          Left = 711
-          Top = 72
-          Width = 38
-          Height = 13
-          Caption = 'Estado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 3618615
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object edtCodigo: TDBEdit
-          Left = 25
-          Top = 33
-          Width = 80
-          Height = 21
-          Hint = 'C'#243'digo Autom'#225'tico'
-          CharCase = ecUpperCase
-          Color = 16771797
-          DataField = 'CODIGO'
-          DataSource = dtmEscolas.dtsEscolas
-          ReadOnly = True
-          TabOrder = 3
-        end
-        object edtNome: TDBEdit
-          Left = 25
-          Top = 91
-          Width = 440
-          Height = 21
-          Hint = 'Informe a descri'#231#227'o'
-          CharCase = ecUpperCase
-          DataField = 'NOME'
-          DataSource = dtmEscolas.dtsEscolas
-          TabOrder = 0
-        end
-        object edtCidade: TDBEdit
-          Left = 488
-          Top = 91
-          Width = 200
-          Height = 21
-          Hint = 'Informe a cidade'
-          CharCase = ecUpperCase
-          DataField = 'CIDADE'
-          DataSource = dtmEscolas.dtsEscolas
-          TabOrder = 1
-        end
-        object edtEstado: TDBEdit
-          Left = 711
-          Top = 91
-          Width = 55
-          Height = 21
-          Hint = 'Informe o estado'
-          CharCase = ecUpperCase
-          DataField = 'ESTADO'
-          DataSource = dtmEscolas.dtsEscolas
-          TabOrder = 2
-        end
-      end
       object dbGrid: TDBGrid
         Left = 0
         Top = 0
@@ -785,6 +675,130 @@ object frmEscolas: TfrmEscolas
             Width = 60
             Visible = True
           end>
+      end
+      object pnlCadastro: TPanel
+        Left = 0
+        Top = 0
+        Width = 936
+        Height = 441
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 25
+          Top = 16
+          Width = 38
+          Height = 13
+          Caption = 'C'#243'digo'
+          FocusControl = edtCodigo
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 25
+          Top = 72
+          Width = 55
+          Height = 13
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 488
+          Top = 72
+          Width = 38
+          Height = 13
+          Caption = 'Cidade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 711
+          Top = 72
+          Width = 38
+          Height = 13
+          Caption = 'Estado'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 3618615
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblAPIEscolas: TLabel
+          Left = 391
+          Top = 36
+          Width = 102
+          Height = 13
+          Caption = 'Micro4DelphiEscolas: '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
+        end
+        object edtCodigo: TDBEdit
+          Left = 25
+          Top = 33
+          Width = 80
+          Height = 21
+          Hint = 'C'#243'digo Autom'#225'tico'
+          CharCase = ecUpperCase
+          Color = 16771797
+          DataField = 'CODIGO'
+          DataSource = dtmEscolas.dtsEscolas
+          ReadOnly = True
+          TabOrder = 3
+        end
+        object edtNome: TDBEdit
+          Left = 25
+          Top = 91
+          Width = 440
+          Height = 21
+          Hint = 'Informe a descri'#231#227'o'
+          CharCase = ecUpperCase
+          DataField = 'NOME'
+          DataSource = dtmEscolas.dtsEscolas
+          TabOrder = 0
+        end
+        object edtCidade: TDBEdit
+          Left = 488
+          Top = 91
+          Width = 200
+          Height = 21
+          Hint = 'Informe a cidade'
+          CharCase = ecUpperCase
+          DataField = 'CIDADE'
+          DataSource = dtmEscolas.dtsEscolas
+          TabOrder = 1
+        end
+        object edtEstado: TDBEdit
+          Left = 711
+          Top = 91
+          Width = 55
+          Height = 21
+          Hint = 'Informe o estado'
+          CharCase = ecUpperCase
+          DataField = 'ESTADO'
+          DataSource = dtmEscolas.dtsEscolas
+          TabOrder = 2
+        end
       end
     end
     object tbsLocalizar: TTabSheet

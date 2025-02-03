@@ -4,9 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvGlowButton, Vcl.ExtCtrls, Data.DB,
-  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  AdvGlowButton, Vcl.ExtCtrls, Data.DB, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
 
 type
   TfrmEscolas = class(TForm)
@@ -45,6 +45,7 @@ type
     edtLocEscola: TEdit;
     btnLocalizarUsuarios: TAdvGlowButton;
     dbGridLocalizar: TDBGrid;
+    lblAPIEscolas: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnBuscarClick(Sender: TObject);
@@ -72,6 +73,8 @@ type
     procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
+    procedure getDados;
+    procedure setDados;
   public
     { Public declarations }
   end;
@@ -83,7 +86,8 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain, UdtmEscolas, UrelEscolas;
+uses UfrmMain, UdtmEscolas, UrelEscolas, RESTRequest4D,
+  DataSet.Serialize.Adapter.RESTRequest4D;
 
 procedure TfrmEscolas.btnAnteriorClick(Sender: TObject);
 begin
@@ -100,6 +104,10 @@ begin
 
   if not dtmEscolas.qryEscolas.Active then
     dtmEscolas.qryEscolas.Open;
+
+  // Microsserviços ativado
+  if (frmMain.blnMicro4Delphi = true) then
+    getDados;
 end;
 
 procedure TfrmEscolas.btnCancelarClick(Sender: TObject);
@@ -431,6 +439,30 @@ begin
 
   THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
   THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
+procedure TfrmEscolas.getDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8082/Escolas')
+    .Adapters(TDataSetSerializeAdapter.New(dtmEscolas.FDMTEscolas))
+    .Accept('application/json').Get;
+
+  lblAPIEscolas.Visible := true;
+  lblAPIEscolas.Caption := 'Micro4DelphiEscolas: ' + TRequest.New.BaseURL
+    ('http://localhost:8082/ping').Get.Content;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmEscolas.setDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8082/Escolas')
+    .ContentType('application/json')
+    .AddBody('{"codigo":"0","nome":"' + edtNome.Text + '"}').Post;
+
+  lblAPIEscolas.Visible := true;
+  lblAPIEscolas.Caption := 'Micro4DelphiEscolas: ' + TRequest.New.BaseURL
+    ('http://localhost:8082/ping').Get.Content;
+  Application.ProcessMessages;
 end;
 
 end.

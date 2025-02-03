@@ -4,14 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, AdvGlowButton,
-  AdvReflectionImage, System.ImageList, Vcl.ImgList, cxImageList, cxGraphics,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.DBCtrls, AdvEdit, AdvEdBtn, PlannerDatePicker, PlannerDBDatePicker,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  dxSkinsCore, dxSkinsDefaultPainters, cxTextEdit, cxMaskEdit, cxSpinEdit,
-  cxDBEdit, cxDropDownEdit, cxCalendar;
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.ExtCtrls, AdvGlowButton, AdvReflectionImage, System.ImageList,
+  Vcl.ImgList, cxImageList, cxGraphics, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ComCtrls, Vcl.Mask, Vcl.StdCtrls, Vcl.DBCtrls, AdvEdit, AdvEdBtn,
+  PlannerDatePicker, PlannerDBDatePicker, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, cxSpinEdit,
+  dxSkinsDefaultPainters, cxTextEdit, cxMaskEdit, cxDBEdit, cxDropDownEdit,
+  cxCalendar;
 
 type
   TfrmUsuarios = class(TForm)
@@ -66,6 +66,7 @@ type
     ImageList: TImageList;
     edtNascimento: TcxDBDateEdit;
     btnImportar: TAdvGlowButton;
+    lblAPIUsuarios: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnIncluirClick(Sender: TObject);
@@ -99,6 +100,8 @@ type
     procedure btnImportarClick(Sender: TObject);
   private
     { Private declarations }
+    procedure getDados;
+    procedure setDados;
   public
     { Public declarations }
   end;
@@ -110,7 +113,8 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmMain, UdtmUsuarios, URelUsuarios, UfrmImportarUsuarios;
+uses UfrmMain, UdtmUsuarios, URelUsuarios, UfrmImportarUsuarios,
+  RESTRequest4D, DataSet.Serialize.Adapter.RESTRequest4D;
 
 procedure TfrmUsuarios.btnAnteriorClick(Sender: TObject);
 begin
@@ -133,6 +137,10 @@ begin
 
   dtmUsuarios.qryTurmas.Close;
   dtmUsuarios.qryTurmas.Open;
+
+  // Microsserviços ativado
+  if (frmMain.blnMicro4Delphi = true) then
+    getDados;
 end;
 
 procedure TfrmUsuarios.btnCancelarClick(Sender: TObject);
@@ -140,7 +148,7 @@ begin
   if dtmUsuarios.qryUsuarios.Active then
     dtmUsuarios.qryUsuarios.Cancel;
 
-  dtmUsuarios.dtsUsuariosStateChange(Self);
+  dtmUsuarios.dtsUsuariosStateChange(self);
 end;
 
 procedure TfrmUsuarios.btnEditarClick(Sender: TObject);
@@ -184,7 +192,7 @@ begin
       dtmUsuarios.qryUsuarios.Delete;
     dtmUsuarios.Transaction.CommitRetaining;
 
-    dtmUsuarios.dtsUsuariosStateChange(Self);
+    dtmUsuarios.dtsUsuariosStateChange(self);
   except
     Application.MessageBox
       ('Erro ao exluir o registro, verifique se ele não está em uso.',
@@ -223,7 +231,7 @@ end;
 
 procedure TfrmUsuarios.btnIncluirClick(Sender: TObject);
 begin
-  btnBuscarClick(Self);
+  btnBuscarClick(self);
 
   pnlCadastro.Visible := true;
   dbGrid.Visible := false;
@@ -451,7 +459,7 @@ end;
 
 procedure TfrmUsuarios.dbGridDblClick(Sender: TObject);
 begin
-  btnListarClick(Self);
+  btnListarClick(self);
 end;
 
 procedure TfrmUsuarios.dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -665,6 +673,30 @@ begin
 
   THackDBGrid(dbGridLocalizar).DefaultRowHeight := 30;
   THackDBGrid(dbGrid).DefaultRowHeight := 30;
+end;
+
+procedure TfrmUsuarios.getDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8081/Usuarios')
+    .Adapters(TDataSetSerializeAdapter.New(dtmUsuarios.FDMTUsuarios))
+    .Accept('application/json').Get;
+
+  lblAPIUsuarios.Visible := true;
+  lblAPIUsuarios.Caption := 'Micro4DelphiUsuarios: ' +
+    TRequest.New.BaseURL('http://localhost:8081/ping').Get.Content;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmUsuarios.setDados;
+begin
+  TRequest.New.BaseURL('http://localhost:8081/Usuarios')
+    .ContentType('application/json')
+    .AddBody('{"codigo":"0","nome":"' + edtNome.Text + '"}').Post;
+
+  lblAPIUsuarios.Visible := true;
+  lblAPIUsuarios.Caption := 'Micro4DelphiUsuarios: ' +
+    TRequest.New.BaseURL('http://localhost:8081/ping').Get.Content;
+  Application.ProcessMessages;
 end;
 
 end.

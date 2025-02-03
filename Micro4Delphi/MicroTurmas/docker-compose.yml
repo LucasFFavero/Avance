@@ -1,0 +1,29 @@
+version: "2.28"
+
+services: 
+  first-micro4delphi-turmasapp:
+    image: micro4delphi/turmasapp
+    container_name: first-micro4delphi-turmasapp
+    ports: 
+      - "9017:9000"
+    environment:
+      - PONG=1
+
+  second-micro4delphi-turmasapp:
+    image: micro4delphi/turmasapp
+    container_name: second-micro4delphi-turmasapp
+    ports: 
+      - "9018:9000"
+    environment:
+      - PONG=2
+
+  micro4delphiturmasnginx-server:
+    image: micro4delphi/turmasnginx
+    container_name: micro4delphinginx-turmascompose
+    ports: 
+      - "8084:80"
+    depends_on: 
+      - first-micro4delphi-turmasapp
+      - second-micro4delphi-turmasapp
+
+      
