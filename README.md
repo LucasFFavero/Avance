@@ -45,7 +45,14 @@ Definir um Profile name “Ubuntu”.
 Em Remote informar “localhost”.
 Clicar em “Test Connection”.
 
-![Avance](Imagens/Configurandoubuntu1.png) 
+![Avance](Imagens/Configurandoubuntu.png)
+
+
+### Instalando o Docker
+[**https://www.docker.com/products/docker-desktop/**](https://www.docker.com/products/docker-desktop/)
+
+![Avance](Imagens/Dockerdownload.png)
+
 
 
 ### Validando um CEP
