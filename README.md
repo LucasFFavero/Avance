@@ -6,7 +6,7 @@
 
 ## Instalação e configuração
  * Instalar o **Firebird 2.5** localizado na pasta **Dados** do projeto.
- * Possuir as dlls **midas.dll** **libeay32.dll** e **ssleay32.dll** na pasta do projeto junto ao executável.
+ * Possuir as dlls **midas.dll**, **libeay32.dll** e **ssleay32.dll** na pasta do projeto junto ao executável.
  * Configurar o caminho do banco de dados no arquivo **Caminho.sys** na pasta do projeto junto ao executável.
  * Para extrair o executável basta descompactar o arquivo **Avance.rar** localizado na pasta **Release** do projeto.
 
