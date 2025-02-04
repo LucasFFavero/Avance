@@ -45,7 +45,7 @@ Definir um Profile name “Ubuntu”.
 Em Remote informar “localhost”.
 Clicar em “Test Connection”.
 
-![Avance](Imagens/Configurandoubuntu.png) 
+![Avance](Imagens/Configurandoubuntu1.png) 
 
 
 ### Validando um CEP
