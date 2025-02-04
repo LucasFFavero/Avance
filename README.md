@@ -94,7 +94,7 @@ Na pasta do Projeto, temos a seguinte estrutura.
 
 
 
-### Configuração do Projeto
+## Configuração do Projeto
 
 Descompactar o arquivo “Avance.rar” em “C:\Avance”.
 
