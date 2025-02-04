@@ -108,19 +108,25 @@ Ao iniciar o sistema vai aparecer a tela de login abaixo.
 É possível acessar o sistema com 2 perfis:
 
 **Perfil Gestor
+
 *Usuário: LUCASFF
+
 *Senha: 10
+
 *O perfil “Gestor” pode cadastrar escolas, usuários, turmas, aulas e emitir relatórios de acessos e de desempenho acadêmico.
 
 **Perfil Aluno
+
 *Usuário: ALUNO
+
 *Senha: 10
+
 *O perfil “Aluno” pode assistir as aulas e realizar os exercícios.
 
 
 ## Informações gerais
 
-O tutorial para criação de cada microserviço pode ser visto no documento "Tutorial - MsUsers.pdf"
+O tutorial para criação de cada microserviço pode ser visto no documento "MsUsers.pdf"
 ```	
 ...Avance\Micro4Delphi\MsUser\Tutorial\MsUsers.pdf
 ``` 
