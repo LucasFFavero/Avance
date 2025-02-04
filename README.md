@@ -32,18 +32,26 @@
 
 
 Abrir o console na pasta do projeto para executar os comandos do Boss.
+
 Primeiro executar “boss init” e confirmar as informações.
+
 Depois executar “boss install horse” para realizar a instalação do horse.
 
 ![Avance](Imagens/Bossinstall.png) 
 
 
 ### Compilando a aplicação Delphi para Linux
+
 Clicar com o botão direito do mouse em “Add Platform”.
+
 Selecionar “Linux 64-bit”.
+
 Em Profile clicar em “Add New”.
+
 Definir um Profile name “Ubuntu”.
+
 Em Remote informar “localhost”.
+
 Clicar em “Test Connection”.
 
 ![Avance](Imagens/Configurandoubuntu.png)
@@ -65,31 +73,42 @@ Na pasta do Projeto, temos a seguinte estrutura.
 
 
 Acessar a pasta “paserver”, onde temos o arquivo “Dockerfile” e o arquivo “LinuxPAServer21.0.tar.gz” de acordo com a versão do Delphi.
+
 Copiar em “C:\Program Files (x86)\Embarcadero\Studio\21.0\PAServer”.
 
 [**https://docwiki.embarcadero.com/RADStudio/Sydney/en/Linux_Application_Development**](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Linux_Application_Development) 
 
 
 **Abrir um console e executar:**
+
 Primeiro “docker build -t micro4delphi/paserver .” para criar uma imagem da aplicação no Docker.
+
 Depois “docker run -p 64211:64211 -d micro4delphi/paserver” para executar a aplicação no Docker.
 
 
 ### Subindo as aplicações Delphi no Docker como API
+
 Acessar a pasta “API” de cada Microserviço da pasta "Micro4Delphi".
+
 Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
 
 
 ### Configurando o balanceamento de carga
+
 Acessar a pasta “nginx” de cada Microserviço da pasta "Micro4Delphi".
+
 Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
 
+
 ### Configurando o docker-compose
+
 Acessar a pasta raiz de cada microserviço da pasta "Micro4Delphi".
+
 Exemplo: 
 ```	
 ...Avance\Micro4Delphi\MsUser
 ``` 
+
 Abrir um console e executar os comandos do arquivo "docker-compose.yml - Comandos.txt"
 
 
