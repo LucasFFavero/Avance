@@ -80,31 +80,24 @@ Copiar em “C:\Program Files (x86)\Embarcadero\Studio\21.0\PAServer”.
 
 
 **Abrir um console e executar:**
-
 Primeiro “docker build -t micro4delphi/paserver .” para criar uma imagem da aplicação no Docker.
 
 Depois “docker run -p 64211:64211 -d micro4delphi/paserver” para executar a aplicação no Docker.
 
 
-
 ### Subindo as aplicações Delphi no Docker como API
-
 Acessar a pasta “API” de cada Microserviço da pasta "Micro4Delphi".
 
 Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
 
 
-
 ### Configurando o balanceamento de carga
-
 Acessar a pasta “nginx” de cada Microserviço da pasta "Micro4Delphi".
 
 Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
 
 
-
 ### Configurando o docker-compose
-
 Acessar a pasta raiz de cada microserviço da pasta "Micro4Delphi".
 
 Exemplo: 
