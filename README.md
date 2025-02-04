@@ -14,7 +14,7 @@
 ``` 
 
 ### Ferramentas Utilizadas
-![Avance](imagens/Ferramentas.png) 
+![Avance](Imagens/Ferramentas.png) 
 
 ### Validando um CEP
 Quando consultado um CEP de formato inválido, por exemplo: `950100100` (9 dígitos), `95010A10` (alfanumérico), `95 01010` (espaço), o retorno será `nil`. 
