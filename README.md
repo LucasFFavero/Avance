@@ -23,6 +23,12 @@
 
 ![Avance](Imagens/Boss.png)
 
+
+### Instalando o Horse
+[**https://github.com/HashLoad/horse**](https://github.com/HashLoad/horse) 
+
+![Avance](Imagens/Installation.png) 
+
 ### Validando um CEP
 Quando consultado um CEP de formato inválido, por exemplo: `950100100` (9 dígitos), `95010A10` (alfanumérico), `95 01010` (espaço), o retorno será `nil`. 
 
