@@ -37,6 +37,17 @@ Depois executar “boss install horse” para realizar a instalação do horse.
 ![Avance](Imagens/Bossinstall.png) 
 
 
+### Compilando a aplicação Delphi para Linux
+Clicar com o botão direito do mouse em “Add Platform”.
+Selecionar “Linux 64-bit”.
+Em Profile clicar em “Add New”.
+Definir um Profile name “Ubuntu”.
+Em Remote informar “localhost”.
+Clicar em “Test Connection”.
+
+![Avance](Imagens/Configurandoubuntu.png) 
+
+
 ### Validando um CEP
 Quando consultado um CEP de formato inválido, por exemplo: `950100100` (9 dígitos), `95010A10` (alfanumérico), `95 01010` (espaço), o retorno será `nil`. 
 
