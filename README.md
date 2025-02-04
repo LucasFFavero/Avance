@@ -107,7 +107,7 @@ Ao iniciar o sistema vai aparecer a tela de login abaixo.
 
 É possível acessar o sistema com 2 perfis:
 
-**Perfil Gestor
+**Perfil Gestor**
 
 *Usuário: LUCASFF
 
@@ -115,7 +115,8 @@ Ao iniciar o sistema vai aparecer a tela de login abaixo.
 
 *O perfil “Gestor” pode cadastrar escolas, usuários, turmas, aulas e emitir relatórios de acessos e de desempenho acadêmico.
 
-**Perfil Aluno
+
+**Perfil Aluno**
 
 *Usuário: ALUNO
 
