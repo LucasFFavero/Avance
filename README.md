@@ -6,7 +6,7 @@
 
 ## Instalação e configuração
  * Instalar o **Firebird 2.5** localizado na pasta **Dados** do projeto.
- * Possuir as dlls **libeay32.dll** e **ssleay32.dll** na pasta do projeto junto ao executável.
+ * Possuir as dlls **midas.dll** **libeay32.dll** e **ssleay32.dll** na pasta do projeto junto ao executável.
  * Configurar o caminho do banco de dados no arquivo **Caminho.sys** na pasta do projeto junto ao executável.
  * Para extrair o executável basta descompactar o arquivo **Avance.rar** localizado na pasta **Release** do projeto.
 ```	
@@ -31,10 +31,11 @@
 
 
 Abrir o console na pasta do projeto para executar os comandos do Boss.
-```
 Primeiro executar “boss init” e confirmar as informações.
 Depois executar “boss install horse” para realizar a instalação do horse.
-```
+
+![Avance](Imagens/Bossinstall.png) 
+
 
 ### Validando um CEP
 Quando consultado um CEP de formato inválido, por exemplo: `950100100` (9 dígitos), `95010A10` (alfanumérico), `95 01010` (espaço), o retorno será `nil`. 
