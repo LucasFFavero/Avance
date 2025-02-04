@@ -105,7 +105,7 @@ Ao iniciar o sistema vai aparecer a tela de login abaixo.
 ![Avance](Imagens/Logon.png)
 
 
-É possível acessar o sistema com 2 perfis:
+**É possível acessar o sistema com 2 perfis:**
 
 **Perfil Gestor**
 
