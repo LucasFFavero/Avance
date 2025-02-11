@@ -1,0 +1,5 @@
+docker build -t micro4delphi/usuariosapp .
+docker run -d -p 9011:9000 --name micro4delphiusuariosapp1 -e PONG=1 --restart unless-stopped micro4delphi/usuariosapp
+docker run -d -p 9012:9000 --name micro4delphiusuariosapp2 -e PONG=2 --restart unless-stopped micro4delphi/usuariosapp
+
+

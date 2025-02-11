@@ -1,0 +1,2 @@
+docker build -t micro4delphi/escolasnginx .
+docker run -d -p 8082:80 --name micro4delphiescolasnginx micro4delphi/escolasnginx

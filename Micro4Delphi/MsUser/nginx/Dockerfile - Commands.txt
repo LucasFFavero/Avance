@@ -1,0 +1,2 @@
+docker build -t micro4delphi/usuariosnginx .
+docker run -d -p 8081:80 --name micro4delphiusuariosnginx micro4delphi/usuariosnginx

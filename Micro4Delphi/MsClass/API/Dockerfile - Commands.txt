@@ -1,0 +1,8 @@
+docker build -t micro4delphi/turmasapp .
+docker run -d -p 9017:9000 --name micro4delphiturmasapp1 -e PONG=1 --restart unless-stopped micro4delphi/turmasapp
+docker run -d -p 9018:9000 --name micro4delphiturmasapp2 -e PONG=2 --restart unless-stopped micro4delphi/turmasapp
+
+
+
+
+

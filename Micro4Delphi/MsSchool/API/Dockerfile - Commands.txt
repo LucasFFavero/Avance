@@ -1,0 +1,5 @@
+docker build -t micro4delphi/escolasapp .
+docker run -d -p 9013:9000 --name micro4delphiescolasapp1 -e PONG=1 --restart unless-stopped micro4delphi/escolasapp
+docker run -d -p 9014:9000 --name micro4delphiescolasapp2 -e PONG=2 --restart unless-stopped micro4delphi/escolasapp
+
+
