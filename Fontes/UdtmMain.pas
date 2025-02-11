@@ -73,7 +73,7 @@ var
   Caminho: string;
 begin
   // Localizar caminho
-  AssignFile(FArquivo, ExtractFilePath(paramstr(0)) + 'Caminho.sys');
+  AssignFile(FArquivo, ExtractFilePath(paramstr(0)) + 'Path.sys');
   Reset(FArquivo);
   Readln(FArquivo, Caminho);
   closeFile(FArquivo);

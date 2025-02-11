@@ -4,20 +4,20 @@
 ![Compatibility](https://img.shields.io/badge/Compatibility-VCL,%20Firemonkey%20DataSnap%20and%20uniGUI-brightgreen.svg)
 
 
-## Instalação e configuração
- * Instalar o **Firebird 2.5** localizado na pasta **Dados** do projeto.
- * Possuir as dlls **midas.dll**, **libeay32.dll** e **ssleay32.dll** na pasta do projeto junto ao executável.
- * Configurar o caminho do banco de dados no arquivo **Caminho.sys** na pasta do projeto junto ao executável.
- * Para extrair o executável basta descompactar o arquivo **Avance.rar** localizado na pasta **Release** do projeto.
+## Installation and configuration
+ * Install **Firebird 2.5** located in the project's **Data** folder.
+ * Have the dlls **midas.dll**, **libeay32.dll** and **ssleay32.dll** in the project folder next to the executable.
+ * Configure the database path in the **Path.sys** file in the project folder next to the executable.
+ * To extract the executable, simply unzip the **Avance.rar** file located in the project's **Release** folder.
 
 ```	
 ...Avance\Fontes\Win32\Release
 ``` 
 
-### Ferramentas Utilizadas
+### Tools Used
 ![Avance](Imagens/Ferramentas.png) 
 
-### Instalando o Boss
+### Installing Boss
 [**https://github.com/HashLoad/boss**](https://github.com/HashLoad/boss) 
 
 ![Avance](Imagens/Bossdownload.png) 
@@ -25,38 +25,38 @@
 ![Avance](Imagens/Boss.png)
 
 
-### Instalando o Horse
+### Installing Horse
 [**https://github.com/HashLoad/horse**](https://github.com/HashLoad/horse) 
 
 ![Avance](Imagens/Installation.png) 
 
 
- * Abrir o console na pasta do projeto para executar os comandos do Boss.
- * Primeiro executar “boss init” e confirmar as informações.
- * Depois executar “boss install horse” para realizar a instalação do horse.
+ * Open the console in the project folder to execute Boss commands.
+ * First run “boss init” and confirm the information.
+ * Then run “boss install horse” to install the horse.
 
 ![Avance](Imagens/Bossinstall.png) 
 
 
-### Compilando a aplicação Delphi para Linux
- * Clicar com o botão direito do mouse em “Add Platform”.
- * Selecionar “Linux 64-bit”.
- * Em Profile clicar em “Add New”.
- * Definir um Profile name “Ubuntu”.
- * Em Remote informar “localhost”.
- * Clicar em “Test Connection”.
+### Compiling the Delphi application for Linux
+ * Right-click on “Add Platform”.
+ * Select “Linux 64-bit”.
+ * In Profile click on “Add New”.
+ * Set a Profile name “Ubuntu”.
+ * In Remote enter “localhost”.
+ * Click on “Test Connection”.
 
 ![Avance](Imagens/Configurandoubuntu.png)
 
 
-### Instalando o Docker
+### Installing Docker
 [**https://www.docker.com/products/docker-desktop/**](https://www.docker.com/products/docker-desktop/)
 
 ![Avance](Imagens/Dockerdownload.png)
 
 
-### Configurando a máquina Linux no Docker
-Na pasta do Projeto, temos a seguinte estrutura.
+### Configuring Linux machine in Docker
+In the Project folder, we have the following structure.
 ```	
 ...Avance\Micro4Delphi\MsUser
 ``` 
@@ -64,63 +64,62 @@ Na pasta do Projeto, temos a seguinte estrutura.
 ![Avance](Imagens/API.png)
 
 
- * Acessar a pasta “paserver”, onde temos o arquivo “Dockerfile” e o arquivo “LinuxPAServer21.0.tar.gz” de acordo com a versão do Delphi.
- * Copiar em “C:\Program Files (x86)\Embarcadero\Studio\21.0\PAServer”.
+ * Access the “paserver” folder, where we have the “Dockerfile” file and the “LinuxPAServer21.0.tar.gz” file according to the Delphi version.
+ * Copy to “C:\Program Files (x86)\Embarcadero\Studio\21.0\PAServer”.
 
 [**https://docwiki.embarcadero.com/RADStudio/Sydney/en/Linux_Application_Development**](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Linux_Application_Development) 
 
 
-**Abrir um console e executar:**
- * Primeiro “docker build -t micro4delphi/paserver .” para criar uma imagem da aplicação no Docker.
- * Depois “docker run -p 64211:64211 -d micro4delphi/paserver” para executar a aplicação no Docker.
+**Open a console and run:**
+ * First “docker build -t micro4delphi/paserver .” to create an image of the application in Docker.
+ * Then “docker run -p 64211:64211 -d micro4delphi/paserver” to run the application in Docker.
 
 
-### Subindo as aplicações Delphi no Docker como API
- * Acessar a pasta “API” de cada Microserviço da pasta "Micro4Delphi".
- * Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
+### Uploading Delphi applications to Docker as an API
+ * Access the “API” folder of each Microservice in the “Micro4Delphi” folder.
+ * Open a console and execute the commands from the "Dockerfile - Commands.txt" file.
 
 
-### Configurando o balanceamento de carga
- * Acessar a pasta “nginx” de cada Microserviço da pasta "Micro4Delphi".
- * Abrir um console e executar os comandos do arquivo "Dockerfile - Comandos.txt"
+### Configuring load balancing
+ * Access the “nginx” folder of each Microservice in the “Micro4Delphi” folder.
+ * Open a console and execute the commands from the "Dockerfile - Commands.txt" file.
 
 
-### Configurando o docker-compose
- * Acessar a pasta raiz de cada microserviço da pasta "Micro4Delphi".
+### Configuring docker-compose
+ * Access the root folder of each microservice in the "Micro4Delphi" folder.
 ```	
 ...Avance\Micro4Delphi\MsUser
 ``` 
- * Abrir um console e executar os comandos do arquivo "docker-compose.yml - Comandos.txt"
+ * Open a console and execute the commands in the file "docker-compose.yml - Commands.txt"
 
 
 
-## Configuração do Projeto
+## Project Configuration
 
-Descompactar o arquivo “Avance.rar” em “C:\Avance”.
+Unzip the “Avance.rar” file in “C:\Avance”.
 
-O caminho do banco de dados está configurado no arquivo “Caminho.sys”.
+The database path is configured in the “Path.sys” file.
 
-Ao iniciar o sistema vai aparecer a tela de login abaixo.
+When starting the system, the login screen below will appear.
 
 ![Avance](Imagens/Logon.png)
 
 
-**É possível acessar o sistema com 2 perfis:**
+**It is possible to access the system with 2 profiles:**
+**Manager Profile**
+ * User: LUCASFF
+ * Password: 10
+ * The “Manager” profile can register schools, users, groups, classes and issue access and academic performance reports.
 
-**Perfil Gestor**
- * Usuário: LUCASFF
- * Senha: 10
- * O perfil “Gestor” pode cadastrar escolas, usuários, turmas, aulas e emitir relatórios de acessos e de desempenho acadêmico.
-
-**Perfil Aluno**
- * Usuário: ALUNO
- * Senha: 10
- * O perfil “Aluno” pode assistir as aulas e realizar os exercícios.
+**Student Profile**
+ * User: ALUNO
+ * Password: 10
+ * The “Student” profile can attend classes and perform exercises.
 
 
-## Informações gerais
+## General information
 
-O tutorial para criação de cada microserviço pode ser visto no documento "MsUsers.pdf"
+The tutorial for creating each microservice can be seen in the document "MsUsers.pdf"
 ```	
 ...Avance\Micro4Delphi\MsUser\Tutorial\MsUsers.pdf
 ``` 
