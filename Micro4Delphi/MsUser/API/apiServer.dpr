@@ -13,28 +13,28 @@ uses
   Horse.GBSwagger,
   Horse.Paginate,
   Horse.HandleException,
-  udmFiredac in 'src\connection\udmFiredac.pas' {dmFiredac: TDataModule} ,
-  Controller.Usuarios in 'src\controller\Controller.Usuarios.pas',
-  DAO.Usuarios in 'src\DAO\DAO.Usuarios.pas',
-  Model.Usuarios in 'src\model\Model.Usuarios.pas',
+  udmFiredac in 'src\connection\udmFiredac.pas' {dmFiredac: TDataModule},
+  Controller.Users in 'src\controller\Controller.Users.pas',
+  DAO.Users in 'src\DAO\DAO.Users.pas',
+  Model.Users in 'src\model\Model.Users.pas',
   Model.Response in 'src\model\Model.Response.pas',
   uTGenID in 'src\util\uTGenID.pas',
-  Util.BancoDados in 'src\util\Util.BancoDados.pas',
-  Utils.Funcoes in 'src\util\Utils.Funcoes.pas',
+  Util.Database in 'src\util\Util.Database.pas',
+  Utils.Functions in 'src\util\Utils.Functions.pas',
   Utils.ObjectToJson in 'src\util\Utils.ObjectToJson.pas';
 
 procedure SwaggerConfig;
 begin
   Swagger //
     .Config //
-    .ModuleName('Usuarios.dll') //
+    .ModuleName('Users.dll') //
     .&End. //
     Info. //
-    Title('Usuarios'). //
-    Description('Lista de Usuários') //
-    .Contact.Name('Usuários ltda') //
-    .Email('fac@usuarios.com.br') //
-    .Url('http://www.usuarios.com.br') //
+    Title('Users'). //
+    Description('User list') //
+    .Contact.Name('Users ltda') //
+    .Email('fac@users.com.br') //
+    .Url('http://www.users.com.br') //
     .&End.&End.BasePath('');
 end;
 
@@ -52,6 +52,6 @@ begin
       Res.Send('pong ' + GetEnvironmentVariable('PONG'));
     end);
 
-  THorseGBSwaggerRegister.RegisterPath(TControllerUsuarios);
+  THorseGBSwaggerRegister.RegisterPath(TControllerUsers);
   THorse.Listen(9000);
 end.

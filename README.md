@@ -6,9 +6,10 @@
 
 ## Installation and configuration
  * Install **Firebird 2.5** located in the project's **Data** folder.
- * Have the dlls **midas.dll**, **libeay32.dll** and **ssleay32.dll** in the project folder next to the executable.
+ * Have the following DLLs **midas.dll**, **libeay32.dll**, and **ssleay32.dll** in the project folder next to the executable.
  * Configure the database path in the **Path.sys** file in the project folder next to the executable.
- * To extract the executable, simply unzip the **Avance.rar** file located in the project's **Release** folder.
+ * To extract the executable, unzip the **Avance.rar** file in the project's **Release** folder.
+
 
 ```	
 ...Avance\Fontes\Win32\Release
@@ -32,8 +33,8 @@
 
 
  * Open the console in the project folder to execute Boss commands.
- * First run “boss init” and confirm the information.
- * Then run “boss install horse” to install the horse.
+ * First, run “boss init” and confirm the information.
+ * Then, run “boss install horse” to install the horse.
 
 ![Avance](Imagens/Bossinstall.png) 
 
@@ -56,7 +57,7 @@
 
 
 ### Configuring Linux machine in Docker
-In the Project folder, we have the following structure.
+In the Project folder, we have the following structure:
 ```	
 ...Avance\Micro4Delphi\MsUser
 ``` 
@@ -109,7 +110,7 @@ When starting the system, the login screen below will appear.
 **Manager Profile**
  * User: LUCASFF
  * Password: 10
- * The “Manager” profile can register schools, users, groups, classes and issue access and academic performance reports.
+ * The “Manager” profile can register schools, users, groups, classes, and issue access and academic performance reports.
 
 **Student Profile**
  * User: ALUNO

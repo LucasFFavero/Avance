@@ -31,13 +31,13 @@ begin
 
   if erro then
   begin
-    result.AddPair('status', 'erro');
-    result.AddPair('mensagem', msg);
+    result.AddPair('status', 'error');
+    result.AddPair('messages', msg);
   end
   else
   begin
     result.AddPair('status', 'ok');
-    result.AddPair('mensagem', msg);
+    result.AddPair('messages', msg);
   end
 end;
 
