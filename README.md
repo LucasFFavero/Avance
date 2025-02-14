@@ -16,27 +16,27 @@
 ``` 
 
 ### Tools Used
-![Avance](Imagens/Ferramentas.png) 
+![Avance](Images/Ferramentas.png) 
 
 ### Installing Boss
 [**https://github.com/HashLoad/boss**](https://github.com/HashLoad/boss) 
 
-![Avance](Imagens/Bossdownload.png) 
+![Avance](Images/Bossdownload.png) 
 
-![Avance](Imagens/Boss.png)
+![Avance](Images/Boss.png)
 
 
 ### Installing Horse
 [**https://github.com/HashLoad/horse**](https://github.com/HashLoad/horse) 
 
-![Avance](Imagens/Installation.png) 
+![Avance](Images/Installation.png) 
 
 
  * Open the console in the project folder to execute Boss commands.
  * First, run “boss init” and confirm the information.
  * Then, run “boss install horse” to install the horse.
 
-![Avance](Imagens/Bossinstall.png) 
+![Avance](Images/Bossinstall.png) 
 
 
 ### Compiling the Delphi application for Linux
@@ -47,13 +47,13 @@
  * In Remote enter “localhost”.
  * Click on “Test Connection”.
 
-![Avance](Imagens/Configurandoubuntu.png)
+![Avance](Images/Configurandoubuntu.png)
 
 
 ### Installing Docker
 [**https://www.docker.com/products/docker-desktop/**](https://www.docker.com/products/docker-desktop/)
 
-![Avance](Imagens/Dockerdownload.png)
+![Avance](Images/Dockerdownload.png)
 
 
 ### Configuring Linux machine in Docker
@@ -62,7 +62,7 @@ In the Project folder, we have the following structure:
 ...Avance\Micro4Delphi\MsUser
 ``` 
 
-![Avance](Imagens/API.png)
+![Avance](Images/API.png)
 
 
  * Access the “paserver” folder, where we have the “Dockerfile” file and the “LinuxPAServer21.0.tar.gz” file according to the Delphi version.
@@ -103,7 +103,7 @@ The database path is configured in the “Path.sys” file.
 
 When starting the system, the login screen below will appear.
 
-![Avance](Imagens/Logon.png)
+![Avance](Images/Logon.png)
 
 
 **It is possible to access the system with 2 profiles:**
