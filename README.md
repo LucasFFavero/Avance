@@ -16,7 +16,7 @@
 ``` 
 
 ### Tools Used
-![Avance](Images/Ferramentas.png) 
+![Avance](Images/Tools.png) 
 
 ### Installing Boss
 [**https://github.com/HashLoad/boss**](https://github.com/HashLoad/boss) 
@@ -47,7 +47,7 @@
  * In Remote enter “localhost”.
  * Click on “Test Connection”.
 
-![Avance](Images/Configurandoubuntu.png)
+![Avance](Images/UbuntuConfiguring.png)
 
 
 ### Installing Docker
