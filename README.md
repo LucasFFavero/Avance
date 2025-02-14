@@ -47,7 +47,7 @@
  * In Remote enter “localhost”.
  * Click on “Test Connection”.
 
-![Avance](Images/Ubuntuconfiguring.png)
+![Avance](Images/Ubuntuconfig.png)
 
 
 ### Installing Docker
