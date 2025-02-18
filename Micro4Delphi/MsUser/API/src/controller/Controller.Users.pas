@@ -17,23 +17,23 @@ type
     FResponse: THorseResponse;
     function getBody: TModelUsers;
   public
-    // Comandos do Swagger para documentação
+    // Swagger commands for documentation
     [SwagParamBody('body', TModelUsers)]
 
-    // Métodos Post
+    // Post Methods
     [SwagPOST('', 'Post', true)]
     [SwagResponse(200, TModelUsers, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
 
-    // Procedure post que chama o método setUsers da camada DAOUsers
+    // Post procedure that calls the setUsers method of the DAOUsers layer
     procedure post;
 
-    // Métodos Get
+    // Get Methods
     [SwagGET('', 'Get', true)]
     [SwagResponse(200, TModelUsers, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
 
-    // Procedure get que chama o método getUsers da camada DAOUsers
+    // Get procedure that calls the getUsers method of the DAOUsers layer
     procedure get;
 
     constructor Create(Req: THorseRequest; Res: THorseResponse);
@@ -68,7 +68,7 @@ begin
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.messages := E.Message;
+        LRetorno.message := E.Message;
 
         // Retorna o Json como objeto para a camada cliente
         FResponse.Status(400).Send<TJSONObject>
@@ -105,10 +105,10 @@ begin
 
     if jsonValue <> nil then
     begin
-      if jsonValue.GetValue('id') <> nil then
-        result.id := jsonValue.GetValue<integer>('id');
-      if jsonValue.GetValue('name') <> nil then
-        result.name := jsonValue.GetValue<string>('name');
+      if jsonValue.GetValue('codigo') <> nil then
+        result.id := jsonValue.GetValue<integer>('codigo');
+      if jsonValue.GetValue('nome') <> nil then
+        result.name := jsonValue.GetValue<string>('nome');
     end;
   end;
 end;
@@ -124,17 +124,16 @@ begin
 
   try
     try
-      // Realiza a chamada do método setUsers da camada DAOUsers
-      FResponse.Status(200).Send<TJSONObject>
-        (DAOUsers.setUsers(Users));
+      // Calls the setUsers method of the DAOUsers layer
+      FResponse.Status(200).Send<TJSONObject>(DAOUsers.setUsers(Users));
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.messages := E.Message;
+        LRetorno.message := E.Message;
 
-        // Retorna o Json como objeto para a camada cliente
+        // Returns Json as object to client layer
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));

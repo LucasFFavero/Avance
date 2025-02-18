@@ -1,9 +1,9 @@
-unit Model.Escolas;
+unit Model.Schools;
 
 interface
 
 type
-  TModelEscolas = class
+  TModelSchools = class
   private
     Fcodigo: integer;
     Fnome: string;

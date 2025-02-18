@@ -13,28 +13,28 @@ uses
   Horse.GBSwagger,
   Horse.Paginate,
   Horse.HandleException,
-  udmFiredac in 'src\connection\udmFiredac.pas' {dmFiredac: TDataModule} ,
-  Controller.Aulas in 'src\controller\Controller.Aulas.pas',
-  DAO.Aulas in 'src\DAO\DAO.Aulas.pas',
-  Model.Aulas in 'src\model\Model.Aulas.pas',
+  udmFiredac in 'src\connection\udmFiredac.pas' {dmFiredac: TDataModule},
+  Controller.Lessons in 'src\controller\Controller.Lessons.pas',
+  DAO.Lessons in 'src\DAO\DAO.Lessons.pas',
+  Model.Lessons in 'src\model\Model.Lessons.pas',
   Model.Response in 'src\model\Model.Response.pas',
   uTGenID in 'src\util\uTGenID.pas',
-  Util.BancoDados in 'src\util\Util.BancoDados.pas',
-  Utils.Funcoes in 'src\util\Utils.Funcoes.pas',
+  Util.Database in 'src\util\Util.Database.pas',
+  Utils.Functions in 'src\util\Utils.Functions.pas',
   Utils.ObjectToJson in 'src\util\Utils.ObjectToJson.pas';
 
 procedure SwaggerConfig;
 begin
   Swagger //
     .Config //
-    .ModuleName('Aulas.dll') //
+    .ModuleName('Lessons.dll') //
     .&End. //
     Info. //
-    Title('Aulas'). //
-    Description('Lista de Usuários') //
-    .Contact.Name('Usuários ltda') //
-    .Email('fac@Aulas.com.br') //
-    .Url('http://www.Aulas.com.br') //
+    Title('Lessons'). //
+    Description('Lessons List') //
+    .Contact.Name('Lessons ltda') //
+    .Email('fac@Lessons.com.br') //
+    .Url('http://www.Lessons.com.br') //
     .&End.&End.BasePath('');
 end;
 
@@ -52,6 +52,6 @@ begin
       Res.Send('pong ' + GetEnvironmentVariable('PONG'));
     end);
 
-  THorseGBSwaggerRegister.RegisterPath(TControllerAulas);
+  THorseGBSwaggerRegister.RegisterPath(TControllerLessons);
   THorse.Listen(9000);
 end.

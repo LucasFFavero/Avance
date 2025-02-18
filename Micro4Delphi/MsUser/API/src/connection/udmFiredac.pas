@@ -58,7 +58,7 @@ begin
   cnxDef.Params.UserName := 'sysdba';
   cnxDef.Params.Password := 'masterkey';
   cnxDef.Params.Database :=
-    'C:\Development\Projects\Avance\Micro4Delphi\MicroUsers\API\Database\Users.fdb';
+    'C:\Development\Projects\Avance\Micro4Delphi\MsUsers\API\Database\Users.fdb';
   cnxDef.Params.pooled := false;
   cnxDef.Params.Add('Protocol=TCPIP');
   cnxDef.Params.Add('Server=192.168.0.183');

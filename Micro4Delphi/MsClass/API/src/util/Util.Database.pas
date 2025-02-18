@@ -1,4 +1,4 @@
-unit Util.BancoDados;
+unit Util.Database;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TUtilBancoDados = class
+  TUtilDatabase = class
   private
     class var FFDConnection: TFDConnection;
     class var FDm: TdmFiredac;
@@ -19,18 +19,18 @@ type
 
 implementation
 
-{ TUtilBancoDados }
+{ TUtilDatabase }
 
-{ TUtilBancoDados }
+{ TUtilDatabase }
 
-class function TUtilBancoDados.getDM: TdmFiredac;
+class function TUtilDatabase.getDM: TdmFiredac;
 begin
   if FDm = nil then
     FDm := TdmFiredac.Create(nil);
   result := FDm;
 end;
 
-class function TUtilBancoDados.getFDacConnection: TFDConnection;
+class function TUtilDatabase.getFDacConnection: TFDConnection;
 begin
   if FFDConnection = nil then
   begin
@@ -42,7 +42,7 @@ begin
   result := FFDConnection;
 end;
 
-class function TUtilBancoDados.getFDQuery: TFDQuery;
+class function TUtilDatabase.getFDQuery: TFDQuery;
 begin
   result := TFDQuery.Create(nil);
   result.Connection := getFDacConnection;

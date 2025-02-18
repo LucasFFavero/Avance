@@ -32,12 +32,12 @@ begin
   if erro then
   begin
     result.AddPair('status', 'erro');
-    result.AddPair('mensagem', msg);
+    result.AddPair('message', msg);
   end
   else
   begin
     result.AddPair('status', 'ok');
-    result.AddPair('mensagem', msg);
+    result.AddPair('message', msg);
   end
 end;
 

@@ -1,40 +1,40 @@
-unit DAO.Aulas;
+unit DAO.Classes;
 
 interface
 
 uses
-  System.JSON, Rest.JSON, System.SysUtils, Model.Aulas, udmFiredac,
+  System.JSON, Rest.JSON, System.SysUtils, Model.Classes, udmFiredac,
   Datasnap.DBClient, Data.SqlExpr, System.SyncObjs, FireDAC.Comp.Client,
   Model.Response, System.Generics.Collections, uTGenID;
 
 type
-  TDAOAulas = class
+  TDAOClasses = class
   private
     FDQuery: TFDQuery;
-    function postAulas(const Aulas: TModelAulas): TModelResponse;
+    function postClasses(const Classes: TModelClasses): TModelResponse;
     function getJsonArray(const AValue: TArray<TObject>): TJSONArray;
     function getJsonMsg(const tag, texto: string): TJsonObject;
     procedure closeQuery;
   public
-    function setAulas(const Aulas: TModelAulas): TJsonObject;
-    function getAulas: TJSONArray;
+    function setClasses(const Classes: TModelClasses): TJsonObject;
+    function getClasses: TJSONArray;
     destructor Destroy; override;
   end;
 
 implementation
 
-{ TDAOAulas }
+{ TDAOClasses }
 
-uses Util.BancoDados;
+uses Util.Database;
 
-{ TDAOAulas }
+{ TDAOClasses }
 
-procedure TDAOAulas.closeQuery;
+procedure TDAOClasses.closeQuery;
 begin
   FDQuery.Close;
 end;
 
-destructor TDAOAulas.Destroy;
+destructor TDAOClasses.Destroy;
 begin
   if FDQuery <> nil then
   begin
@@ -44,49 +44,44 @@ begin
   inherited;
 end;
 
-function TDAOAulas.getAulas: TJSONArray;
+function TDAOClasses.getClasses: TJSONArray;
 var
-  Aulas: TModelAulas;
-  AulasList: TArray<TObject>;
+  Classes: TModelClasses;
+  ClassesList: TArray<TObject>;
 begin
   result := nil;
-  AulasList := TArray<TObject>.Create(nil);
-  FDQuery := TUtilBancoDados.getFDQuery;
+  ClassesList := TArray<TObject>.Create(nil);
+  FDQuery := TUtilDatabase.getFDQuery;
 
   try
-    // Comando SQL para consulta
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, TITULO');
-    FDQuery.SQL.Add('FROM AULAS');
+    FDQuery.SQL.Add('SELECT CODIGO, DESCRICAO');
+    FDQuery.SQL.Add('FROM TURMAS');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
-    SetLength(AulasList, FDQuery.RecordCount);
+    SetLength(ClassesList, FDQuery.RecordCount);
 
     while not FDQuery.Eof do
     begin
-      // Grava o retorno nas propriedades do Model.Aulas
-      Aulas := TModelAulas.Create;
-      Aulas.codigo := FDQuery.FieldByName('CODIGO').asInteger;
-      Aulas.titulo := FDQuery.FieldByName('TITULO').AsString;
-
-      // Adiciona os dados na lista de usuários
-      AulasList[FDQuery.recno - 1] := Aulas;
+      Classes := TModelClasses.Create;
+      Classes.codigo := FDQuery.FieldByName('CODIGO').asInteger;
+      Classes.descricao := FDQuery.FieldByName('DESCRICAO').AsString;
+      ClassesList[FDQuery.recno - 1] := Classes;
       FDQuery.next;
     end;
 
-    // Retorna a lista em formato Json para o controlador
-    if Length(AulasList) > 0 then
-      result := getJsonArray(AulasList);
+    if Length(ClassesList) > 0 then
+      result := getJsonArray(ClassesList);
   finally
     closeQuery;
 
-    if AulasList <> nil then
-      AulasList := nil;
+    if ClassesList <> nil then
+      ClassesList := nil;
   end;
 end;
 
-function TDAOAulas.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
+function TDAOClasses.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
 var
   i: integer;
 begin
@@ -95,7 +90,7 @@ begin
   try
     if Length(AValue) = 0 then
     begin
-      result.Add(getJsonMsg('mensagem', 'Arquivo Vazio'));
+      result.Add(getJsonMsg('message', 'Empty file'));
     end
     else
     begin
@@ -105,53 +100,50 @@ begin
   except
     on e: exception do
     begin
-      result.Add(getJsonMsg('erro', e.Message));
+      result.Add(getJsonMsg('error', e.Message));
     end;
   end;
 end;
 
-function TDAOAulas.getJsonMsg(const tag, texto: string): TJsonObject;
+function TDAOClasses.getJsonMsg(const tag, texto: string): TJsonObject;
 begin
   result := TJsonObject.Create;
   result.AddPair(tag, texto);
 end;
 
-function TDAOAulas.postAulas(const Aulas: TModelAulas): TModelResponse;
+function TDAOClasses.postClasses(const Classes: TModelClasses): TModelResponse;
 begin
   result := TModelResponse.Create;
   result.status := 0;
-  result.mensagem := '';
-
-  FDQuery := TUtilBancoDados.getFDQuery;
+  result.message := '';
 
   try
-    // Comando SQL para consulta
+    FDQuery := TUtilDatabase.getFDQuery;
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, TITULO');
-    FDQuery.SQL.Add('FROM AULAS');
+    FDQuery.SQL.Add('SELECT CODIGO, DESCRICAO');
+    FDQuery.SQL.Add('FROM TURMAS');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
     try
-      // Comando para inclusão
       FDQuery.Append;
-      if Aulas.codigo = 0 then
+      if Classes.codigo = 0 then
         FDQuery.FieldByName('CODIGO').asInteger :=
-          TGenID.getGenId('GEN_AULAS_ID')
+          TGenID.getGenId('GEN_TURMAS_ID')
       else
-        FDQuery.FieldByName('CODIGO').asInteger := Aulas.codigo;
-      FDQuery.FieldByName('TITULO').AsString := Aulas.titulo;
+        FDQuery.FieldByName('CODIGO').asInteger := Classes.codigo;
+      FDQuery.FieldByName('DESCRICAO').AsString := Classes.descricao;
       FDQuery.Post;
     finally
       closeQuery;
     end;
   finally
     result.status := 200;
-    result.mensagem := 'Dado inserido com sucesso';
+    result.message := 'Data entered successfully';
   end;
 end;
 
-function TDAOAulas.setAulas(const Aulas: TModelAulas): TJsonObject;
+function TDAOClasses.setClasses(const Classes: TModelClasses): TJsonObject;
 var
   Response: TModelResponse;
   ResponseSucess: TModelResponse;
@@ -161,14 +153,14 @@ begin
 
   try
     try
-      ResponseSucess := postAulas(Aulas);
+      ResponseSucess := postClasses(Classes);
       result := TJSON.ObjectToJsonObject(ResponseSucess,
         [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
     except
       on e: exception do
       begin
         Response.status := 400;
-        Response.mensagem := e.Message;
+        Response.message := e.Message;
         result := TJSON.ObjectToJsonObject(Response,
           [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
       end;

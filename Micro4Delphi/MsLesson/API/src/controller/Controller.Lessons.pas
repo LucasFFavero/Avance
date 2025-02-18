@@ -1,4 +1,4 @@
-unit Controller.Aulas;
+unit Controller.Lessons;
 
 interface
 
@@ -6,34 +6,34 @@ uses
   Horse, System.JSON, Rest.JSON, System.SysUtils, Generics.Collections,
   Horse.GBSwagger, System.Variants, GBSwagger.Path.Attributes,
   GBSwagger.Validator.Attributes, GBSwagger.Validator.Base,
-  GBSwagger.Validator.Interfaces, Model.Aulas, Model.Response;
+  GBSwagger.Validator.Interfaces, Model.Lessons, Model.Response;
 
 type
-  [SwagPath('Aulas', 'Aulas')]
+  [SwagPath('Lessons', 'Lessons')]
 
-  TControllerAulas = class
+  TControllerLessons = class
   private
     FRequest: THorseRequest;
     FResponse: THorseResponse;
-    function getBody: TModelAulas;
+    function getBody: TModelLessons;
   public
     // Comandos do Swagger para documentação
-    [SwagParamBody('body', TModelAulas)]
+    [SwagParamBody('body', TModelLessons)]
 
     // Métodos Post
     [SwagPOST('', 'Post', true)]
-    [SwagResponse(200, TModelAulas, 'Success')]
+    [SwagResponse(200, TModelLessons, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
 
-    // Procedure post que chama o método setAulas da camada DAOAulas
+    // Procedure post que chama o método setLessons da camada DAOLessons
     procedure post;
 
     // Métodos Get
     [SwagGET('', 'Get', true)]
-    [SwagResponse(200, TModelAulas, 'Success')]
+    [SwagResponse(200, TModelLessons, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
 
-    // Procedure get que chama o método getAulas da camada DAOAulas
+    // Procedure get que chama o método getLessons da camada DAOLessons
     procedure get;
 
     constructor Create(Req: THorseRequest; Res: THorseResponse);
@@ -42,55 +42,55 @@ type
 implementation
 
 uses
-  DAO.Aulas;
+  DAO.Lessons;
 
-{ TControllerAulas }
+{ TControllerLessons }
 
-constructor TControllerAulas.Create(Req: THorseRequest; Res: THorseResponse);
+constructor TControllerLessons.Create(Req: THorseRequest; Res: THorseResponse);
 begin
   FRequest := Req;
   FResponse := Res;
 end;
 
-procedure TControllerAulas.get;
+procedure TControllerLessons.get;
 var
   LRetorno: TModelResponse;
-  DAOAulas: TDAOAulas;
+  DAOLessons: TDAOLessons;
 begin
-  DAOAulas := TDAOAulas.Create;
+  DAOLessons := TDAOLessons.Create;
 
   try
     try
-      // Realiza a chamada do método getAulas da camada DAOAulas
-      FResponse.Status(200).Send<TJSONArray>(DAOAulas.getAulas);
+      // Calls the getLessons method of the DAOLessons layer
+      FResponse.Status(200).Send<TJSONArray>(DAOLessons.getLessons);
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.Message;
 
-        // Retorna o Json como objeto para a camada cliente
+        // Returns Json as object to client layer
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if DAOAulas <> nil then
+    if DAOLessons <> nil then
     begin
-      DAOAulas.free;
-      DAOAulas := nil;
+      DAOLessons.free;
+      DAOLessons := nil;
     end;
   end;
 end;
 
-function TControllerAulas.getBody: TModelAulas;
+function TControllerLessons.getBody: TModelLessons;
 var
   jsonValue: TJSONObject;
   ReqBody: string;
 begin
-  result := TModelAulas.Create;
+  result := TModelLessons.Create;
   ReqBody := FRequest.Body;
 
   if copy(ReqBody, 1, 1) = '[' then
@@ -113,44 +113,43 @@ begin
   end;
 end;
 
-procedure TControllerAulas.post;
+procedure TControllerLessons.post;
 var
-  Aulas: TModelAulas;
+  Lessons: TModelLessons;
   LRetorno: TModelResponse;
-  DAOAulas: TDAOAulas;
+  DAOLessons: TDAOLessons;
 begin
-  Aulas := getBody;
-  DAOAulas := TDAOAulas.Create;
+  Lessons := getBody;
+  DAOLessons := TDAOLessons.Create;
 
   try
     try
-      // Realiza a chamada do método setAulas da camada DAOAulas
-      FResponse.Status(200).Send<TJSONObject>
-        (DAOAulas.setAulas(Aulas));
+      // Calls the setLessons method of the DAOLessons layer
+      FResponse.Status(200).Send<TJSONObject>(DAOLessons.setLessons(Lessons));
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.Message;
 
-        // Retorna o Json como objeto para a camada cliente
+        // Returns Json as object to client layer
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if Aulas <> nil then
+    if Lessons <> nil then
     begin
-      Aulas.free;
-      Aulas := nil;
+      Lessons.free;
+      Lessons := nil;
     end;
 
-    if DAOAulas <> nil then
+    if DAOLessons <> nil then
     begin
-      DAOAulas.free;
-      DAOAulas := nil;
+      DAOLessons.free;
+      DAOLessons := nil;
     end;
   end;
 end;

@@ -1,4 +1,4 @@
-unit Controller.Turmas;
+unit Controller.Classes;
 
 interface
 
@@ -6,24 +6,24 @@ uses
   Horse, System.JSON, Rest.JSON, System.SysUtils, Generics.Collections,
   Horse.GBSwagger, System.Variants, GBSwagger.Path.Attributes,
   GBSwagger.Validator.Attributes, GBSwagger.Validator.Base,
-  GBSwagger.Validator.Interfaces, Model.Turmas, Model.Response;
+  GBSwagger.Validator.Interfaces, Model.Classes, Model.Response;
 
 type
-  [SwagPath('Turmas', 'Turmas')]
+  [SwagPath('Classes', 'Classes')]
 
-  TControllerTurmas = class
+  TControllerClasses = class
   private
     FRequest: THorseRequest;
     FResponse: THorseResponse;
-    function getBody: TModelTurmas;
+    function getBody: TModelClasses;
   public
-    [SwagParamBody('body', TModelTurmas)]
+    [SwagParamBody('body', TModelCLasses)]
     [SwagPOST('', 'Post', true)]
-    [SwagResponse(200, TModelTurmas, 'Success')]
+    [SwagResponse(200, TModelCLasses, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
     procedure post;
     [SwagGET('', 'Get', true)]
-    [SwagResponse(200, TModelTurmas, 'Success')]
+    [SwagResponse(200, TModelCLasses, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
     procedure get;
     constructor Create(Req: THorseRequest; Res: THorseResponse);
@@ -32,53 +32,52 @@ type
 implementation
 
 uses
-  DAO.Turmas;
+  DAO.Classes;
 
-{ TControllerTurmas }
+{ TControllerClasses }
 
-constructor TControllerTurmas.Create(Req: THorseRequest; Res: THorseResponse);
+constructor TControllerClasses.Create(Req: THorseRequest; Res: THorseResponse);
 begin
   FRequest := Req;
   FResponse := Res;
 end;
 
-procedure TControllerTurmas.get;
+procedure TControllerClasses.get;
 var
   LRetorno: TModelResponse;
-  DAOTurmas: TDAOTurmas;
+  DAOClasses: TDAOClasses;
 begin
-  DAOTurmas := TDAOTurmas.Create;
+  DAOClasses := TDAOClasses.Create;
 
   try
     try
-      FResponse.Status(200).Send<TJSONArray>(DAOTurmas.getTurmas);
+      FResponse.Status(200).Send<TJSONArray>(DAOClasses.getClasses);
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.Message;
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if DAOTurmas <> nil then
+    if DAOClasses <> nil then
     begin
-      DAOTurmas.free;
-      DAOTurmas := nil;
+      DAOClasses.free;
+      DAOClasses := nil;
     end;
   end;
-
 end;
 
-function TControllerTurmas.getBody: TModelTurmas;
+function TControllerClasses.getBody: TModelClasses;
 var
   jsonValue: TJSONObject;
   ReqBody: string;
 begin
-  result := TModelTurmas.Create;
+  result := TModelClasses.Create;
   ReqBody := FRequest.Body;
 
   if copy(ReqBody, 1, 1) = '[' then
@@ -102,40 +101,40 @@ begin
 
 end;
 
-procedure TControllerTurmas.post;
+procedure TControllerClasses.post;
 var
-  Turmas: TModelTurmas;
+  Classes: TModelClasses;
   LRetorno: TModelResponse;
-  DAOTurmas: TDAOTurmas;
+  DAOClasses: TDAOClasses;
 begin
-  Turmas := getBody;
-  DAOTurmas := TDAOTurmas.Create;
+  Classes := getBody;
+  DAOClasses := TDAOClasses.Create;
 
   try
     try
-      FResponse.Status(200).Send<TJSONObject>(DAOTurmas.setTurmas(Turmas));
+      FResponse.Status(200).Send<TJSONObject>(DAOClasses.setClasses(Classes));
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.Message;
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if Turmas <> nil then
+    if Classes <> nil then
     begin
-      Turmas.free;
-      Turmas := nil;
+      Classes.free;
+      Classes := nil;
     end;
 
-    if DAOTurmas <> nil then
+    if DAOClasses <> nil then
     begin
-      DAOTurmas.free;
-      DAOTurmas := nil;
+      DAOClasses.free;
+      DAOClasses := nil;
     end;
   end;
 end;

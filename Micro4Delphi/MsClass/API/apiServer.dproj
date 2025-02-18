@@ -119,13 +119,13 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\controller\Controller.Turmas.pas"/>
-        <DCCReference Include="src\DAO\DAO.Turmas.pas"/>
-        <DCCReference Include="src\model\Model.Turmas.pas"/>
+        <DCCReference Include="src\controller\Controller.Classes.pas"/>
+        <DCCReference Include="src\DAO\DAO.Classes.pas"/>
+        <DCCReference Include="src\model\Model.Classes.pas"/>
         <DCCReference Include="src\model\Model.Response.pas"/>
         <DCCReference Include="src\util\uTGenID.pas"/>
-        <DCCReference Include="src\util\Util.BancoDados.pas"/>
-        <DCCReference Include="src\util\Utils.Funcoes.pas"/>
+        <DCCReference Include="src\util\Util.Database.pas"/>
+        <DCCReference Include="src\util\Utils.Functions.pas"/>
         <DCCReference Include="src\util\Utils.ObjectToJson.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

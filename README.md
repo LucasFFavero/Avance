@@ -119,6 +119,7 @@ When starting the system, the login screen below will appear.
 
 
 ## General information
+The **Sources** folder contains the project's **.pas** and **.dfm** files. These files are in portuguese and cannot be changed.
 
 The tutorial for creating each microservice can be seen in the document "MsUsers.pdf"
 ```	

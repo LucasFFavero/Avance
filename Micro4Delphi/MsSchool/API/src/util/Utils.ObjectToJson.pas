@@ -9,7 +9,7 @@ type
   TUtilsObjectToJson = class
   public
     class function getJson(const AValue: TObject): TJsonObject;
-    class function getJsonRetorno(const erro: boolean; const msg: string)
+    class function getJsonReturn(const erro: boolean; const msg: string)
       : TJsonObject;
   end;
 
@@ -24,20 +24,20 @@ begin
   result := TJson.ObjectToJsonObject(AValue);
 end;
 
-class function TUtilsObjectToJson.getJsonRetorno(const erro: boolean;
+class function TUtilsObjectToJson.getJsonReturn(const erro: boolean;
   const msg: string): TJsonObject;
 begin
   result := TJsonObject.Create;
 
   if erro then
   begin
-    result.AddPair('status', 'erro');
-    result.AddPair('mensagem', msg);
+    result.AddPair('status', 'error');
+    result.AddPair('message', msg);
   end
   else
   begin
     result.AddPair('status', 'ok');
-    result.AddPair('mensagem', msg);
+    result.AddPair('message', msg);
   end
 end;
 

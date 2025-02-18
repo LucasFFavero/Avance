@@ -31,7 +31,7 @@ begin
     .&End. //
     Info. //
     Title('Users'). //
-    Description('User list') //
+    Description('Users list') //
     .Contact.Name('Users ltda') //
     .Email('fac@users.com.br') //
     .Url('http://www.users.com.br') //

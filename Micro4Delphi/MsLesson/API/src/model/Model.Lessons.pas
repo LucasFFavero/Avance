@@ -1,9 +1,9 @@
-unit Model.Aulas;
+unit Model.Lessons;
 
 interface
 
 type
-  TModelAulas = class
+  TModelLessons = class
   private
     Fcodigo: integer;
     Ftitulo: string;

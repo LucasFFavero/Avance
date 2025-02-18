@@ -6,10 +6,10 @@ type
   TModelResponse = class
   private
     Fstatus: integer;
-    Fmessages: string;
+    Fmessage: string;
   published
     property status: integer read Fstatus write Fstatus;
-    property messages: string read Fmessages write Fmessages;
+    property message: string read Fmessage write Fmessage;
   end;
 
 implementation

@@ -26,7 +26,7 @@ type
   end;
 
 const
-  FIREDAC_CONNECTION_DEF_NAME = 'Aulas_runtime';
+  FIREDAC_CONNECTION_DEF_NAME = 'Lessons_runtime';
 
 var
   dmFiredac: TdmFiredac;
@@ -58,7 +58,7 @@ begin
   cnxDef.Params.UserName := 'sysdba';
   cnxDef.Params.Password := 'masterkey';
   cnxDef.Params.Database :=
-    'C:\Desenvolvimento\Projetos\Avance\Micro4Delphi\MicroAulas\API\banco\Aulas.fdb';
+    'C:\Desenvolvimento\Projetos\Avance\Micro4Delphi\MsLesson\API\Database\Lessons.fdb';
   cnxDef.Params.pooled := false;
   cnxDef.Params.Add('Protocol=TCPIP');
   cnxDef.Params.Add('Server=192.168.0.183');

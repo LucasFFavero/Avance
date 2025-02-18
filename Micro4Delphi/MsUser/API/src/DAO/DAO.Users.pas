@@ -54,28 +54,28 @@ begin
   FDQuery := TUtilDatabase.getFDQuery;
 
   try
-    // Comando SQL para consulta
+    // SQL command for query
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT ID, NAME');
-    FDQuery.SQL.Add('FROM USERS');
-    FDQuery.SQL.Add('WHERE ID > 0');
+    FDQuery.SQL.Add('SELECT CODIGO, NOME');
+    FDQuery.SQL.Add('FROM USUARIOS');
+    FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
     SetLength(UsersList, FDQuery.RecordCount);
 
     while not FDQuery.Eof do
     begin
-      // Grava o retorno nas propriedades do Model.Users
+      // Writes the return to the properties of Model.Users
       Users := TModelUsers.Create;
-      Users.id := FDQuery.FieldByName('ID').asInteger;
-      Users.name := FDQuery.FieldByName('NAME').AsString;
+      Users.id := FDQuery.FieldByName('CODIGO').asInteger;
+      Users.name := FDQuery.FieldByName('NOME').AsString;
 
       // Adiciona os dados na lista de usuários
       UsersList[FDQuery.recno - 1] := Users;
       FDQuery.next;
     end;
 
-    // Retorna a lista em formato Json para o controlador
+    // Returns the list in Json format to the controller
     if Length(UsersList) > 0 then
       result := getJsonArray(UsersList);
   finally
@@ -121,34 +121,34 @@ function TDAOUsers.postUsers(const Users: TModelUsers)
 begin
   result := TModelResponse.Create;
   result.status := 0;
-  result.messages := '';
+  result.message := '';
 
   FDQuery := TUtilDatabase.getFDQuery;
 
   try
-    // Comando SQL para consulta
+    // SQL command for query
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT ID, NAME');
-    FDQuery.SQL.Add('FROM USERS');
-    FDQuery.SQL.Add('WHERE ID > 0');
+    FDQuery.SQL.Add('SELECT CODIGO, NOME');
+    FDQuery.SQL.Add('FROM USUARIOS');
+    FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
     try
-      // Comando para inclusão
+      // Command to include
       FDQuery.Append;
       if Users.ID = 0 then
-        FDQuery.FieldByName('ID').asInteger :=
-          TGenID.getGenId('GEN_USERS_ID')
+        FDQuery.FieldByName('CODIGO').asInteger :=
+          TGenID.getGenId('GEN_USUARIOS_ID')
       else
-        FDQuery.FieldByName('ID').asInteger := Users.ID;
-      FDQuery.FieldByName('NAME').AsString := Users.name;
+        FDQuery.FieldByName('CODIGO').asInteger := Users.ID;
+      FDQuery.FieldByName('NOME').AsString := Users.name;
       FDQuery.Post;
     finally
       closeQuery;
     end;
   finally
     result.status := 200;
-    result.messages := 'Data entered successfully';
+    result.message := 'Data entered successfully';
   end;
 end;
 
@@ -169,7 +169,7 @@ begin
       on e: exception do
       begin
         Response.status := 400;
-        Response.messages := e.Message;
+        Response.message := e.Message;
         result := TJSON.ObjectToJsonObject(Response,
           [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
       end;

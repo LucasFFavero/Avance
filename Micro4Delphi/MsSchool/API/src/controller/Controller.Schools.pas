@@ -1,4 +1,4 @@
-unit Controller.Escolas;
+unit Controller.Schools;
 
 interface
 
@@ -6,24 +6,24 @@ uses
   Horse, System.JSON, Rest.JSON, System.SysUtils, Generics.Collections,
   Horse.GBSwagger, System.Variants, GBSwagger.Path.Attributes,
   GBSwagger.Validator.Attributes, GBSwagger.Validator.Base,
-  GBSwagger.Validator.Interfaces, Model.Escolas, Model.Response;
+  GBSwagger.Validator.Interfaces, Model.Schools, Model.Response;
 
 type
-  [SwagPath('Escolas', 'Escolas')]
+  [SwagPath('Schools', 'Schools')]
 
-  TControllerEscolas = class
+  TControllerSchools = class
   private
     FRequest: THorseRequest;
     FResponse: THorseResponse;
-    function getBody: TModelEscolas;
+    function getBody: TModelSchools;
   public
-    [SwagParamBody('body', TModelEscolas)]
+    [SwagParamBody('body', TModelSchools)]
     [SwagPOST('', 'Post', true)]
-    [SwagResponse(200, TModelEscolas, 'Success')]
+    [SwagResponse(200, TModelSchools, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
     procedure post;
     [SwagGET('', 'Get', true)]
-    [SwagResponse(200, TModelEscolas, 'Success')]
+    [SwagResponse(200, TModelSchools, 'Success')]
     [SwagResponse(400, TModelResponse, 'Bad Request')]
     procedure get;
     constructor Create(Req: THorseRequest; Res: THorseResponse);
@@ -32,53 +32,53 @@ type
 implementation
 
 uses
-  DAO.Escolas;
+  DAO.Schools;
 
-{ TControllerEscolas }
+{ TControllerSchools }
 
-constructor TControllerEscolas.Create(Req: THorseRequest; Res: THorseResponse);
+constructor TControllerSchools.Create(Req: THorseRequest; Res: THorseResponse);
 begin
   FRequest := Req;
   FResponse := Res;
 end;
 
-procedure TControllerEscolas.get;
+procedure TControllerSchools.get;
 var
   LRetorno: TModelResponse;
-  DAOEscolas: TDAOEscolas;
+  DAOSchools: TDAOSchools;
 begin
-  DAOEscolas := TDAOEscolas.Create;
+  DAOSchools := TDAOSchools.Create;
 
   try
     try
-      FResponse.Status(200).Send<TJSONArray>(DAOEscolas.getEscolas);
+      FResponse.Status(200).Send<TJSONArray>(DAOSchools.getSchools);
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.message;
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if DAOEscolas <> nil then
+    if DAOSchools <> nil then
     begin
-      DAOEscolas.free;
-      DAOEscolas := nil;
+      DAOSchools.free;
+      DAOSchools := nil;
     end;
   end;
 
 end;
 
-function TControllerEscolas.getBody: TModelEscolas;
+function TControllerSchools.getBody: TModelSchools;
 var
   jsonValue: TJSONObject;
   ReqBody: string;
 begin
-  result := TModelEscolas.Create;
+  result := TModelSchools.Create;
   ReqBody := FRequest.Body;
 
   if copy(ReqBody, 1, 1) = '[' then
@@ -102,40 +102,40 @@ begin
 
 end;
 
-procedure TControllerEscolas.post;
+procedure TControllerSchools.post;
 var
-  Escolas: TModelEscolas;
+  Schools: TModelSchools;
   LRetorno: TModelResponse;
-  DAOEscolas: TDAOEscolas;
+  DAOSchools: TDAOSchools;
 begin
-  Escolas := getBody;
-  DAOEscolas := TDAOEscolas.Create;
+  Schools := getBody;
+  DAOSchools := TDAOSchools.Create;
 
   try
     try
-      FResponse.Status(200).Send<TJSONObject>(DAOEscolas.setEscolas(Escolas));
+      FResponse.Status(200).Send<TJSONObject>(DAOSchools.setSchools(Schools));
     except
       on E: Exception do
       begin
         LRetorno := TModelResponse.Create;
         LRetorno.Status := 400;
-        LRetorno.mensagem := E.Message;
+        LRetorno.message := E.message;
         FResponse.Status(400).Send<TJSONObject>
           (TJSON.ObjectToJsonObject(LRetorno, [joIgnoreEmptyArrays,
           joIgnoreEmptyStrings]));
       end;
     end;
   finally
-    if Escolas <> nil then
+    if Schools <> nil then
     begin
-      Escolas.free;
-      Escolas := nil;
+      Schools.free;
+      Schools := nil;
     end;
 
-    if DAOEscolas <> nil then
+    if DAOSchools <> nil then
     begin
-      DAOEscolas.free;
-      DAOEscolas := nil;
+      DAOSchools.free;
+      DAOSchools := nil;
     end;
   end;
 end;

@@ -1,40 +1,40 @@
-unit DAO.Escolas;
+unit DAO.Lessons;
 
 interface
 
 uses
-  System.JSON, Rest.JSON, System.SysUtils, Model.Escolas, udmFiredac,
+  System.JSON, Rest.JSON, System.SysUtils, Model.Lessons, udmFiredac,
   Datasnap.DBClient, Data.SqlExpr, System.SyncObjs, FireDAC.Comp.Client,
   Model.Response, System.Generics.Collections, uTGenID;
 
 type
-  TDAOEscolas = class
+  TDAOLessons = class
   private
     FDQuery: TFDQuery;
-    function postEscolas(const Escolas: TModelEscolas): TModelResponse;
+    function postLessons(const Lessons: TModelLessons): TModelResponse;
     function getJsonArray(const AValue: TArray<TObject>): TJSONArray;
     function getJsonMsg(const tag, texto: string): TJsonObject;
     procedure closeQuery;
   public
-    function setEscolas(const Escolas: TModelEscolas): TJsonObject;
-    function getEscolas: TJSONArray;
+    function setLessons(const Lessons: TModelLessons): TJsonObject;
+    function getLessons: TJSONArray;
     destructor Destroy; override;
   end;
 
 implementation
 
-{ TDAOEscolas }
+{ TDAOLessons }
 
-uses Util.BancoDados;
+uses Util.Database;
 
-{ TDAOEscolas }
+{ TDAOLessons }
 
-procedure TDAOEscolas.closeQuery;
+procedure TDAOLessons.closeQuery;
 begin
   FDQuery.Close;
 end;
 
-destructor TDAOEscolas.Destroy;
+destructor TDAOLessons.Destroy;
 begin
   if FDQuery <> nil then
   begin
@@ -44,44 +44,49 @@ begin
   inherited;
 end;
 
-function TDAOEscolas.getEscolas: TJSONArray;
+function TDAOLessons.getLessons: TJSONArray;
 var
-  Escolas: TModelEscolas;
-  EscolasList: TArray<TObject>;
+  Lessons: TModelLessons;
+  LessonsList: TArray<TObject>;
 begin
   result := nil;
-  EscolasList := TArray<TObject>.Create(nil);
-  FDQuery := TUtilBancoDados.getFDQuery;
+  LessonsList := TArray<TObject>.Create(nil);
+  FDQuery := TUtilDatabase.getFDQuery;
 
   try
+    // SQL command for query
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, NOME');
-    FDQuery.SQL.Add('FROM ESCOLA');
+    FDQuery.SQL.Add('SELECT CODIGO, TITULO');
+    FDQuery.SQL.Add('FROM AULAS');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
-    SetLength(EscolasList, FDQuery.RecordCount);
+    SetLength(LessonsList, FDQuery.RecordCount);
 
     while not FDQuery.Eof do
     begin
-      Escolas := TModelEscolas.Create;
-      Escolas.codigo := FDQuery.FieldByName('CODIGO').asInteger;
-      Escolas.nome := FDQuery.FieldByName('NOME').AsString;
-      EscolasList[FDQuery.recno - 1] := Escolas;
+      // Writes the return in the Model.Lessons properties
+      Lessons := TModelLessons.Create;
+      Lessons.codigo := FDQuery.FieldByName('CODIGO').asInteger;
+      Lessons.titulo := FDQuery.FieldByName('TITULO').AsString;
+
+      // Add data to the Lessons list
+      LessonsList[FDQuery.recno - 1] := Lessons;
       FDQuery.next;
     end;
 
-    if Length(EscolasList) > 0 then
-      result := getJsonArray(EscolasList);
+    // Returns the list in Json format to the controller
+    if Length(LessonsList) > 0 then
+      result := getJsonArray(LessonsList);
   finally
     closeQuery;
 
-    if EscolasList <> nil then
-      EscolasList := nil;
+    if LessonsList <> nil then
+      LessonsList := nil;
   end;
 end;
 
-function TDAOEscolas.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
+function TDAOLessons.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
 var
   i: integer;
 begin
@@ -90,7 +95,7 @@ begin
   try
     if Length(AValue) = 0 then
     begin
-      result.Add(getJsonMsg('mensagem', 'Arquivo Vazio'));
+      result.Add(getJsonMsg('message', 'Empty file'));
     end
     else
     begin
@@ -100,50 +105,53 @@ begin
   except
     on e: exception do
     begin
-      result.Add(getJsonMsg('erro', e.Message));
+      result.Add(getJsonMsg('error', e.Message));
     end;
   end;
 end;
 
-function TDAOEscolas.getJsonMsg(const tag, texto: string): TJsonObject;
+function TDAOLessons.getJsonMsg(const tag, texto: string): TJsonObject;
 begin
   result := TJsonObject.Create;
   result.AddPair(tag, texto);
 end;
 
-function TDAOEscolas.postEscolas(const Escolas: TModelEscolas): TModelResponse;
+function TDAOLessons.postLessons(const Lessons: TModelLessons): TModelResponse;
 begin
   result := TModelResponse.Create;
   result.status := 0;
-  result.mensagem := '';
+  result.Message := '';
+
+  FDQuery := TUtilDatabase.getFDQuery;
 
   try
-    FDQuery := TUtilBancoDados.getFDQuery;
+    // SQL command for query
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, NOME');
-    FDQuery.SQL.Add('FROM ESCOLA');
+    FDQuery.SQL.Add('SELECT CODIGO, TITULO');
+    FDQuery.SQL.Add('FROM AULAS');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
     try
+      // Command to include
       FDQuery.Append;
-      if Escolas.codigo = 0 then
+      if Lessons.codigo = 0 then
         FDQuery.FieldByName('CODIGO').asInteger :=
-          TGenID.getGenId('GEN_ESCOLA_ID')
+          TGenID.getGenId('GEN_AULAS_ID')
       else
-        FDQuery.FieldByName('CODIGO').asInteger := Escolas.codigo;
-      FDQuery.FieldByName('NOME').AsString := Escolas.nome;
+        FDQuery.FieldByName('CODIGO').asInteger := Lessons.codigo;
+      FDQuery.FieldByName('TITULO').AsString := Lessons.titulo;
       FDQuery.Post;
     finally
       closeQuery;
     end;
   finally
     result.status := 200;
-    result.mensagem := 'Dado inserido com sucesso';
+    result.Message := 'Data entered successfully';
   end;
 end;
 
-function TDAOEscolas.setEscolas(const Escolas: TModelEscolas): TJsonObject;
+function TDAOLessons.setLessons(const Lessons: TModelLessons): TJsonObject;
 var
   Response: TModelResponse;
   ResponseSucess: TModelResponse;
@@ -153,20 +161,19 @@ begin
 
   try
     try
-      ResponseSucess := postEscolas(Escolas);
+      ResponseSucess := postLessons(Lessons);
       result := TJSON.ObjectToJsonObject(ResponseSucess,
         [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
     except
       on e: exception do
       begin
         Response.status := 400;
-        Response.mensagem := e.Message;
+        Response.message := e.Message;
         result := TJSON.ObjectToJsonObject(Response,
           [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
       end;
     end;
   finally
-
     if Response <> nil then
     begin
       Response.free;
@@ -178,7 +185,6 @@ begin
       ResponseSucess := nil;
     end;
   end;
-
 end;
 
 end.

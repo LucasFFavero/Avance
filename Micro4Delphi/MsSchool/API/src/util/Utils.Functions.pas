@@ -1,4 +1,4 @@
-unit Utils.Funcoes;
+unit Utils.Functions;
 
 interface
 
@@ -6,17 +6,17 @@ uses
   SysUtils;
 
 type
-  TUtilsFuncoes = class
+  TUtilsFunctions = class
   public
-    class function peganumero(x: string): string;
-    class function retiraAcento(const s: string): string;
+    class function getnumber(x: string): string;
+    class function removeaccent(const s: string): string;
   end;
 
 implementation
 
 { TUtilsFuncoes }
 
-class function TUtilsFuncoes.peganumero(x: string): string;
+class function TUtilsFunctions.getnumber(x: string): string;
 var
   y: string;
   i: integer;
@@ -38,7 +38,7 @@ begin
     result := '0';
 end;
 
-class function TUtilsFuncoes.retiraAcento(const s: string): string;
+class function TUtilsFunctions.removeaccent(const s: string): string;
 var
   i, J: integer;
 const

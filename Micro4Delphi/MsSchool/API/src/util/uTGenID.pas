@@ -12,7 +12,7 @@ type
 
 implementation
 
-uses FireDAC.Comp.Client, Util.BancoDados;
+uses FireDAC.Comp.Client, Util.Database;
 
 { TGenID }
 
@@ -20,7 +20,7 @@ class function TGenID.getGenId(const Generator: string): integer;
 var
   FQuery: TFDQuery;
 begin
-  FQuery := TUtilBancoDados.getFDQuery;
+  FQuery := TUtilDatabase.getFDQuery;
   FQuery.SQL.text := 'select cast(gen_id(' + UpperCase(Generator) +
     ',1) as integer) as codigo FROM RDB$DATABASE';
 

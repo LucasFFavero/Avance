@@ -1,9 +1,9 @@
-unit Model.Turmas;
+unit Model.Classes;
 
 interface
 
 type
-  TModelTurmas = class
+  TModelClasses = class
   private
     Fcodigo: integer;
     Fdescricao: string;

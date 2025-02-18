@@ -1,40 +1,40 @@
-unit DAO.Turmas;
+unit DAO.Schools;
 
 interface
 
 uses
-  System.JSON, Rest.JSON, System.SysUtils, Model.Turmas, udmFiredac,
+  System.JSON, Rest.JSON, System.SysUtils, Model.Schools, udmFiredac,
   Datasnap.DBClient, Data.SqlExpr, System.SyncObjs, FireDAC.Comp.Client,
   Model.Response, System.Generics.Collections, uTGenID;
 
 type
-  TDAOTurmas = class
+  TDAOSchools = class
   private
     FDQuery: TFDQuery;
-    function postTurmas(const Turmas: TModelTurmas): TModelResponse;
+    function postSchools(const Schools: TModelSchools): TModelResponse;
     function getJsonArray(const AValue: TArray<TObject>): TJSONArray;
     function getJsonMsg(const tag, texto: string): TJsonObject;
     procedure closeQuery;
   public
-    function setTurmas(const Turmas: TModelTurmas): TJsonObject;
-    function getTurmas: TJSONArray;
+    function setSchools(const Schools: TModelSchools): TJsonObject;
+    function getSchools: TJSONArray;
     destructor Destroy; override;
   end;
 
 implementation
 
-{ TDAOTurmas }
+{ TDAOSchools }
 
-uses Util.BancoDados;
+uses Util.Database;
 
-{ TDAOTurmas }
+{ TDAOSchools }
 
-procedure TDAOTurmas.closeQuery;
+procedure TDAOSchools.closeQuery;
 begin
   FDQuery.Close;
 end;
 
-destructor TDAOTurmas.Destroy;
+destructor TDAOSchools.Destroy;
 begin
   if FDQuery <> nil then
   begin
@@ -44,44 +44,44 @@ begin
   inherited;
 end;
 
-function TDAOTurmas.getTurmas: TJSONArray;
+function TDAOSchools.getSchools: TJSONArray;
 var
-  Turmas: TModelTurmas;
-  TurmasList: TArray<TObject>;
+  Schools: TModelSchools;
+  SchoolsList: TArray<TObject>;
 begin
   result := nil;
-  TurmasList := TArray<TObject>.Create(nil);
-  FDQuery := TUtilBancoDados.getFDQuery;
+  SchoolsList := TArray<TObject>.Create(nil);
+  FDQuery := TUtilDatabase.getFDQuery;
 
   try
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, DESCRICAO');
-    FDQuery.SQL.Add('FROM TURMAS');
+    FDQuery.SQL.Add('SELECT CODIGO, NOME');
+    FDQuery.SQL.Add('FROM ESCOLA');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
-    SetLength(TurmasList, FDQuery.RecordCount);
+    SetLength(SchoolsList, FDQuery.RecordCount);
 
     while not FDQuery.Eof do
     begin
-      Turmas := TModelTurmas.Create;
-      Turmas.codigo := FDQuery.FieldByName('CODIGO').asInteger;
-      Turmas.descricao := FDQuery.FieldByName('DESCRICAO').AsString;
-      TurmasList[FDQuery.recno - 1] := Turmas;
+      Schools := TModelSchools.Create;
+      Schools.codigo := FDQuery.FieldByName('CODIGO').asInteger;
+      Schools.nome := FDQuery.FieldByName('NOME').AsString;
+      SchoolsList[FDQuery.recno - 1] := Schools;
       FDQuery.next;
     end;
 
-    if Length(TurmasList) > 0 then
-      result := getJsonArray(TurmasList);
+    if Length(SchoolsList) > 0 then
+      result := getJsonArray(SchoolsList);
   finally
     closeQuery;
 
-    if TurmasList <> nil then
-      TurmasList := nil;
+    if SchoolsList <> nil then
+      SchoolsList := nil;
   end;
 end;
 
-function TDAOTurmas.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
+function TDAOSchools.getJsonArray(const AValue: TArray<TObject>): TJSONArray;
 var
   i: integer;
 begin
@@ -90,7 +90,7 @@ begin
   try
     if Length(AValue) = 0 then
     begin
-      result.Add(getJsonMsg('mensagem', 'Arquivo Vazio'));
+      result.Add(getJsonMsg('message', 'Empty file'));
     end
     else
     begin
@@ -100,50 +100,50 @@ begin
   except
     on e: exception do
     begin
-      result.Add(getJsonMsg('erro', e.Message));
+      result.Add(getJsonMsg('error', e.Message));
     end;
   end;
 end;
 
-function TDAOTurmas.getJsonMsg(const tag, texto: string): TJsonObject;
+function TDAOSchools.getJsonMsg(const tag, texto: string): TJsonObject;
 begin
   result := TJsonObject.Create;
   result.AddPair(tag, texto);
 end;
 
-function TDAOTurmas.postTurmas(const Turmas: TModelTurmas): TModelResponse;
+function TDAOSchools.postSchools(const Schools: TModelSchools): TModelResponse;
 begin
   result := TModelResponse.Create;
   result.status := 0;
-  result.mensagem := '';
+  result.Message := '';
 
   try
-    FDQuery := TUtilBancoDados.getFDQuery;
+    FDQuery := TUtilDatabase.getFDQuery;
     FDQuery.SQL.Clear;
-    FDQuery.SQL.Add('SELECT CODIGO, DESCRICAO');
-    FDQuery.SQL.Add('FROM TURMAS');
+    FDQuery.SQL.Add('SELECT CODIGO, NOME');
+    FDQuery.SQL.Add('FROM ESCOLA');
     FDQuery.SQL.Add('WHERE CODIGO > 0');
     FDQuery.open;
 
     try
       FDQuery.Append;
-      if Turmas.codigo = 0 then
+      if Schools.codigo = 0 then
         FDQuery.FieldByName('CODIGO').asInteger :=
-          TGenID.getGenId('GEN_TURMAS_ID')
+          TGenID.getGenId('GEN_ESCOLA_ID')
       else
-        FDQuery.FieldByName('CODIGO').asInteger := Turmas.codigo;
-      FDQuery.FieldByName('DESCRICAO').AsString := Turmas.descricao;
+        FDQuery.FieldByName('CODIGO').asInteger := Schools.codigo;
+      FDQuery.FieldByName('NOME').AsString := Schools.nome;
       FDQuery.Post;
     finally
       closeQuery;
     end;
   finally
     result.status := 200;
-    result.mensagem := 'Dado inserido com sucesso';
+    result.message := 'Data entered successfully';
   end;
 end;
 
-function TDAOTurmas.setTurmas(const Turmas: TModelTurmas): TJsonObject;
+function TDAOSchools.setSchools(const Schools: TModelSchools): TJsonObject;
 var
   Response: TModelResponse;
   ResponseSucess: TModelResponse;
@@ -153,14 +153,14 @@ begin
 
   try
     try
-      ResponseSucess := postTurmas(Turmas);
+      ResponseSucess := postSchools(Schools);
       result := TJSON.ObjectToJsonObject(ResponseSucess,
         [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
     except
       on e: exception do
       begin
         Response.status := 400;
-        Response.mensagem := e.Message;
+        Response.Message := e.Message;
         result := TJSON.ObjectToJsonObject(Response,
           [joIgnoreEmptyArrays, joIgnoreEmptyStrings]);
       end;
